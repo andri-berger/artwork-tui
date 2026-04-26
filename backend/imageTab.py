@@ -1,0 +1,68 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# SPDX-FileCopyrightText: 2024 Andri Berger
+#
+# This file is part of layout-tui.
+#
+# layout-tui is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+from textual.containers import VerticalScroll, HorizontalScroll, ScrollableContainer
+from textual.containers import Center, Middle
+from textual.reactive import reactive
+from textual_image.widget import Image
+from textual.app import ComposeResult
+from textual.widget import Widget
+from PIL import Image as PILImage
+from pathlib import Path
+import base64
+import time
+
+
+class ImageTab(Widget):
+    image_pat = Path(__file__).parent.parent / "assets"
+    image_outs = image_pat / "outputs.png"
+    image_path = image_pat / "image.png"
+    time_stamp = reactive(image_outs)
+    config = reactive([], init=False)
+
+    CSS = """
+    Image {
+        align: center middle;
+    }
+    """
+
+    def __init__(self):
+        super().__init__()
+        self.setup = self.app.config['30']
+        self.link = self.app.config['31']
+        self.alt = self.app.config['90']
+
+    # def compose(self) -> ComposeResult:
+    #     yield Image(self.image_path)
+
+    def compose(self) -> ComposeResult:
+        img = PILImage.open(self.image_path)
+        img.thumbnail((600, 800))
+        yield Image(img)
+
+    async def watch_config(self):
+        self.query_one(Image).remove()
+        configs = {"1": self.config}
+        config_ = [3,[0,0],configs]
+        page = self.app.page
+        data_url = await (page.evaluate(
+            self.setup,config_))
+        int(time.time())
+        b64 = data_url.split(',')[1]
+        img_bytes = base64.b64decode(b64)
+        with open(self.image_outs, "wb") as f:
+            f.write(img_bytes)
+        self.time_stamp = int(time.time())
+
+    def watch_time_stamp(self):
+        if not self.is_mounted:
+            return
+        self.notify('yes!!')
+        self.mount(Image(self.image_outs))

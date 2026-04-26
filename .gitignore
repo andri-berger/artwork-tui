@@ -1,0 +1,56 @@
+
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info/
+*.egg-info
+.venv/
+*.pyc
+*.pyo
+*.pyd
+.eggs/
+
+# Build output
+*.min.js
+*.min.css
+*.tgz
+out
+dist
+
+# Environment / secrets
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+secrets.json
+
+# JetBrains
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# macOS
+.DS_Store
+.AppleDouble
+
+# Temporary / generated
+*.log
+*.tmp
+.cache/
+.temp/
+
+# dotenv environment variable files
+.env.development.local
+.env.test.local
+.env.production.local
+
+# caches
+.eslintcache
+.cache
+*.tsbuildinfo
+

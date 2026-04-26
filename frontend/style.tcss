@@ -1,0 +1,80 @@
+/* SPDX-License-Identifier: AGPL-3.0-or-later
+SPDX-FileCopyrightText: 2024 Andri Berger
+
+This file is part of layout-tui.
+
+layout-tui is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version. */
+
+Screen {
+    align: center middle;
+}
+
+SelectionList {
+    padding: 1;
+    border: solid $accent;
+    width: 80%;
+    height: 80%;
+}
+
+Screen {
+    align: center middle;
+}
+
+Sparkline {
+    width: 3;
+    margin: 2;
+}
+
+
+    Screen {
+        align: center middle;
+        background: transparent;
+        color: ansi_default;
+    }
+    ContainerApp {
+        height: 10;
+        width: 90%;
+    }
+
+    Container {
+        background: transparent;
+    }
+
+
+/* --------------------- */
+
+
+      /* the widget itself */
+  DataTable {
+      border: none;                    /* remove outer border */
+      background: transparent;
+  }
+
+  /* header row */
+  DataTable > .datatable--header {
+      background: $accent;
+      color: $text;
+      text-style: bold;
+  }
+
+  /* alternating rows */
+  DataTable > .datatable--even-row {
+      background: $surface;
+  }
+  DataTable > .datatable--odd-row {
+      background: $panel;
+  }
+
+  /* selected cursor cell */
+  DataTable > .datatable--cursor {
+      background: $primary;
+      color: $text;
+  }
+
+  /* highlighted row */
+  DataTable > .datatable--highlight {
+      background: $boost;
+  }

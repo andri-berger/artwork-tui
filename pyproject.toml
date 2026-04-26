@@ -1,0 +1,63 @@
+[project]
+name = "layout-tui"
+version = "0.1.0"
+description = ""
+license = { file = "COPYING" }
+authors = [{ name = "Andri Berger" }]
+requires-python = ">=3.14"
+dependencies = [
+    "numpy>=2.4.2",
+    "opencv-contrib-python-headless>=4.13.0.92",
+    "pillow>=12.1.1",
+    "platformdirs>=4.9.2",
+    "playwright>=1.58.0",
+    "pytest>=9.0.2",
+    "resvg-py>=0.2.6",
+    "sounddevice>=0.5.5",
+    "soundfile>=0.13.1",
+    "textual>=8.0.0",
+    "textual-fspicker>=1.0.0",
+    "textual-image>=0.8.5",
+    "textual-pdf>=0.1.7",
+    "vtracer>=0.6.12",
+]
+
+[dependency-groups]
+dev = [
+    "pyright>=1.1.408",
+    "ruff>=0.15.4",
+    "textual-dev>=1.8.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+include = [
+    "assets",
+    "backend",
+    "frontend",
+    "pyproject.py"]
+
+[project.scripts]
+layout-tui ="pyproject:pyproject"
+
+[tool.ruff]
+line-length = 88
+target-version = "py314"
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]     # error, pyflakes, isort
+ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["F401"]
+
+[tool.pyright]
+pythonVersion = "3.14"
+typeCheckingMode = "strict"   # off / basic / standard / strict
+venvPath = "."
+venv = ".venv"
+include = ["backend"]
+exclude = ["tests"]
