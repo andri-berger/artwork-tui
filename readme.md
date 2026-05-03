@@ -18,10 +18,10 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 
 **Generic Install (Native)**
 <br>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua
+
 ```bash
-curl -fsSL https://github.com/andri-berger/artwork-tui/releases@0.0.1 | bash
-curl -o https://github.com/andri-berger/artwork-tui/releases@0.0.1 artwork-tui
-chmod +x artwork-tui
+curl -fsSL https://raw.githubusercontent.com/\
+andri-berger/artwork-tui/main/install.sh | sh
 ```
 
 **macOs (Homebrew)**
@@ -40,8 +40,6 @@ pacman -S artwork-tui
 ```
 ```bash
 paru -S artwork-tui
-```
-```bash
 yay -S artwork-tui
 ```
 
@@ -221,87 +219,105 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
         Link <img width="560"></th>
     </tr>
     <tr>
+        <td>Assets</td>
+        <td>Flags</td><td>
+        <a href="https://github.com/lipis/flag-icons">
+        https://github.com/lipis/flag-icons</a></td>
+    </tr>
+    <tr>
+        <td>Assets</td>
+        <td>Maps</td><td>
+        <a href="//github.com/djaiss/mapsicon">
+        https://github.com/djaiss/mapsicon</a></td>
+    </tr>
+    <tr>
         <td>Build</td>
-        <td>Grip</td>
-        <td><a href="//github.com/chrishrb/go-grip">
+        <td>Grip</td><td>
+        <a href="//github.com/chrishrb/go-grip">
         https://github.com/chrishrb/go-grip</a></td>
     </tr>
     <tr>
         <td>Build</td>
-        <td>Biome</td>
-        <td><a href="//github.com/biomejs/biome">
+        <td>Biome</td><td>
+        <a href="//github.com/biomejs/biome">
         https://github.com/biomejs/biome</a></td>
     </tr>
     <tr>
         <td>Build</td>
-        <td>Ruff</td>
-        <td><a href="//github.com/astral-sh/ruff">
+        <td>Pyright</td><td>
+        <a href="//github.com/microsoft/pyright">
+        https://github.com/microsoft/pyright</a></td>
+    </tr>
+    <tr>
+        <td>Build</td>
+        <td>Ruff</td><td>
+        <a href="//github.com/astral-sh/ruff">
         https://github.com/astral-sh/ruff</a></td>
     </tr>
     <tr>
         <td>Build</td>
-        <td>Uv</td>
-        <td><a href="//github.com/astral-sh/uv">
+        <td>Uv</td><td>
+        <a href="//github.com/astral-sh/uv">
         https://github.com/astral-sh/uv</a></td>
     </tr>
     <tr>
         <td>Utilities</td>
-        <td>Numpy</td>
-        <td><a href="//github.com/numpy/numpy">
+        <td>Numpy</td><td>
+        <a href="//github.com/numpy/numpy">
         https://github.com/numpy/numpy</a></td>
     </tr>
     <tr>
         <td>Utilities</td>
-        <td>Random</td>
-        <td><a href="https://github.com/d3/d3-random">
+        <td>Random</td><td>
+        <a href="https://github.com/d3/d3-random">
         https://github.com/d3/d3-random</a></td>
     </tr>
     <tr>
         <td>Utilities</td>
-        <td>Platform</td>
-        <td><a href="https://github.com/tox-dev/platformdirs">
+        <td>Platform</td><td>
+        <a href="https://github.com/tox-dev/platformdirs">
         https://github.com/tox-dev/platformdirs</a></td>
     </tr>
     <tr>
         <td>Framework</td>
-        <td>Textual</td>
-        <td><a href="//github.com/Textualize/textual">
+        <td>Textual</td><td>
+        <a href="//github.com/Textualize/textual">
         https://github.com/Textualize/textual</a></td>
     </tr>
     <tr>
         <td>Framework</td>
-        <td>Textual Dev</td>
-        <td><a href="//github.com/Textualize/textual-dev">
+        <td>Textual Dev</td><td>
+        <a href="//github.com/Textualize/textual-dev">
         https://github.com/Textualize/textual-dev</a></td>
     </tr>
     <tr>
         <td>Framework</td>
-        <td>Textual Fs</td>
-        <td><a href="//github.com/davep/textual-fspicker">
+        <td>Textual Fs</td><td>
+        <a href="//github.com/davep/textual-fspicker">
         https://github.com/davep/textual-fspicker</a></td>
     </tr>
     <tr>
         <td>Framework</td>
-        <td>Textual Img</td>
-        <td><a href="//github.com/lnqs/textual-image">
+        <td>Textual Img</td><td>
+        <a href="//github.com/lnqs/textual-image">
         https://github.com/lnqs/textual-image</a></td>
     </tr>
     <tr>
         <td>Conversion</td>
-        <td>Html Image</td>
-        <td><a href="//github.com/bubkoo/html-to-image">
+        <td>Html Image</td><td>
+        <a href="//github.com/bubkoo/html-to-image">
         https://github.com/bubkoo/html-to-image</a></td>
     </tr>
     <tr>
         <td>Processing</td>
-        <td>Playwright</td>
-        <td><a href="https://github.com/microsoft/playwright">
+        <td>Playwright</td><td>
+        <a href="https://github.com/microsoft/playwright">
         https://github.com/microsoft/playwright</a></td>
     </tr>
     <tr align="left">
         <td>Processing</td>
-        <td>Pillow</td>
-        <td><a href="//github.com/python-pillow/Pillow">
+        <td>Pillow</td><td>
+        <a href="//github.com/python-pillow/Pillow">
         https://github.com/python-pillow/Pillow</a></td>
     </tr>
 </table>
@@ -396,6 +412,58 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
     <img src="assets/file-png/1744168421.png"></a></td>
   </tr>
 </table>
+
+Abstract Art	
+Modern Art	
+Geometric Art	
+Minimalist Art	
+Generative Art	
+Algorithmic Art	
+Procedural Art	
+Contemporary Art	
+
+Abstract Painting
+Modern Painting
+Geometric Painting
+Minimalist Painting
+Generative Painting
+Algorithmic Painting
+Procedural Painting
+Contemporary Painting
+
+Create Abstract Art Fast
+Your Custom Art in HD
+Abstract Prints, Your Way
+Make Unique Abstract Art
+Design Abstract Art Now
+Abstract Art, No AI Needed
+Generate Art, Download HD
+Abstract Canvas Generator
+Abstract Art — Your Style
+Make Art, Print on Canvas
+Create Abstract Wall Art
+DIY Abstract Art Online
+High-Res Abstract Prints
+Custom Art, Instant File
+Abstract Art, No Limits
+
+Design Abstract Wall Art, Print It, Show It Off
+Make Abstract Art That’s 100% You — No AI Required
+Tired of AI Art? Make Your Own Abstract Masterpiece
+Design Abstract Art, Download in HD, Print on Canvas
+Create Custom Abstract Art — High-Res, Ready to Print
+Abstract Art Generator: From Screen to Wall in Minutes
+Generate Abstract Art You Can Actually Download & Print
+DIY Abstract Art: Make It, Download It, Print It, Flex It
+Design Your Own Abstract Art — No AI, Just Your Imagination
+Unleash Your Inner Artist: Create Custom Abstract Art for Print
+Your Vision, Your Art: Generate Stunning Abstracts, Download or Print
+Make custom abstract art in minutes. Download or print your masterpiece!
+Design your abstract art and print it or download high-res files instantly.
+Create unique abstract artwork online — print on canvas or download HD art.
+Generate abstract art that’s 100% yours. Print or save high-resolution art.
+Your art, your rules. Create abstract pieces, download, or print on canvas.
+
 
 <br>
 <br>

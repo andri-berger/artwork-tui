@@ -5,5 +5,5 @@
     "noEmit": true,
     "strict": true
   },
-  "include": ["frontend/**/*.js"]
+  "include": ["frontend/*.js"]
 }
