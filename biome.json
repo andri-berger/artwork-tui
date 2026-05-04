@@ -6,7 +6,7 @@
     "rules": { "recommended": true }
   },
   "files": {
-    "includes": ["frontend/**/*.js"]
+    "includes": ["frontend/*.js"]
   },
   "formatter": {
     "enabled": true,

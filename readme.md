@@ -16,16 +16,17 @@ Generative design tool with a terminal UI — compose layouts, render to canvas,
 ## Installation
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
 
-**Generic Install (Native)**
-<br>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua
+### Generic Install (Native)
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/\
 andri-berger/artwork-tui/main/install.sh | sh
 ```
 
-**macOs (Homebrew)**
-<br>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua
+### macOs (Homebrew)
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua
+
 ```bash
 brew install andri-berger/tap artwork-tui
 ```
@@ -33,8 +34,9 @@ brew install andri-berger/tap artwork-tui
 brew install artwork-tui
 ```
 
-**Linux Arch (AUR)**
-<br>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua
+### Linux Arch (AUR)
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua
+
 ```bash
 pacman -S artwork-tui
 ```

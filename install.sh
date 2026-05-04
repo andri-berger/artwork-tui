@@ -8,7 +8,7 @@ else
     echo "uv already installed, skipping"
 fi
 
-uv tool install git+https://github.com/andri-berger/artwork-tui.git --quiet
+uv tool install git+https://github.com/andri-berger/artwork-tui.git --quiet --group main
 # uv tool run playwright install chromium --with-deps
 playwright install chromium --with-deps
 
