@@ -9,9 +9,7 @@ Generative design tool with a terminal UI — compose layouts, render to canvas,
 [API Credit](#credit) / 
 [Gallery](#gallery)
 
-
 (Drag Video in here). Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-
 
 ## Installation
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
@@ -28,30 +26,25 @@ andri-berger/artwork-tui/main/install.sh | sh
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua
 
 ```bash
-brew install andri-berger/tap artwork-tui
-```
-```bash
-brew install artwork-tui
+brew tap andri-berger/artwork-tui
+brew install andri-berger/artwork-tui/tap
+playwright install chromium #deps are included
 ```
 
 ### Linux Arch (AUR)
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua
 
 ```bash
-pacman -S artwork-tui
-```
-```bash
-paru -S artwork-tui
-yay -S artwork-tui
-```
-
-```bash
-artwork-tui #Launches the TUI
+yay -S artwork-tui #Or use paru instead
+playwright install chromium --with-deps
 ```
 
 ## Configuration
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
 
+```bash
+artwork-tui #Launches the TUI
+```
 
 ## API Reference
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
