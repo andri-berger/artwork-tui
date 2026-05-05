@@ -10,7 +10,7 @@ dependencies = []
 [dependency-groups]
 main = [
     "numpy>=2.4.2",
-    "opencv-contrib-python-headless>=4.13.0.92",
+    "opencv-python>=4.13.0.92",
     "pillow>=12.1.1",
     "platformdirs>=4.9.2",
     "playwright>=1.58.0",
@@ -30,9 +30,9 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 include = [
-    "assets",
-    "backend",
-    "frontend",
+    "Asset",
+    "Assets",
+    "Backend",
     "pyproject.py"]
 
 [project.scripts]
