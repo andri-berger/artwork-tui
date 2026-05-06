@@ -2,13 +2,10 @@
 name = "artwork-tui"
 version = "1.0.0"
 description = "artwork generator"
-license = { file = "license.md" }
+license = { file = "LICENSE" }
 authors = [{ name = "Andri Berger" }]
 requires-python = ">=3.14"
-dependencies = []
-
-[dependency-groups]
-main = [
+dependencies = [
     "numpy>=2.4.2",
     "opencv-python>=4.13.0.92",
     "pillow>=12.1.1",
@@ -58,7 +55,7 @@ include = ["backend"]
 exclude = ["tests"]
 
 
-# [tasks]
+# [tasks][dependency-groups]
 # check-js = "tsc --noEmit"
 # check-py = "uv run pyright"
 # lint-py = "uv run ruff check"

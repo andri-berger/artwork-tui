@@ -1,13 +1,3 @@
-# SPDX-License-Identifier: AGPL-3.0-or-later
-# SPDX-FileCopyrightText: 2024 Andri Berger
-#
-# This file is part of layout-tui.
-#
-# layout-tui is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-
 from textual.containers import VerticalScroll, HorizontalScroll, ScrollableContainer
 from textual.containers import Center, Middle
 from textual.reactive import reactive
@@ -21,7 +11,7 @@ import time
 
 
 class ImageTab(Widget):
-    image_pat = Path(__file__).parent.parent / "assets"
+    image_pat = Path(__file__).parent.parent / "Asset"
     image_outs = image_pat / "outputs.png"
     image_path = image_pat / "image.png"
     time_stamp = reactive(image_outs)

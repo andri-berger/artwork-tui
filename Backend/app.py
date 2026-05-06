@@ -1,13 +1,3 @@
-# SPDX-License-Identifier: AGPL-3.0-or-later
-# SPDX-FileCopyrightText: 2024 Andri Berger
-#
-# This file is part of layout-tui.
-#
-# layout-tui is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-
 from playwright.async_api import async_playwright
 from textual.app import App, ComposeResult
 from .containers import ContainerApp
@@ -17,17 +7,14 @@ import threading
 import functools
 import json
 
-
 PORT = 9000
 PATH_FILE = Path(__file__).parent
-STATIC_DIR = PATH_FILE.parent / "frontend"
+STATIC_DIR = PATH_FILE.parent / "Assets"
 DIR = f"http://localhost:{PORT}/model.html"
 CSS_PATHS = STATIC_DIR / "style.tcss"
 CONFIG = STATIC_DIR / "build.json"
 
-
 class CLIApp(App):
-
     COMMAND_PALETTE_DISPLAY = None
     COMMAND_PALETTE_BINDING = 'ctrl+p'
     CSS_PATH = CSS_PATHS
@@ -72,6 +59,3 @@ class CLIApp(App):
         if self._pw:
         # if self.page:
             await self._pw.stop()
-
-# if __name__ == "__main__":
-#     app = CLIApp().run()

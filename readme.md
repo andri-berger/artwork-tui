@@ -214,8 +214,14 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
     </tr>
     <tr>
         <td>Assets</td>
+        <td>Vhs</td><td>
+        <a href="https://github.com/charmbracelet/vhs">
+        https://github.com/charmbracelet/vhs</a></td>
+    </tr>
+    <tr>
+        <td>Assets</td>
         <td>Flags</td><td>
-        <a href="https://github.com/lipis/flag-icons">
+        <a href="//github.com/lipis/flag-icons">
         https://github.com/lipis/flag-icons</a></td>
     </tr>
     <tr>
