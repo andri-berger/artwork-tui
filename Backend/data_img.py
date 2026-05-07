@@ -1,5 +1,3 @@
-from textual.containers import VerticalScroll, HorizontalScroll, ScrollableContainer
-from textual.containers import Center, Middle
 from textual.reactive import reactive
 from textual_image.widget import Image
 from textual.app import ComposeResult
@@ -16,12 +14,6 @@ class ImageTab(Widget):
     image_path = image_pat / "image.png"
     time_stamp = reactive(image_outs)
     config = reactive([], init=False)
-
-    CSS = """
-    Image {
-        align: center middle;
-    }
-    """
 
     def __init__(self):
         super().__init__()

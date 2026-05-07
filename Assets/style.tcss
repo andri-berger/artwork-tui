@@ -1,71 +1,98 @@
 
+$default-0: $surface-lighten-1;
+$default: $surface;
+$defaults: transparent;
+
 Screen {
     align: center middle;
+    background: $default;
+    color: ansi_default;
 }
 
-SelectionList {
-    padding: 1;
-    border: solid $accent;
-    width: 80%;
+ModalScreen {
+    offset: 1% 1%;
+    width: 10%;
+    height: 10%;
+    background: $defaults;
+}
+
+TableApp {
+    background: $defaults;
+    width: 90%;
     height: 80%;
 }
 
-Screen {
-    align: center middle;
+ImageTab {
+    background: $defaults;
+    height: 2fr;
+    width: 1fr;
 }
 
-Sparkline {
-    width: 3;
-    margin: 2;
+Image {
+    align: center top;
+}
+
+HorizontalGroup {
+    width: 1fr;
+    height: 1fr;
+}
+
+DirectoryTree {
+    background: $defaults;
+    width: 30;
+    height: 1fr;
+}
+
+DataTable {
+    background: $defaults;
+    width: 1fr;
+    height: 1fr;
 }
 
 
-    Screen {
-        align: center middle;
-        background: transparent;
-        color: ansi_default;
-    }
-    ContainerApp {
-        height: 10;
-        width: 90%;
-    }
-
-    Container {
-        background: transparent;
-    }
 
 
-/* --------------------- */
+
+DataTable > .datatable--header {
+    background: $defaults;
+    color: $text;
+    text-style: bold;
+}
+
+DataTable > .datatable--header {
+    background: $defaults;
+    color: $text;
+    text-style: bold;
+}
 
 
-      /* the widget itself */
-  DataTable {
-      border: none;                    /* remove outer border */
-      background: transparent;
-  }
+DataTable > .datatable--even-row {
+    background: $default-0;
+    color: $text;
+    text-style: bold;
+}
 
-  /* header row */
-  DataTable > .datatable--header {
-      background: $accent;
-      color: $text;
-      text-style: bold;
-  }
+DataTable > .datatable--odd-row {
+    background: $defaults;
+}
 
-  /* alternating rows */
-  DataTable > .datatable--even-row {
-      background: $surface;
-  }
-  DataTable > .datatable--odd-row {
-      background: $panel;
-  }
+DataTable > .datatable--cursor {
+    background: yellow;
+    color: $text;
+}
 
-  /* selected cursor cell */
-  DataTable > .datatable--cursor {
-      background: $primary;
-      color: $text;
-  }
+DataTable > .datatable--highlight {
+    background: orange;
+}
 
-  /* highlighted row */
-  DataTable > .datatable--highlight {
-      background: $boost;
-  }
+DataTable,
+DirectoryTree {
+    scrollbar-visibility: hidden;
+}
+
+
+
+
+
+
+

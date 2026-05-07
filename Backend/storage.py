@@ -1,6 +1,6 @@
 import json
-  from pathlib import Path
-  from platformdirs import user_data_dir
+from pathlib import Path
+from platformdirs import user_data_dir
 
   STATE_FILE = Path(user_data_dir("layoutgen")) / "state.json"
 

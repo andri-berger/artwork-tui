@@ -1,12 +1,17 @@
-from textual.containers import VerticalScroll, HorizontalScroll, ScrollableContainer
-from textual.containers import Center, Middle
+
+
+from .data_img import ImageTab
+from .data_table import TDataTable
+from .directory_tree import TDirectoryTree
 from textual.widgets import DataTable, Input, Label
+
+from textual.containers import HorizontalGroup, VerticalGroup
 from textual.coordinate import Coordinate
 from textual.screen import ModalScreen
 from textual.app import ComposeResult
 from textual.widget import Widget
-from .imageTab import ImageTab
-from textual.containers import Horizontal
+
+
 from itertools import cycle
 from textual import on
 cursors = cycle(["cell"])
@@ -29,23 +34,6 @@ class CellEditModal(ModalScreen[str]):
             self.dismiss(None)  # cancel — return None
 
 class TableApp(Widget):
-    DEFAULT_CSS = """   
-    
-    HorizontalScroll {
-        height: 3fr; 
-        width: 90%;
-        align: center middle;                                                                                      
-    }  
-    
-    ImageTab {
-        align: center middle; 
-    }
-      
-    Horizontal {
-        height: 2fr;                                                                                       
-    }                                                                                     
-    """
-
 
     def __init__(self) -> None:
         super().__init__()
@@ -55,12 +43,10 @@ class TableApp(Widget):
         self._clipboard = None
 
     def compose(self) -> ComposeResult:
-        with HorizontalScroll():
-            yield ImageTab()
-        with Horizontal():
-            yield DataTable()
-
-
+        yield ImageTab()
+        with HorizontalGroup():
+            yield TDirectoryTree("")
+            yield TDataTable()
 
     def on_mount(self) -> None:
         rows = self.app.config['5-1']

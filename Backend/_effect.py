@@ -1,9 +1,4 @@
 
-  Not AG-Grid feature parity, but covers 80% of real use cases cleanly.
-  Playwright + Chromium Alongside Textual — Yes, But Not Embedded
-
-  Playwright is a Python library — it runs fine as a subprocess/async task while Textual manages the TUI.
-  They coexist, just in separate windows:
 
   # inside a Textual worker/background task
   from playwright.async_api import async_playwright

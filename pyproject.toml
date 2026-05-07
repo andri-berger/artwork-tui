@@ -16,6 +16,7 @@ dependencies = [
     "textual-image>=0.8.5",
     "vtracer>=0.6.12"]
 
+[dependency-groups]
 dev = [
     "pyright>=1.1.408",
     "ruff>=0.15.4",
@@ -61,3 +62,9 @@ exclude = ["tests"]
 # lint-py = "uv run ruff check"
 # lint-js = "biome check"
 # build = "uv build"
+
+
+# extensions
+# toast
+
+

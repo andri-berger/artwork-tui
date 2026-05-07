@@ -1,11 +1,19 @@
 from playwright.async_api import async_playwright
 from textual.app import App, ComposeResult
-from .containers import ContainerApp
+from .table import TableApp
 from pathlib import Path
 import http.server
 import threading
 import functools
 import json
+
+
+BINDINGS = {
+      "quit":    ("q", "Quit"),
+      "edit":    ("f2", "Edit cell"),
+      "yank":    ("y", "Yank"),
+      "paste":   ("p", "Paste"),
+}
 
 PORT = 9000
 PATH_FILE = Path(__file__).parent
@@ -29,7 +37,7 @@ class CLIApp(App):
             self.config = json.load(f)
 
     def compose(self) -> ComposeResult:
-            yield ContainerApp()
+        yield TableApp()
 
     async def on_mount(self) -> None:
         handler = functools.partial(
