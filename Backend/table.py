@@ -1,11 +1,8 @@
 
-
+from textual.widgets import (DataTable, Input, Label, Button, ContentSwitcher, Digits, LoadingIndicator)
 from .data_img import ImageTab
-from .data_table import TDataTable
 from .directory_tree import TDirectoryTree
-from textual.widgets import DataTable, Input, Label
-
-from textual.containers import HorizontalGroup, VerticalGroup
+from textual.containers import Horizontal
 from textual.coordinate import Coordinate
 from textual.screen import ModalScreen
 from textual.app import ComposeResult
@@ -43,24 +40,80 @@ class TableApp(Widget):
         self._clipboard = None
 
     def compose(self) -> ComposeResult:
-        yield ImageTab()
-        with HorizontalGroup():
-            yield TDirectoryTree("")
-            yield TDataTable()
+        with Horizontal(id="top"):
+            yield ImageTab()
+        with Horizontal(id="bottom"):
+
+            with ContentSwitcher(
+                    initial="dir-tree-0",
+                    id="cont-switch-0"):
+                yield TDirectoryTree(
+                    "/",id="dir-tree-0")
+                yield TDirectoryTree(
+                    "/",id="dir-tree-1")
+
+            with ContentSwitcher(
+                    initial="data-table-0",
+                    id="cont-switch-1"):
+                yield DataTable(
+                    id="data-table-0")
+                yield DataTable(
+                    id="data-table-1")
+                yield DataTable(
+                    id="data-table-2")
+
+        with Horizontal(id="status"):
+            yield Digits("F00", id="digits-0")
+            yield Button("Tab0", id="button-0")
+            yield Button("Tab1", id="button-1")
+            yield Button("Tab2", id="button-2")
+            yield Input(placeholder="Select 7", disabled=True, id="second")
+            yield Input(placeholder="No Default", id="third")
+
+
+    @on(Button.Pressed)
+    def button_pressed(self, event: Button.Pressed) -> None:
+        left = self.query_one("#cont-switch-0", ContentSwitcher)
+        right = self.query_one("#cont-switch-1", ContentSwitcher)
+        if event.button.id == "button-0":
+            right.current = "data-table-0"
+            left.current = "dir-tree-0"
+        elif event.button.id == "button-1":
+            right.current = "data-table-1"
+            left.current = "dir-tree-1"
+        elif event.button.id == "button-2":
+            right.current = "data-table-2"
+            left.current = "dir-tree-1"
+        right.query_one(
+            f"#{right.current}").focus()
+
+
 
     def on_mount(self) -> None:
-        rows = self.app.config['5-1']
-        table = self.query_one(DataTable)
-        table.cursor_type = next(cursors)
-        table.fixed_rows = 0
-        table.fixed_columns = 3
-        table.zebra_stripes = True
-        table.add_columns(*rows[0])
-        table.add_rows(rows[1:])
+        rows0 = self.app.config['00-0']
+        rows1 = self.app.config['00-1']
+        rows2 = self.app.config['00-2']
+        table0 = self.query_one("#data-table-0", DataTable)
+        table1 = self.query_one("#data-table-1", DataTable)
+        table2 = self.query_one("#data-table-2", DataTable)
+
+        for table in self.query(DataTable):
+            table.cursor_type = next(cursors)
+            table.zebra_stripes = True
+            table.fixed_columns = 1
+            table.fixed_rows = 0
+
+        table0.add_columns(*rows0[0])
+        table1.add_columns(*rows1[0])
+        table2.add_columns(*rows2[0])
+        table0.add_rows(rows0[1:])
+        table1.add_rows(rows1[1:])
+        table2.add_rows(rows2[1:])
+
 
     def get_all_data(self, table: DataTable):
         skip_rows = 0
-        skip_cols = 3
+        skip_cols = 1
 
         def coerce(v):
             if not isinstance(v, str):  # only convert actual strings
@@ -91,17 +144,17 @@ class TableApp(Widget):
 
     @on(DataTable.CellHighlighted)
     def track_cursor(self, event: DataTable.CellHighlighted) -> None:
-      self._cursor = event.coordinate
+        self._cursor = event.coordinate
 
     @on(DataTable.CellSelected)
     async def on_cell_selected(self, event: DataTable.CellSelected) -> None:
-      coord = event.coordinate
+        coord = event.coordinate
 
-      def apply(new_value: str | None) -> None:
-          if new_value is not None:
-              self.query_one(DataTable).update_cell_at(coord, new_value)
-              self.set_all_data()
-      await self.app.push_screen(CellEditModal(str(event.value)), apply)
+        def apply(new_value: str | None) -> None:
+            if new_value is not None:
+                self.query_one(DataTable).update_cell_at(coord, new_value)
+                self.set_all_data()
+        await self.app.push_screen(CellEditModal(str(event.value)), apply)
 
     async def on_key(self, event) -> None:
         table = self.query_one(DataTable)

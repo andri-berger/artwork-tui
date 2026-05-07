@@ -55,8 +55,6 @@ venv = ".venv"
 include = ["backend"]
 exclude = ["tests"]
 
-
-# [tasks][dependency-groups]
 # check-js = "tsc --noEmit"
 # check-py = "uv run pyright"
 # lint-py = "uv run ruff check"
@@ -64,7 +62,20 @@ exclude = ["tests"]
 # build = "uv build"
 
 
-# extensions
-# toast
+#######
+
+# Button
+# DataTable
+# ContentSwitcher
+# DirectoryTree
+# Input
+# LoadingIndicator
+# ProgressBar
+# Rule
+# TabbedContent
+# Tabs
+# Tree
+
+
 
 

@@ -23,7 +23,7 @@ CSS_PATHS = STATIC_DIR / "style.tcss"
 CONFIG = STATIC_DIR / "build.json"
 
 class CLIApp(App):
-    COMMAND_PALETTE_DISPLAY = None
+    # COMMAND_PALETTE_DISPLAY = None
     COMMAND_PALETTE_BINDING = 'ctrl+p'
     CSS_PATH = CSS_PATHS
     AUTO_FOCUS = '*'

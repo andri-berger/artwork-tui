@@ -30,6 +30,12 @@ class ImageTab(Widget):
         yield Image(img)
 
     async def watch_config(self):
+        # my_dict = {}
+        # result = {}
+        # for row in self.config:
+        #     for cell in row:
+        #         result = my_dict[cell]
+
         self.query_one(Image).remove()
         configs = {"1": self.config}
         config_ = [3,[0,0],configs]
