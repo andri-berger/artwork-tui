@@ -1,0 +1,237 @@
+
+
+:root {
+--_00:                                                  Consolas,Courier New;
+--_01:                                                  2px solid Transparent;
+--_02:                                                  1px solid Black;
+--_03:                                                  1px solid Gray;
+--_04:                                                  0 0 0px 1px Gray inset;
+--_05:                                                  0 0 0px 1px DarkGray inset;
+--_06:                                                  linear-gradient(White,White);
+--_07:                                                  radial-gradient(White,White);
+--_08:                                                  calc(100% - 4px) calc(100% - 4px);
+--_09:							                        calc(100% - 0px) calc(100% - 0px);
+--_10:                                                  rgb(255, 255, 255); }
+
+body *,
+body ::after,
+body ::before {
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    object-fit: contain;
+    object-position: center
+}
+
+body {
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+body > svg {
+inset:                                                  0px;
+position:                                               absolute;   }
+
+body > div,
+body > canvas {
+    margin: 						                        auto;
+    position:                                               relative;
+    display: 						                        flex; }
+
+body > div {
+    left: 							                        var(--f0,0px);
+    top:	 						                        var(--f1,0px);
+    width: 							                        400px;
+    height: 						                        300px; }
+
+body > canvas {
+    width: 							                        var(--f2,400px);
+    height:	 						                        var(--f3,300px); }
+
+body var {
+font-style:                                             initial;
+font-weight: 					                        inherit;
+font-family: 					                        inherit; }
+
+body var:empty {
+display:                                                none; }
+
+.l00 {
+outline-offset:                                         -3px;
+outline:                                                var(--_03);
+background-size:                                        var(--_08);
+background-position:                                    2px 2px;
+pointer-events:                                         auto;
+position:                                               relative;
+display:                                                flex; }
+
+:is(.k00,.t00) {
+width:                                                  100%;
+min-height:                                             100%;
+margin-left:                                            auto;
+margin-right:                                           auto;
+align-self:                                             flex-start;
+outline-offset:                                         -3px;
+outline:                                                var(--_03);
+background-image:                                       var(--_06);
+background-size:                                        var(--_08);
+background-position:                                    2px 2px;
+pointer-events:                                         auto;
+position:                                               relative;
+display:                                                flex; }
+
+:is(.l00,.t000) {
+flex-grow:                                              0;
+flex-shrink:                                            0;
+background-image:                                       var(--_06); }
+
+:is(.t000) {
+border:                                                 var(--_01);
+box-shadow:                                             var(--_04);
+background-color:                                       White;
+pointer-events:                                         auto;
+position:                                               relative;
+display:                                                flex; }
+
+body > div > nav {
+margin-left:                                            -100%;
+justify-content:                                        center;
+align-content:                                          flex-start;
+align-items:                                            flex-start;
+border-color:                                           Transparent;
+border-style:                                           solid;
+flex-wrap:                                              wrap; }
+
+body > div > nav,
+body > div > div {
+width:                                                  100%;
+pointer-events:                                         none;
+position:                                               relative;
+display:                                                flex; }
+
+body > div > div + div {
+margin-left:                                            -100%; }
+
+body > div > div:has(+div) {
+margin-left:                                            0%; }
+
+:is(.l00,.k00) > div[class],
+:is(.t00,.t000) > div[class] {
+border-radius:                                          inherit;
+width:                                                  100%;
+margin-left:                                            0%;
+pointer-events:					                        none;
+position:                                               relative;
+display:						                        block; }
+
+:is(.l00,.k00) > div[data],
+:is(.t00,.t000) > div[data] {
+top:                                                    30px;
+right:                                                  30px;
+width:                                                  100%;
+margin-left:                                            -100%;
+pointer-events:					                        none;
+position:                                               relative;
+display:						                        block; }
+
+:is(.l00,.k00) > [data] + div,
+:is(.t00,.t000) > [data] + div {
+top:                                                    30px;
+right:                                                  30px;
+width:                                                  100%;
+margin-left:                                            -100%;
+pointer-events:                                         none;
+position:                                               relative;
+display:                                                flex; }
+
+:is(.l00,.k00) > nav,
+:is(.t00,.t000) > nav {
+width:                                                  100%;
+margin-left:                                            -100%;
+justify-content:                                        center;
+align-content:                                          flex-start;
+align-items:                                            flex-start;
+pointer-events:                                         none;
+position:                                               relative;
+flex-wrap:                                              wrap;
+display:                                                flex; }
+
+body > div > div > div,
+.l00 > div:nth-of-type(3) > div,
+.k00 > div:nth-of-type(3) > div,
+.t00 > div:nth-of-type(3) > div,
+.t000 > div:nth-of-type(3) > div {
+width:                                                  100%;
+pointer-events:                                         none;
+position:                                               relative;
+display:                                                flex; }
+
+body > div > div > div:first-of-type,
+.l00 > div:nth-of-type(3) > div:first-of-type,
+.k00 > div:nth-of-type(3) > div:first-of-type,
+.t00 > div:nth-of-type(3) > div:first-of-type,
+.t000 > div:nth-of-type(3) > div:first-of-type {
+margin-left:                                            0%; }
+
+body > div > div > div:not(:first-of-type),
+.l00 > div:nth-of-type(3) > div:not(:first-of-type),
+.k00 > div:nth-of-type(3) > div:not(:first-of-type),
+.t00 > div:nth-of-type(3) > div:not(:first-of-type),
+.t000 > div:nth-of-type(3) > div:not(:first-of-type) {
+margin-left:                                            -100%; }
+
+.l00 > var:last-of-type,
+.k00 > var:last-of-type,
+.t00 > var:last-of-type {
+margin:                                                 2px; }
+
+.l00 > var:last-of-type,
+.k00 > var:last-of-type,
+.t00 > var:last-of-type,
+.t000 > var:last-of-type {
+border:                                                 var(--_02);
+font-family:                                            var(--_00);
+text-align:                                             center;
+background-color:                                       White;
+visibility:                                             visible;
+display:                                                var(--f13,none);
+position:                                               absolute; }
+
+.l00 > var,
+.k00 > var,
+.t00 > var,
+.t000 > var {
+padding:                                                2px;
+font-size:                                              16px; }
+
+
+body > div:has(+div) {
+z-index:                                                var(--f15,0); }
+
+.l00 > div:has(>img),
+.k00 > div:has(>img),
+.t00 > div:has(>img),
+.t000 > div:has(>img) {
+background-image:                                       none; }
+
+.l00 > div > img,
+.k00 > div > img,
+.t00 > div > img,
+.t000 > div > img {
+inset:                                                  0px;
+width:                                                  100%;
+height:                                                 100%;
+position:                                               absolute; }
+
+
+
+
+
+
+
+
+
+

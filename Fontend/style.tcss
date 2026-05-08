@@ -1,0 +1,193 @@
+
+$default-0: $surface-lighten-1;
+$default: $surface;
+$defaults: transparent;
+$brand: $primary;
+
+
+Screen {
+    align: center middle;
+    background: $default;
+    color: ansi_default;
+}
+
+ModalScreen {
+    offset: 1% 1%;
+    width: 10%;
+    height: 10%;
+    background: $defaults;
+}
+
+
+
+
+
+
+
+TableApp {
+    align: center middle;
+    background: $defaults;
+    width: 90%;
+    height: 80%;
+}
+
+ImageTab {
+    align: center middle;
+    background: $defaults;
+    max-width: 120;
+    height: 1fr;
+    width: 1fr;
+}
+
+
+
+#top {
+    width: 1fr;
+    height: 2fr;
+    align: center middle; }
+
+#bottom {
+    width: 1fr;
+    height: 1fr;
+    align: center middle;
+}
+
+#status {
+    width: 1fr;
+    height: 5;
+    align: center middle;
+}
+
+#first {
+  border: hkey $brand;
+    text-style: bold;
+    width: 10;
+    background: transparent;
+}
+
+#second {
+  border: hkey $brand;
+    text-style: bold;
+    width: 20;
+    background: transparent;
+}
+
+#third {
+  border: hkey $brand;
+    text-style: bold;
+    width: 30;
+    background: transparent;
+    text-align: center;
+}
+
+#first > .input--placeholder {
+    color: $text;
+}
+
+
+
+
+
+
+
+
+
+Input:focus,
+Button:focus,
+DataTable:focus,
+DirectoryTree:focus {
+    border: hkey $brand;
+}
+
+
+
+
+
+
+
+
+#cont-switch-0 {
+    width: 22;
+    height: 1fr;
+    padding-top: 1;
+    padding-right: 1; }
+
+DirectoryTree {
+    background: $defaults; }
+
+DirectoryTree > .tree--cursor {
+    background: $brand; }
+DirectoryTree > .tree--guides {
+    }
+DirectoryTree > .tree--guides-hover {
+    }
+DirectoryTree > .tree--guides-selected {
+    }
+DirectoryTree > .tree--highlight {
+    }
+DirectoryTree > .tree--highlight-line {
+    }
+DirectoryTree > .tree--label {
+    }
+
+
+
+
+
+#cont-switch-1 {
+    background: $defaults;
+    max-width: 90;
+    width: 1fr;
+    height: 1fr; }
+
+DataTable {
+    background: $defaults; }
+
+DataTable,
+#dir-tree-0,
+#dir-tree-1 {
+    scrollbar-visibility: hidden;
+}
+
+DataTable > .datatable--cursor,
+DataTable > .datatable--header-cursor,
+DataTable > .datatable--fixed-cursor {
+    background: $brand;
+}
+
+DataTable > .datatable--hover,
+DataTable > .datatable--header-hover {
+    background: $brand;
+}
+
+DataTable > .datatable--header,
+ DataTable > .datatable--fixed {
+    background: $defaults;
+}
+
+DataTable > .datatable--even-row {
+    background: $default-0;
+}
+
+DataTable > .datatable--odd-row {
+    background: $defaults;
+}
+
+Input {
+    border: hkey white; }
+
+
+Button {
+    text-style: none;
+    padding: 0;
+    min-width: 0;
+    border: hkey white; }
+
+#digits-0 {
+    width: auto;
+    height: 1fr;
+    }
+
+
+
+

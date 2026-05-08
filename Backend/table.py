@@ -7,6 +7,7 @@ from textual.coordinate import Coordinate
 from textual.screen import ModalScreen
 from textual.app import ComposeResult
 from textual.widget import Widget
+from textual.events import Key
 
 
 from itertools import cycle
@@ -38,6 +39,7 @@ class TableApp(Widget):
         self._visual_start = None
         self._visual_mode = False
         self._clipboard = None
+        self._coord = None
 
     def compose(self) -> ComposeResult:
         with Horizontal(id="top"):
@@ -67,8 +69,9 @@ class TableApp(Widget):
             yield Button("Tab0", id="button-0")
             yield Button("Tab1", id="button-1")
             yield Button("Tab2", id="button-2")
+            yield Button("Regenerate", id="button-3")
             yield Input(placeholder="Select 7", disabled=True, id="second")
-            yield Input(placeholder="No Default", id="third")
+            yield Input(placeholder="Edit Cell", id="third")
 
 
     @on(Button.Pressed)
@@ -135,12 +138,17 @@ class TableApp(Widget):
             })
         }
 
-    def set_all_data(self):
-        table = self.query_one(DataTable)
-        images = self.query_one(ImageTab)
-        tst = self.get_all_data(table)
-        self.notify(f"TST: {tst}")
-        images.config = tst
+    def on_input_submitted(self, event: Input.Submitted):
+        if self._coord is not None:
+            self.query_one(DataTable).update_cell_at(self._coord, event.value)
+            table = self.query_one(DataTable)
+            images = self.query_one(ImageTab)
+            tst = self.get_all_data(table)
+            self.notify(f"TST: {tst}")
+            images.config = tst
+            self._coord = None
+            self.query_one(DataTable).focus()
+
 
     @on(DataTable.CellHighlighted)
     def track_cursor(self, event: DataTable.CellHighlighted) -> None:
@@ -149,15 +157,27 @@ class TableApp(Widget):
     @on(DataTable.CellSelected)
     async def on_cell_selected(self, event: DataTable.CellSelected) -> None:
         coord = event.coordinate
+        self._coord = event.coordinate
+        self.query_one("#third", Input).value = str(event.value)
+        self.query_one("#third", Input).focus()
 
+        self.notify(f"{event.value}")
         def apply(new_value: str | None) -> None:
             if new_value is not None:
                 self.query_one(DataTable).update_cell_at(coord, new_value)
-                self.set_all_data()
-        await self.app.push_screen(CellEditModal(str(event.value)), apply)
+                table = self.query_one(DataTable)
+                images = self.query_one(ImageTab)
+                tst = self.get_all_data(table)
+                self.notify(f"TST: {tst}")
+                images.config = tst
+        # await self.app.push_screen(CellEditModal(str(event.value)), apply)
 
+    @on(Key)
     async def on_key(self, event) -> None:
         table = self.query_one(DataTable)
+        if event.key == "escape":
+            self._coord = None
+            self.query_one(DataTable).focus()
 
         if event.key == "v":  # enter/exit visual mode
             self._visual_mode = not self._visual_mode

@@ -7,17 +7,17 @@ class Tap < Formula
   url "https://github.com/andri-berger/artwork-tui/archive/v0.0.1.tar.gz"
   sha256 "10790e80a965d21087a53c40286817f7f7835356d917c2bce1c152dc004edcab"
   depends_on "python@3.14"
-  depends_on "resvg"
-  
+  depends_on "imagemagick"
+
+
+  resource "wand" do
+      url "https://files.pythonhosted.org/packages/c5/f6/feb40fadb7f3a6c5d45c02840c329725f6ec907eb3581c5de27445700e8a/wand-0.7.0.tar.gz"
+      sha256 "e48f983cc248c23f752e5ba8a6aa1b09370c87d81425d2cc7474f4536c0740f9"
+    end
   
   resource "platformdirs" do
     url "https://files.pythonhosted.org/packages/9f/4a/0883b8e3802965322523f0b200ecf33d31f10991d0401162f4b23c698b42/platformdirs-4.9.6.tar.gz"
     sha256 "3bfa75b0ad0db84096ae777218481852c0ebc6c727b3168c1b9e0118e458cf0a"
-  end
-
-  resource "textual-fspicker" do
-    url "https://files.pythonhosted.org/packages/e8/fd/dc3160123af550838d50a4fa7f62e357d7ad2fc9b4220ead9160661bcd1b/textual_fspicker-1.0.0.tar.gz"
-    sha256 "462608dbe6a14edff679fc6116addcf288f4a79f8e4fffd240f9ce2caaf9e655"
   end
 
   resource "textual-image" do
@@ -43,6 +43,20 @@ class Tap < Formula
       sha256 "bfc6940100b57423175c819ce2422ec5880d55fa2769987f62ab7a1f5fe6783e"
     end
   end
+
+    on_arm do
+      resource "opencv-python" do
+        url "https://files.pythonhosted.org/packages/fc/6f/5a28fef4c4a382be06afe3938c64cc168223016fa520c5abaf37e8862aa5/opencv_python-4.13.0.92-cp37-abi3-macosx_13_0_arm64.whl"
+        sha256 "caf60c071ec391ba51ed00a4a920f996d0b64e3e46068aac1f646b5de0326a19"
+      end
+    end
+
+    on_intel do
+      resource "opencv-python" do
+        url "https://files.pythonhosted.org/packages/08/ac/6c98c44c650b8114a0fb901691351cfb3956d502e8e9b5cd27f4ee7fbf2f/opencv_python-4.13.0.92-cp37-abi3-macosx_14_0_x86_64.whl"
+        sha256 "5868a8c028a0b37561579bfb8ac1875babdc69546d236249fff296a8c010ccf9"
+      end
+    end
   
   on_arm do
     resource "pillow" do

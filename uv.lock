@@ -98,9 +98,8 @@ dependencies = [
     { name = "platformdirs" },
     { name = "playwright" },
     { name = "textual" },
-    { name = "textual-fspicker" },
     { name = "textual-image" },
-    { name = "vtracer" },
+    { name = "wand" },
 ]
 
 [package.dev-dependencies]
@@ -118,9 +117,8 @@ requires-dist = [
     { name = "platformdirs", specifier = ">=4.9.2" },
     { name = "playwright", specifier = ">=1.58.0" },
     { name = "textual", specifier = ">=8.0.0" },
-    { name = "textual-fspicker", specifier = ">=1.0.0" },
     { name = "textual-image", specifier = ">=0.8.5" },
-    { name = "vtracer", specifier = ">=0.6.12" },
+    { name = "wand", specifier = ">=0.7.0" },
 ]
 
 [package.metadata.requires-dev]
@@ -661,18 +659,6 @@ wheels = [
 ]
 
 [[package]]
-name = "textual-fspicker"
-version = "1.0.0"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "textual" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/e8/fd/dc3160123af550838d50a4fa7f62e357d7ad2fc9b4220ead9160661bcd1b/textual_fspicker-1.0.0.tar.gz", hash = "sha256:462608dbe6a14edff679fc6116addcf288f4a79f8e4fffd240f9ce2caaf9e655", size = 16517, upload-time = "2026-02-18T20:02:16.547Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/92/2f/bf13ae8a1f17186a122968c7ba0f18716d63d2fa67a9e6f905a20067c022/textual_fspicker-1.0.0-py3-none-any.whl", hash = "sha256:71c80258f8885a67abf85d68b42ac8defc8226281481717af722346cbc3e0305", size = 24932, upload-time = "2026-02-18T20:02:15.492Z" },
-]
-
-[[package]]
 name = "textual-image"
 version = "0.8.5"
 source = { registry = "https://pypi.org/simple" }
@@ -720,21 +706,12 @@ wheels = [
 ]
 
 [[package]]
-name = "vtracer"
-version = "0.6.12"
+name = "wand"
+version = "0.7.0"
 source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/c5/f6/feb40fadb7f3a6c5d45c02840c329725f6ec907eb3581c5de27445700e8a/wand-0.7.0.tar.gz", hash = "sha256:e48f983cc248c23f752e5ba8a6aa1b09370c87d81425d2cc7474f4536c0740f9", size = 11888946, upload-time = "2026-02-23T14:50:34.79Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/c0/45/3866b42fd4bfd96782d36a5cc0055eac1fc67cd7dc0e7c2350064d3e37ba/vtracer-0.6.12-cp314-cp314-macosx_10_12_x86_64.whl", hash = "sha256:c325c8c41f51f13e6844d3751bba046ed03ba3963de9977d2483fb0b2439e881", size = 998894, upload-time = "2026-02-04T12:18:08.885Z" },
-    { url = "https://files.pythonhosted.org/packages/e4/60/cd24d2d97ec87a6050f0dafe34623da0376bc21abe05ad37c72d59945bed/vtracer-0.6.12-cp314-cp314-macosx_11_0_arm64.whl", hash = "sha256:a76992699aa04e8ed0c9a3f2920fc063f785ca9037e9ab30d864a4a230df1961", size = 942665, upload-time = "2026-02-04T12:17:14.14Z" },
-    { url = "https://files.pythonhosted.org/packages/2c/5a/5727c7237ae94b3476e685844690213faa3f9053e4eaae109bc64a63d9a6/vtracer-0.6.12-cp314-cp314-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:5763ea3a5f58763612465a74573ef0d8b3c16c6c4a3e7bf87f8e478673a3e20c", size = 1043570, upload-time = "2026-02-04T12:17:11.647Z" },
-    { url = "https://files.pythonhosted.org/packages/62/13/3b67f1e367fa9024d2e2774695c421e785848eba26de26d2fe016e116832/vtracer-0.6.12-cp314-cp314-manylinux_2_17_armv7l.manylinux2014_armv7l.whl", hash = "sha256:b58ef79fdd4b963113d9a0508370b5fc5424d47be1f7002530ebe821c7d03f1c", size = 1044398, upload-time = "2026-02-04T12:16:35.524Z" },
-    { url = "https://files.pythonhosted.org/packages/b3/f3/a54fe4f8fe014bc0242c92190bc44de02d0f250d7e19010486344a74565a/vtracer-0.6.12-cp314-cp314-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl", hash = "sha256:dad284fb2dabd1f95b649ad6bcd47c2bb7626d690d3a72adbf6886c09580d0db", size = 1244817, upload-time = "2026-02-04T12:16:37.956Z" },
-    { url = "https://files.pythonhosted.org/packages/ec/1e/1a5e3971d8b2d5e0bbabc08f3fc8751e49f404a6122df0fe8a0c60e23e11/vtracer-0.6.12-cp314-cp314-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:bc436d5917739bbf78fe02ecaba4200381e45956c4f8283612d73edc4f796790", size = 1080441, upload-time = "2026-02-04T12:18:05.286Z" },
-    { url = "https://files.pythonhosted.org/packages/bc/3f/8e5b8e9c4415e28190636fa7f2c15d33497e5499dc9681e42fd9e5c6148c/vtracer-0.6.12-cp314-cp314-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:b200e1bf8187b69b38ee27ff9c824195e68371008a2b5c256e65f3aadc158e55", size = 1078008, upload-time = "2026-02-04T12:17:15.337Z" },
-    { url = "https://files.pythonhosted.org/packages/41/bf/ebe14ade62534bdd2a3b813b8fc5b28328dfca893e71703dd048f14fbebe/vtracer-0.6.12-cp314-cp314-musllinux_1_2_aarch64.whl", hash = "sha256:bc721953484662e84177aa67f7758712c40bed5aa1933a73fba9946245fdc0e6", size = 1218866, upload-time = "2026-02-04T12:17:38.182Z" },
-    { url = "https://files.pythonhosted.org/packages/97/31/68d757717a6b8606331c526660d33c9b3e08d80f559b0abf5082224ecf4b/vtracer-0.6.12-cp314-cp314-musllinux_1_2_armv7l.whl", hash = "sha256:4b504e87e59240807bf9c17c26ec0c449391e0f9d6914a819e73fefcc64eb770", size = 1315668, upload-time = "2026-02-04T12:17:54.809Z" },
-    { url = "https://files.pythonhosted.org/packages/ce/66/ed4fe7e789ecf23f1b15cf9fbf9c1c3ae470beb062e735b8eeaea4249a2c/vtracer-0.6.12-cp314-cp314-win_amd64.whl", hash = "sha256:1812ed165d0cc5e4bd4104f0578d11e95ce23039b7ea0de8b893c435933e4c02", size = 835247, upload-time = "2026-02-04T12:18:02.476Z" },
-    { url = "https://files.pythonhosted.org/packages/24/18/c0c59c4a5fbbf1f34a060429f80e164ab7f4a79b7f8e90c13910b844a245/vtracer-0.6.12-cp314-cp314-win_arm64.whl", hash = "sha256:cec35cbefc53ace14bbc74c02eea59676e7a3017dd48b63435ee760f445d3e3a", size = 785806, upload-time = "2026-02-04T12:18:22.122Z" },
+    { url = "https://files.pythonhosted.org/packages/29/6c/51fe13d260d9e910d8f010494cc513420ab79852662fefdebdecfeaeebd5/wand-0.7.0-py3-none-any.whl", hash = "sha256:197a5011891a68fc14558cac58db5f5aafb66ef1dd28bfb4a2c62c156c41712e", size = 144773, upload-time = "2026-02-23T14:50:46.162Z" },
 ]
 
 [[package]]

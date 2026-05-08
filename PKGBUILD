@@ -14,9 +14,12 @@ depends=(
     'python-pillow'
     'python-playwright'
     'python-platformdirs'
-    'python-textual-fspicker'
     'python-textual-image'
     'python-textual'
+    'python-wand'
+    'imagemagick'
+    'opencv-python'
+    'opencv'
 )
 
 build() {
