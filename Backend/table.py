@@ -81,12 +81,13 @@ class TableApp(Widget):
                     id="data-table-2")
 
         with Horizontal(id="status"):
-            yield Button("TAB0", id="button-0")
-            yield Button("TAB1", id="button-1")
-            yield Button("TAB2", id="button-2")
+            yield Button("SA", id="button-0")
+            yield Button("SB", id="button-1")
+            yield Button("SC", id="button-2")
+            yield Button("LABEL", id="button-5")
+            yield Button("CLEAR", id="button-6")
             yield Button("CREATE", id="button-3")
             yield Button("SAVE", id="button-4")
-            yield Button("LABEL", id="button-5")
             yield Input(placeholder="Select 7", disabled=True, id="second")
             yield Input(id="third", disabled=True)
 

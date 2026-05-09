@@ -169,40 +169,54 @@ const f = {
     "3-3": ["hue","color","screen","lighten","darken","overlay","multiply","saturation","luminosity","color dodge","color burn","hard light","soft light"],
     "0-3": ["White","Transparent","Gainsboro","Wheat","Gold","Crimson","MediumVioletRed","MediumSeaGreen","SeaGreen","DeepSkyBlue","DodgerBlue","MediumSlateBlue","Black","Snow","HoneyDew","MintCream","Azure","AliceBlue","GhostWhite","WhiteSmoke","SeaShell","Beige","OldLace","FloralWhite","Ivory","AntiqueWhite","Linen","LavenderBlush","MistyRose","CornSilk","BlanchedAlmond","Bisque","NavajoWhite","BurlyWood","RosyBrown","SandyBrown","GoldenRod","DarkGoldenRod","Peru","Chocolate","SaddleBrown","Sienna","Brown","Maroon","LightGray","Silver","DarkGray","Gray","DimGray","LightSlateGray","SlateGray","DarkSlateGray","LightYellow","LemonChiffon","PapayaWhip","Moccasin","PeachPuff","PaleGoldenRod","Khaki","DarkKhaki","Coral","Tomato","OrangeRed","DarkOrange","IndianRed","LightCoral","Salmon","DarkSalmon","LightSalmon","FireBrick","DarkRed","Pink","LightPink","HotPink","DeepPink","PaleVioletRed","Lavender","Thistle","Plum","Violet","Orchid","Fuchsia","Magenta","MediumOrchid","MediumPurple","BlueViolet","DarkViolet","DarkOrchid","DarkMagenta","Purple","Indigo","SlateBlue","DarkSlateBlue","GreenYellow","Chartreuse","LimeGreen","PaleGreen","LightGreen","SpringGreen","ForestGreen","DarkGreen","YellowGreen","OliveDrab","Olive","DarkOliveGreen","MediumAquamarine","DarkSeaGreen","LightSeaGreen","DarkCyan","Teal","Aqua","Cyan","LightCyan","PaleTurquoise","AquaMarine","Turquoise","MediumTurquoise","DarkTurquoise","CadetBlue","SteelBlue","LightSteelBlue","PowderBlue","LightBlue","SkyBlue","LightSkyBlue","CornflowerBlue","RoyalBlue","MediumBlue","DarkBlue","MidnightBlue","Navy"]}};
 const h = {
-"0-21": 0,      // 0: 100
-"0-22": 0,      // 0: 101
-"0-23": 0,      // 0: 102
 
-"2-01": 10,     // 0: 103
-"2-02": 30,     // 0: 104
-"2-03": null,   // 0: 105
-"2-04": null,   // 0: 106
-"2-05": null,   // 0: 107
-"2-06": null,   // 0: 108
-"2-19": null,   // 0: 109
-"2-20": null,   // 0: 110
+"2-01": 10,     // 0: 100
+"2-02": 30,     // 0: 101
+"2-03": null,   // 0: 102
+"2-04": null,   // 0: 103
+"2-05": null,   // 0: 104
+"2-06": null,   // 0: 105
+"2-19": null,   // 0: 106
+"2-20": null,   // 0: 107
 
-"3-01": null,     // 0: 111
-"3-02": null,     // 0: 112
-"3-03": null,   // 0: 113
-"3-04": null,   // 0: 114
-"3-05": null,   // 0: 115
-"3-06": null,   // 0: 116
-"3-19": null,   // 0: 117
-"3-20": null,   // 0: 118
+"3-01": null,   // 0: 108
+"3-02": null,   // 0: 109
+"3-03": null,   // 0: 110
+"3-04": null,   // 0: 111
+"3-05": null,   // 0: 112
+"3-06": null,   // 0: 113
+"3-19": null,   // 0: 114
+"3-20": null,   // 0: 115
 
-"4-01": null,     // 0: 119
-"4-02": null,     // 0: 120
-"4-03": null,   // 0: 121
-"4-04": null,   // 0: 122
-"4-05": null,   // 0: 123
-"4-06": null,   // 0: 124
-"4-19": null,   // 0: 125
-"4-20": null,   // 0: 126
+"4-01": null,   // 0: 116
+"4-02": null,   // 0: 117
+"4-03": null,   // 0: 118
+"4-04": null,   // 0: 119
+"4-05": null,   // 0: 120
+"4-06": null,   // 0: 121
+"4-19": null,   // 0: 122
+"4-20": null,   // 0: 123
 
-"0-0": null,    // 0: 127
-"0-1": null,    // 0: 128
-"0-2": null,    // 0: 129
+"0-3": null,    // 0: 92
+"0-4": null,    // 0: 93
+"0-5": null,    // 0: 94
+"0-6": null,    // 0: 95
+"0-7": null,    // 0: 96
+"0-8": null,    // 0: 97
+
+
+"0-0": null,    // seed A => 0: 142 timestamp
+"0-1": null,    // seed B => 0: 141 timestamp
+"0-2": null,    // seed C => 0: 140 timestamp
+"0-21": 0,      // seed A => 0: 124 (boolean!)
+"0-22": 0,      // seed B => 0: 125 (boolean!)
+"0-23": 0,      // seed C => 0: 126 (boolean!)
+// boolean label!!  0:127
+// path file png => 0: 143 timestamp
+// path file json => 144 timstamp
+// path file otf => 145 timestamp
+// finally, text => 146 TEXT !!!!!!!
+
 };
 
 
