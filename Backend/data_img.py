@@ -4,16 +4,19 @@ from textual.app import ComposeResult
 from textual.widget import Widget
 from PIL import Image as PILImage
 from pathlib import Path
+from textual.css.query import NoMatches
+from textual.css.query import NoMatches
 from textual.geometry import Size
 import base64
 import time
 import io
 
 
-launch_dir = Path.cwd()
-TIME_STAMP = int(time.time())
+
 
 class ImageTab(Widget):
+    launch_dir = Path.cwd()
+    TIME_STAMP = int(time.time())
     image_pat = Path(__file__).parent.parent / "Fontend"
     image_outs = Path.cwd() / f"{TIME_STAMP}.png"
     image_outs_ = Path.cwd() / f"_{TIME_STAMP}.png"
@@ -21,16 +24,14 @@ class ImageTab(Widget):
     time_stamp = reactive(image_outs)
     config = reactive([], init=False)
 
+
+
     def __init__(self):
         super().__init__()
         self.setup = self.app.config['30']
         self.link = self.app.config['31']
         self.alt = self.app.config['90']
 
-    def compose(self) -> ComposeResult:
-        img = PILImage.open(self.image_path)
-        img.thumbnail((600, 800))
-        yield Image(img,id="test")
 
     async def watch_config(self):
         # my_dict = {}
@@ -39,9 +40,12 @@ class ImageTab(Widget):
         #     for cell in row:
         #         result = my_dict[cell]
 
-        self.query_one(Image).remove()
+        try:
+            self.query_one(Image).remove()
+        except Exception:
+            pass
         configs = {"1": self.config}
-        config_ = [3,[0,0],configs]
+        config_ = [5,[0,0],configs]
         page = self.app.page
         data_url = await (page.evaluate(
             self.setup,config_))
@@ -57,7 +61,6 @@ class ImageTab(Widget):
     def watch_time_stamp(self):
         if not self.is_mounted:
             return
-        self.notify('yes!!')
         self.mount(Image(self.image_outs))
 
         size = self.size

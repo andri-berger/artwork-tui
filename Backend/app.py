@@ -41,9 +41,8 @@ class CLIApp(App):
         with open(CONFIG) as f:
             self.config = json.load(f)
 
-        rows0 = [[""]]
+        rows0 = []
         self.config["001-2"] = [
-        [""],
         *([f"A{n:02d}" for n in range(100)] * 10),
         *([f"B{n:02d}" for n in range(100)] * 10),
         *([f"C{n:02d}" for n in range(100)] * 10),
@@ -64,7 +63,6 @@ class CLIApp(App):
 
         self.config["01-2"] = rows0
         self.config["01-2"] = [
-            [""],
             *([keys1] * 10)
         ]
 
@@ -84,15 +82,8 @@ class CLIApp(App):
         thread.start()
 
         self._pw = await async_playwright().start()
-        browser = await self._pw.chromium.launch(
-        headless=True,
-        args=[
-          "--disable-extensions",
-          "--disable-gpu",
-          "--no-sandbox",
-          "--disable-dev-shm-usage",
-        ]
-        )
+        browser = await self._pw.firefox.launch(
+        headless=True)
         self.page = await browser.new_page()
         await self.page.goto(DIR)
 

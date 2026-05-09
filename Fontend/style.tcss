@@ -9,6 +9,7 @@ Screen {
     align: center middle;
     background: $default;
     color: ansi_default;
+    layers: base overlay;
 }
 
 ModalScreen {
@@ -66,14 +67,14 @@ ImageTab {
 }
 
 #second {
-  border: hkey $brand;
+  border: hkey white;
     text-style: bold;
     width: 20;
     background: transparent;
 }
 
 #third {
-  border: hkey $brand;
+  border: hkey white;
     text-style: bold;
     width: 30;
     background: transparent;
@@ -92,25 +93,13 @@ ImageTab {
 
 
 
-Input:focus,
-Button:focus,
-DataTable:focus,
-DirectoryTree:focus {
-    border: hkey $brand;
-}
-
-
-
-
 
 
 
 
 #cont-switch-0 {
     width: 22;
-    height: 1fr;
-    padding-top: 1;
-    padding-right: 1; }
+    height: 1fr; }
 
 DirectoryTree {
     background: $defaults; }
@@ -189,5 +178,38 @@ Button {
     }
 
 
+
+
+
+
+
+
+DirectoryTree,
+DataTable {
+    border: hkey white;
+}
+
+Button:focus,
+DirectoryTree:focus,
+DataTable:focus {
+    background: $defaults;
+    border: hkey $brand;
+}
+
+Horizontal,
+DirectoryTree,
+ContentSwitcher {
+    layer: base;
+}
+
+Digits {
+layer: overlay;
+dock: left;
+}
+
+
+Digits {
+    color: green;
+}
 
 

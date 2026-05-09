@@ -1,38 +1,28 @@
 
-from textual.widgets import (DataTable, Input, Label, Button, ContentSwitcher, Digits, LoadingIndicator)
+from textual.widgets import (DataTable, Input, Button, ContentSwitcher, DirectoryTree, Digits, LoadingIndicator)
 from .data_img import ImageTab
-from .directory_tree import TDirectoryTree
 from textual.containers import Horizontal
 from textual.coordinate import Coordinate
-from textual.screen import ModalScreen
 from textual.app import ComposeResult
 from textual.widget import Widget
 from textual.events import Key
-
-
 from itertools import cycle
 from textual import on
 cursors = cycle(["cell"])
 
 
-class CellEditModal(ModalScreen[str]):
-    def __init__(self, value: str):
-        super().__init__()
-        self._value = value
 
-    def compose(self) -> ComposeResult:
-        yield Label("Edit value")
-        yield Input(value=self._value, id="editor")
+class NoSelectInput(Input):
+    def on_focus(self):
+        self.cursor_position = len(self.value)
 
-    def on_input_submitted(self, event: Input.Submitted) -> None:
-        self.dismiss(event.value)  # return new value to caller
+class TDirectoryTree(DirectoryTree):
+    show_root = False
+    def filter_paths(self, paths):
+        return [p for p in paths if not p.name.startswith(".")]
 
-    def on_key(self, event) -> None:
-        if event.key == "escape":
-            self.dismiss(None)  # cancel — return None
 
 class TableApp(Widget):
-
     def __init__(self) -> None:
         super().__init__()
         self._cursor = None
@@ -41,57 +31,6 @@ class TableApp(Widget):
         self._clipboard = None
         self._coord = None
 
-    def compose(self) -> ComposeResult:
-        with Horizontal(id="top"):
-            yield ImageTab()
-        with Horizontal(id="bottom"):
-
-            with ContentSwitcher(
-                    initial="dir-tree-0",
-                    id="cont-switch-0"):
-                yield TDirectoryTree(
-                    "/",id="dir-tree-0")
-                yield TDirectoryTree(
-                    "/",id="dir-tree-1")
-
-            with ContentSwitcher(
-                    initial="data-table-0",
-                    id="cont-switch-1"):
-                yield DataTable(
-                    id="data-table-0")
-                yield DataTable(
-                    id="data-table-1")
-                yield DataTable(
-                    id="data-table-2")
-
-        with Horizontal(id="status"):
-            yield Digits("F00", id="digits-0")
-            yield Button("Tab0", id="button-0")
-            yield Button("Tab1", id="button-1")
-            yield Button("Tab2", id="button-2")
-            yield Button("Regenerate", id="button-3")
-            yield Input(placeholder="Select 7", disabled=True, id="second")
-            yield Input(placeholder="Edit Cell", id="third")
-
-
-    @on(Button.Pressed)
-    def button_pressed(self, event: Button.Pressed) -> None:
-        left = self.query_one("#cont-switch-0", ContentSwitcher)
-        right = self.query_one("#cont-switch-1", ContentSwitcher)
-        if event.button.id == "button-0":
-            right.current = "data-table-0"
-            left.current = "dir-tree-0"
-        elif event.button.id == "button-1":
-            right.current = "data-table-1"
-            left.current = "dir-tree-1"
-        elif event.button.id == "button-2":
-            right.current = "data-table-2"
-            left.current = "dir-tree-1"
-        right.query_one(
-            f"#{right.current}").focus()
-
-
-
     def on_mount(self) -> None:
         rows0 = self.app.config['00-0']
         rows1 = self.app.config['00-1']
@@ -99,6 +38,7 @@ class TableApp(Widget):
         table0 = self.query_one("#data-table-0", DataTable)
         table1 = self.query_one("#data-table-1", DataTable)
         table2 = self.query_one("#data-table-2", DataTable)
+        # self.query_one("#third").can_focus = False
 
         for table in self.query(DataTable):
             table.cursor_type = next(cursors)
@@ -113,6 +53,42 @@ class TableApp(Widget):
         table1.add_rows(rows1[1:])
         table2.add_rows(rows2[1:])
 
+    def compose(self) -> ComposeResult:
+        with Horizontal(id="top"):
+            yield ImageTab()
+            yield Digits("F00", id="digits-0")
+        with Horizontal(id="bottom"):
+
+            with ContentSwitcher(
+                    initial="dir-tree-0",
+                    id="cont-switch-0"):
+                yield TDirectoryTree(
+                    "/",id="dir-tree-0")
+                yield TDirectoryTree(
+                    "/",id="dir-tree-1")
+
+            with ContentSwitcher(
+                    initial="data-table-0",
+                    id="cont-switch-1"):
+                yield DataTable(
+                    show_header=False,
+                    id="data-table-0")
+                yield DataTable(
+                    show_header=False,
+                    id="data-table-1")
+                yield DataTable(
+                    show_header=False,
+                    id="data-table-2")
+
+        with Horizontal(id="status"):
+            yield Button("TAB0", id="button-0")
+            yield Button("TAB1", id="button-1")
+            yield Button("TAB2", id="button-2")
+            yield Button("CREATE", id="button-3")
+            yield Button("SAVE", id="button-4")
+            yield Button("LABEL", id="button-5")
+            yield Input(placeholder="Select 7", disabled=True, id="second")
+            yield Input(id="third", disabled=True)
 
     def get_all_data(self, table: DataTable):
         skip_rows = 0
@@ -138,46 +114,122 @@ class TableApp(Widget):
             })
         }
 
+
+
+    def on_resize(self, event):
+        digits = self.query_one("#digits-0",Digits)
+        digits.styles.offset = (0, 0)
+        self.call_after_refresh(self._position_digits)
+
+    def _position_digits(self):
+        digits = self.query_one("#digits-0",Digits)
+        cont = self.query_one("#cont-switch-0", ContentSwitcher)
+        x_offset = cont.region.x - digits.region.x
+        y_offset = cont.region.y - digits.region.y - 3
+        self.notify(f"X: {x_offset} Y: {y_offset}")
+        digits.styles.offset = (x_offset, y_offset)
+
+
+
+
+
+
+
+    @on(Button.Pressed)
+    def on_button_pressed(self, event: Button.Pressed) -> None:
+        left = self.query_one("#cont-switch-0", ContentSwitcher)
+        right = self.query_one("#cont-switch-1", ContentSwitcher)
+        if event.button.id == "button-0":
+            right.current = "data-table-0"
+            left.current = "dir-tree-0"
+        elif event.button.id == "button-1":
+            right.current = "data-table-1"
+            left.current = "dir-tree-1"
+        elif event.button.id == "button-2":
+            right.current = "data-table-2"
+            left.current = "dir-tree-1"
+        right.query_one(
+            f"#{right.current}").focus()
+
+    @on(Input.Submitted)
     def on_input_submitted(self, event: Input.Submitted):
+        third = self.query_one("#third", Input)
         if self._coord is not None:
-            self.query_one(DataTable).update_cell_at(self._coord, event.value)
+            tables = self.query_one(DataTable)
+            tables.update_cell_at(self._coord, event.value)
             table = self.query_one(DataTable)
             images = self.query_one(ImageTab)
             tst = self.get_all_data(table)
             self.notify(f"TST: {tst}")
             images.config = tst
+            third.value = ""
             self._coord = None
             self.query_one(DataTable).focus()
 
 
     @on(DataTable.CellHighlighted)
-    def track_cursor(self, event: DataTable.CellHighlighted) -> None:
-        self._cursor = event.coordinate
+    def on_cell_highlighted(self, event: DataTable.CellHighlighted) -> None:
+        digits = self.query_one("#digits-0",Digits)
+        config = self.app.config["01-0"]
+        row, col = event.coordinate
+        try:
+            test = config[row][col]
+        except IndexError:
+            digits.update("")
+            return
+        digits.update(str(test))
 
     @on(DataTable.CellSelected)
     async def on_cell_selected(self, event: DataTable.CellSelected) -> None:
-        coord = event.coordinate
+        third = self.query_one("#third", Input)
+        self.notify(f"Selected: {event.value}")
         self._coord = event.coordinate
-        self.query_one("#third", Input).value = str(event.value)
-        self.query_one("#third", Input).focus()
+        third.disabled = False
+        if event.value is not None:
+            third.value = str(event.value)
+        third.focus()
 
-        self.notify(f"{event.value}")
-        def apply(new_value: str | None) -> None:
-            if new_value is not None:
-                self.query_one(DataTable).update_cell_at(coord, new_value)
-                table = self.query_one(DataTable)
-                images = self.query_one(ImageTab)
-                tst = self.get_all_data(table)
-                self.notify(f"TST: {tst}")
-                images.config = tst
-        # await self.app.push_screen(CellEditModal(str(event.value)), apply)
+
 
     @on(Key)
     async def on_key(self, event) -> None:
         table = self.query_one(DataTable)
-        if event.key == "escape":
-            self._coord = None
-            self.query_one(DataTable).focus()
+        editor = self.query_one("#third", Input)
+
+
+
+        if isinstance(self.app.focused, DataTable):
+            cursor_coord = table.cursor_coordinate
+
+            if len(event.key) == 1 and event.key.isprintable():
+                current_value = table.get_cell_at(cursor_coord)
+
+                if len(event.key) == 1 and event.key.isprintable():
+                    editor.value = event.key
+                    editor.cursor_position = len(event.key)
+                    self.notify("yes")
+                else:
+                    self.notify("no")
+                    editor.value = str(current_value)
+
+                self._coord = cursor_coord
+                editor.focus()
+                event.stop()
+
+                def after_focus():
+                    editor.cursor_position = len(editor.value)
+                self.call_after_refresh(after_focus)
+
+
+
+
+
+
+        if isinstance(self.app.focused, Input):
+            if event.key == "escape":
+                self._coord = None
+                editor.value = ""
+                table.focus()
 
         if event.key == "v":  # enter/exit visual mode
             self._visual_mode = not self._visual_mode
