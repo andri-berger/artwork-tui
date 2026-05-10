@@ -28,9 +28,8 @@ class ImageTab(Widget):
 
     def __init__(self):
         super().__init__()
-        self.setup = self.app.config['30']
-        self.link = self.app.config['31']
-        self.alt = self.app.config['90']
+        self.setup = "async (config) => window.testlaufs(config)",
+        self.link = "http://localhost:9000/model.html"
 
 
     async def watch_config(self):

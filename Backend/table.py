@@ -1,5 +1,5 @@
 
-from textual.widgets import (DataTable, Input, Button, ContentSwitcher, DirectoryTree, Digits, LoadingIndicator)
+from textual.widgets import (DataTable, Input, Button, ContentSwitcher, DirectoryTree, Digits)
 from .data_img import ImageTab
 from textual.containers import Horizontal
 from textual.coordinate import Coordinate
@@ -7,6 +7,7 @@ from textual.app import ComposeResult
 from textual.widget import Widget
 from textual.events import Key
 from itertools import cycle
+import mimetypes
 from textual import on
 cursors = cycle(["cell"])
 
@@ -16,10 +17,63 @@ class NoSelectInput(Input):
     def on_focus(self):
         self.cursor_position = len(self.value)
 
-class TDirectoryTree(DirectoryTree):
+
+class FileTypeTree(DirectoryTree):
     show_root = False
+    def __init__(self, path, file_type: str, **kwargs):
+        self.file_type = file_type
+        super().__init__(path, **kwargs)
+
     def filter_paths(self, paths):
-        return [p for p in paths if not p.name.startswith(".")]
+        return [p for p in paths if not p.name.startswith(".") and self._is_allowed(p)]
+
+    def _is_allowed(self, p):
+        if p.is_dir():
+            return True  # always show dirs for navigation
+
+        mime, _ = mimetypes.guess_type(p.name)
+        category = mime.split("/")[0] if mime else None
+        FONT_EXTENSIONS = {".otf", ".ttf", ".woff", ".woff2", ".eot"}
+
+        match self.file_type:
+            case "image":
+                return category == "image"
+            case "font":
+                return p.suffix.lower() in FONT_EXTENSIONS
+            case "json":
+                return p.suffix.lower() == ".json"
+        return False
+
+
+# def filter_paths(self, paths):
+#     allowed_mimes = {"font", "image"}
+#     allowed_extensions = {".json"}
+#
+#     def is_allowed(p):
+#         mime, _ = mimetypes.guess_type(p.name)
+#         if mime:
+#             category = mime.split("/")[0]  # "image", "font", "application"...
+#             if category in allowed_mimes:
+#                 return True
+#         return p.suffix.lower() in allowed_extensions
+#
+#     return [p for p in paths and is_allowed(p)]
+
+# class JDirectoryTree(DirectoryTree):
+#     allowed_extensions = {".json"}
+#     show_root = False
+#     def filter_paths(self, paths):
+#         return p.suffix.lower() in allowed_extensions]
+#
+# class PDirectoryTree(DirectoryTree):
+#     show_root = False
+#     def filter_paths(self, paths):
+#         return [p for p in paths if not p.name.startswith(".")]
+#
+# class FDirectoryTree(DirectoryTree):
+#     show_root = False
+#     def filter_paths(self, paths):
+#         return [p for p in paths if not p.name.startswith(".")]
 
 
 class TableApp(Widget):
@@ -32,40 +86,31 @@ class TableApp(Widget):
         self._coord = None
 
     def on_mount(self) -> None:
-        rows0 = self.app.config['00-0']
-        rows1 = self.app.config['00-1']
-        rows2 = self.app.config['00-2']
-        table0 = self.query_one("#data-table-0", DataTable)
-        table1 = self.query_one("#data-table-1", DataTable)
-        table2 = self.query_one("#data-table-2", DataTable)
-        # self.query_one("#third").can_focus = False
-
-        for table in self.query(DataTable):
+        tables = self.query(DataTable)
+        for i, table in enumerate(tables):
+            rows = self.app.config[f"1-{i}"]
             table.cursor_type = next(cursors)
             table.zebra_stripes = True
             table.fixed_columns = 1
             table.fixed_rows = 0
-
-        table0.add_columns(*rows0[0])
-        table1.add_columns(*rows1[0])
-        table2.add_columns(*rows2[0])
-        table0.add_rows(rows0[1:])
-        table1.add_rows(rows1[1:])
-        table2.add_rows(rows2[1:])
+            table.add_columns(*rows[0])
+            table.add_rows(rows[1:])
 
     def compose(self) -> ComposeResult:
         with Horizontal(id="top"):
             yield ImageTab()
             yield Digits("F00", id="digits-0")
-        with Horizontal(id="bottom"):
 
+        with Horizontal(id="bottom"):
             with ContentSwitcher(
                     initial="dir-tree-0",
                     id="cont-switch-0"):
-                yield TDirectoryTree(
-                    "/",id="dir-tree-0")
-                yield TDirectoryTree(
-                    "/",id="dir-tree-1")
+                yield FileTypeTree(
+                    "/",file_type="json",id="dir-tree-0")
+                yield FileTypeTree(
+                    "/",file_type="image",id="dir-tree-1")
+                yield FileTypeTree(
+                    "/",file_type="font",id="dir-tree-2")
 
             with ContentSwitcher(
                     initial="data-table-0",
@@ -115,24 +160,18 @@ class TableApp(Widget):
             })
         }
 
-
-
-    def on_resize(self, event):
-        digits = self.query_one("#digits-0",Digits)
-        digits.styles.offset = (0, 0)
-        self.call_after_refresh(self._position_digits)
-
     def _position_digits(self):
         digits = self.query_one("#digits-0",Digits)
         cont = self.query_one("#cont-switch-0", ContentSwitcher)
         x_offset = cont.region.x - digits.region.x
         y_offset = cont.region.y - digits.region.y - 3
-        self.notify(f"X: {x_offset} Y: {y_offset}")
         digits.styles.offset = (x_offset, y_offset)
 
-
-
-
+    def on_resize(self, event):
+        digits = self.query_one("#digits-0",Digits)
+        digits.styles.offset = (0, 0)
+        self.call_after_refresh(
+            self._position_digits)
 
 
 
@@ -154,24 +193,25 @@ class TableApp(Widget):
 
     @on(Input.Submitted)
     def on_input_submitted(self, event: Input.Submitted):
+        switcher = self.query_one("#cont-switch-1", ContentSwitcher)
+        tables = self.query_one(f"#{switcher.current}", DataTable)
+        images = self.query_one(ImageTab)
         third = self.query_one("#third", Input)
+
         if self._coord is not None:
-            tables = self.query_one(DataTable)
             tables.update_cell_at(self._coord, event.value)
-            table = self.query_one(DataTable)
-            images = self.query_one(ImageTab)
-            tst = self.get_all_data(table)
+            tst = self.get_all_data(tables)
             self.notify(f"TST: {tst}")
             images.config = tst
             third.value = ""
             self._coord = None
-            self.query_one(DataTable).focus()
+            tables.focus()
 
 
     @on(DataTable.CellHighlighted)
     def on_cell_highlighted(self, event: DataTable.CellHighlighted) -> None:
         digits = self.query_one("#digits-0",Digits)
-        config = self.app.config["01-0"]
+        config = self.app.config["4-0"]
         row, col = event.coordinate
         try:
             test = config[row][col]
@@ -183,7 +223,6 @@ class TableApp(Widget):
     @on(DataTable.CellSelected)
     async def on_cell_selected(self, event: DataTable.CellSelected) -> None:
         third = self.query_one("#third", Input)
-        self.notify(f"Selected: {event.value}")
         self._coord = event.coordinate
         third.disabled = False
         if event.value is not None:
@@ -191,12 +230,38 @@ class TableApp(Widget):
         third.focus()
 
 
+    def action_next_table(self, event, prefix) -> None:
+        full_IDs = self.app.config["7-0"]
+        testlauf = (full_IDs.index(self.app.focused.id) + prefix) % len(full_IDs)
+
+        if testlauf in {1, 2, 4, 5}:
+            event.stop()
+            event.prevent_default()
+
+        if testlauf < 6:
+            switcher_id = "#cont-switch-1" if testlauf >= 3 else "#cont-switch-0"
+            self.query_one(switcher_id, ContentSwitcher).current = full_IDs[testlauf]
+
+    def action_prev_table(self) -> None:
+        switcher = self.query_one("#cont-switch-1", ContentSwitcher)
+        ids = [t.id for t in self.query(DataTable)]
+        self.notify(f"ids: {ids}")
+        switcher.current = ids[(ids.index(switcher.current) - 1) % len(ids)]
+
+
 
     @on(Key)
     async def on_key(self, event) -> None:
-        table = self.query_one(DataTable)
         editor = self.query_one("#third", Input)
+        switcher = self.query_one("#cont-switch-1", ContentSwitcher)
+        table = self.query_one(f"#{switcher.current}", DataTable)
 
+
+        if event.key == "tab":
+            self.action_next_table(event,1)
+
+        elif event.key == "shift+tab":
+            self.action_next_table(event,-1)
 
 
         if isinstance(self.app.focused, DataTable):
@@ -220,11 +285,6 @@ class TableApp(Widget):
                 def after_focus():
                     editor.cursor_position = len(editor.value)
                 self.call_after_refresh(after_focus)
-
-
-
-
-
 
         if isinstance(self.app.focused, Input):
             if event.key == "escape":
@@ -273,5 +333,6 @@ class TableApp(Widget):
                 table.update_cell_at(self._cursor, self._clipboard)
 
     def key_c(self):
-        table = self.query_one(DataTable)
+        switcher = self.query_one("#cont-switch-1", ContentSwitcher)
+        table = self.query_one(f"#{switcher.current}", DataTable)
         table.cursor_type = next(cursors)

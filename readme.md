@@ -326,12 +326,6 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
         https://github.com/d3/d3-random</a></td>
     </tr>
     <tr>
-        <td>Utilities</td>
-        <td>Platform</td><td>
-        <a href="https://github.com/tox-dev/platformdirs">
-        https://github.com/tox-dev/platformdirs</a></td>
-    </tr>
-    <tr>
         <td>Framework</td>
         <td>Textual</td><td>
         <a href="//github.com/Textualize/textual">

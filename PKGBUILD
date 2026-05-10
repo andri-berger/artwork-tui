@@ -13,7 +13,6 @@ depends=(
     'python-numpy'
     'python-pillow'
     'python-playwright'
-    'python-platformdirs'
     'python-textual-image'
     'python-textual'
     'python-wand'
