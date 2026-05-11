@@ -1,12 +1,11 @@
 from playwright.async_api import async_playwright
 from textual.app import App, ComposeResult
-from .table import TableApp
+from .main_0 import TableApp
 from pathlib import Path
 import http.server
 import threading
 import functools
 import json
-import time
 
 
 BINDINGS = {
@@ -41,38 +40,11 @@ class CLIApp(App):
         with open(CONFIG) as f:
             self.config = json.load(f)
 
-        rows0 = []
-        self.config["001-2"] = [
-        *([f"A{n:02d}" for n in range(100)] * 10),
-        *([f"B{n:02d}" for n in range(100)] * 10),
-        *([f"C{n:02d}" for n in range(100)] * 10),
-        *([f"D{n:02d}" for n in range(100)] * 10),
-        *([f"E{n:02d}" for n in range(100)] * 10),
-        *([f"F{n:02d}" for n in range(100)] * 10)]
-
-        for letter in "ABCDEF":
-            row0 = [f"{letter}{n:02d}"
-                for n in range(100)]
-            rows0.extend([row0] * 10)
-            keys0 = [f"{l}{n:02d}"
-                for l in "ABCDEF"
-                for n in range(100)]
-            keys1 = [f"{l}{n:02d}"
-                for l in "ABCDEF"
-                for n in range(100)]
-
-        self.config["01-2"] = rows0
-        self.config["01-2"] = [
-            *([keys1] * 10)
-        ]
-
-
-
-
     def compose(self) -> ComposeResult:
         yield TableApp()
 
     async def on_mount(self) -> None:
+        self.set_focus(self.query_one("#data-table-0"))
         handler = functools.partial(
             http.server.SimpleHTTPRequestHandler,
             directory=str(STATIC_DIR)

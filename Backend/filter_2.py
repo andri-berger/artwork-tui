@@ -1,7 +1,6 @@
 
 
 import numpy as np
-import vtracer
 import cv2
 
 
@@ -11,22 +10,6 @@ def clamp(value, max_val, min_val):
     ranges = value / 100.0
     total = range * ranges
     return total + min_val
-
-def tracer(args, args0):
-    svg = vtracer.convert_raw_image_to_svg(args,
-        filter_speckle=int(clamp(args0['setting_0'], 0, 50)),
-        layer_difference=int(clamp(args0['setting_1'], 1, 31)) | 1,
-        length_threshold=float(clamp(args0['setting_2'], 1, 100)),
-        splice_threshold=int(clamp(args0['setting_3'], 0, 20)),
-        corner_threshold=int(clamp(args0['setting_4'], 1, 179)),
-        path_precision=int(clamp(args0['setting_5'], 1, 10)),
-        color_precision=int(clamp(args0['setting_6'], 10, 12)),
-        hierarchical=args0['setting_7'],
-        mode=args0['setting_8'],
-        img_format='png')
-
-    return svg.encode('utf-8')
-
 
 def opencv(args, args0):
     setting = args0['setting']
@@ -89,11 +72,6 @@ def opencv(args, args0):
     return image_bytes
 
 
-import locale
-
-lang, encoding = locale.getdefaultlocale()  # e.g., 'de_CH', 'en_US', 'fr_FR'
-if lang and '_' in lang:
-    country_code = lang.split('_')[1]
 
 
 

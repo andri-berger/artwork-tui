@@ -57,6 +57,7 @@ class ImageTab(Widget):
         self.time_stamp = int(time.time())
 
 
+
     def watch_time_stamp(self):
         if not self.is_mounted:
             return

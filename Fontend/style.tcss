@@ -59,6 +59,21 @@ ImageTab {
     align: center middle;
 }
 
+#bottoms {
+    width: 1fr;
+    height: 2;
+    background: $defaults;
+    align: center middle;
+}
+
+#label-0 {
+    width: 90;
+    height: 1fr;
+    text-align: center;
+    background: $defaults;
+}
+
+
 #first {
   border: hkey $brand;
     text-style: bold;
@@ -68,17 +83,26 @@ ImageTab {
 
 #second {
   border: hkey white;
-    text-style: bold;
-    width: 20;
-    background: transparent;
+    width: auto;
+    background: $defaults;
+    padding: 0 0;
+}
+
+
+#fourth {
+  border: hkey white;
+    width: 9;
+    background: $defaults;
+    text-align: center;
+    padding-left: 0;
 }
 
 #third {
   border: hkey white;
-    text-style: bold;
     width: 30;
-    background: transparent;
+    background: $defaults;
     text-align: center;
+    padding-left: 0;
 }
 
 #first > .input--placeholder {
@@ -102,22 +126,24 @@ ImageTab {
     height: 1fr; }
 
 DirectoryTree {
-    background: $defaults; }
+offset: 0 0;
+     background: $defaults; }
 
 DirectoryTree > .tree--cursor {
-    background: $brand; }
+    background: $brand;
+     padding: 0;}
 DirectoryTree > .tree--guides {
-    }
+    padding: 0;}
 DirectoryTree > .tree--guides-hover {
-    }
+    padding: 0;}
 DirectoryTree > .tree--guides-selected {
-    }
+    padding: 0;}
 DirectoryTree > .tree--highlight {
-    }
+    padding: 0; }
 DirectoryTree > .tree--highlight-line {
-    }
+    padding: 0;}
 DirectoryTree > .tree--label {
-    }
+    padding: 0;}
 
 
 
@@ -134,7 +160,8 @@ DataTable {
 
 DataTable,
 #dir-tree-0,
-#dir-tree-1 {
+#dir-tree-1,
+ #dir-tree-2 {
     scrollbar-visibility: hidden;
 }
 
@@ -209,7 +236,8 @@ dock: left;
 
 
 Digits {
-    color: green;
+    color: white;
 }
+
 
 
