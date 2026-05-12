@@ -21,46 +21,57 @@ class ImageTab(Widget):
     image_outs = Path.cwd() / f"{TIME_STAMP}.png"
     image_outs_ = Path.cwd() / f"_{TIME_STAMP}.png"
     image_path = image_pat / "image.png"
-    time_stamp = reactive(image_outs)
-    config = reactive([], init=False)
+    config: reactive[dict] = reactive(dict, init=False)
 
-
+    def compose(self) -> ComposeResult:
+        yield Image(self.image_path)
 
     def __init__(self):
         super().__init__()
         self.setup = "async (config) => window.testlaufs(config)",
         self.link = "http://localhost:9000/model.html"
 
-
     async def watch_config(self):
-        # my_dict = {}
-        # result = {}
-        # for row in self.config:
-        #     for cell in row:
-        #         result = my_dict[cell]
+        transformed_dict = {}
+        for row_i, row in self.config.items():
+            transformed_dict[row_i] = {}
+            shot = self.app.config[f"5-{row_i}"]
+            for col_i, col in row.items():
+                for cell_i, cell in col.items():
+                    tt = transformed_dict[row_i]
+                    sht = str(shot[int(col_i)])
+                    if row_i == '0':
+                        tt[sht[int(cell_i)]] = cell
+                    if row_i == '1':
+                        if sht not in tt:
+                            tt[sht] = {}
+                        tt[sht][cell_i] = cell
+                    if row_i == '2':
+                        if cell_i not in tt:
+                            tt[cell_i] = {}
+                        tt[cell_i][sht] = cell
+
+        self.notify(f"{transformed_dict}")
 
         try:
             self.query_one(Image).remove()
         except Exception:
             pass
-        configs = {"1": self.config}
-        config_ = [5,[0,0],configs]
+        config_ = [5,[0,0],self.config]
+        self.notify(f"{self.setup}")
         page = self.app.page
-        data_url = await (page.evaluate(
-            self.setup,config_))
-        int(time.time())
+        data_url = await (
+            page.evaluate(
+            "async (config) => window.testlaufs(config)",config_))
+
         b64 = data_url.split(',')[1]
         img_bytes = base64.b64decode(b64)
         with open(self.image_outs, "wb") as f:
             f.write(img_bytes)
 
-        self.time_stamp = int(time.time())
-
-
-
-    def watch_time_stamp(self):
         if not self.is_mounted:
             return
+
         self.mount(Image(self.image_outs))
 
         size = self.size
@@ -77,6 +88,10 @@ class ImageTab(Widget):
         else:
             self.query_one(Image).styles.width = "auto"
             self.query_one(Image).styles.height = "100%"
+
+
+
+
 
 
 

@@ -790,17 +790,16 @@ window.testlaufs = (config) => {
     window.k0 = [];
     window.k1 = {};
     document.body.innerHTML = '';
+    k10(['f13','block']);
     return new Promise(resolve => {
         window.resolveCapture = resolve;
-        let aris = h22()
-        k12(aris);
-        // k12(config[2])
+        // let aris = h22()
+        // k12(aris);
+        k12(config[2])
         k19(config);
 });
 }
-console.time('time')
-console.log('this-time',h22())
- console.timeEnd('time')
+
 testlaufs([5, [0, 0], {"1": {"1": {"1": 20, "3": 80}}}])
 
 

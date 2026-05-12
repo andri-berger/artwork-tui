@@ -7,7 +7,7 @@ from textual.widget import Widget
 from textual.events import Key
 from itertools import cycle
 from textual import on
-
+from textual import events
 
 from .helper import on_cell_highlighted_, on_key_
 from .main_2 import FileTypeTree
@@ -33,13 +33,22 @@ class TableApp(Widget):
         self.full_IDs = self.app.config["7-0"]
 
     def on_mount(self) -> None:
-        tables = self.query(DataTable)
+        self.f_left = self.query_one("#cont-switch-0", ContentSwitcher)
+        self.c_cont = self.query_one("#cont-switch-0", ContentSwitcher)
+        self.f_right = self.query_one("#cont-switch-1", ContentSwitcher)
+        self.d_digits = self.query_one("#digits-0",Digits)
+        self.c_digits = self.query_one("#digits-0",Digits)
+        self.e_fourth = self.query_one("#fourth", Input)
+        self.e_third = self.query_one("#third", Input)
+        self.label = self.query_one("#label-0", Label)
+        self.e_images = self.query_one(ImageTab)
+        a_tables = self.query(DataTable)
+        lister = [9, 100, 600]
+        listers = [28, 22, 18]
 
-        for i, table in enumerate(tables):
-            lister = [9,100,600]
-            listers = [28,22,18]
+        for i, table in enumerate(a_tables):
             rows = self.app.config[f"1-{i}"]
-            table.cursor_type = next(cursors)
+            table.cursor_type = "cell"
             table.zebra_stripes = True
             table.fixed_columns = 1
             table.fixed_rows = 0
@@ -51,18 +60,25 @@ class TableApp(Widget):
     def compose(self) -> ComposeResult:
         with Horizontal(id="top"):
             yield ImageTab()
-            yield Digits("F00", id="digits-0")
+            yield Digits("F00",
+                         id="digits-0")
 
         with Horizontal(id="bottom"):
             with ContentSwitcher(
                     initial="dir-tree-0",
                     id="cont-switch-0"):
                 yield FileTypeTree(
-                    "/",file_type="json",id="dir-tree-0")
+                    "/",
+                    file_type="json",
+                    id="dir-tree-0")
                 yield FileTypeTree(
-                    "/",file_type="image",id="dir-tree-1")
+                    "/",
+                    file_type="image",
+                    id="dir-tree-1")
                 yield FileTypeTree(
-                    "/",file_type="font",id="dir-tree-2")
+                    "/",
+                    file_type="font",
+                    id="dir-tree-2")
 
             with ContentSwitcher(
                     initial="data-table-0",
@@ -115,84 +131,67 @@ class TableApp(Widget):
             })
         }
 
-    def _position_digits(self):
-        digits = self.query_one("#digits-0",Digits)
-        cont = self.query_one("#cont-switch-0", ContentSwitcher)
-        x_offset = cont.region.x - digits.region.x
-        y_offset = cont.region.y - digits.region.y - 3
-        digits.styles.offset = (x_offset, y_offset)
 
-    def on_resize(self, event):
-        digits = self.query_one("#digits-0",Digits)
-        digits.styles.offset = (0, 0)
+
+
+
+    def _position_digits(self):
+        x_offset = self.c_cont.region.x - self.c_digits.region.x
+        y_offset = self.c_cont.region.y - self.c_digits.region.y - 3
+        self.c_digits.styles.offset = (x_offset, y_offset)
+
+    @on(DataTable.CellHighlighted)
+    def highlighted(self, event: DataTable.CellHighlighted) -> None:
+        on_cell_highlighted_(self, event.coordinate)
+
+    @on(DataTable.CellSelected)
+    async def selected(self, event: DataTable.CellSelected) -> None:
+        self._coord = event.coordinate
+        if event.value is not None:
+            self.e_third.value = str(event.value)
+        self.e_third.focus()
+
+    @on(Input.Submitted)
+    def submitted(self, event: Input.Submitted) -> None:
+        if self._coord is not None:
+            e_tables = self.query_one(
+                f"#{self.f_right.current}", DataTable)
+            e_tables.update_cell_at(self._coord, event.value)
+            switches = self.f_right.current.split("-")[-1]
+            tst = self.get_all_data(e_tables)
+            self.app.configs[switches] = tst
+            self.notify(f"{self.app.configs}")
+            self.e_images.config = self.app.configs
+            self.e_images.mutate_reactive(
+                ImageTab.config)
+            self.e_third.value = ""
+            self._coord = None
+            e_tables.focus()
+
+    @on(Button.Pressed)
+    def pressed(self, event: Button.Pressed) -> None:
+        id = event.button.id
+        if id == "button-0":
+            pass
+        elif id == "button-1":
+            pass
+        elif id == "button-2":
+            pass
+        if id == "button-5":
+            pass
+        elif id == "button-6":
+            pass
+        elif id == "button-3":
+            pass
+        elif id == "button-4":
+            pass
+
+    @on(events.Resize)
+    def on_resize(self, event: events.Resize) -> None:
+        self.d_digits.styles.offset = (0, 0)
         self.call_after_refresh(
             self._position_digits)
 
-    def action_next_table(self, event, prefix) -> None:
-        testlauf = (self.full_IDs.index(self.app.focused.id) + prefix) % len(self.full_IDs)
-
-        if testlauf in {1, 2, 4, 5}:
-            event.stop()
-            event.prevent_default()
-
-        if testlauf < 6:
-            switcher_id = "#cont-switch-1" if testlauf >= 3 else "#cont-switch-0"
-            self.query_one(switcher_id, ContentSwitcher).current = self.full_IDs[testlauf]
-
-
-    @on(DataTable.CellHighlighted)
-    def on_cell_highlighted(self, event: DataTable.CellHighlighted) -> None:
-        on_cell_highlighted_(self, event)
-
-    @on(DataTable.CellSelected)
-    async def on_cell_selected(self, event: DataTable.CellSelected) -> None:
-        third = self.query_one("#third", Input)
-
-        self._coord = event.coordinate
-        third.disabled = False
-        if event.value is not None:
-            third.value = str(event.value)
-        third.focus()
-
-    @on(Input.Submitted)
-    def on_input_submitted(self, event: Input.Submitted):
-        switcher = self.query_one("#cont-switch-1", ContentSwitcher)
-        tables = self.query_one(f"#{switcher.current}", DataTable)
-        third = self.query_one("#third", Input)
-        images = self.query_one(ImageTab)
-
-        if self._coord is not None:
-            tables.update_cell_at(self._coord, event.value)
-            tst = self.get_all_data(tables)
-            self.notify(f"TST: {tst}")
-            images.config = tst
-            third.value = ""
-            self._coord = None
-            tables.focus()
-
-    @on(Button.Pressed)
-    def on_button_pressed(self, event: Button.Pressed) -> None:
-        left = self.query_one("#cont-switch-0", ContentSwitcher)
-        right = self.query_one("#cont-switch-1", ContentSwitcher)
-        if event.button.id == "button-0":
-            right.current = "data-table-0"
-            left.current = "dir-tree-0"
-        elif event.button.id == "button-1":
-            right.current = "data-table-1"
-            left.current = "dir-tree-1"
-        elif event.button.id == "button-2":
-            right.current = "data-table-2"
-            left.current = "dir-tree-1"
-        right.query_one(
-            f"#{right.current}").focus()
-
-
     @on(Key)
-    async def on_key(self, event) -> None:
+    async def key(self, event) -> None:
         await on_key_(self, event)
-
-
-    # def key_c(self):
-    #     switcher = self.query_one("#cont-switch-1", ContentSwitcher)
-    #     table = self.query_one(f"#{switcher.current}", DataTable)
-    #     table.cursor_type = next(cursors)

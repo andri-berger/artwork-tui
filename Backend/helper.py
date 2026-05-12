@@ -4,7 +4,30 @@ from textual.widgets import (
 from textual.coordinate import Coordinate
 
 
-def on_cell_highlighted_(self, event: DataTable.CellHighlighted) -> None:
+def action_next_table(self, event, prefix) -> None:
+    testlauf = (self.full_IDs.index(self.app.focused.id) + prefix) % len(self.full_IDs)
+
+    if testlauf in {1, 2, 4, 5}:
+        event.stop()
+        event.prevent_default()
+
+    if testlauf < 3 or testlauf >= 6:
+        self.label.update("hello")
+        self.c_digits.update("")
+        self.e_third.value = ""
+        self.e_fourth.value = ""
+
+    if testlauf < 6:
+        switcher_id = "#cont-switch-1" if testlauf >= 3 else "#cont-switch-0"
+        self.query_one(switcher_id, ContentSwitcher).current = self.full_IDs[testlauf]
+
+        if testlauf >= 3:
+            self.notify("hello-yes")
+            table = self.query_one(f"#{self.full_IDs[testlauf]}", DataTable)
+            coordinates = table.cursor_coordinate
+            on_cell_highlighted_(self, coordinates)
+
+def on_cell_highlighted_(self, coordinate) -> None:
     digits = self.query_one("#digits-0", Digits)
     label = self.query_one("#label-0", Label)
     fourth = self.query_one("#fourth", Input)
@@ -17,7 +40,7 @@ def on_cell_highlighted_(self, event: DataTable.CellHighlighted) -> None:
     configss = self.app.config[f"3-{switches}"]
     config = self.app.config[f"0-{switches}"]
     lookup = self.app.config["00-0"]
-    row, col = event.coordinate
+    row, col = coordinate
     digits.update("")
     label.update("")
     third.value = ""
@@ -77,28 +100,25 @@ def on_cell_highlighted_(self, event: DataTable.CellHighlighted) -> None:
 
 
 async def on_key_(self, event) -> None:
-    editor = self.query_one("#third", Input)
     switcher = self.query_one("#cont-switch-1", ContentSwitcher)
     table = self.query_one(f"#{switcher.current}", DataTable)
-
+    editor = self.query_one("#third", Input)
 
     if event.key == "tab":
-        self.action_next_table(event,1)
+        action_next_table(self,event,1)
 
     elif event.key == "shift+tab":
-        self.action_next_table(event,-1)
+        action_next_table(self,event,-1)
 
 
     if isinstance(self.app.focused, DataTable):
         cursor_coord = table.cursor_coordinate
-        # self.notify("key")
-        # self.query_one("#display", Label).update("new text")
 
-        if len(event.key) == 1 and event.key.isprintable():
+        if len(event.key) == 1 and event.key.isprintable() or event.key == "backspace":
             current_value = table.get_cell_at(cursor_coord)
 
-            if len(event.key) == 1 and event.key.isprintable():
-                editor.value = event.key
+            if len(event.key) == 1 and event.key.isprintable() or event.key == "backspace":
+                editor.value = "" if event.key == "backspace" else event.key
                 editor.cursor_position = len(event.key)
                 self.notify("yes")
             else:

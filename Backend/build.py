@@ -2,6 +2,7 @@ from playwright.async_api import async_playwright
 from textual.app import App, ComposeResult
 from .main_0 import TableApp
 from pathlib import Path
+from .main_1 import ImageTab
 import http.server
 import threading
 import functools
@@ -12,8 +13,7 @@ BINDINGS = {
       "quit":    ("q", "Quit"),
       "edit":    ("f2", "Edit cell"),
       "yank":    ("y", "Yank"),
-      "paste":   ("p", "Paste"),
-}
+      "paste":   ("p", "Paste")}
 
 PORT = 9000
 PATH_FILE = Path(__file__).parent
@@ -21,9 +21,6 @@ STATIC_DIR = PATH_FILE.parent / "Fontend"
 DIR = f"http://localhost:{PORT}/model.html"
 CSS_PATHS = STATIC_DIR / "style.tcss"
 CONFIG = STATIC_DIR / "build.json"
-
-
-
 
 
 class CLIApp(App):
@@ -37,6 +34,7 @@ class CLIApp(App):
         self.page = None
         self._pw = None
         self._server = None
+        self.configs = {}
         with open(CONFIG) as f:
             self.config = json.load(f)
 
@@ -58,6 +56,7 @@ class CLIApp(App):
         headless=True)
         self.page = await browser.new_page()
         await self.page.goto(DIR)
+        # self.query_one(ImageTab).config = self.configs
 
     async def on_unmount(self) -> None:
         if self._server:
