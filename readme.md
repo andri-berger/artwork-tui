@@ -10,7 +10,7 @@ Generative design tool with a terminal UI — compose layouts, render to canvas,
 [Gallery](#gallery)
 
 
-<video width="100%" src="./readme.mp4" controls></video>
+![demo](./project.gif)
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 
 ## Installation
@@ -285,6 +285,12 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
         <th align="left">Name</th>
         <th align="left">
         Link <img width="560"></th>
+    </tr>
+    <tr>
+        <td>Build</td>
+        <td>Hyprshot</td><td>
+        <a href="//github.com/Gustash/Hyprshot">
+        https://github.com/Gustash/Hyprshot</a></td>
     </tr>
     <tr>
         <td>Build</td>
