@@ -10,7 +10,8 @@ Generative design tool with a terminal UI — compose layouts, render to canvas,
 [Gallery](#gallery)
 
 
-<img src="project.gif" width="100%">
+
+<img src="project.png" width="100%">
 <br>
 <br>
 
@@ -292,8 +293,8 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
     <tr>
         <td>Build</td>
         <td>Hyprshot</td><td>
-        <a href="//github.com/Gustash/Hyprshot">
-        https://github.com/Gustash/Hyprshot</a></td>
+        <a href="//github.com/apngasm/apngasm">
+        https://github.com/apngasm/apngasm</a></td>
     </tr>
     <tr>
         <td>Build</td>
@@ -519,12 +520,9 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 ## Links
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
 
-https://fmwconcepts.com/imagemagick
 <br>https://search.creativecommons.org
 <br>https://archive.org/details/image
-<br>https://visioncortex.org/vtracer
 <br>https://artvee.com/c/abstract
-<br>https://gmic.eu/gallery
 <br>https://openverse.org
 
 
