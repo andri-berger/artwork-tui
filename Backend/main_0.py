@@ -45,6 +45,7 @@ class TableApp(Widget):
         a_tables = self.query(DataTable)
         lister = [9, 100, 600]
         listers = [28, 22, 18]
+        check_only = [8,10,12]
 
         for i, table in enumerate(a_tables):
             rows = self.app.config[f"1-{i}"]
@@ -54,7 +55,7 @@ class TableApp(Widget):
             table.fixed_rows = 0
             table.add_column("", width=listers[i])
             for _ in range(lister[i]):
-                table.add_column("", width=6)
+                table.add_column("", width=check_only[i])
             table.add_rows(rows[1:])
 
     def compose(self) -> ComposeResult:
@@ -160,7 +161,6 @@ class TableApp(Widget):
             switches = self.f_right.current.split("-")[-1]
             tst = self.get_all_data(e_tables)
             self.app.configs[switches] = tst
-            self.notify(f"{self.app.configs}")
             self.e_images.config = self.app.configs
             self.e_images.mutate_reactive(
                 ImageTab.config)

@@ -9,6 +9,7 @@ from textual.css.query import NoMatches
 from textual.geometry import Size
 import base64
 import time
+from .helpers import hash_table
 import io
 
 
@@ -28,37 +29,18 @@ class ImageTab(Widget):
 
     def __init__(self):
         super().__init__()
-        self.setup = "async (config) => window.testlaufs(config)",
-        self.link = "http://localhost:9000/model.html"
 
     async def watch_config(self):
-        transformed_dict = {}
-        for row_i, row in self.config.items():
-            transformed_dict[row_i] = {}
-            shot = self.app.config[f"5-{row_i}"]
-            for col_i, col in row.items():
-                for cell_i, cell in col.items():
-                    tt = transformed_dict[row_i]
-                    sht = str(shot[int(col_i)])
-                    if row_i == '0':
-                        tt[sht[int(cell_i)]] = cell
-                    if row_i == '1':
-                        if sht not in tt:
-                            tt[sht] = {}
-                        tt[sht][cell_i] = cell
-                    if row_i == '2':
-                        if cell_i not in tt:
-                            tt[cell_i] = {}
-                        tt[cell_i][sht] = cell
-
-        self.notify(f"{transformed_dict}")
+        rot = self.app.config
+        start = self.config.items()
+        d_transformed = hash_table(start,rot)
+        self.notify(f"{d_transformed}")
 
         try:
             self.query_one(Image).remove()
         except Exception:
             pass
-        config_ = [5,[0,0],self.config]
-        self.notify(f"{self.setup}")
+        config_ = [1,[0,0],d_transformed]
         page = self.app.page
         data_url = await (
             page.evaluate(

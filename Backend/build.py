@@ -41,6 +41,18 @@ class CLIApp(App):
     def compose(self) -> ComposeResult:
         yield TableApp()
 
+    # # serve.py
+    # import http.server, socketserver
+    #
+    # class Handler(http.server.SimpleHTTPRequestHandler):
+    #     def end_headers(self):
+    #         self.send_header("Content-Security-Policy", "")
+    #         self.send_header("Cross-Origin-Embedder-Policy", "unsafe-none")
+    #         super().end_headers()
+    #
+    # with socketserver.TCPServer(("", 9000), Handler) as httpd:
+    #     httpd.serve_forever()
+
     async def on_mount(self) -> None:
         self.set_focus(self.query_one("#data-table-0"))
         handler = functools.partial(

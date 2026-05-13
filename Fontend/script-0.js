@@ -168,8 +168,14 @@ const f = {
     "0-4": ["pk_test_51NxxzcERfj72s6CFVpAcJDo68hN1WeHWfqhRJyvxC1Yw7u9KRZc4jUqCfJKxx0yBx177dZIUDafhPJNWSufRkxbv0032KRCTGD"],
     "3-3": ["hue","color","screen","lighten","darken","overlay","multiply","saturation","luminosity","color dodge","color burn","hard light","soft light"],
     "0-3": ["White","Transparent","Gainsboro","Wheat","Gold","Crimson","MediumVioletRed","MediumSeaGreen","SeaGreen","DeepSkyBlue","DodgerBlue","MediumSlateBlue","Black","Snow","HoneyDew","MintCream","Azure","AliceBlue","GhostWhite","WhiteSmoke","SeaShell","Beige","OldLace","FloralWhite","Ivory","AntiqueWhite","Linen","LavenderBlush","MistyRose","CornSilk","BlanchedAlmond","Bisque","NavajoWhite","BurlyWood","RosyBrown","SandyBrown","GoldenRod","DarkGoldenRod","Peru","Chocolate","SaddleBrown","Sienna","Brown","Maroon","LightGray","Silver","DarkGray","Gray","DimGray","LightSlateGray","SlateGray","DarkSlateGray","LightYellow","LemonChiffon","PapayaWhip","Moccasin","PeachPuff","PaleGoldenRod","Khaki","DarkKhaki","Coral","Tomato","OrangeRed","DarkOrange","IndianRed","LightCoral","Salmon","DarkSalmon","LightSalmon","FireBrick","DarkRed","Pink","LightPink","HotPink","DeepPink","PaleVioletRed","Lavender","Thistle","Plum","Violet","Orchid","Fuchsia","Magenta","MediumOrchid","MediumPurple","BlueViolet","DarkViolet","DarkOrchid","DarkMagenta","Purple","Indigo","SlateBlue","DarkSlateBlue","GreenYellow","Chartreuse","LimeGreen","PaleGreen","LightGreen","SpringGreen","ForestGreen","DarkGreen","YellowGreen","OliveDrab","Olive","DarkOliveGreen","MediumAquamarine","DarkSeaGreen","LightSeaGreen","DarkCyan","Teal","Aqua","Cyan","LightCyan","PaleTurquoise","AquaMarine","Turquoise","MediumTurquoise","DarkTurquoise","CadetBlue","SteelBlue","LightSteelBlue","PowderBlue","LightBlue","SkyBlue","LightSkyBlue","CornflowerBlue","RoyalBlue","MediumBlue","DarkBlue","MidnightBlue","Navy"]}};
-const h = {
 
+let h = {
+
+};
+
+
+
+/* const h = {
 "2-01": 10,     // 0: 100
 "2-02": 30,     // 0: 101
 "2-03": null,   // 0: 102
@@ -218,9 +224,62 @@ const h = {
 // finally, text => 146 TEXT !!!!!!!
 
 };
+*/
+
+const hf = {
+"100": "2-01",
+"101": "2-02",
+"102": "2-03",
+"103": "2-04",
+"104": "2-05",
+"105": "2-06",
+"106": "2-19",
+"107": "2-20",
+
+"108": "3-01",
+"109": "3-02",
+"110": "3-03",
+"111": "3-04",
+"112": "3-05",
+"113": "3-06",
+"114": "3-19",
+"115": "3-20",
+
+"116": "4-01",
+"117": "4-02",
+"118": "4-03",
+"119": "4-04",
+"120": "4-05",
+"121": "4-06",
+"122": "4-19",
+"123": "4-20",
+
+"124": "0-3",
+"125": "0-4",
+"126": "0-5",
+"127": "0-6",
+"128": "0-7",
+"129": "0-8"};
+
+const hh = l => {
 
 
 
+};
+
+
+const k010 = l => {
+let l0 = k2.style;
+let l1 = [l[1],'px'];
+let l2 = `--${l[0]}`;
+let l3 = l1.join('');
+if (l[1] !== 0) {
+let l4 = [l2,l[1]];
+l0.setProperty(...l4); }
+if (l[1] === 0) {
+l0.removeProperty(l2); }
+if (!k7([k2,'style'])) {
+k8([k2,'style']); }};
 
 const k10 = l => {
 let l0 = k2.style;
@@ -285,8 +344,8 @@ let l1 = l[2][52]||0;
 let l2 = l[2][53]||0;
 let l3 = l[2][54]||0;
 let l4 = l[2][55]||0;
-let l5 = l[2][56]||0;
-let l6 = l[2][57]||0;
+let l5 = l[2][56]||0;       // raus !!
+let l6 = l[2][57]||0;       // raus !!
 let l7 = new Object();
 let l8 = filters;
 let l9 = l[1].height;
@@ -339,7 +398,7 @@ let l1 = l[2][52]||0;
 let l2 = l[2][53]||0;
 let l3 = l[2][54]||0;
 let l4 = l[2][55]||0;
-let l5 = l[2][56]||0;
+let l5 = l[2][56]||0;       // raus !!
 let l6 = new Object();
 let l7 = filters;
 if (l[0] === 1) {
@@ -462,18 +521,19 @@ k15([l[0],l[1],l[2]]);
 const k19 = async l => {
 let l1 = k0[2][1] + 20;
 let l2 = k0[2][2] + 20;
+let l0 = l[2]?.['0']?.['138']||5; console.log(l0,l[0])
 let l3 = k3('canvas');
 let l4 = l3.getContext('2d',
 {willReadFrequently: true});
 let l5 = k2.scrollWidth;
 let l6 = k2.scrollHeight;
-let l7 = l[0] * l[1][0];
-let l8 = l[0] * l[1][1];
-let l14 = l[0] * l7 * 2;
-let l15 = l[0] * l8 * 2;
-let l10 = l[0] * l1;
-let l11 = l[0] * l2;
-let l12 = l[0] * l5;
+let l7 = l0 * l[1][0];
+let l8 = l0 * l[1][1];
+let l14 = l0 * l7 * 2;
+let l15 = l0 * l8 * 2;
+let l10 = l0 * l1;
+let l11 = l0 * l2;
+let l12 = l0 * l5;
 let l13 = l12 - l10;
 let l16 =
 await toCanvas(k1,{
@@ -481,7 +541,7 @@ width: l5,
 height: l6,
 canvasWidth: l5,
 canvasHeight: l6,
-pixelRatio: l[0]});
+pixelRatio: l0});
 l3.width = l10 + l14;
 l3.height = l11 + l15;
 l4.drawImage(
@@ -489,7 +549,7 @@ l16,l13/2,0,
 l10,l11,l14/2,
 l15/2,l10,l11);
 
-k15([l[0],l3,l[2]]);
+k15([l0,l3,l[2]]);
 };
 
 
@@ -737,7 +797,13 @@ let l4 = k4('body>svg');
 let l5 = k4('body>div');
 let l6 = k5('body>style');
 let l8 = k0([0,l||{}]);
-l4.innerHTML = l8[0];
+
+// console.log(l8[0])
+// const doc = new DOMParser().parseFromString(l8[0], "image/svg+xml");
+// l4.innerHTML = ''
+// l4.appendChild(doc.documentElement);
+// l4.innerHTML = l8[0];
+
 l5.innerHTML = l8[1];
 l6[0].innerHTML = l8[2];
 l6[1].innerHTML = l8[3];
@@ -790,19 +856,42 @@ window.testlaufs = (config) => {
     window.k0 = [];
     window.k1 = {};
     document.body.innerHTML = '';
-    k10(['f13','block']);
+    k010(['f13','block']);
+    k010(['f11','url(images.png)']);
+
+    h = {
+    "2-01": 20,
+    "2-02": 30,
+    "3-01": 20,
+    "3-02": 30,
+    "4-01": 20,
+    "4-02": 30,
+    "2-19": 100,
+    "3-19": 100,
+    "4-19": 100};
+
+        console.log(h)
     return new Promise(resolve => {
         window.resolveCapture = resolve;
-        // let aris = h22()
-        // k12(aris);
-        k12(config[2])
+        if (config[0] === 1) {
+            let l0 = config[2];
+        for (let i in l0['0']) {
+        h[hf[i]] = l0['0'][i]; }
+        console.log(h)
+        k12(h22()); }
+        if (!config[0]) {
+        k12(config[2]); }
         k19(config);
 });
 }
 
-testlaufs([5, [0, 0], {"1": {"1": {"1": 20, "3": 80}}}])
+testlaufs([1, [0, 0], {
+ //   "0": {"100": 1,"108": 0, "116": 0},
+    "1": {"1": {"1": 20, "3": 80}},
+    "3": {"2": {"12": '22,22,22'}}
+}])
 
-
+// {'1': {'1': {'0': 10, '1': 20, '2': 40}}, '2': {}, '3': {'1': {'12': '22,22,22'}}}
 
 
 

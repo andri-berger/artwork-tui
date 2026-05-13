@@ -2,41 +2,40 @@ self.onmessage = async l => {
 let l0 = l.data[2];
 let l1 = l.data[3];
 let l2 = l.data[4];
-let l3 = l2[58]*2+3||3;
-let l4 = l2[59]*2+3||3;
-let l5 = l2[60]/30||0;
-let l6 = l2[61]/30||0;
-let l7 = l2[62]/30||0;
-let l8 = l2[63]/30||0;
-let l9 = l2[64]/30||0;
-let l10 = l2[65]/30||0;
-let l11 = l2[66]/30||0;
-let l12 = l2[67]/30||0;
-let l13 = l2[68]/2||0;
-let l14 = l2[69]/2||0; 
-let l15 = l2[70]/50||0;
-let l16 = l2[71]/50||0;
-let l17 = l2[72]/50||0;
-let l18 = l2[73]/50||0;
-let l19 = l2[74]/50||0;
-let l20 = l2[75]/50||0;
-let l21 = l2[74]/100*7||0;
-let l22 = l2[75]/100*7||0;
-let l23 = l2[76]/30||0;
-let l24 = l2[77]/30||0;
-let l25 = l2[78]/30||0;
-let l26 = l2[79]/30||0;
-let l27 = l2[80]/30||0;
-let l28 = l2[81]/30||0;
-let l29 = l2[100] || 0 || Number();
-let l30 = l2[101] || 0 || Number();
+let l29 = l2[74] || 0;
+let l3 = l2[75]*2+3||3;
+let l4 = l2[76]*2+3||3;
+let l5 = l2[77]/30||0;
+let l6 = l2[78]/30||0;
+let l7 = l2[79]/30||0;
+let l8 = l2[80]/30||0;
+let l9 = l2[81]/30||0;
+let l10 = l2[82]/30||0;
+let l11 = l2[83]/30||0;
+let l12 = l2[84]/30||0;
+let l13 = l2[85]/2||0;
+let l14 = l2[86]/2||0;
+let l15 = l2[87]/50||0;
+let l16 = l2[88]/50||0;
+let l17 = l2[89]/50||0;
+let l18 = l2[90]/50||0;
+let l19 = l2[91]/50||0;
+let l20 = l2[92]/50||0;
+let l21 = l2[91]/100*7||0;
+let l22 = l2[92]/100*7||0;
+let l23 = l2[93]/30||0;
+let l24 = l2[94]/30||0;
+let l25 = l2[95]/30||0;
+let l26 = l2[96]/30||0;
+let l27 = l2[97]/30||0;
+let l28 = l2[98]/30||0;
 let l31 = new Uint8ClampedArray(l0);
 let l32 = l5 <= 1? (1 - l5): l5;
 let l33 = l7 <= 1? (1 - l7): l7;
 let l34 = l9 <= 1? (1 - l9): l9;
 let l35 = l25 > 0 && l26 > 0;
 let l36 = l13 > 0 || l14 > 0
-let l37 = l36 || l30 == 1; 
+let l37 = l36 || l29 >= 2;
 let l38 = !l7? l32: l33;
 let l39 = !l9? l32: l34;
 l1.width = l.data[0];
@@ -137,18 +136,16 @@ l40.strokeStyle = `rgba(${l47})`;
 l40.fillStyle = `rgba(${l47})`;
 l40.lineCap = `square`;
 l40.lineWidth = l62;
-
 l40.beginPath();
-if (l30 === 0) {
+
 if (l29 === 0) {
 l40.rect(...l109); }
 if (l29 === 1) {
-l40.ellipse(...l108); }}
-if (l30 === 1) {
-if (l29 === 0) {
+l40.ellipse(...l108); }
+if (l29 === 2) {
 l40.moveTo(...l116);
 l40.lineTo(...l117); }
-if (l29 === 1) {
+if (l29 === 3) {
 if (l35 === false) {
 l40.moveTo(...l116);
 l40.quadraticCurveTo(
@@ -157,7 +154,7 @@ if (l35 === true) {
 l40.moveTo(...l116);
 l40.bezierCurveTo(
 l118,l119,l120,
-l121,...l117); }}}
+l121,...l117); }}
 if (l37 === false) {
 l40.fill(); }
 if (l37 === true) {

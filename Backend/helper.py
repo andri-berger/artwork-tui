@@ -44,6 +44,7 @@ def on_cell_highlighted_(self, coordinate) -> None:
     digits.update("")
     label.update("")
     third.value = ""
+    fourth.value = ""
 
     def safe(obj, *keys):
         for key in keys:
@@ -87,7 +88,7 @@ def on_cell_highlighted_(self, coordinate) -> None:
                 entries = ("", [""] +
                            [f"{config4[row][0]}{n:02d}"
                                   for n in range(100)],
-                           [""] + [f"{letter}{n:02d}"
+                           ["","00"] + [f"{letter}{n:02d}"
                             for letter in "ABCDEF"
                             for n in range(100)])
                 digits.update(

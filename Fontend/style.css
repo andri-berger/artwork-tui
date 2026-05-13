@@ -1,7 +1,15 @@
 
 
+@font-face {
+    font-family: "RobotoMono";
+    src: url("RobotoMono-BoldItalic.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 :root {
---_00:                                                  Consolas,Courier New;
+--_00:                                                  RobotoMono;
 --_01:                                                  2px solid Transparent;
 --_02:                                                  1px solid Black;
 --_03:                                                  1px solid Gray;
@@ -12,6 +20,9 @@
 --_08:                                                  calc(100% - 4px) calc(100% - 4px);
 --_09:							                        calc(100% - 0px) calc(100% - 0px);
 --_10:                                                  rgb(255, 255, 255); }
+
+
+
 
 body *,
 body ::after,
@@ -199,6 +210,15 @@ background-color:                                       White;
 visibility:                                             visible;
 display:                                                var(--f13,none);
 position:                                               absolute; }
+
+
+/* .l00 > var:last-of-type,
+.k00 > var:last-of-type,
+.t00 > var:last-of-type,
+.t000 > var:last-of-type {
+    font-family: "Cascadia Code", "SF Mono", "Menlo", "Monaco", ui-monospace, monospace;
+} */
+
 
 .l00 > var,
 .k00 > var,

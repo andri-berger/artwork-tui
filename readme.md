@@ -292,7 +292,7 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
     </tr>
     <tr>
         <td>Build</td>
-        <td>Hyprshot</td><td>
+        <td>Apng</td><td>
         <a href="//github.com/apngasm/apngasm">
         https://github.com/apngasm/apngasm</a></td>
     </tr>
