@@ -21,11 +21,13 @@ STATIC_DIR = PATH_FILE.parent / "Fontend"
 DIR = f"http://localhost:{PORT}/model.html"
 CSS_PATHS = STATIC_DIR / "style.tcss"
 CONFIG = STATIC_DIR / "build.json"
+with open(CONFIG) as f:
+    CONF = json.load(f)
 
 
 class CLIApp(App):
-    # COMMAND_PALETTE_DISPLAY = None
-    COMMAND_PALETTE_BINDING = 'ctrl+p'
+    COMMAND_PALETTE_DISPLAY = None
+    NOTIFICATION_TIMEOUT = 10
     CSS_PATH = CSS_PATHS
     AUTO_FOCUS = '*'
 

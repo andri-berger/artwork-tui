@@ -8,7 +8,7 @@ from textual.events import Key
 from itertools import cycle
 from textual import on
 from textual import events
-
+from .helpers import make_layer, make_sparse_layer
 from .helper import on_cell_highlighted_, on_key_
 from .main_2 import FileTypeTree
 from .main_1 import ImageTab
@@ -20,7 +20,6 @@ class NoSelectInput(Input):
     def on_focus(self):
         self.cursor_position = len(self.value)
 
-
 class TableApp(Widget):
     def __init__(self) -> None:
         super().__init__()
@@ -29,8 +28,24 @@ class TableApp(Widget):
         self._visual_mode = False
         self._clipboard = None
         self._coord = None
-        self.config = self.app.config["4-0"]
-        self.full_IDs = self.app.config["7-0"]
+        self.full_IDs = self.app.config["4-0"]
+        self.turi = ['activated', 'deactivated']
+        self.turis = ['visible', 'hidden']
+
+        self.app.config["00"] = [
+            make_layer("1"),
+            make_layer("2"),
+            make_layer("-3"),
+            make_layer("808080"),
+            make_layer("ffffff"),
+            make_sparse_layer(300, "ffffff", 300),
+            make_sparse_layer(300, "808080", 300),
+            make_sparse_layer(300, "0", 300),
+            make_sparse_layer(300, "1", 300),
+            make_sparse_layer(300, "2", 300)]
+
+
+
 
     def on_mount(self) -> None:
         self.f_left = self.query_one("#cont-switch-0", ContentSwitcher)
@@ -95,9 +110,9 @@ class TableApp(Widget):
                     id="data-table-2")
 
         with Horizontal(id="status"):
-            yield Button("SA", id="button-0")
-            yield Button("SB", id="button-1")
-            yield Button("SC", id="button-2")
+            yield Button("AF", id="button-0", compact=True)
+            yield Button("BF", id="button-1", compact=True)
+            yield Button("CF", id="button-2")
             yield Button("LABEL", id="button-5")
             yield Button("CLEAR", id="button-6")
             yield Button("Create", id="button-3")
@@ -170,21 +185,49 @@ class TableApp(Widget):
 
     @on(Button.Pressed)
     def pressed(self, event: Button.Pressed) -> None:
+        yy = self.app.configs
+        yes = yy.setdefault("00", {})
         id = event.button.id
+        arr = self.app.config["4-0"]
+        arr0 = self.app.config["4-1"]
+        arr1 = arr.index(id) if id in arr else -1
+        texts = arr0[arr1]
+        self.notify(f"{texts}")
+
+        self.label.update(texts)
+
         if id == "button-0":
-            pass
+            yess = yes.get("147", 0)
+            yes["147"] = 1 - yess
+            self.app.clear_notifications()
+            self.notify(
+                f"A00 SEED {self.turi[yess]} ")
         elif id == "button-1":
-            pass
+            yess = yes.get("148", 0)
+            yes["148"] = 1 - yess
+            self.app.clear_notifications()
+            self.notify(
+                f"B00 SEED {self.turi[yess]} ")
         elif id == "button-2":
-            pass
+            yess = yes.get("149", 0)
+            yes["149"] = 1 - yess
+            self.app.clear_notifications()
+            self.notify(
+                f"D00 SEED {self.turi[yess]} ")
         if id == "button-5":
-            pass
+            yess = yes.get("150", 0)
+            yes["150"] = 1 - yess
+            self.app.clear_notifications()
+            self.notify(
+                f"LABELS {self.turis[yess]} ")
         elif id == "button-6":
-            pass
-        elif id == "button-3":
-            pass
-        elif id == "button-4":
-            pass
+            self.e_images.config = self.app.configs
+            self.e_images.mutate_reactive(
+                ImageTab.config)
+
+        if arr1 >= 4:
+
+
 
     @on(events.Resize)
     def on_resize(self, event: events.Resize) -> None:

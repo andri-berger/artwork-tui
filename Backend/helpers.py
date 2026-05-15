@@ -1,19 +1,27 @@
+
+def make_layer(value, size=300):
+    return ["auto", "auto"] + [str(value)] * size
+
+def make_sparse_layer(empty_count=300, value="0", filled_count=300, size=300):
+    return ["auto", "auto"] + [""] * empty_count + [str(value)] * filled_count
+
+
 def hash_table(start, rot):
     d_transformed = {}
     for row_i, row in start:
-        shot = rot[f"5-{row_i}"]
+        shot = rot[f"0-{row_i}"]
         if row_i == '2':
             if any(str(k) in row.keys()
-                   for k in range(37)):
+                   for k in range(44)):
                 d_transformed['3'] = {}
             if any(str(k) in row.keys()
-                   for k in range(38 ,78)):
+                   for k in range(45 ,75)):
                 d_transformed['2'] = {}
         if row_i == '0' or row_i == '1':
             d_transformed[row_i] = {}
         for col_i, col in row.items():
             if row_i == '2':
-                tor = int(col_i) <= 37
+                tor = int(col_i) <= 44
                 tes = '3' if tor else '2'
                 ttts = d_transformed[tes]
             if row_i == '0' or row_i == '1':

@@ -3,16 +3,10 @@ from textual_image.widget import Image
 from textual.app import ComposeResult
 from textual.widget import Widget
 from PIL import Image as PILImage
+from .helpers import hash_table
 from pathlib import Path
-from textual.css.query import NoMatches
-from textual.css.query import NoMatches
-from textual.geometry import Size
 import base64
 import time
-from .helpers import hash_table
-import io
-
-
 
 
 class ImageTab(Widget):

@@ -67,7 +67,7 @@ ImageTab {
 }
 
 #label-0 {
-    width: 90;
+    width: 70;
     height: 1fr;
     text-align: center;
     background: $defaults;
@@ -190,23 +190,24 @@ DataTable > .datatable--odd-row {
 }
 
 Input {
-    border: hkey white; }
+    border: hkey white;
+}
 
 
 Button {
-    text-style: none;
+    margin: 0;
     padding: 0;
     min-width: 0;
-    border: hkey white; }
+    text-style: none;/*
+    border-top: heavy white;
+    border-bottom: solid white; */
+    border: hkey white;
+}
 
 #digits-0 {
     width: auto;
     height: 1fr;
-    }
-
-
-
-
+}
 
 
 
@@ -237,6 +238,19 @@ dock: left;
 
 Digits {
     color: white;
+}
+
+
+Toast.-information {
+    /* Styling here. */
+}
+
+Toast.-warning {
+    /* Styling here. */
+}
+
+Toast.-error {
+    /* Styling here. */
 }
 
 

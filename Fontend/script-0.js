@@ -853,12 +853,6 @@ k0[2][2] = l14; };
 
 
 window.testlaufs = (config) => {
-    window.k0 = [];
-    window.k1 = {};
-    document.body.innerHTML = '';
-    k010(['f13','block']);
-    k010(['f11','url(images.png)']);
-
     h = {
     "2-01": 20,
     "2-02": 30,
@@ -869,23 +863,25 @@ window.testlaufs = (config) => {
     "2-19": 100,
     "3-19": 100,
     "4-19": 100};
-
-        console.log(h)
+    window.k0 = [];
+    window.k1 = {};
+    document.body.innerHTML = '';
+    k010(['f13','block']);
+    k010(['f11','url(images.png)']);
     return new Promise(resolve => {
         window.resolveCapture = resolve;
         if (config[0] === 1) {
             let l0 = config[2];
-        for (let i in l0['0']) {
-        h[hf[i]] = l0['0'][i]; }
-        console.log(h)
-        k12(h22()); }
+            for (let i in l0['0']) {
+            h[hf[i]] = l0['0'][i]; }
+            k12(h22()); }
         if (!config[0]) {
         k12(config[2]); }
         k19(config);
 });
 }
 
-testlaufs([1, [0, 0], {
+testlaufs([0, [0, 0], {
  //   "0": {"100": 1,"108": 0, "116": 0},
     "1": {"1": {"1": 20, "3": 80}},
     "3": {"2": {"12": '22,22,22'}}

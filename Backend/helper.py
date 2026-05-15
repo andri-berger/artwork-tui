@@ -6,13 +6,14 @@ from textual.coordinate import Coordinate
 
 def action_next_table(self, event, prefix) -> None:
     testlauf = (self.full_IDs.index(self.app.focused.id) + prefix) % len(self.full_IDs)
+    arr = self.app.config["4-1"]
 
     if testlauf in {1, 2, 4, 5}:
         event.stop()
         event.prevent_default()
 
     if testlauf < 3 or testlauf >= 6:
-        self.label.update("hello")
+        self.label.update(arr[testlauf] or "")
         self.c_digits.update("")
         self.e_third.value = ""
         self.e_fourth.value = ""
@@ -22,7 +23,6 @@ def action_next_table(self, event, prefix) -> None:
         self.query_one(switcher_id, ContentSwitcher).current = self.full_IDs[testlauf]
 
         if testlauf >= 3:
-            self.notify("hello-yes")
             table = self.query_one(f"#{self.full_IDs[testlauf]}", DataTable)
             coordinates = table.cursor_coordinate
             on_cell_highlighted_(self, coordinates)
@@ -33,13 +33,13 @@ def on_cell_highlighted_(self, coordinate) -> None:
     fourth = self.query_one("#fourth", Input)
     third = self.query_one("#third", Input)
 
+
     switches = int(self.query_one(
         "#cont-switch-1", ContentSwitcher)
                    .current.split("-")[-1])
-    config4 = self.app.config[f"4-{switches}"]
-    configss = self.app.config[f"3-{switches}"]
-    config = self.app.config[f"0-{switches}"]
-    lookup = self.app.config["00-0"]
+    config9 = self.app.config[f"2-{switches}"]
+    config = self.app.config[f"3-{switches}"]
+    table = self.query_one(f"#data-table-{switches}", DataTable)
     row, col = coordinate
     digits.update("")
     label.update("")
@@ -56,44 +56,58 @@ def on_cell_highlighted_(self, coordinate) -> None:
 
     try:
         if switches == 0:
-            values = safe(config4, row, col)
-            configs = safe(configss, row, col)
             cell = safe(config, row, col)
-            value = safe(lookup, cell)
+            tts = self.app.config.get(f"{row:02d}-{col}")
+            values_ = safe(config9, row, col) or ""
+            configs = safe(config9, row, col) or ""
+            dd = table.get_cell_at((31, col)) or ""
+            de = ["undefined","undefined","undefined"]
 
-            if value is not None:
-                label.update(value)
+            if cell is not None:
+                rrs = cell \
+                    if tts is None or dd == "" \
+                    else tts.get(dd,de)[2]
+                label.update(rrs)
 
-            if values is not None:
-                digits.update(values)
+            if values_ is not None:
+                digits.update(values_[0])
 
             if configs is not None:
-                fourth.value = configs[0]
-                third.value = configs[1]
+                rrr = configs[1] \
+                    if tts is None or dd == "" \
+                    else tts.get(dd,de)[0]
+                rrt = configs[2] \
+                    if tts is None or dd == "" \
+                    else tts.get(dd,de)[1]
+                fourth.value = rrr
+                third.value = rrt
 
         elif switches >= 1:
-            value = safe(configss, row)
-            cell = safe(config, row)
-            values = safe(lookup, cell)
-            test = safe(config4, row,0)
+            value = safe(config9, row) or ""
+            cell = safe(config, row) or ""
+            check = isinstance(cell, str)
+            values = cell if check \
+                else safe(config, cell)
+            test_ = safe(config9, row,0) or ""
 
             if value is not None:
-                fourth.value = value[0]
-                third.value = value[1]
+                fourth.value = value[1]
+                third.value = value[2] \
+                    if isinstance(value[2],str) \
+                    else self.app.config["00"][value[2]][col]
 
             if values is not None:
                 label.update(values)
 
-            if test is not None:
+            if test_ is not None:
                 entries = ("", [""] +
-                           [f"{config4[row][0]}{n:02d}"
+                           [f"{test_[0]}{n:02d}"
                                   for n in range(100)],
                            ["","00"] + [f"{letter}{n:02d}"
                             for letter in "ABCDEF"
                             for n in range(100)])
                 digits.update(
                     entries[switches][col])
-
 
     except IndexError:
         return
