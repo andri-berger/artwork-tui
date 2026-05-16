@@ -1,12 +1,14 @@
 from playwright.async_api import async_playwright
 from textual.app import App, ComposeResult
-from .helpers import make_layer, make_sparse_layer
-from .main_0 import TableApp
+from .script import make_layer, make_sparse_layer
+from .builds import TableApp
 from pathlib import Path
 import http.server
 import threading
 import functools
 import json
+
+
 
 
 PORT = 9000
@@ -63,12 +65,12 @@ CONFIGS = STATIC_DIR / "models.json"
 #     directory=str(STATIC_DIR))
 
 
-class NoCacheHandler(http.server.SimpleHTTPRequestHandler):
-    def end_headers(self):
-        self.send_header("Cache-Control", "no-store, no-cache, must-revalidate")
-        self.send_header("Pragma", "no-cache")
-        self.send_header("Expires", "0")
-        super().end_headers()
+# class NoCacheHandler(http.server.SimpleHTTPRequestHandler):
+#     def end_headers(self):
+#         self.send_header("Cache-Control", "no-store, no-cache, must-revalidate")
+#         self.send_header("Pragma", "no-cache")
+#         self.send_header("Expires", "0")
+#         super().end_headers()
 
 class CLIApp(App):
     COMMAND_PALETTE_DISPLAY = None
@@ -78,10 +80,10 @@ class CLIApp(App):
 
     def __init__(self):
         super().__init__()
+        self.helpful = {}
         self.page = None
         self._pw = None
         self._server = None
-        self.helpful = {}
         with open(CONFIG) as f:
             self.store = json.load(f)
         self.stores = json.loads(

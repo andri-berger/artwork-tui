@@ -169,6 +169,7 @@ DataTable > .datatable--cursor,
 DataTable > .datatable--header-cursor,
 DataTable > .datatable--fixed-cursor {
     background: $brand;
+    text-align: center;
 }
 
 DataTable > .datatable--hover,

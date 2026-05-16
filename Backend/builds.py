@@ -1,21 +1,19 @@
-from .helper import (
+from .models import (
     on_cell_highlighted_,
     on_key_, on_pressed,
     on_submitted)
 from textual.widgets import (
     DataTable, Input, Button,
     ContentSwitcher, Digits, Label)
+
+from .model import FileTypeTree, ImageTab
 from textual.containers import Horizontal
 from textual.app import ComposeResult
 from textual.widget import Widget
 from textual.events import Key
+from textual import events, on
 from itertools import cycle
-from textual import on
-from textual import events
-from .main_2 import FileTypeTree
-from .main_1 import ImageTab
 cursors = cycle(["cell"])
-
 
 
 class NoSelectInput(Input):
@@ -25,17 +23,17 @@ class NoSelectInput(Input):
 class TableApp(Widget):
     def __init__(self) -> None:
         super().__init__()
+        self.coord = None
         self._cursor = None
+        self._clipboard = None
         self._visual_start = None
         self._visual_mode = False
-        self._clipboard = None
-        self.coord = None
         self.full_IDs = self.app.store["4-0"]
         self.turi = ['activated', 'deactivated']
         self.turis = ['visible', 'hidden']
         self.lister = [9, 100, 600]
         self.listers = [28, 22, 18]
-        self.check_only = [8,10,12]
+        self.check_only = [8,7,7]
 
     def on_mount(self) -> None:
         self.f_left = self.query_one("#cont-switch-0", ContentSwitcher)
@@ -102,7 +100,7 @@ class TableApp(Widget):
             yield Button("CFS", id="button-2")
             yield Button("CLEAR", id="button-6")
             yield Button("CREATE", id="button-3")
-            yield Button("EXPORT", id="button-4")
+            yield Button("Export", id="button-4")
             yield Input(id="fourth", disabled=False)
             yield Input(id="third", disabled=False)
 

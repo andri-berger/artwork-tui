@@ -1,8 +1,13 @@
 from textual.widgets import (
     DataTable, Input, ContentSwitcher, Digits, Button, Label)
 from textual.coordinate import Coordinate
+from Backend.model import FileTypeTree
+from pathlib import Path
+import json
 
-from Backend.main_2 import FileTypeTree
+PATH_FILE = Path(__file__).parent
+STATIC_DIR = PATH_FILE.parent / "Fontend"
+CONFIGS = STATIC_DIR / "model.json"
 
 
 def action_next_table(self, event, prefix) -> None:
@@ -131,23 +136,23 @@ async def on_key_(self, event) -> None:
 
     if event.key == "f6":
         self.notify(f"{event.key} pressed")
-        self.query_one("#button-0", Button).press()
+        self.query_one("#button-1", Button).press()
 
     if event.key == "f7":
         self.notify(f"{event.key} pressed")
-        self.query_one("#button-0", Button).press()
+        self.query_one("#button-2", Button).press()
 
     if event.key == "f8":
         self.notify(f"{event.key} pressed")
-        self.query_one("#button-0", Button).press()
+        self.query_one("#button-6", Button).press()
 
     if event.key == "f9":
         self.notify(f"{event.key} pressed")
-        self.query_one("#button-0", Button).press()
+        self.query_one("#button-3", Button).press()
 
     if event.key == "f10":
         self.notify(f"{event.key} pressed")
-        self.query_one("#button-0", Button).press()
+        self.query_one("#button-4", Button).press()
 
 
 
@@ -280,8 +285,8 @@ def on_submitted(self, event, ImageTab) -> None:
         self.app.stores[switches] = tst
         yays = self.app.stores
 
-        # CONFIGS.write_text(
-        # json.dumps(self.app.stores))
+        CONFIGS.write_text(
+        json.dumps(self.app.stores))
 
         self.e_images.config = (checkers,yays)
         self.e_images.mutate_reactive(
