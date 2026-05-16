@@ -1,15 +1,15 @@
 
-
+/*
 @font-face {
-    font-family: "RobotoMono";
-    src: url("RobotoMono-BoldItalic.ttf") format("truetype");
+    font-family: "RobotoMon";
+    src: url("model.otf") format("opentype");
     font-weight: normal;
     font-style: normal;
     font-display: swap;
-}
+} */
 
 :root {
---_00:                                                  RobotoMono;
+--_00:                                                  RobotoMon;
 --_01:                                                  2px solid Transparent;
 --_02:                                                  1px solid Black;
 --_03:                                                  1px solid Gray;
@@ -208,7 +208,6 @@ font-family:                                            var(--_00);
 text-align:                                             center;
 background-color:                                       White;
 visibility:                                             visible;
-display:                                                var(--f13,none);
 position:                                               absolute; }
 
 

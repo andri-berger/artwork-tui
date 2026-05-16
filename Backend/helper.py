@@ -1,16 +1,22 @@
-
 from textual.widgets import (
-    DataTable, Input, ContentSwitcher, Digits, Label)
+    DataTable, Input, ContentSwitcher, Digits, Button, Label)
 from textual.coordinate import Coordinate
+
+from Backend.main_2 import FileTypeTree
 
 
 def action_next_table(self, event, prefix) -> None:
     testlauf = (self.full_IDs.index(self.app.focused.id) + prefix) % len(self.full_IDs)
-    arr = self.app.config["4-1"]
+    arr = self.app.store["4-1"]
 
     if testlauf in {1, 2, 4, 5}:
         event.stop()
         event.prevent_default()
+
+    if testlauf < 3:
+        self.query_one("#cont-switch-0", ContentSwitcher).current = self.full_IDs[testlauf]
+        tree = self.query_one(f"#{self.full_IDs[testlauf]}", FileTypeTree)
+        tree.reload()
 
     if testlauf < 3 or testlauf >= 6:
         self.label.update(arr[testlauf] or "")
@@ -37,8 +43,8 @@ def on_cell_highlighted_(self, coordinate) -> None:
     switches = int(self.query_one(
         "#cont-switch-1", ContentSwitcher)
                    .current.split("-")[-1])
-    config9 = self.app.config[f"2-{switches}"]
-    config = self.app.config[f"3-{switches}"]
+    config9 = self.app.store[f"2-{switches}"]
+    config = self.app.store[f"3-{switches}"]
     table = self.query_one(f"#data-table-{switches}", DataTable)
     row, col = coordinate
     digits.update("")
@@ -57,7 +63,7 @@ def on_cell_highlighted_(self, coordinate) -> None:
     try:
         if switches == 0:
             cell = safe(config, row, col)
-            tts = self.app.config.get(f"{row:02d}-{col}")
+            tts = self.app.store.get(f"{row:02d}-{col}")
             values_ = safe(config9, row, col) or ""
             configs = safe(config9, row, col) or ""
             dd = table.get_cell_at((31, col)) or ""
@@ -94,7 +100,7 @@ def on_cell_highlighted_(self, coordinate) -> None:
                 fourth.value = value[1]
                 third.value = value[2] \
                     if isinstance(value[2],str) \
-                    else self.app.config["00"][value[2]][col]
+                    else self.app.store["00"][value[2]][col]
 
             if values is not None:
                 label.update(values)
@@ -119,6 +125,32 @@ async def on_key_(self, event) -> None:
     table = self.query_one(f"#{switcher.current}", DataTable)
     editor = self.query_one("#third", Input)
 
+    if event.key == "f5":
+        self.notify(f"{event.key} pressed")
+        self.query_one("#button-0", Button).press()
+
+    if event.key == "f6":
+        self.notify(f"{event.key} pressed")
+        self.query_one("#button-0", Button).press()
+
+    if event.key == "f7":
+        self.notify(f"{event.key} pressed")
+        self.query_one("#button-0", Button).press()
+
+    if event.key == "f8":
+        self.notify(f"{event.key} pressed")
+        self.query_one("#button-0", Button).press()
+
+    if event.key == "f9":
+        self.notify(f"{event.key} pressed")
+        self.query_one("#button-0", Button).press()
+
+    if event.key == "f10":
+        self.notify(f"{event.key} pressed")
+        self.query_one("#button-0", Button).press()
+
+
+
     if event.key == "tab":
         action_next_table(self,event,1)
 
@@ -140,7 +172,7 @@ async def on_key_(self, event) -> None:
                 self.notify("no")
                 editor.value = str(current_value)
 
-            self._coord = cursor_coord
+            self.coord = cursor_coord
             editor.focus()
             event.stop()
 
@@ -150,7 +182,7 @@ async def on_key_(self, event) -> None:
 
     if isinstance(self.app.focused, Input):
         if event.key == "escape":
-            self._coord = None
+            self.coord = None
             editor.value = ""
             table.focus()
 
@@ -193,3 +225,69 @@ async def on_key_(self, event) -> None:
 
         else:
             table.update_cell_at(self._cursor, self._clipboard)
+
+
+def on_pressed(self, event, ImageTab) -> None:
+    zz = self.app.store
+    yy = self.app.stores
+    id = event.button.id
+    arr = zz["4-0"]
+    arr0 = zz["4-1"]
+    yes = yy.setdefault("0", {})
+    yay = yes.setdefault("42", {})
+    arr1 = arr.index(id) \
+        if id in arr else -1
+
+    self.notify(f"Button {id} {arr1} pressed")
+    texts = arr0[arr1]
+    self.label.update(texts)
+
+    if id == "button-0":
+        yay[0] = 1 - (yay.get(0) or 0)
+        self.app.clear_notifications()
+        self.notify(
+            f"A00 SEED {self.turi[yay[0]]} ")
+    elif id == "button-1":
+        yay[1] = 1 - (yay.get(1) or 0)
+        self.app.clear_notifications()
+        self.notify(
+            f"B00 SEED {self.turi[yay[1]]}")
+    elif id == "button-2":
+        yay[2] = 1 - (yay.get(2) or 0)
+        self.app.clear_notifications()
+        self.notify(
+            f"D00 SEED {self.turi[yay[2]]} ")
+
+    if 9 <= arr1 <= 11:
+        pre = (1,2,0)[arr1 - 9]
+        load = ({},self.app.stores,
+                self.app.stores)[arr1 - 9]
+        self.e_images.config = (pre,load)
+        self.e_images.mutate_reactive(
+            ImageTab.config)
+
+
+
+def on_submitted(self, event, ImageTab) -> None:
+    if self.coord is not None:
+        e_tables = self.query_one(
+            f"#{self.f_right.current}", DataTable)
+        e_tables.update_cell_at(self.coord, event.value)
+        switches = self.f_right.current.split("-")[-1]
+        checker = 2 if 7 <= self.coord.row <= 16 else 1
+        checkers = checker if int(switches) == 0 else 1
+        tst = self.get_all_data(e_tables)
+        self.app.stores[switches] = tst
+        yays = self.app.stores
+
+        # CONFIGS.write_text(
+        # json.dumps(self.app.stores))
+
+        self.e_images.config = (checkers,yays)
+        self.e_images.mutate_reactive(
+            ImageTab.config)
+        self.e_third.value = ""
+        self.coord = None
+        e_tables.focus()
+
+

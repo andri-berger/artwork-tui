@@ -19,7 +19,7 @@ import { toCanvas } from 'html-to-image';
 import * as filters from 'pixi-filters';
 import * as PIXI from 'pixi-core';
 import * as d3 from 'random';
-import k0 from './model.js';
+import k0 from './script.js';
 
 
 
@@ -151,6 +151,7 @@ const f = {
     "l00": ["1",0,17,1],
     "k00": ["1",19,35,101],
     "t00": ["1",37,53,201]},
+
     "6-0": {
     "0-0": ["false","true"],
     "6-3": ["linear","radial"],
@@ -165,121 +166,54 @@ const f = {
     "4-2": ["ends","center","stretch","evenly","around","between"],
     "2-2": ["top","left","right","bottom","angle nw","angle sw","angle ne","angle se"],
     "4-3": ["top","left","right","bottom","angle nw","angle sw","angle ne","angle se"],
-    "0-4": ["pk_test_51NxxzcERfj72s6CFVpAcJDo68hN1WeHWfqhRJyvxC1Yw7u9KRZc4jUqCfJKxx0yBx177dZIUDafhPJNWSufRkxbv0032KRCTGD"],
     "3-3": ["hue","color","screen","lighten","darken","overlay","multiply","saturation","luminosity","color dodge","color burn","hard light","soft light"],
-    "0-3": ["White","Transparent","Gainsboro","Wheat","Gold","Crimson","MediumVioletRed","MediumSeaGreen","SeaGreen","DeepSkyBlue","DodgerBlue","MediumSlateBlue","Black","Snow","HoneyDew","MintCream","Azure","AliceBlue","GhostWhite","WhiteSmoke","SeaShell","Beige","OldLace","FloralWhite","Ivory","AntiqueWhite","Linen","LavenderBlush","MistyRose","CornSilk","BlanchedAlmond","Bisque","NavajoWhite","BurlyWood","RosyBrown","SandyBrown","GoldenRod","DarkGoldenRod","Peru","Chocolate","SaddleBrown","Sienna","Brown","Maroon","LightGray","Silver","DarkGray","Gray","DimGray","LightSlateGray","SlateGray","DarkSlateGray","LightYellow","LemonChiffon","PapayaWhip","Moccasin","PeachPuff","PaleGoldenRod","Khaki","DarkKhaki","Coral","Tomato","OrangeRed","DarkOrange","IndianRed","LightCoral","Salmon","DarkSalmon","LightSalmon","FireBrick","DarkRed","Pink","LightPink","HotPink","DeepPink","PaleVioletRed","Lavender","Thistle","Plum","Violet","Orchid","Fuchsia","Magenta","MediumOrchid","MediumPurple","BlueViolet","DarkViolet","DarkOrchid","DarkMagenta","Purple","Indigo","SlateBlue","DarkSlateBlue","GreenYellow","Chartreuse","LimeGreen","PaleGreen","LightGreen","SpringGreen","ForestGreen","DarkGreen","YellowGreen","OliveDrab","Olive","DarkOliveGreen","MediumAquamarine","DarkSeaGreen","LightSeaGreen","DarkCyan","Teal","Aqua","Cyan","LightCyan","PaleTurquoise","AquaMarine","Turquoise","MediumTurquoise","DarkTurquoise","CadetBlue","SteelBlue","LightSteelBlue","PowderBlue","LightBlue","SkyBlue","LightSkyBlue","CornflowerBlue","RoyalBlue","MediumBlue","DarkBlue","MidnightBlue","Navy"]}};
-
+    "0-3": ["White","Transparent","Gainsboro","Wheat","Gold","Crimson","MediumVioletRed","MediumSeaGreen","SeaGreen","DeepSkyBlue","DodgerBlue","MediumSlateBlue","Black","Snow","HoneyDew","MintCream","Azure","AliceBlue","GhostWhite","WhiteSmoke","SeaShell","Beige","OldLace","FloralWhite","Ivory","AntiqueWhite","Linen","LavenderBlush","MistyRose","CornSilk","BlanchedAlmond","Bisque","NavajoWhite","BurlyWood","RosyBrown","SandyBrown","GoldenRod","DarkGoldenRod","Peru","Chocolate","SaddleBrown","Sienna","Brown","Maroon","LightGray","Silver","DarkGray","Gray","DimGray","LightSlateGray","SlateGray","DarkSlateGray","LightYellow","LemonChiffon","PapayaWhip","Moccasin","PeachPuff","PaleGoldenRod","Khaki","DarkKhaki","Coral","Tomato","OrangeRed","DarkOrange","IndianRed","LightCoral","Salmon","DarkSalmon","LightSalmon","FireBrick","DarkRed","Pink","LightPink","HotPink","DeepPink","PaleVioletRed","Lavender","Thistle","Plum","Violet","Orchid","Fuchsia","Magenta","MediumOrchid","MediumPurple","BlueViolet","DarkViolet","DarkOrchid","DarkMagenta","Purple","Indigo","SlateBlue","DarkSlateBlue","GreenYellow","Chartreuse","LimeGreen","PaleGreen","LightGreen","SpringGreen","ForestGreen","DarkGreen","YellowGreen","OliveDrab","Olive","DarkOliveGreen","MediumAquamarine","DarkSeaGreen","LightSeaGreen","DarkCyan","Teal","Aqua","Cyan","LightCyan","PaleTurquoise","AquaMarine","Turquoise","MediumTurquoise","DarkTurquoise","CadetBlue","SteelBlue","LightSteelBlue","PowderBlue","LightBlue","SkyBlue","LightSkyBlue","CornflowerBlue","RoyalBlue","MediumBlue","DarkBlue","MidnightBlue","Navy"]
+    }};
 let h = {
 
 };
-
-
-
-/* const h = {
-"2-01": 10,     // 0: 100
-"2-02": 30,     // 0: 101
-"2-03": null,   // 0: 102
-"2-04": null,   // 0: 103
-"2-05": null,   // 0: 104
-"2-06": null,   // 0: 105
-"2-19": null,   // 0: 106
-"2-20": null,   // 0: 107
-
-"3-01": null,   // 0: 108
-"3-02": null,   // 0: 109
-"3-03": null,   // 0: 110
-"3-04": null,   // 0: 111
-"3-05": null,   // 0: 112
-"3-06": null,   // 0: 113
-"3-19": null,   // 0: 114
-"3-20": null,   // 0: 115
-
-"4-01": null,   // 0: 116
-"4-02": null,   // 0: 117
-"4-03": null,   // 0: 118
-"4-04": null,   // 0: 119
-"4-05": null,   // 0: 120
-"4-06": null,   // 0: 121
-"4-19": null,   // 0: 122
-"4-20": null,   // 0: 123
-
-"0-3": null,    // 0: 92
-"0-4": null,    // 0: 93
-"0-5": null,    // 0: 94
-"0-6": null,    // 0: 95
-"0-7": null,    // 0: 96
-"0-8": null,    // 0: 97
-
-
-"0-0": null,    // seed A => 0: 142 timestamp
-"0-1": null,    // seed B => 0: 141 timestamp
-"0-2": null,    // seed C => 0: 140 timestamp
-"0-21": 0,      // seed A => 0: 124 (boolean!)
-"0-22": 0,      // seed B => 0: 125 (boolean!)
-"0-23": 0,      // seed C => 0: 126 (boolean!)
-// boolean label!!  0:127
-// path file png => 0: 143 timestamp
-// path file json => 144 timstamp
-// path file otf => 145 timestamp
-// finally, text => 146 TEXT !!!!!!!
-
-};
-*/
-
 const hf = {
-"100": "2-01",
-"101": "2-02",
-"102": "2-03",
-"103": "2-04",
-"104": "2-05",
-"105": "2-06",
-"106": "2-19",
-"107": "2-20",
+    "100": "2-01",
+    "101": "2-02",
+    "102": "2-03",
+    "103": "2-04",
+    "104": "2-05",
+    "105": "2-06",
+    "106": "2-19",
+    "107": "2-20",
 
-"108": "3-01",
-"109": "3-02",
-"110": "3-03",
-"111": "3-04",
-"112": "3-05",
-"113": "3-06",
-"114": "3-19",
-"115": "3-20",
+    "108": "3-01",
+    "109": "3-02",
+    "110": "3-03",
+    "111": "3-04",
+    "112": "3-05",
+    "113": "3-06",
+    "114": "3-19",
+    "115": "3-20",
 
-"116": "4-01",
-"117": "4-02",
-"118": "4-03",
-"119": "4-04",
-"120": "4-05",
-"121": "4-06",
-"122": "4-19",
-"123": "4-20",
+    "116": "4-01",
+    "117": "4-02",
+    "118": "4-03",
+    "119": "4-04",
+    "120": "4-05",
+    "121": "4-06",
+    "122": "4-19",
+    "123": "4-20",
 
-"124": "0-3",
-"125": "0-4",
-"126": "0-5",
-"127": "0-6",
-"128": "0-7",
-"129": "0-8"};
+    "124": "0-3",
+    "125": "0-4",
+    "126": "0-5",
+    "127": "0-6",
+    "128": "0-7",
+    "129": "0-8",
 
-const hh = l => {
-
-
-
+    "147": "0-21",
+    "148": "0-22",
+    "149": "0-23",
+    "0": "0-0",
+    "1": "0-1",
+    "2": "0-2"
 };
-
-
-const k010 = l => {
-let l0 = k2.style;
-let l1 = [l[1],'px'];
-let l2 = `--${l[0]}`;
-let l3 = l1.join('');
-if (l[1] !== 0) {
-let l4 = [l2,l[1]];
-l0.setProperty(...l4); }
-if (l[1] === 0) {
-l0.removeProperty(l2); }
-if (!k7([k2,'style'])) {
-k8([k2,'style']); }};
 
 const k10 = l => {
 let l0 = k2.style;
@@ -315,12 +249,22 @@ const k15 = async l => {
         k10(['f3',l02/l[0]]);
         k1.innerHTML = '';
         k1.appendChild(_);
-        window.resolveCapture(_.toDataURL());
+        let test = {}
+        if (h['0-0']) {
+            test['0'] = h['0-0']; }
+        if (h['0-1']) {
+            test['1'] = h['0-1']; }
+        if (h['0-2']) {
+            test['0'] = h['0-2']; }
+
+        window.resolveCapture([
+            _.toDataURL(),
+            test,l]);
     };
 let l0 = k11(l[2]['0']||{});
 if (l0[0] === true) {
 let l2 = k3('canvas');
-let l3 = '/script.js';
+let l3 = '/styles.js';
 let l4 = l[1].getContext('2d',
 { willReadFrequently: true });
 l2.width = l[1].width || Number();
@@ -519,16 +463,21 @@ k15([l[0],l[1],l[2]]);
 
 
 const k19 = async l => {
-let l1 = k0[2][1] + 20;
-let l2 = k0[2][2] + 20;
-let l0 = l[2]?.['0']?.['138']||5; console.log(l0,l[0])
+let l90 = l[2]?.['0']?.['140']||10;
+let l1 = k0[2][1] + (l90 * 2);
+let l2 = k0[2][2] + (l90 * 2);
+let l00 = l[2]?.['0']?.['141']||0;
+let l01 = l[2]?.['0']?.['142']||0;
+let l09 = l[2]?.['0']?.['143']||6;
+let l08 = l[2]?.['0']?.['144']||5;
+let l0 = [l09,l08,l08][l[0]];
 let l3 = k3('canvas');
 let l4 = l3.getContext('2d',
 {willReadFrequently: true});
 let l5 = k2.scrollWidth;
 let l6 = k2.scrollHeight;
-let l7 = l0 * l[1][0];
-let l8 = l0 * l[1][1];
+let l7 = l0 * l00;
+let l8 = l0 * l01;
 let l14 = l0 * l7 * 2;
 let l15 = l0 * l8 * 2;
 let l10 = l0 * l1;
@@ -548,7 +497,7 @@ l4.drawImage(
 l16,l13/2,0,
 l10,l11,l14/2,
 l15/2,l10,l11);
-
+console.log('why-nto ???')
 k15([l0,l3,l[2]]);
 };
 
@@ -796,7 +745,9 @@ k1.appendChild(l93);
 let l4 = k4('body>svg');
 let l5 = k4('body>div');
 let l6 = k5('body>style');
-let l8 = k0([0,l||{}]);
+console.log('hier',l)
+let l8 = k0([...l]);
+console.log('wasili',l8)
 
 // console.log(l8[0])
 // const doc = new DOMParser().parseFromString(l8[0], "image/svg+xml");
@@ -810,6 +761,7 @@ l6[1].innerHTML = l8[3];
 k13(0||'_'); };
 
 const k13 = () => {
+let l00 = h['00'];
 let l0 = 'body>div';
 let l1 = '.t00,.t000';
 let l2 = `.k00,${l1}`;
@@ -835,7 +787,7 @@ let l9 = k2.scrollTop||0;
 let l10 = k2.scrollWidth||0;
 let l11 = k2.scrollLeft * 2;
 let l12 = l10 - l6 - l7 - l11;
-let l16 = Math.round(10-l8-l9);
+let l16 = Math.round(l00-l8-l9);
 let l15 = Math.round(0.5*l12);
 let l13 = Math.round(l6-l7);
 let l14 = Math.round(l5-l8);
@@ -852,7 +804,7 @@ k0[2][2] = l14; };
 
 
 
-window.testlaufs = (config) => {
+window.testlaufs = l => {
     h = {
     "2-01": 20,
     "2-02": 30,
@@ -866,28 +818,30 @@ window.testlaufs = (config) => {
     window.k0 = [];
     window.k1 = {};
     document.body.innerHTML = '';
-    k010(['f13','block']);
-    k010(['f11','url(images.png)']);
+    h['00'] = l[2]?.['0']?.['140']||10;
+    for (let i in l[1]) {
+        if (Number(i) <= 2) {
+        h[`0-${i}`] = l[1][i]; }}
     return new Promise(resolve => {
         window.resolveCapture = resolve;
-        if (config[0] === 1) {
-            let l0 = config[2];
+        if (l[0] === 2) {
+            let l0 = l[2];
             for (let i in l0['0']) {
             h[hf[i]] = l0['0'][i]; }
-            k12(h22()); }
-        if (!config[0]) {
-        k12(config[2]); }
-        k19(config);
-});
-}
+            k12([l[0],h22(),l[1]['4'],l[1]['5']]); }
+        if (l[0] <= 1) {
+            k12([l[0],l[2],l[1]['4'],l[1]['5']]); }
+        k19(l);
+}); }
 
-testlaufs([0, [0, 0], {
- //   "0": {"100": 1,"108": 0, "116": 0},
-    "1": {"1": {"1": 20, "3": 80}},
+
+testlaufs([0, {"5": "8948645"}, {
+    //"0": {"5": "8948645"},
+    "1": {"1": {"1": 100, "2": 100}},
     "3": {"2": {"12": '22,22,22'}}
 }])
 
-// {'1': {'1': {'0': 10, '1': 20, '2': 40}}, '2': {}, '3': {'1': {'12': '22,22,22'}}}
+
 
 
 

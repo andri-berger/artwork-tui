@@ -9,61 +9,77 @@ import base64
 import time
 
 
+
+
+
 class ImageTab(Widget):
     launch_dir = Path.cwd()
-    TIME_STAMP = int(time.time())
     image_pat = Path(__file__).parent.parent / "Fontend"
-    image_outs = Path.cwd() / f"{TIME_STAMP}.png"
-    image_outs_ = Path.cwd() / f"_{TIME_STAMP}.png"
-    image_path = image_pat / "image.png"
-    config: reactive[dict] = reactive(dict, init=False)
-
-    def compose(self) -> ComposeResult:
-        yield Image(self.image_path)
+    image_outs = image_pat / "model.png"
+    config: reactive[tuple] = reactive(tuple, init=False)
 
     def __init__(self):
         super().__init__()
 
-    async def watch_config(self):
-        rot = self.app.config
-        start = self.config.items()
-        d_transformed = hash_table(start,rot)
-        self.notify(f"{d_transformed}")
+    async def watch_config(self, value: tuple):
 
+        rot = self.app.store
+        prefix, start = value
+        starts = start.items()
+        d_transformed = hash_table(
+            starts,rot)
         try:
-            self.query_one(Image).remove()
+            if prefix >= 1:
+                self.query_one(Image).remove()
         except Exception:
             pass
-        config_ = [1,[0,0],d_transformed]
+
+        self.notify(f"{prefix}")
+        self.notify(f"{self.app.helpful}")
+        self.notify(f"{d_transformed}")
+        config_ = [prefix,
+                   self.app.helpful,
+                   d_transformed]
         page = self.app.page
         data_url = await (
             page.evaluate(
-            "async (config) => window.testlaufs(config)",config_))
+            "async (store) => window.testlaufs(store)",config_))
 
-        b64 = data_url.split(',')[1]
+        for i in data_url[1]:
+            self.app.helpful[i] = data_url[1][i]
+        b64 = data_url[0].split(',')[1]
         img_bytes = base64.b64decode(b64)
-        with open(self.image_outs, "wb") as f:
-            f.write(img_bytes)
+
+        if prefix == 0:
+            TIME_STAMP = int(time.time())
+            image_outs_ = self.launch_dir / f"{TIME_STAMP}.png"
+            with open(image_outs_, "wb") as f:
+                f.write(img_bytes)
+
+        if prefix >= 1:
+            with open(self.image_outs, "wb") as f:
+                f.write(img_bytes)
 
         if not self.is_mounted:
             return
 
-        self.mount(Image(self.image_outs))
+        if prefix >= 1:
+            self.mount(Image(self.image_outs))
 
-        size = self.size
-        cell_w, cell_h = 9, 18
-        target_w = size.width * cell_w
-        target_h = size.height * cell_h
-        img = PILImage.open(self.image_outs)
-        img_ratio = img.width / img.height
-        container_ratio = target_w / target_h
+            size = self.size
+            cell_w, cell_h = 9, 18
+            target_w = size.width * cell_w
+            target_h = size.height * cell_h
+            img = PILImage.open(self.image_outs)
+            img_ratio = img.width / img.height
+            container_ratio = target_w / target_h
 
-        if img_ratio > container_ratio:
-            self.query_one(Image).styles.width = "100%"
-            self.query_one(Image).styles.height = "auto"
-        else:
-            self.query_one(Image).styles.width = "auto"
-            self.query_one(Image).styles.height = "100%"
+            if img_ratio > container_ratio:
+                self.query_one(Image).styles.width = "100%"
+                self.query_one(Image).styles.height = "auto"
+            else:
+                self.query_one(Image).styles.width = "auto"
+                self.query_one(Image).styles.height = "100%"
 
 
 

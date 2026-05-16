@@ -1,6 +1,10 @@
-
+from .helper import (
+    on_cell_highlighted_,
+    on_key_, on_pressed,
+    on_submitted)
 from textual.widgets import (
-    DataTable, Input, Button, ContentSwitcher, Digits, Label)
+    DataTable, Input, Button,
+    ContentSwitcher, Digits, Label)
 from textual.containers import Horizontal
 from textual.app import ComposeResult
 from textual.widget import Widget
@@ -8,8 +12,6 @@ from textual.events import Key
 from itertools import cycle
 from textual import on
 from textual import events
-from .helpers import make_layer, make_sparse_layer
-from .helper import on_cell_highlighted_, on_key_
 from .main_2 import FileTypeTree
 from .main_1 import ImageTab
 cursors = cycle(["cell"])
@@ -27,25 +29,13 @@ class TableApp(Widget):
         self._visual_start = None
         self._visual_mode = False
         self._clipboard = None
-        self._coord = None
-        self.full_IDs = self.app.config["4-0"]
+        self.coord = None
+        self.full_IDs = self.app.store["4-0"]
         self.turi = ['activated', 'deactivated']
         self.turis = ['visible', 'hidden']
-
-        self.app.config["00"] = [
-            make_layer("1"),
-            make_layer("2"),
-            make_layer("-3"),
-            make_layer("808080"),
-            make_layer("ffffff"),
-            make_sparse_layer(300, "ffffff", 300),
-            make_sparse_layer(300, "808080", 300),
-            make_sparse_layer(300, "0", 300),
-            make_sparse_layer(300, "1", 300),
-            make_sparse_layer(300, "2", 300)]
-
-
-
+        self.lister = [9, 100, 600]
+        self.listers = [28, 22, 18]
+        self.check_only = [8,10,12]
 
     def on_mount(self) -> None:
         self.f_left = self.query_one("#cont-switch-0", ContentSwitcher)
@@ -58,19 +48,16 @@ class TableApp(Widget):
         self.label = self.query_one("#label-0", Label)
         self.e_images = self.query_one(ImageTab)
         a_tables = self.query(DataTable)
-        lister = [9, 100, 600]
-        listers = [28, 22, 18]
-        check_only = [8,10,12]
 
         for i, table in enumerate(a_tables):
-            rows = self.app.config[f"1-{i}"]
+            rows = self.app.store[f"1-{i}"]
             table.cursor_type = "cell"
             table.zebra_stripes = True
             table.fixed_columns = 1
             table.fixed_rows = 0
-            table.add_column("", width=listers[i])
-            for _ in range(lister[i]):
-                table.add_column("", width=check_only[i])
+            table.add_column("", width=self.listers[i])
+            for _ in range(self.lister[i]):
+                table.add_column("", width=self.check_only[i])
             table.add_rows(rows[1:])
 
     def compose(self) -> ComposeResult:
@@ -110,13 +97,12 @@ class TableApp(Widget):
                     id="data-table-2")
 
         with Horizontal(id="status"):
-            yield Button("AF", id="button-0", compact=True)
-            yield Button("BF", id="button-1", compact=True)
-            yield Button("CF", id="button-2")
-            yield Button("LABEL", id="button-5")
+            yield Button("AFS", id="button-0", compact=True)
+            yield Button("BFS", id="button-1", compact=True)
+            yield Button("CFS", id="button-2")
             yield Button("CLEAR", id="button-6")
-            yield Button("Create", id="button-3")
-            yield Button("Save", id="button-4")
+            yield Button("CREATE", id="button-3")
+            yield Button("EXPORT", id="button-4")
             yield Input(id="fourth", disabled=False)
             yield Input(id="third", disabled=False)
 
@@ -147,10 +133,6 @@ class TableApp(Widget):
             })
         }
 
-
-
-
-
     def _position_digits(self):
         x_offset = self.c_cont.region.x - self.c_digits.region.x
         y_offset = self.c_cont.region.y - self.c_digits.region.y - 3
@@ -162,72 +144,18 @@ class TableApp(Widget):
 
     @on(DataTable.CellSelected)
     async def selected(self, event: DataTable.CellSelected) -> None:
-        self._coord = event.coordinate
+        self.coord = event.coordinate
         if event.value is not None:
             self.e_third.value = str(event.value)
         self.e_third.focus()
 
     @on(Input.Submitted)
     def submitted(self, event: Input.Submitted) -> None:
-        if self._coord is not None:
-            e_tables = self.query_one(
-                f"#{self.f_right.current}", DataTable)
-            e_tables.update_cell_at(self._coord, event.value)
-            switches = self.f_right.current.split("-")[-1]
-            tst = self.get_all_data(e_tables)
-            self.app.configs[switches] = tst
-            self.e_images.config = self.app.configs
-            self.e_images.mutate_reactive(
-                ImageTab.config)
-            self.e_third.value = ""
-            self._coord = None
-            e_tables.focus()
+        on_submitted(self,event,ImageTab)
 
     @on(Button.Pressed)
     def pressed(self, event: Button.Pressed) -> None:
-        yy = self.app.configs
-        yes = yy.setdefault("00", {})
-        id = event.button.id
-        arr = self.app.config["4-0"]
-        arr0 = self.app.config["4-1"]
-        arr1 = arr.index(id) if id in arr else -1
-        texts = arr0[arr1]
-        self.notify(f"{texts}")
-
-        self.label.update(texts)
-
-        if id == "button-0":
-            yess = yes.get("147", 0)
-            yes["147"] = 1 - yess
-            self.app.clear_notifications()
-            self.notify(
-                f"A00 SEED {self.turi[yess]} ")
-        elif id == "button-1":
-            yess = yes.get("148", 0)
-            yes["148"] = 1 - yess
-            self.app.clear_notifications()
-            self.notify(
-                f"B00 SEED {self.turi[yess]} ")
-        elif id == "button-2":
-            yess = yes.get("149", 0)
-            yes["149"] = 1 - yess
-            self.app.clear_notifications()
-            self.notify(
-                f"D00 SEED {self.turi[yess]} ")
-        if id == "button-5":
-            yess = yes.get("150", 0)
-            yes["150"] = 1 - yess
-            self.app.clear_notifications()
-            self.notify(
-                f"LABELS {self.turis[yess]} ")
-        elif id == "button-6":
-            self.e_images.config = self.app.configs
-            self.e_images.mutate_reactive(
-                ImageTab.config)
-
-        if arr1 >= 4:
-
-
+        on_pressed(self, event, ImageTab)
 
     @on(events.Resize)
     def on_resize(self, event: events.Resize) -> None:
