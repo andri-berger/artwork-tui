@@ -370,12 +370,6 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
     </tr>
     <tr align="left">
         <td>Processing</td>
-        <td>Wand</td><td>
-        <a href="//github.com/emcconville/wand">
-        https://github.com/emcconville/wand</a></td>
-    </tr>
-    <tr align="left">
-        <td>Processing</td>
         <td>Pillow</td><td>
         <a href="//github.com/python-pillow/Pillow">
         https://github.com/python-pillow/Pillow</a></td>
@@ -494,6 +488,7 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
     <img src="Backend/template/1744168518.png">
     </a></td>
   </tr>
+
   <tr>
     <td><a href="Backend/template/1744168512.png">
     <img src="Backend/template/1744168512.png">
@@ -516,14 +511,6 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
     </a></td>
   </tr>
 </table>
-
-## Links
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-
-<br>https://search.creativecommons.org
-<br>https://archive.org/details/image
-<br>https://artvee.com/c/abstract
-<br>https://openverse.org
 
 
 <!-- Abstract Art	

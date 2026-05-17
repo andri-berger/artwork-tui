@@ -98,7 +98,6 @@ dependencies = [
     { name = "playwright" },
     { name = "textual" },
     { name = "textual-image" },
-    { name = "wand" },
 ]
 
 [package.dev-dependencies]
@@ -116,7 +115,6 @@ requires-dist = [
     { name = "playwright", specifier = ">=1.58.0" },
     { name = "textual", specifier = ">=8.0.0" },
     { name = "textual-image", specifier = ">=0.8.5" },
-    { name = "wand", specifier = ">=0.7.0" },
 ]
 
 [package.metadata.requires-dev]
@@ -701,15 +699,6 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/91/7a/146a99696aee0609e3712f2b44c6274566bc368dfe8375191278045186b8/uc-micro-py-1.0.3.tar.gz", hash = "sha256:d321b92cff673ec58027c04015fcaa8bb1e005478643ff4a500882eaab88c48a", size = 6043, upload-time = "2024-02-09T16:52:01.654Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/37/87/1f677586e8ac487e29672e4b17455758fce261de06a0d086167bb760361a/uc_micro_py-1.0.3-py3-none-any.whl", hash = "sha256:db1dffff340817673d7b466ec86114a9dc0e9d4d9b5ba229d9d60e5c12600cd5", size = 6229, upload-time = "2024-02-09T16:52:00.371Z" },
-]
-
-[[package]]
-name = "wand"
-version = "0.7.0"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/c5/f6/feb40fadb7f3a6c5d45c02840c329725f6ec907eb3581c5de27445700e8a/wand-0.7.0.tar.gz", hash = "sha256:e48f983cc248c23f752e5ba8a6aa1b09370c87d81425d2cc7474f4536c0740f9", size = 11888946, upload-time = "2026-02-23T14:50:34.79Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/29/6c/51fe13d260d9e910d8f010494cc513420ab79852662fefdebdecfeaeebd5/wand-0.7.0-py3-none-any.whl", hash = "sha256:197a5011891a68fc14558cac58db5f5aafb66ef1dd28bfb4a2c62c156c41712e", size = 144773, upload-time = "2026-02-23T14:50:46.162Z" },
 ]
 
 [[package]]

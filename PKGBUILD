@@ -15,8 +15,6 @@ depends=(
     'python-playwright'
     'python-textual-image'
     'python-textual'
-    'python-wand'
-    'imagemagick'
     'opencv-python'
     'opencv'
 )
@@ -32,33 +30,3 @@ package() {
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-  # post_install() {
-  #   echo ""
-  #   echo "==> artwork-tui requires Playwright's Chromium browser."
-  #   echo "==> If not already installed, run as your normal user:"
-  #   echo ""
-  #   echo "    playwright install chromium --with-deps"
-  #   echo ""
-  #   if ! find ~/.cache/ms-playwright -name 'chrome' 2>/dev/null | grep -q .; then
-  #       echo "==> WARNING: Chromium not detected — app will fail without it."
-  #   fi
-  # }
-
-  # post_install() {
-  #   echo ""
-  #   echo "╔════════════════════════════════════════════════╗"
-  #   echo "║           artwork-tui — post install           ║"
-  #   echo "╚════════════════════════════════════════════════╝"
-  #   echo ""
-  #   echo " Chromium is required but must be installed as"
-  #   echo " your normal user (not root). Run:"
-  #   echo ""
-  #   echo "   playwright install chromium --with-deps"
-  #   echo ""
-  #   echo " artwork-tui will not function without this step."
-  #   echo ""
-  # }
-
-  # post_upgrade() {
-  #   post_install
-  # }

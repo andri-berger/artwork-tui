@@ -7,13 +7,7 @@ class Tap < Formula
   url "https://github.com/andri-berger/artwork-tui/archive/v0.0.1.tar.gz"
   sha256 "10790e80a965d21087a53c40286817f7f7835356d917c2bce1c152dc004edcab"
   depends_on "python@3.14"
-  depends_on "imagemagick"
 
-
-  resource "wand" do
-      url "https://files.pythonhosted.org/packages/c5/f6/feb40fadb7f3a6c5d45c02840c329725f6ec907eb3581c5de27445700e8a/wand-0.7.0.tar.gz"
-      sha256 "e48f983cc248c23f752e5ba8a6aa1b09370c87d81425d2cc7474f4536c0740f9"
-    end
   
   resource "textual-image" do
     url "https://files.pythonhosted.org/packages/c2/e7/c82ea0604874b6d51d5717a0911061ae5810e36dad2e4d2b11fa7d54cdaa/textual_image-0.12.0.tar.gz"

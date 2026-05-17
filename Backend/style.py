@@ -1,5 +1,4 @@
 
-
 import numpy as np
 import cv2
 
@@ -21,6 +20,7 @@ def opencv(args, args0):
         np.frombuffer(args,
         dtype=np.uint8),
         cv2.IMREAD_UNCHANGED)
+
     rgb = img[:, :, :3]
     alpha = img[:, :, 3]
     ys, xs = np.where(alpha > 0)
@@ -28,13 +28,18 @@ def opencv(args, args0):
     x_min, x_max = xs.min(), xs.max()
     sub_rgb = rgb[y_min:y_max + 1, x_min:x_max + 1]
 
-    if setting == 1:
-        enhance = cv2.xphoto
-        enhanced = enhance.oilPainting(sub_rgb,
-            int(clamp(setting0, 3, 11)) | 1,
-            int(clamp(setting1, 1, 5)) | 1)
+    if setting == 0:
+        return
 
-    elif setting == 2:
+    if setting == 1:
+
+
+        enhanced = cv2.bitwise_not(sub_rgb)
+
+    # if setting == 1:
+    #    enhanced = cv2.Canny(img, 10, 20)
+
+    if setting == 2:
         enhanced = cv2.stylization(sub_rgb,
             sigma_s=int(clamp(setting0, 30, 100)),
             sigma_r=float(clamp(setting1, 0.2, 0.7)))
@@ -68,10 +73,6 @@ def opencv(args, args0):
     processed = cv2.merge([b, g, r, alpha])
     _, encoded_img = cv2.imencode('.png', processed)
     image_bytes = encoded_img.tobytes()
-
     return image_bytes
-
-
-
 
 

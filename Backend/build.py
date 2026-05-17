@@ -1,6 +1,7 @@
 from playwright.async_api import async_playwright
 from textual.app import App, ComposeResult
 from .script import make_layer, make_sparse_layer
+from .model import ImageTab
 from .builds import TableApp
 from pathlib import Path
 import http.server
@@ -9,68 +10,14 @@ import functools
 import json
 
 
-
-
 PORT = 9000
 PATH_FILE = Path(__file__).parent
 STATIC_DIR = PATH_FILE.parent / "Fontend"
 DIR = f"http://localhost:{PORT}/build.html"
 CSS_PATHS = STATIC_DIR / "build.tcss"
 CONFIG = STATIC_DIR / "build.json"
-CONFIGS = STATIC_DIR / "models.json"
+CONFIGS = STATIC_DIR / "model.json"
 
-
-# import json
-# from pathlib import Path
-# from platformdirs import user_data_dir
-#
-#   STATE_FILE = Path(user_data_dir("layoutgen")) / "state.json"
-#
-#   # on exit — dump DataTable
-#   def save_state(self) -> None:
-#       table = self.query_one(DataTable)
-#       data = self.get_all_data(table)
-#       STATE_FILE.parent.mkdir(parents=True, exist_ok=True)
-#       STATE_FILE.write_text(json.dumps(data, indent=2))
-#
-#   # on launch — restore DataTable
-#   def load_state(self) -> dict:
-#       if STATE_FILE.exists():
-#           return json.loads(STATE_FILE.read_text())
-#       return {}
-#
-#   class CLIApp(App):
-#       async def on_mount(self) -> None:
-#           data = load_state()
-#           table = self.query_one(DataTable)
-#           for row in data.values():
-#               table.add_row(*row.values())
-#
-#       async def on_unmount(self) -> None:
-#           save_state(self)
-
-# # serve.py
-# import http.server, socketserver
-#
-# class Handler(http.server.SimpleHTTPRequestHandler):
-#     def end_headers(self):
-#         self.send_header("Content-Security-Policy", "")
-#         self.send_header("Cross-Origin-Embedder-Policy", "unsafe-none")
-#         super().end_headers()
-#
-# with socketserver.TCPServer(("", 9000), Handler) as httpd:
-#     httpd.serve_forever()
-# handler = functools.partial(
-#     NoCacheHandler,
-#     directory=str(STATIC_DIR))
-
-
-# class NoCacheHandler(http.server.SimpleHTTPRequestHandler):
-#     def end_headers(self):
-#         self.send_header("Cache-Control", "no-store, no-cache, must-revalidate")
-#         self.send_header("Pragma", "no-cache")
-#         self.send_header("Expires", "0")
-#         super().end_headers()
 
 class CLIApp(App):
     COMMAND_PALETTE_DISPLAY = None
@@ -84,11 +31,16 @@ class CLIApp(App):
         self.page = None
         self._pw = None
         self._server = None
-        with open(CONFIG) as f:
-            self.store = json.load(f)
+        self.store = json.loads(
+            CONFIG.read_text())
         self.stores = json.loads(
             CONFIGS.read_text()) \
             if CONFIGS.exists() else {}
+
+        subset = self.stores.get('0', {})
+        for i, store_key in enumerate(range(150, 156)):
+            if str(store_key) in subset:
+                self.helpful[str(i)] = subset[str(store_key)]
 
         self.store["00"] = [
             make_layer("1"),
@@ -107,14 +59,18 @@ class CLIApp(App):
         yield TableApp()
 
     async def on_mount(self) -> None:
-        dt = self.query_one(
-            "#data-table-0")
+        self.e_images = self.query_one(ImageTab)
+        dt = self.query_one("#data-table-0")
         self.set_focus(dt)
+
         handler = functools.partial(
             http.server.SimpleHTTPRequestHandler,
             directory=str(STATIC_DIR))
-        self._server = http.server.HTTPServer(("localhost", PORT), handler)
-        thread = threading.Thread(target=self._server.serve_forever, daemon=True)
+        self._server = http.server.HTTPServer(
+            ("localhost", PORT), handler)
+        thread = threading.Thread(
+            target=self._server.serve_forever,
+            daemon=True)
         thread.start()
 
         self._pw = await async_playwright().start()
@@ -122,7 +78,11 @@ class CLIApp(App):
         headless=True)
         self.page = await browser.new_page()
         await self.page.goto(DIR)
-        # self.query_one(ImageTab).store = self.configs
+
+        self.e_images.config = (1
+        if self.stores else 2,self.stores)
+        self.e_images.mutate_reactive(
+        ImageTab.config)
 
     async def on_unmount(self) -> None:
         if self._server:

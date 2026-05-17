@@ -271,9 +271,12 @@ def on_pressed(self, event, ImageTab) -> None:
         self.e_images.mutate_reactive(
             ImageTab.config)
 
+    if arr1 == 9:
+        CONFIGS.write_text(
+        json.dumps({}))
 
 
-def on_submitted(self, event, ImageTab) -> None:
+def on_submitted(self, event, image) -> None:
     if self.coord is not None:
         e_tables = self.query_one(
             f"#{self.f_right.current}", DataTable)
@@ -285,14 +288,14 @@ def on_submitted(self, event, ImageTab) -> None:
         self.app.stores[switches] = tst
         yays = self.app.stores
 
-        CONFIGS.write_text(
-        json.dumps(self.app.stores))
-
         self.e_images.config = (checkers,yays)
         self.e_images.mutate_reactive(
-            ImageTab.config)
+            image.config)
         self.e_third.value = ""
         self.coord = None
         e_tables.focus()
+
+        CONFIGS.write_text(
+        json.dumps(self.app.stores))
 
 
