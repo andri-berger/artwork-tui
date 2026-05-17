@@ -368,12 +368,6 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
         <a href="https://github.com/opencv/opencv">
         https://github.com/opencv/opencv</a></td>
     </tr>
-    <tr align="left">
-        <td>Processing</td>
-        <td>Pillow</td><td>
-        <a href="//github.com/python-pillow/Pillow">
-        https://github.com/python-pillow/Pillow</a></td>
-    </tr>
     <tr>
         <td>Processing</td>
         <td>PixiJs</td><td>

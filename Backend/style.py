@@ -27,6 +27,7 @@ def opencv(args, args0):
     y_min, y_max = ys.min(), ys.max()
     x_min, x_max = xs.min(), xs.max()
     sub_rgb = rgb[y_min:y_max + 1, x_min:x_max + 1]
+    enhanced = None
 
     if setting == 0:
         return
@@ -74,5 +75,3 @@ def opencv(args, args0):
     _, encoded_img = cv2.imencode('.png', processed)
     image_bytes = encoded_img.tobytes()
     return image_bytes
-
-

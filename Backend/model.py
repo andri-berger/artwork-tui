@@ -2,16 +2,15 @@ from textual.widgets import (DirectoryTree)
 from textual.reactive import reactive
 from textual_image.widget import Image
 from textual.widget import Widget
-from PIL import Image as PILImage
 from .script import hash_table
 from pathlib import Path
 from textual import on
 from .style import opencv
-from .scripts import open_fred
 import shutil
 import base64
 import time
 import json
+import cv2
 
 
 CWD = Path.cwd()
@@ -74,9 +73,6 @@ class ImageTab(Widget):
             with open(self.image_outs, "wb") as f:
                 f.write(img_bytes)
 
-        img_bytes = open_fred(self.image_outs,self.image_outs)
-        self.notify(f"{img_bytes}")
-
 
         if not self.is_mounted:
             return
@@ -88,9 +84,12 @@ class ImageTab(Widget):
             cell_w, cell_h = 9, 18
             target_w = size.width * cell_w
             target_h = size.height * cell_h
-            img = PILImage.open(self.image_outs)
-            img_ratio = img.width / img.height
             container_ratio = target_w / target_h
+
+            img = cv2.imread(str(self.image_outs))
+            height, width = img.shape[:2]
+            img_ratio = width / height
+
 
             if img_ratio > container_ratio:
                 self.query_one(Image).styles.width = "100%"

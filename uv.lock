@@ -94,7 +94,6 @@ source = { editable = "." }
 dependencies = [
     { name = "numpy" },
     { name = "opencv-python" },
-    { name = "pillow" },
     { name = "playwright" },
     { name = "textual" },
     { name = "textual-image" },
@@ -111,7 +110,6 @@ dev = [
 requires-dist = [
     { name = "numpy", specifier = ">=2.4.2" },
     { name = "opencv-python", specifier = ">=4.13.0.92" },
-    { name = "pillow", specifier = ">=12.1.1" },
     { name = "playwright", specifier = ">=1.58.0" },
     { name = "textual", specifier = ">=8.0.0" },
     { name = "textual-image", specifier = ">=0.8.5" },

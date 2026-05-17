@@ -46,21 +46,7 @@ class Tap < Formula
         sha256 "5868a8c028a0b37561579bfb8ac1875babdc69546d236249fff296a8c010ccf9"
       end
     end
-  
-  on_arm do
-    resource "pillow" do
-      url "https://files.pythonhosted.org/packages/19/1e/dce46f371be2438eecfee2a1960ee2a243bbe5e961890146d2dee1ff0f12/pillow-12.2.0-cp314-cp314t-macosx_11_0_arm64.whl"
-      sha256 "d5d38f1411c0ed9f97bcb49b7bd59b6b7c314e0e27420e34d99d844b9ce3b6f3"
-    end
-  end
 
-  on_intel do
-    resource "pillow" do
-      url "https://files.pythonhosted.org/packages/b6/ab/1b426a3974cb0e7da5c29ccff4807871d48110933a57207b5a676cccc155/pillow-12.2.0-cp314-cp314t-macosx_10_15_x86_64.whl"
-      sha256 "57850958fe9c751670e49b2cecf6294acc99e562531f4bd317fa5ddee2068463"
-    end
-  end
-  
   on_arm do
     resource "numpy" do
       url "https://files.pythonhosted.org/packages/05/1a/d8007a5138c179c2bf33ef44503e83d70434d2642877ee8fbb230e7c0548/numpy-2.4.4-cp314-cp314t-macosx_14_0_arm64.whl"

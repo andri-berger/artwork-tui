@@ -11,7 +11,6 @@ sha256sums=('10790e80a965d21087a53c40286817f7f7835356d917c2bce1c152dc004edcab')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 depends=(
     'python-numpy'
-    'python-pillow'
     'python-playwright'
     'python-textual-image'
     'python-textual'
