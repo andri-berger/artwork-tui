@@ -11,46 +11,48 @@ CONFIGS = STATIC_DIR / "model.json"
 
 
 def action_next_table(self, event, prefix) -> None:
-    testlauf = (self.full_IDs.index(self.app.focused.id) + prefix) % len(self.full_IDs)
+    sw = self.query_one("#cont-switch-0", ContentSwitcher)
+    st = self.query_one("#cont-switch-1", ContentSwitcher)
+    l1 = self.full_IDs.index(self.app.focused.id)
+    testlauf = (l1 + prefix) % len(self.full_IDs)
     arr = self.app.store["4-1"]
+    self.notify(f"{testlauf}")
+    yes = self.full_IDs[testlauf]
 
-    if testlauf in {1, 2, 4, 5}:
-        event.stop()
+    if testlauf in [1, 2, 4, 5, 6, 7, 8]:
         event.prevent_default()
+        event.stop()
 
-    if testlauf < 3:
-        self.query_one("#cont-switch-0", ContentSwitcher).current = self.full_IDs[testlauf]
-        tree = self.query_one(f"#{self.full_IDs[testlauf]}", FileTypeTree)
-        tree.reload()
-
-    if testlauf < 3 or testlauf >= 6:
+    if testlauf in [0, 1, 2, 9, 10, 11, 12]:
         self.label.update(arr[testlauf] or "")
         self.c_digits.update("")
         self.e_third.value = ""
         self.e_fourth.value = ""
 
-    if testlauf < 6:
-        switcher_id = "#cont-switch-1" if testlauf >= 3 else "#cont-switch-0"
-        self.query_one(switcher_id, ContentSwitcher).current = self.full_IDs[testlauf]
+    if testlauf in [3,4,5,6,7,8]:
+        st.current = yes
+        table = self.query_one(
+            f"#{yes}", DataTable)
+        coordinates = table.cursor_coordinate
+        on_cell_highlighted_(self, coordinates)
 
-        if testlauf >= 3:
-            table = self.query_one(f"#{self.full_IDs[testlauf]}", DataTable)
-            coordinates = table.cursor_coordinate
-            on_cell_highlighted_(self, coordinates)
+    if testlauf in [0,1,2]:
+        sw.current = yes
+        tree = self.query_one(
+            f"#{yes}", FileTypeTree)
+        tree.reload()
+
 
 def on_cell_highlighted_(self, coordinate) -> None:
+    cool = self.query_one("#cont-switch-1",ContentSwitcher)
     digits = self.query_one("#digits-0", Digits)
     label = self.query_one("#label-0", Label)
     fourth = self.query_one("#fourth", Input)
     third = self.query_one("#third", Input)
-
-
-    switches = int(self.query_one(
-        "#cont-switch-1", ContentSwitcher)
-                   .current.split("-")[-1])
-    config9 = self.app.store[f"2-{switches}"]
-    config = self.app.store[f"3-{switches}"]
-    table = self.query_one(f"#data-table-{switches}", DataTable)
+    switch = cool.current.split("-")[-1]
+    switchers = '2' if switch == '3' else switch
+    config9 = self.app.store[f"2-{switchers}"]
+    config = self.app.store[f"3-{switchers}"]
     row, col = coordinate
     digits.update("")
     label.update("")
@@ -66,34 +68,25 @@ def on_cell_highlighted_(self, coordinate) -> None:
         return obj
 
     try:
-        if switches == 0:
+        switches = int(switch)
+        if switches in [0,4,5]:
             cell = safe(config, row, col)
-            tts = self.app.store.get(f"{row:02d}-{col}")
             values_ = safe(config9, row, col) or ""
             configs = safe(config9, row, col) or ""
-            dd = table.get_cell_at((31, col)) or ""
-            de = ["undefined","undefined","undefined"]
 
             if cell is not None:
-                rrs = cell \
-                    if tts is None or dd == "" \
-                    else tts.get(dd,de)[2]
-                label.update(rrs)
+                label.update(cell)
 
             if values_ is not None:
                 digits.update(values_[0])
 
             if configs is not None:
-                rrr = configs[1] \
-                    if tts is None or dd == "" \
-                    else tts.get(dd,de)[0]
-                rrt = configs[2] \
-                    if tts is None or dd == "" \
-                    else tts.get(dd,de)[1]
+                rrr = configs[1]
+                rrt = configs[2]
                 fourth.value = rrr
                 third.value = rrt
 
-        elif switches >= 1:
+        elif switches in [1,2,3]:
             value = safe(config9, row) or ""
             cell = safe(config, row) or ""
             check = isinstance(cell, str)
@@ -115,7 +108,10 @@ def on_cell_highlighted_(self, coordinate) -> None:
                            [f"{test_[0]}{n:02d}"
                                   for n in range(100)],
                            ["","00"] + [f"{letter}{n:02d}"
-                            for letter in "ABCDEF"
+                            for letter in "ABC"
+                            for n in range(100)],
+                           [""] + [f"{letter}{n:02d}"
+                            for letter in "DEF"
                             for n in range(100)])
                 digits.update(
                     entries[switches][col])
@@ -154,14 +150,11 @@ async def on_key_(self, event) -> None:
         self.notify(f"{event.key} pressed")
         self.query_one("#button-4", Button).press()
 
-
-
     if event.key == "tab":
         action_next_table(self,event,1)
 
     elif event.key == "shift+tab":
         action_next_table(self,event,-1)
-
 
     if isinstance(self.app.focused, DataTable):
         cursor_coord = table.cursor_coordinate
@@ -263,15 +256,15 @@ def on_pressed(self, event, ImageTab) -> None:
         self.notify(
             f"D00 SEED {self.turi[yay[2]]} ")
 
-    if 9 <= arr1 <= 11:
-        pre = (1,2,0)[arr1 - 9]
+    if 12 <= arr1 <= 14:
+        pre = (1,2,0)[arr1-12]
         load = ({},self.app.stores,
-                self.app.stores)[arr1 - 9]
+                self.app.stores)[arr1-12]
         self.e_images.config = (pre,load)
         self.e_images.mutate_reactive(
             ImageTab.config)
 
-    if arr1 == 9:
+    if arr1 == 12:
         CONFIGS.write_text(
         json.dumps({}))
 

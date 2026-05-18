@@ -19,25 +19,10 @@ import { toCanvas } from 'html-to-image';
 import * as filters from 'pixi-filters';
 import * as PIXI from 'pixi-core';
 import * as d3 from 'random';
-import k0 from './script.js';
+import h from './script.js';
 
-
-
-
-const k1 = document.body;
-const k2 = document.documentElement;
-const k3 = _ => document.createElement(_);
-const k4 = _ => document.querySelector(_);
-const k5 = _ => document.querySelectorAll(_);
-const k6 = _ => _.getBoundingClientRect();
-const k7 = _ => _[0].getAttribute(_[1]);
-const k8 = _ => _[0].removeAttribute(_[1]);
-const xk15 = _ => String(_).padStart(2,'0');
-const k9 = _ => _[1]+(_[2]-_[1])*(_[0]/100);
-const xk17 = _ => [1,10,100,1000,10000][_[0]];
-const xk21 = _ => Math.round(_[1]*xk17(_))/xk17(_);
-
-const f = {
+var h0 = { };
+var h1 = {
     "4-0": {
     "l00-0": ["0",-10,10],
     "l00-1": ["-",60,100],
@@ -169,10 +154,7 @@ const f = {
     "3-3": ["hue","color","screen","lighten","darken","overlay","multiply","saturation","luminosity","color dodge","color burn","hard light","soft light"],
     "0-3": ["White","Transparent","Gainsboro","Wheat","Gold","Crimson","MediumVioletRed","MediumSeaGreen","SeaGreen","DeepSkyBlue","DodgerBlue","MediumSlateBlue","Black","Snow","HoneyDew","MintCream","Azure","AliceBlue","GhostWhite","WhiteSmoke","SeaShell","Beige","OldLace","FloralWhite","Ivory","AntiqueWhite","Linen","LavenderBlush","MistyRose","CornSilk","BlanchedAlmond","Bisque","NavajoWhite","BurlyWood","RosyBrown","SandyBrown","GoldenRod","DarkGoldenRod","Peru","Chocolate","SaddleBrown","Sienna","Brown","Maroon","LightGray","Silver","DarkGray","Gray","DimGray","LightSlateGray","SlateGray","DarkSlateGray","LightYellow","LemonChiffon","PapayaWhip","Moccasin","PeachPuff","PaleGoldenRod","Khaki","DarkKhaki","Coral","Tomato","OrangeRed","DarkOrange","IndianRed","LightCoral","Salmon","DarkSalmon","LightSalmon","FireBrick","DarkRed","Pink","LightPink","HotPink","DeepPink","PaleVioletRed","Lavender","Thistle","Plum","Violet","Orchid","Fuchsia","Magenta","MediumOrchid","MediumPurple","BlueViolet","DarkViolet","DarkOrchid","DarkMagenta","Purple","Indigo","SlateBlue","DarkSlateBlue","GreenYellow","Chartreuse","LimeGreen","PaleGreen","LightGreen","SpringGreen","ForestGreen","DarkGreen","YellowGreen","OliveDrab","Olive","DarkOliveGreen","MediumAquamarine","DarkSeaGreen","LightSeaGreen","DarkCyan","Teal","Aqua","Cyan","LightCyan","PaleTurquoise","AquaMarine","Turquoise","MediumTurquoise","DarkTurquoise","CadetBlue","SteelBlue","LightSteelBlue","PowderBlue","LightBlue","SkyBlue","LightSkyBlue","CornflowerBlue","RoyalBlue","MediumBlue","DarkBlue","MidnightBlue","Navy"]
     }};
-let h = {
-
-};
-const hf = {
+var h2 = {
     "110": "2-01",
     "111": "2-02",
     "112": "2-03",
@@ -210,12 +192,25 @@ const hf = {
     "106": "0-21",
     "107": "0-22",
     "108": "0-23",
-    "144": "0-0",
-    "145": "0-1",
-    "146": "0-2"
+    "142": "0-0",
+    "143": "0-1",
+    "144": "0-2"
 };
 
-const k10 = l => {
+var k1 = document.body;
+var k2 = document.documentElement;
+var k3 = _ => document.createElement(_);
+var k4 = _ => document.querySelector(_);
+var k5 = _ => document.querySelectorAll(_);
+var k6 = _ => _.getBoundingClientRect();
+var k7 = _ => _[0].getAttribute(_[1]);
+var k8 = _ => _[0].removeAttribute(_[1]);
+var k9 = _ => String(_).padStart(2,'0');
+var k10 = _ => _[1]+(_[2]-_[1])*(_[0]/100);
+var k11 = _ => [1,10,100,1000,10000][_[0]];
+var k12 = _ => Math.round(_[1]*k11(_))/k11(_);
+
+const k13 = l => {
 let l0 = k2.style;
 let l1 = [l[1],'px'];
 let l2 = `--${l[0]}`;
@@ -228,41 +223,88 @@ l0.removeProperty(l2); }
 if (!k7([k2,'style'])) {
 k8([k2,'style']); }};
 
-/// OK
-const k11 = l => {
-let l0 = _ => Math.floor(_);
-let l1 = Object.keys(l||{});
-let l3 = l1.some(
-    _ => _ >= 58 && _ <= 81);
-let l4 = l[102] || 0;
-let l5 = l[50] / 7.143;
-let l6 = l[82] / 16.667;
-let l7 = [l0(l5),l0(l6)];
-return [l3,...l7,l4]; };
+const k14 = l => {
+let l82 = k4('canvas')
+ if (l82) {
+k1.removeChild(l82); }
+let l90 = k3('svg');
+let l91 = k3('div');
+let l92 = k3('style');
+let l93 = k3 ('style');
+k1.appendChild(l90);
+k1.appendChild(l91);
+k1.appendChild(l92);
+k1.appendChild(l93);
+let l4 = k4('body>svg');
+let l5 = k4('body>div');
+let l6 = k5('body>style');
+console.log('hier',l)
+let l8 = h([...l]);
+l5.innerHTML = l8[1];
+l6[0].innerHTML = l8[2];
+l6[1].innerHTML = l8[3];
+k15(0||'_'); };
 
-const k15 = async l => {
+const k15 = () => {
+let l00 = h0['00'];
+let l0 = 'body>div';
+let l1 = '.t00,.t000';
+let l2 = `.k00,${l1}`;
+let l3 = `.l00,${l2}`;
+let l5 = -Infinity;
+let l6 = -Infinity;
+let l7 = Infinity;
+let l8 = Infinity;
+k13(['f0',0||0]);
+k13(['f1',0||0]);
+k5(`${l0},${l3}`)
+.forEach(_ => {
+let l10 = k6(_);
+let l11 = l10.top;
+let l12 = l10.left;
+let l13 = l10.right;
+let l14 = l10.bottom;
+l8 = Math.min(l8,l11);
+l7 = Math.min(l7,l12);
+l6 = Math.max(l6,l13);
+l5 = Math.max(l5,l14); });
+let l9 = k2.scrollTop||0;
+let l10 = k2.scrollWidth||0;
+let l11 = k2.scrollLeft * 2;
+let l12 = l10 - l6 - l7 - l11;
+let l16 = Math.round(l00-l8-l9);
+let l15 = Math.round(0.5*l12);
+let l13 = Math.round(l6-l7);
+let l14 = Math.round(l5-l8);
+k13(['f0',l15||Number()]);
+k13(['f1',l16||Number()]);
+k0[2] ??= new Array();
+k0[2][1] = l13;
+k0[2][2] = l14; };
 
-    let l00 = _ => {
-        let l01 = _.width;
-        let l02 = _.height;
-        k10(['f2',l01/l[0]]);
-        k10(['f3',l02/l[0]]);
-        k1.innerHTML = '';
-        k1.appendChild(_);
-        let test = {}
-        if (h['0-0']) {
-            test['0'] = h['0-0']; }
-        if (h['0-1']) {
-            test['1'] = h['0-1']; }
-        if (h['0-2']) {
-            test['0'] = h['0-2']; }
-
-        window.resolveCapture([
-            _.toDataURL(),
-            test,l]);
-    };
-let l0 = k11(l[2]['0']||{});
-if (l0[0] === true) {
+const k16 = async l => {
+let l00 = _ => {
+let l01 = _.width;
+let l02 = _.height;
+k13(['f2',l01/l[0]]);
+k13(['f3',l02/l[0]]);
+k1.innerHTML = '';
+k1.appendChild(_);
+let test = {}
+if (h0['0-0']) {
+    test['0'] = h0['0-0']; }
+if (h0['0-1']) {
+    test['1'] = h0['0-1']; }
+if (h0['0-2']) {
+    test['0'] = h0['0-2']; }
+window.resolveCapture([
+    _.toDataURL(),
+    test,l]); };
+let l90 = l[2]['0']||{};
+let l91 = Object.keys(l90);
+let l0 =  l91.some(
+    _ => _ >= 51 && _ <= 74);
+if (l0 === true) {
 let l2 = k3('canvas');
 let l3 = '/styles.js';
 let l4 = l[1].getContext('2d',
@@ -279,17 +321,17 @@ l10.postMessage([...l8,
 ...l9,l[2]['0']],l9||[]);
 l10.onmessage = _ => {
 l00(_.data[0]); }; }
-if (l0[0] === false) {
+if (l0 === false) {
 l00(l[1]); }};
 
-const k16 = l => {
-let l0 = l[2][51]||0;
-let l1 = l[2][52]||0;
-let l2 = l[2][53]||0;
-let l3 = l[2][54]||0;
-let l4 = l[2][55]||0;
-let l5 = l[2][56]||0;       // raus !!
-let l6 = l[2][57]||0;       // raus !!
+const k17 = l => {
+let l0 = l[2][76]||0;
+let l1 = l[2][77]||0;
+let l2 = l[2][78]||0;
+let l3 = l[2][79]||0;
+// let l4 = l[2][80]||0;
+// let l5 = l[2][81]||0;
+// let l6 = l[2][82]||0;
 let l7 = new Object();
 let l8 = filters;
 let l9 = l[1].height;
@@ -297,117 +339,119 @@ let l10 = l[1].width;
 if (l[0] === 9) {
 l7 = new l8.
 ZoomBlurFilter({
-strength: k9([l0,0.2,2]),
-innerRadius:k9([l1,100,1000]),
-radius: k9([l2,100,1000]),
-centerY: l9 * k9([l3,0,1]),
+strength: k10([l0,0.2,2]),
+innerRadius:k10([l1,100,1000]),
+radius: k10([l2,100,1000]),
+centerY: l9 * k10([l3,0,1]),
 centerX: l10 * 0.5}); }
 if (l[0] === 10) {
 l7 = new l8.
 TwistFilter({
 offset: [l10 / 2,
-20 + k9([l0,100,900])
-+ l9 * k9([l0,0,1])],
-radius: k9([l1,100,900]),
-angle: k9([l2,0,100])}); }
+20 + k10([l0,100,900])
++ l9 * k10([l0,0,1])],
+radius: k10([l1,100,900]),
+angle: k10([l2,0,100])}); }
 if (l[0] === 11) {
 l7 = new l8.
 BulgePinchFilter({
-radius: k9([l1,200,2000]),
-strength: k9([l2,-1,1]),
+radius: k10([l1,200,2000]),
+strength: k10([l2,-1,1]),
 center:{x: 0.5,
-y: k9([l0,0,1])}}); }
+y: k10([l0,0,1])}}); }
 if (l[0] === 12) {
 l7 = new l8.GlitchFilter({
-slices: k9([l0,0,100]),
-offset: k9([l1,-400,400]),
-direction:k9([l2,0,360]),
-sampleSize: k9([l3,512,1024])}); }
+slices: k10([l0,0,100]),
+offset: k10([l1,-400,400]),
+direction:k10([l2,0,360]),
+sampleSize: k10([l3,512,1024])}); }
 if (l[0] === 13) {
 l7 = new l8.
 ReflectionFilter({
-boundary: k9([l0,0,0.9]),
-amplitudeEnd: k9([l2,2,200]),
-amplitudeStart: k9([l1,2,200]),
-wavelengthStart: k9([l3,2,200]),
-wavelengthEnd: k9([l4,2,200]),
-alphaStart: k9([l5,0.2,1]),
-alphaEnd: k9([l6,0.2,1]),
-mirror: k9([l6,0,1])}); }
+boundary: k10([l0,0,0.9]),
+amplitudeEnd: k10([l2,2,200]),
+amplitudeStart: k10([l1,2,200]),
+wavelengthStart: k10([l3,2,200])/*,
+wavelengthEnd: k10([l4,2,200]),
+alphaStart: k10([l5,0.2,1]),
+alphaEnd: k10([l6,0.2,1]),
+mirror: k10([l6,0,1]) */}); }
 return l7; };
 
-const k17 = l => {
-let l0 = l[2][51]||0;
-let l1 = l[2][52]||0;
-let l2 = l[2][53]||0;
-let l3 = l[2][54]||0;
-let l4 = l[2][55]||0;
-let l5 = l[2][56]||0;       // raus !!
+const k18 = l => {
+let l0 = l[2][76]||0;
+let l1 = l[2][77]||0;
+let l2 = l[2][78]||0;
+let l3 = l[2][79]||0;
+// let l4 = l[2][80]||0;
+// let l5 = l[2][81]||0;
 let l6 = new Object();
 let l7 = filters;
 if (l[0] === 1) {
 l6 = new l7.
 AsciiFilter({
-size: k9(
+size: k10(
 [l0,1,200])}); }
 if (l[0] === 2) {
 l6 = new PIXI.
 NoiseFilter({
-noise: k9([l0,0.2,2]),
-seed: k9([l1,0.01,100])}); }
+noise: k10([l0,0.2,2]),
+seed: k10([l1,0.01,100])}); }
 if (l[0] === 3) {
 l6 = new l7.DotFilter({
-scale: k9([l0,0,2]),
-angle: k9([l1,0,10]),
+scale: k10([l0,0,2]),
+angle: k10([l1,0,10]),
 grayscale: false}); }
 if (l[0] === 4) {
 l6 = new l7.CRTFilter({
-lineContrast: k9([l1,0.25,10]),
-lineWidth: k9([l0,1,100]),
-curvature: k9([l2,1,100]),
-verticalLine: k9([l3,0,1])
+lineContrast: k10([l1,0.25,10]),
+lineWidth: k10([l0,1,100]),
+curvature: k10([l2,1,100]),
+verticalLine: k10([l3,0,1])
  > 0.5? true: false}); }
 if (l[0] === 5) {
 l6 = new l7.
 SimplexNoiseFilter({
-strength: k9([l0,0.3,0.9]),
-noiseScale: k9([l1,1,90]),
-offsetX: k9([l2,0,100]),
-offsetY: k9([l3,0,100]),
-offsetZ: k9([l4,0,100]),
-step: k9([l5,-1,1])}); }
+strength: k10([l0,0.3,0.9]),
+noiseScale: k10([l1,1,90]),
+offsetX: k10([l2,0,100]),
+offsetY: k10([l3,0,100])/*,
+offsetZ: k10([l4,0,100]),
+step: k10([l5,-1,1]) */}); }
 if (l[0] == 6) {
 l6 = new l7.GlowFilter({
-distance: k9([l0,1,100]),
-innerStrength: k9([l1,0.1,20]),
-outerStrength: k9([l2,0.1,20]),
-alpha: k9([l3,0.1,10])}); }
+distance: k10([l0,1,100]),
+innerStrength: k10([l1,0.1,20]),
+outerStrength: k10([l2,0.1,20]),
+alpha: k10([l3,0.1,10])}); }
 if (l[0] === 7) {
 l6 = new l7.KawaseBlurFilter({
-strength: k9([l0,0,20]),
-quality: k9([l3,1,3]),
+strength: k10([l0,0,20]),
+quality: k10([l3,1,3]),
 pixelSize: {
-x:k9([l1,1,10]),
-y:k9([l2,1,10])}}); }
+x:k10([l1,1,10]),
+y:k10([l2,1,10])}}); }
 if (l[0] === 8) {
 l6 = new l7.AdvancedBloomFilter({
-threshold: k9([l0,0.1,1]),
-bloomScale: k9([l1,0,2]),
-quality: k9([l2,0,10]),
-pixelSizeX: k9([l3,0,10]),
-pixelSizeY: k9([l4,0,10]),
-blur: k9([l5,0,10])}); }
+threshold: k10([l0,0.1,1]),
+bloomScale: k10([l1,0,2]),
+quality: k10([l2,0,10]),
+pixelSizeX: k10([l3,0,10]),
+/* pixelSizeY: k10([l4,0,10]),
+blur: k10([l5,0,10]) */}); }
 if (l[0] >= 9) {
-return k16(l); }
+return k17(l); }
 if (l[0] <= 8) {
 return l6; }};
 
 
 // OK [resolution,canvas,data]
-const k18 = async l => {
-
-let l0 = k11(l[2]['0']||{});
-let l1 = [l0[1],l[1]];
+const k19 = async l => {
+    let l90 = l[2]['0']||{};
+    let l91 = Object.keys(l90);
+    let l0 =  l91.some(
+    _ => _ >= 51 && _ <= 74);
+    let l1 = [l0[1],l[1]];
 let l2 = l0[1] >= 1;
 let l3 = l[2]['0'];
 let l4 = [...l1,l3];
@@ -433,7 +477,7 @@ Texture.from(l[1]);
 
 
 
-if (!k0[9]) {console.log('first')
+if (!k0[9]) { console.log('first')
 k0[9] = new PIXI.Sprite(l7);
 k0[9].width = l6;
 k0[9].height = l5;
@@ -445,7 +489,7 @@ k0[9].height = l5;
 }
 
 if (l2 === true) {
-let l8 = k17(0||l4);
+let l8 = k18(0||l4);
 k0[9].filters = [l8];
 k0[10].render() || null;
 let l9 = k3(0||'canvas');
@@ -454,15 +498,15 @@ let l10 = l9.getContext('2d',
 l9.width = k0[10].renderer.width;
 l9.height = k0[10].renderer.height;
 l10.drawImage(k0[10].view,0,0);
-k15([0,l9,l[2]]);
+k16([0,l9,l[2]]);
 k0[5] = l9||{}; }
 
 if (l2 === false) {
-k15([l[0],l[1],l[2]]);
+k16([l[0],l[1],l[2]]);
 }};
 
 
-const k19 = async l => {
+const k20 = async l => {
 let l90 = l[2]?.['0']?.['140']||10;
 let l1 = k0[2][1] + (l90 * 2);
 let l2 = k0[2][2] + (l90 * 2);
@@ -497,24 +541,7 @@ l4.drawImage(
 l16,l13/2,0,
 l10,l11,l14/2,
 l15/2,l10,l11);
-console.log('why-nto ???')
-k15([l0,l3,l[2]]);
-};
-
-
-
-
-
-
-
-///////////////////////////////////////////////////////////////////
- /////////////////////////////////////////////////////////////////
- /////////////////////////////////////////////////////////////////
-
-
-
-
-
+k16([l0,l3,l[2]]); };
 
 
 const h19 = l => {
@@ -544,7 +571,7 @@ l3)(l[2])); }
 return l0 || []; }
 if (l[0] === 2) {
 let l0 = Object();
-let l1 = f['4-1'];                  // metadata ok
+let l1 = h1['4-1'];                  // metadata ok
 let l2 = l1[l[1]];
 for (let i in l[2]) {
 let l3 = l[2][0||i];
@@ -563,7 +590,7 @@ let l2 = l[0][2];
 let l3 = l[0][3];
 let l03 = 1-l[0][4];
 let l4 = ['-','2'];
-let l5 = f['6-0'][l1];
+let l5 = h1['6-0'][l1];
 let l6 = l[3].length-1;
 let l7 = l4.includes(l1);
 let l8 = new Object();
@@ -573,12 +600,12 @@ let l11 = _ => {
 let l12 = _[0] * l6;
 let l13 = _[0] * l10;
 let l14 = 0||l13 + l2;
-let l15 = xk21([0,l14]);
-let l16 = xk21([0,l12]);
+let l15 = k12([0,l14]);
+let l16 = k12([0,l12]);
 if (l1.length >= 3) {
 let l17 = l5.length-1;
 let l18 = [0,_[0]*l17];
-let l19 = xk21(l18);
+let l19 = k12(l18);
 l9 = l5?.[l19]; }
 if (l1 === '-' ||
 l1 === '0') {
@@ -590,12 +617,12 @@ let l17 = ['k'];
 if (_[1] >= 1) {
 let l18 = Array.from(
 {length:_[1]},(_,_0)=>
-`${l0[0]}${xk15(_0)}`);
+`${l0[0]}${k9(_0)}`);
 l17.push(...l18||[]); }
 let l19 = l17.length;
 let l20 = l03 * _[0]||0;
 let l21 = l20 * (l19-1);
-let l22 = xk21([0,l21]);
+let l22 = k12([0,l21]);
 l9 = l17[l22]; }
 if (l1 === '3') {
 if (l[3].length) {
@@ -613,14 +640,14 @@ l8[i] = l15; }}}
 return l8; };
 
 const h21 = l => {
-let l0 = f['4-0'];                          // metadata ok
-let l1 = f['4-1'];                          // metadata ok
+let l0 = h1['4-0'];                          // metadata ok
+let l1 = h1['4-1'];                          // metadata ok
 let l2 = {...l0,...l1};
 let l3 = {};
 let l4 = Number(l[1]);
 let l5 = l2[l[0]||''];
 let l6 = [l[4],l[5]];
-let l8 = xk21([0,l[2]]);
+let l8 = k12([0,l[2]]);
 let l9 = l5[2] - l5[1];
 let l10 = {length:l9+1};
 let l11 = {length:l8+0};
@@ -681,7 +708,7 @@ let l7 = new Array(9);
 let l8 = l7.fill(0);
 l8.push(String());
 l8.push(String());
-if (h[l6] != null) {
+if (h0[l6] != null) {
 for (let i0 in l8) {
 let l10 = Number(i0);
 let l11 = l10 >= 9;
@@ -689,25 +716,25 @@ let l12 = l10 >= 7;
 let l13 = l12? 12: 0;
 let l14 = l10 + l13||0;
 let l15 = [0,2*l2+l10-6];
-let l16 = [l2+2,xk15(l14)];
-let l17 = h[l16.join('-')];                 // all others
-let l18 = h[l15.join('-')];                 // all others
+let l16 = [l2+2,k9(l14)];
+let l17 = h0[l16.join('-')];                 // all others
+let l18 = h0[l15.join('-')];                 // all others
 let l19 = l11? l18: l17;
 if (l10 === 0) {
 let l20 = `0-2${l2+1}`;             // l/k/t-seed 0-21/0-22/0-23
 let l21 = `0-${l2+0}`;              // ID-Seed 0-0/0-1/0-2
-let l22 = h[`${l21}`];
+let l22 = h0[`${l21}`];
 let l23 = [l22,`${l3}`];
-let l25 = h[l20] && l22;
+let l25 = h0[l20] && l22;
 l8[0] = l23[l25?0:1];
 if (l25 == null) {
-    h[l21] = `${l3}`; }}
+    h0[l21] = `${l3}`; }}
 if (l10 === 1) {
 l8[l10] = l19; }
 if (l10 >= 2) {
 if (l19 != null) {
 let l20 = l19 / 100;
-let l21 = xk21([3,l20]);
+let l21 = k12([3,l20]);
 l8[l10] = l11? l19: l21; }}}
 let l10 = h21([l4,...l8]);
 let l11 = h21([l5,...l8]);
@@ -722,90 +749,8 @@ return l1; };
 
 
 
-
-
-
-
-
-
-
-
-const k12 = l => {
-let l82 = k4('canvas')
- if (l82) {
-k1.removeChild(l82); }
-let l90 = k3('svg');
-let l91 = k3('div');
-let l92 = k3('style');
-let l93 = k3 ('style');
-k1.appendChild(l90);
-k1.appendChild(l91);
-k1.appendChild(l92);
-k1.appendChild(l93);
-let l4 = k4('body>svg');
-let l5 = k4('body>div');
-let l6 = k5('body>style');
-console.log('hier',l)
-let l8 = k0([...l]);
-console.log('wasili',l8)
-
-// console.log(l8[0])
-// const doc = new DOMParser().parseFromString(l8[0], "image/svg+xml");
-// l4.innerHTML = ''
-// l4.appendChild(doc.documentElement);
-// l4.innerHTML = l8[0];
-
-l5.innerHTML = l8[1];
-l6[0].innerHTML = l8[2];
-l6[1].innerHTML = l8[3];
-k13(0||'_'); };
-
-const k13 = () => {
-let l00 = h['00'];
-let l0 = 'body>div';
-let l1 = '.t00,.t000';
-let l2 = `.k00,${l1}`;
-let l3 = `.l00,${l2}`;
-let l5 = -Infinity;
-let l6 = -Infinity;
-let l7 = Infinity;
-let l8 = Infinity;
-k10(['f0',0||0]);
-k10(['f1',0||0]);
-k5(`${l0},${l3}`)
-.forEach(_ => {
-let l10 = k6(_);
-let l11 = l10.top;
-let l12 = l10.left;
-let l13 = l10.right;
-let l14 = l10.bottom;
-l8 = Math.min(l8,l11);
-l7 = Math.min(l7,l12);
-l6 = Math.max(l6,l13);
-l5 = Math.max(l5,l14); });
-let l9 = k2.scrollTop||0;
-let l10 = k2.scrollWidth||0;
-let l11 = k2.scrollLeft * 2;
-let l12 = l10 - l6 - l7 - l11;
-let l16 = Math.round(l00-l8-l9);
-let l15 = Math.round(0.5*l12);
-let l13 = Math.round(l6-l7);
-let l14 = Math.round(l5-l8);
-k10(['f0',l15||Number()]);
-k10(['f1',l16||Number()]);
-k0[2] ??= new Array();
-k0[2][1] = l13;
-k0[2][2] = l14; };
-
-////////////////////////////////////////////////
- ///////////////////////////////////////////////
- ///////////////////////////////////////////////
-
-
-
-
 window.testlaufs = l => {
-    h = {
+    h0 = {
     "2-01": 20,
     "2-02": 30,
     "3-01": 20,
@@ -816,22 +761,21 @@ window.testlaufs = l => {
     "3-19": 100,
     "4-19": 100};
     window.k0 = [];
-    window.k1 = {};
     document.body.innerHTML = '';
-    h['00'] = l[2]?.['0']?.['140']||10;
+    h0['00'] = l[2]?.['0']?.['140']||10;
     for (let i in l[1]) {
         if (Number(i) <= 2) {
-        h[`0-${i}`] = l[1][i]; }}
+        h0[`0-${i}`] = l[1][i]; }}
     return new Promise(resolve => {
         window.resolveCapture = resolve;
         if (l[0] === 2) {
             let l0 = l[2];
             for (let i in l0['0']) {
-            h[hf[i]] = l0['0'][i]; }
-            k12([l[0],h22(),l[1]['4'],l[1]['5']]); }
+            h0[h2[i]] = l0['0'][i]; }
+            k14([l[0],h22(),l[1]['4'],l[1]['5']]); }
         if (l[0] <= 1) {
-            k12([l[0],l[2],l[1]['4'],l[1]['5']]); }
-        k19(l);
+            k14([l[0],l[2],l[1]['4'],l[1]['5']]); }
+        k20(l);
 }); }
 
 

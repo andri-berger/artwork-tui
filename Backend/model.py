@@ -2,10 +2,10 @@ from textual.widgets import (DirectoryTree)
 from textual.reactive import reactive
 from textual_image.widget import Image
 from textual.widget import Widget
-from .script import tui_to_web
+from .script import tui_to_web, web_to_tui
 from pathlib import Path
 from textual import on
-from .style import opencv
+from .scripts import opencv
 import shutil
 import base64
 import time
@@ -46,7 +46,6 @@ class ImageTab(Widget):
         data_url = await (
             page.evaluate(
             "async (store) => window.testlaufs(store)",config_))
-
         # test = {'4': '23'}
         # self.app.stores['4'] = {}
 
@@ -54,14 +53,18 @@ class ImageTab(Widget):
             self.app.helpful[i] = data_url[1][i]
         b64 = data_url[0].split(',')[1]
         img_bytes = base64.b64decode(b64)
+        l91 = d_transformed.get('0',{})
 
-        # settings = {
-        #     "setting": 1,
-        #     "setting0": 0,
-        #     "setting1": 0,
-        #     "setting2": 0}
-        # img_bytes = opencv(img_bytes,settings)
-        # img_bytes = vignette(img_bytes)
+        if (any(str(k) in l91.keys()
+               for k in range(80,84))):
+            settings = {
+                "set": l91.get('80',0),
+                "set0": l91.get('81',0),
+                "set1": l91.get('82',0),
+                "set2": l91.get('83',0),
+                "set3": l91.get('83',0) }
+            img_bytes = opencv(
+                img_bytes,settings)
 
         if prefix == 0:
             time_stamp = int(time.time())
@@ -98,6 +101,9 @@ class ImageTab(Widget):
                 self.query_one(Image).styles.width = "auto"
                 self.query_one(Image).styles.height = "100%"
 
+
+        # test = web_to_tui(data_url[2],rot)
+        # self.notify(f"{test}")
         # if prefix == 2:
         #   CONFIGS.write_text(
         #   json.dumps(self.app.stores))

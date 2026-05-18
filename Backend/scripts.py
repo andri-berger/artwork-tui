@@ -11,10 +11,10 @@ def clamp(value, max_val, min_val):
     return total + min_val
 
 def opencv(args, args0):
-    setting = args0['setting']
-    setting0 = args0['setting0']
-    setting1 = args0['setting1']
-    setting2 = args0['setting2']
+    setting = args0['set']
+    setting0 = args0['set0']
+    setting1 = args0['set1']
+    setting2 = args0['set2']
 
     img = cv2.imdecode(
         np.frombuffer(args,
@@ -33,8 +33,6 @@ def opencv(args, args0):
         return
 
     if setting == 1:
-
-
         enhanced = cv2.bitwise_not(sub_rgb)
 
     # if setting == 1:

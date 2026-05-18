@@ -1,6 +1,7 @@
 from playwright.async_api import async_playwright
 from textual.app import App, ComposeResult
-from .script import make_layer, make_layers
+from .script import (make_layer,
+make_layers, make_new, make_news, make_news_0)
 from .model import ImageTab
 from .builds import TableApp
 from pathlib import Path
@@ -14,7 +15,7 @@ PORT = 9000
 PATH_FILE = Path(__file__).parent
 STATIC_DIR = PATH_FILE.parent / "Fontend"
 DIR = f"http://localhost:{PORT}/build.html"
-CSS_PATHS = STATIC_DIR / "build.tcss"
+CSS_PATHS = STATIC_DIR / "style.tcss"
 CONFIG = STATIC_DIR / "build.json"
 CONFIGS = STATIC_DIR / "model.json"
 
@@ -42,17 +43,24 @@ class CLIApp(App):
             if str(store_key) in subset:
                 self.helpful[str(i)] = subset[str(store_key)]
 
+        self.store["1-4"] = make_new("Image")
+        self.store["1-5"] = make_new("Text")
+        self.store["2-4"] = make_news_0("Image")
+        self.store["2-5"] = make_news_0("Text")
+        self.store["3-4"] = make_news("Image")
+        self.store["3-5"] = make_news("Text")
+
         self.store["00"] = [
             make_layer("1"),
             make_layer("2"),
             make_layer("-3"),
             make_layer("808080"),
             make_layer("ffffff"),
-            make_layers(300, "ffffff", 300),
-            make_layers(300, "808080", 300),
-            make_layers(300, "0", 300),
-            make_layers(300, "1", 300),
-            make_layers(300, "2", 300)]
+            make_layers("ffffff"),
+            make_layers("808080"),
+            make_layers("0"),
+            make_layers("1"),
+            make_layers("2")]
 
 
     def compose(self) -> ComposeResult:

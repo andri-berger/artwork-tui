@@ -31,9 +31,10 @@ class TableApp(Widget):
         self.full_IDs = self.app.store["4-0"]
         self.turi = ['activated', 'deactivated']
         self.turis = ['visible', 'hidden']
-        self.lister = [9, 100, 600]
-        self.listers = [28, 22, 18]
-        self.check_only = [8,7,7]
+        self.lister = [9, 100, 301, 300, 6, 6]
+        self.listers = [28, 22, 18, 18, 14, 14]
+        self.check_only = [8,7,7,7,7,7]
+        self.check_only0 = [7,7,7,7,7,62]
 
     def on_mount(self) -> None:
         self.f_left = self.query_one("#cont-switch-0", ContentSwitcher)
@@ -48,14 +49,25 @@ class TableApp(Widget):
         a_tables = self.query(DataTable)
 
         for i, table in enumerate(a_tables):
-            rows = self.app.store[f"1-{i}"]
+            i0 = '2' if i == 3 else i
+            rows = self.app.store[f"1-{i0}"]
+            checks = self.check_only[i]
             table.cursor_type = "cell"
             table.zebra_stripes = True
             table.fixed_columns = 1
             table.fixed_rows = 0
-            table.add_column("", width=self.listers[i])
+            table.add_column(
+                "", width=self.listers[i])
             for _ in range(self.lister[i]):
-                table.add_column("", width=self.check_only[i])
+                if i <= 3:
+                    table.add_column(
+                        "",
+                        width=checks)
+                elif i >= 4:
+                    checks0 = self.check_only0[_]
+                    table.add_column(
+                        "",
+                        width=checks0)
             table.add_rows(rows[1:])
 
     def compose(self) -> ComposeResult:
@@ -93,14 +105,23 @@ class TableApp(Widget):
                 yield DataTable(
                     show_header=False,
                     id="data-table-2")
+                yield DataTable(
+                    show_header=False,
+                    id="data-table-3")
+                yield DataTable(
+                    show_header=False,
+                    id="data-table-4")
+                yield DataTable(
+                    show_header=False,
+                    id="data-table-5")
 
         with Horizontal(id="status"):
             yield Button("X", id="button-6")
-            yield Button("AFS", id="button-0", compact=True)
-            yield Button("BFS", id="button-1", compact=True)
-            yield Button("CFS", id="button-2")
+            yield Button("AS", id="button-0")
+            yield Button("BS", id="button-1")
+            yield Button("CS", id="button-2")
             yield Button("CREATE", id="button-3")
-            yield Button("Export", id="button-4")
+            yield Button("EXPORT", id="button-4")
             yield Input(id="fourth", disabled=False)
             yield Input(id="third", disabled=False)
 
