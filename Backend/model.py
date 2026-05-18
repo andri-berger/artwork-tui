@@ -2,7 +2,7 @@ from textual.widgets import (DirectoryTree)
 from textual.reactive import reactive
 from textual_image.widget import Image
 from textual.widget import Widget
-from .script import hash_table
+from .script import tui_to_web
 from pathlib import Path
 from textual import on
 from .style import opencv
@@ -27,21 +27,18 @@ class ImageTab(Widget):
         super().__init__()
 
     async def watch_config(self, value: tuple):
-        self.notify("will-it")
         rot = self.app.store
         prefix, start = value
-        starts = start.items()
-        d_transformed = hash_table(
-            starts,rot)
+
+        d_transformed = tui_to_web(
+            start,rot)
         try:
             if prefix >= 1:
                 self.query_one(Image).remove()
         except Exception:
             pass
 
-        self.notify(f"{prefix}")
-        self.notify(f"{self.app.helpful}")
-        self.notify(f"{d_transformed}")
+        self.notify(f"{prefix} {value} {self.app.helpful} {d_transformed}")
         config_ = [prefix,
                    self.app.helpful,
                    d_transformed]
@@ -49,6 +46,9 @@ class ImageTab(Widget):
         data_url = await (
             page.evaluate(
             "async (store) => window.testlaufs(store)",config_))
+
+        # test = {'4': '23'}
+        # self.app.stores['4'] = {}
 
         for i in data_url[1]:
             self.app.helpful[i] = data_url[1][i]

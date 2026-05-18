@@ -128,69 +128,58 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 
 <table>
     <tr>
-        <th align="left">Cell</th>
-        <th align="left">Resource</th>
-        <th align="left">Default</th>
+        <th align="left">Key</th>
+        <th align="left">Binding</th>
         <th align="left">Description</th>
     </tr>
     <tr>
-        <td>A0</td>
-        <td>boolean</td>
-        <td>nil</td>
-        <td>Enable centering in typing-mode. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</td>
+        <td>F5</td>
+        <td>Afs</td>
+        <td>Set Seed for A00-A99 Elements - ring in typing-mode. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</td>
     </tr>
     <tr>
-        <td>A1</td>
-        <td>boolean</td>
-        <td>nil</td>
+        <td>F6</td>
+        <td>Bfs</td>
         <td>Enable anchoring in navigation-mode. Lorem ipsum dolor sit amet.</td>
     </tr>
     <tr>
-        <td>A2</td>
-        <td>boolean</td>
-        <td>nil</td>
+        <td>F7</td>
+        <td>Cfs</td>
         <td>Enable anchoring in org-mode. Lorem ipsum dolor sit amet.</td>
     </tr>
     <tr>
-        <td>A3</td>
-        <td>boolean</td>
-        <td>nil</td>
+        <td>F8</td>
+        <td>Clear</td>
         <td>LTR vs RTL Alignment. Lorem ipsum dolor sit amet.</td>
     </tr>
     <tr>
-        <td>A4</td>
-        <td>boolean </td>
-        <td>nil</td>
+        <td>F9</td>
+        <td>Create</td>
         <td>Centering horizontally. Lorem ipsum dolor sit amet.</td>
     </tr>
     <tr>
-        <td>A5</td>
-        <td>integer</td>
-        <td>50</td>
+        <td>F10</td>
+        <td>Export</td>
         <td>Max-width in chars. Lorem ipsum dolor sit amet.</td>
     </tr>
     <tr>
-        <td>A6</td>
-        <td>integer</td>
-        <td>0</td>
+        <td>Tab</td>
+        <td>Navigate</td>
         <td>Left fringe width in px. Lorem ipsum dolor sit amet.</td>
     </tr>
     <tr>
-        <td>B0</td>
-        <td>integer</td>
-        <td>0</td>
+        <td>Shift-Tab</td>
+        <td>Navigate</td>
         <td>Vertical gap at the edge in px. Lorem ipsum dolor sit amet.</td>
     </tr>
     <tr>
-        <td>B1</td>
-        <td>integer</td>
-        <td>0</td>
+        <td>Arrow-keys</td>
+        <td>Grid</td>
         <td>Vertical gap fringe left in px. Lorem ipsum dolor sit amet.</td>
     </tr>
     <tr>
-        <td>B2</td>
-        <td>select 0-3</td>
-        <td>0</td>
+        <td>Space</td>
+        <td>Select 0-3</td>
         <td>Line-styles. 
         <br>0 = Lorem ipsum dolor sit amet. 
         <br>1 = Lorem ipsum dolor sit amet. 
@@ -198,84 +187,13 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
         <br>3 = Lorem ipsum dolor sit amet.</td>
     </tr>
     <tr>
-        <td>B3</td>
-        <td>select 0-3</td>
-        <td>0</td>
+        <td>Enter</td>
+        <td>Various</td>
         <td>Hierarchy treshold. 
         <br>0 = Lorem ipsum dolor sit amet. 
         <br>1 = Lorem ipsum dolor sit amet. 
         <br>2 = Lorem ipsum dolor sit amet. 
         <br>3 = Lorem ipsum dolor sit amet.</td>
-    </tr>
-    <tr>
-        <td>B4</td>
-        <td>select 0-3</td>
-        <td>0</td>
-        <td>Lines config header. 
-        <br>0 = Lorem ipsum dolor sit amet. 
-        <br>1 = Lorem ipsum dolor sit amet. 
-        <br>2 = Lorem ipsum dolor sit amet. 
-        <br>3 = Lorem ipsum dolor sit amet.</td>
-    </tr>
-    <tr>
-        <td>B5</td>
-        <td>select 0-3</td>
-        <td>0</td>
-        <td>Lines config mode. 
-        <br>0 = Lorem ipsum dolor sit amet. 
-        <br>1 = Lorem ipsum dolor sit amet. 
-        <br>2 = Lorem ipsum dolor sit amet. 
-        <br>3 = Lorem ipsum dolor sit amet.</td>
-    </tr>
-    <tr>
-        <td>B6</td>
-        <td>select 0-3</td>
-        <td>0</td>
-        <td>Char/line/word header. 
-        <br>0 = Lorem ipsum dolor sit amet. 
-        <br>1 = Lorem ipsum dolor sit amet. 
-        <br>2 = Lorem ipsum dolor sit amet. 
-        <br>3 = Lorem ipsum dolor sit amet.</td>
-    </tr>
-    <tr>
-        <td>C0</td>
-        <td>select 0-3</td>
-        <td>0</td>
-        <td>Char/line/word mode. 
-        <br>0 = Lorem ipsum dolor sit amet. 
-        <br>1 = Lorem ipsum dolor sit amet. 
-        <br>2 = Lorem ipsum dolor sit amet. 
-        <br>3 = Lorem ipsum dolor sit amet.</td>
-    </tr>
-    <tr>
-        <td>C1</td>
-        <td>string</td>
-        <td>"/"</td>
-        <td>First Separator header / mode. Lorem ipsum dolor sit amet.</td>
-    </tr>
-    <tr>
-        <td>C2</td>
-        <td>string</td>
-        <td>" // "</td>
-        <td>Second separator header / mode. Lorem ipsum dolor sit amet.</td>
-    </tr>
-    <tr>
-        <td>C3</td>
-        <td>string</td>
-        <td>"writer"</td>
-        <td>Fallback text if no org-parent. Lorem ipsum dolor sit amet.</td>
-    </tr>
-    <tr>
-        <td>C4</td>
-        <td>value</td>
-        <td>'unspecified</td>
-        <td>Faces inherit header mode line. Lorem ipsum dolor sit amet.</td>
-    </tr>
-    <tr>
-        <td>C5</td>
-        <td>value</td>
-        <td>'unspecified</td>
-        <td>Custom face of vertical line. Lorem ipsum dolor sit amet.</td>
     </tr>
 </table>
 

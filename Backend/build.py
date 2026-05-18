@@ -1,6 +1,6 @@
 from playwright.async_api import async_playwright
 from textual.app import App, ComposeResult
-from .script import make_layer, make_sparse_layer
+from .script import make_layer, make_layers
 from .model import ImageTab
 from .builds import TableApp
 from pathlib import Path
@@ -48,11 +48,11 @@ class CLIApp(App):
             make_layer("-3"),
             make_layer("808080"),
             make_layer("ffffff"),
-            make_sparse_layer(300, "ffffff", 300),
-            make_sparse_layer(300, "808080", 300),
-            make_sparse_layer(300, "0", 300),
-            make_sparse_layer(300, "1", 300),
-            make_sparse_layer(300, "2", 300)]
+            make_layers(300, "ffffff", 300),
+            make_layers(300, "808080", 300),
+            make_layers(300, "0", 300),
+            make_layers(300, "1", 300),
+            make_layers(300, "2", 300)]
 
 
     def compose(self) -> ComposeResult:

@@ -95,10 +95,10 @@ class TableApp(Widget):
                     id="data-table-2")
 
         with Horizontal(id="status"):
+            yield Button("X", id="button-6")
             yield Button("AFS", id="button-0", compact=True)
             yield Button("BFS", id="button-1", compact=True)
             yield Button("CFS", id="button-2")
-            yield Button("CLEAR", id="button-6")
             yield Button("CREATE", id="button-3")
             yield Button("Export", id="button-4")
             yield Input(id="fourth", disabled=False)
