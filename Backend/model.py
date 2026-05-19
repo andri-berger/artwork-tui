@@ -16,11 +16,6 @@ import cv2
 
 from dataclasses import dataclass
 
-@dataclass
-class ConfigPayload:
-    prefix: int
-    data: dict
-
 
 CWD = Path.cwd()
 APP = Path(__file__)
@@ -30,115 +25,101 @@ image_outs = ASSETS_DIR / "model.png"
 CONFIGS = ASSETS_DIR / "model.json"
 
 class ImageTab(Widget):
-    #config: reactive[tuple] = reactive(tuple, init=False)
-    config: reactive[ConfigPayload | None] = reactive(None, init=False)
+    config: reactive[dict] = reactive(dict, init=False)
 
 
-    async def watch_config(self, value: tuple):
+    # async def watch_config(self, value: tuple):
+    async def watch_config(self, value: dict):
         f0 = self.app.query(DataTable)
         f2 = self.app.stores
         f1 = self.app.store
-        page = self.app.page
-        f3, f4 = value
-        f5 = tui_to_web(f4,f1)
+        f3 = self.app.page
+        self.notify("!!!!")
+        f4 = value.pop("_", None)
+        f5 = tui_to_web(value,f1)
         f6 = [None, 100, 301]
-        self.notify(f"how many times {value}")
 
+        self.notify(f"f4: {f4}")
 
-        if f3 == 2:
-            with self.app.batch_update():
-                for i in range(1,2):
-                    f0[i].clear(columns=False)
-                    f7 = self.app.store[f"1-{i}"]
-                    for row_i in range(len(f7)):
-                        row = [f7[row_i][0]]
-                        row.extend([""]*f6[i])
-                        f0[i].add_row(*row)
-
-
-
-        # unclear !!!
-        try:
-            if f3 >= 1:
-                self.query_one(Image).remove()
-        except Exception:
-            pass
-
-
-        f10 = await (
-            page.evaluate(
-            f1['4-2'][3],[f3,f5]))
-        b64 = f10[0].split(',')[1]
-        f11 = base64.b64decode(b64)
-        f12 = f5.get('0',{})
-
-
-
-        if (any(str(k) in f12.keys()
-               for k in range(80,84))):
-
-            settings = {
-                "set": f12.get('80',0),
-                "set0": f12.get('81',0),
-                "set1": f12.get('82',0),
-                "set2": f12.get('83',0),
-                "set3": f12.get('83',0) }
-            f11 = opencv(
-                f11,settings)
-
-        if f3 == 0:
-            time_stamp = int(time.time())
-            image_outs_ = CWD / f"{time_stamp}.png"
-            with open(image_outs_, "wb") as f:
-                f.write(f11)
-
-        if f3 >= 1:
-            with open(image_outs, "wb") as f:
-                f.write(f11)
-
-
-        if not self.is_mounted:
-            return
-
-        if f3 >= 1:
-            self.mount(Image(image_outs))
-            testlauf(self, image_outs, Image, cv2)
-
-
-        # raus !!!
-        if any(f10[1]):
-            l0 = f2.setdefault('0', {})
-            l1 = l0.setdefault('38', {})
-            if f10[1][0] is not None:
-                l1['0'] = f10[1][0]
-            if f10[1][1] is not None:
-                l1['1'] = f10[1][1]
-            if f10[1][2] is not None:
-                l1['2'] = f10[1][2]
-
-
-
-        if f3 == 2:
-            f1['00'] = web_to_tui(f10[2], f1)
-            with self.app.batch_update():
-                for i in range(1,2):
-                    f7 = f1[f"1-{i}"]
-                    test = f1['00'].get(str(i))
-                    f0[i].clear(columns=False)
-                    cols = [str(col_i) for
-                            col_i in range(f6[i])]
-                    for row_i in range(len(f7)):
-                        row_key = str(row_i)
-                        yes = test.get(row_key, {})
-                        row = [f7[row_i][0]]
-                        for col in cols:
-                            row.append(
-                            str(yes.get(col,"")))
-                        f0[i].add_row(*row)
-
-            merged = {**f2, **f1['00']}
-            CONFIGS.write_text(
-            json.dumps(merged))
+        # if f4 == 2:
+        #     with self.app.batch_update():
+        #         for i in range(1,2):
+        #             f0[i].clear(columns=False)
+        #             f7 = self.app.store[f"1-{i}"]
+        #             for row_i in range(len(f7)):
+        #                 row = [f7[row_i][0]]
+        #                 row.extend([""]*f6[i])
+        #                 f0[i].add_row(*row)
+        #
+        #
+        #
+        # try:
+        #     if f4 >= 1:
+        #         self.query_one(Image).remove()
+        # except Exception:
+        #     pass
+        #
+        #
+        # f10 = await (
+        #     f3.evaluate(
+        #     f1['4-2'][3],[f4,f5]))
+        # b64 = f10[0].split(',')[1]
+        # f11 = base64.b64decode(b64)
+        # f12 = f5.get('0',{})
+        #
+        #
+        #
+        # if (any(str(k) in f12.keys()
+        #        for k in range(80,84))):
+        #
+        #     settings = {
+        #         "set": f12.get('80',0),
+        #         "set0": f12.get('81',0),
+        #         "set1": f12.get('82',0),
+        #         "set2": f12.get('83',0),
+        #         "set3": f12.get('83',0) }
+        #     f11 = opencv(
+        #         f11,settings)
+        #
+        # if f4 == 0:
+        #     time_stamp = int(time.time())
+        #     image_outs_ = CWD / f"{time_stamp}.png"
+        #     with open(image_outs_, "wb") as f:
+        #         f.write(f11)
+        #
+        # if f4 >= 1:
+        #     with open(image_outs, "wb") as f:
+        #         f.write(f11)
+        #
+        #
+        # if not self.is_mounted:
+        #     return
+        #
+        # if f4 >= 1:
+        #     self.mount(Image(image_outs))
+        #     testlauf(self, image_outs, Image, cv2)
+        #
+        # if f4 == 2:
+        #     f1['00'] = web_to_tui(f10[2], f1)
+        #     with self.app.batch_update():
+        #         for i in range(1,2):
+        #             f7 = f1[f"1-{i}"]
+        #             test = f1['00'].get(str(i))
+        #             f0[i].clear(columns=False)
+        #             cols = [str(col_i) for
+        #                     col_i in range(f6[i])]
+        #             for row_i in range(len(f7)):
+        #                 row_key = str(row_i)
+        #                 yes = test.get(row_key, {})
+        #                 row = [f7[row_i][0]]
+        #                 for col in cols:
+        #                     row.append(
+        #                     str(yes.get(col,"")))
+        #                 f0[i].add_row(*row)
+        #
+        #     merged = {**f2, **f1['00']}
+        #     CONFIGS.write_text(
+        #     json.dumps(merged))
 
 
 class FileTypeTree(DirectoryTree):
@@ -190,14 +171,17 @@ class FileTypeTree(DirectoryTree):
                 f.unlink()
 
         if int(spl) == 0:
+            self.notify('model-0')
             yeah = "model.json"
-            data = json.loads(src.read_text())
-            shutil.copy2(src, ASSETS_DIR / yeah)
-            self.e_images.config = (1,data)
-            self.e_images.mutate_reactive(
-                ImageTab.config)
+            dir = ASSETS_DIR / yeah
+            shutil.copy2(src, dir)
+            cool = src.read_text()
+            l20 = json.loads(cool)
+            l20.update({'_': 1})
+            self.e_images.config = l20
 
         if int(spl) >= 1:
+            self.notify('model-1')
             dest = f"{stamps}{src.suffix}"
             dest_dir = ASSETS_DIR / dest
             shutil.copy2(src, dest_dir)
@@ -205,9 +189,18 @@ class FileTypeTree(DirectoryTree):
             self.app.stores[sps] = stamps
             self.notify(
             self.store.format(src=src))
-            self.e_images.config = \
-                (1,self.app.stores)
-            self.e_images.mutate_reactive(
-                ImageTab.config)
+            l20 = {**self.app.stores}
+            l20.update({'_': 1})
+            self.e_images.config = l20
 
 
+        # raus !!!
+        # if any(f10[1]):
+        #     l0 = f2.setdefault('0', {})
+        #     l1 = l0.setdefault('38', {})
+        #     if f10[1][0] is not None:
+        #         l1['0'] = f10[1][0]
+        #     if f10[1][1] is not None:
+        #         l1['1'] = f10[1][1]
+        #     if f10[1][2] is not None:
+        #         l1['2'] = f10[1][2]

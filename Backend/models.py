@@ -5,6 +5,8 @@ from Backend.model import FileTypeTree
 from pathlib import Path
 import json
 
+
+
 PATH_FILE = Path(__file__).parent
 STATIC_DIR = PATH_FILE.parent / "Fontend"
 CONFIGS = STATIC_DIR / "model.json"
@@ -257,12 +259,14 @@ def on_pressed(self, event, ImageTab) -> None:
             f"D00 SEED {self.turi[yay[2]]} ")
 
     if 12 <= arr1 <= 14:
+        self.notify("models-0")
         pre = (1,2,0)[arr1-12]
-        load = ({},self.app.stores,
-                self.app.stores)[arr1-12]
-        self.e_images.config = (pre,load)
-        self.e_images.mutate_reactive(
-            ImageTab.config)
+        post = {**self.app.stores}
+        load = ({},post,post)[arr1-12]
+        load.update({'_': pre})
+        self.e_images.config = load
+        # self.e_images.mutate_reactive(
+        #     ImageTab.config)
 
     if arr1 == 12:
         CONFIGS.write_text(
@@ -279,11 +283,11 @@ def on_submitted(self, event, image) -> None:
         checkers = checker if int(switches) == 0 else 1
         tst = self.get_all_data(e_tables)
         self.app.stores[switches] = tst
-        yays = self.app.stores
+        yays = {**self.app.stores}
+        yays.update({'_': checkers})
 
-        self.e_images.config = (checkers,yays)
-        self.e_images.mutate_reactive(
-            image.config)
+        self.notify("models-1")
+        self.e_images.config = yays
         self.e_third.value = ""
         self.coord = None
         e_tables.focus()

@@ -82,10 +82,9 @@ class CLIApp(App):
         self.page = await browser.new_page()
         await self.page.goto(DIR)
 
-        self.e_images.config = (1
-        if self.stores else 2,self.stores)
-        self.e_images.mutate_reactive(
-        ImageTab.config)
+        l0 = {**self.stores}
+        l0['_'] = 1 if self.stores else 2
+        self.e_images.config = l0
 
     async def on_unmount(self) -> None:
         if self._server:
