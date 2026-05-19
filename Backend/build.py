@@ -78,12 +78,12 @@ class CLIApp(App):
 
         self._pw = await async_playwright().start()
         browser = await self._pw.chromium.launch(
-        headless=True)
+            headless=True)
         self.page = await browser.new_page()
         await self.page.goto(DIR)
 
         l0 = {**self.stores}
-        l0['_'] = 1 if self.stores else 2
+        l0['_'] = [2,2 if l0 else 3]
         self.e_images.config = l0
 
     async def on_unmount(self) -> None:

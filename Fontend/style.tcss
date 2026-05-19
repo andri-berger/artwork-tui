@@ -38,9 +38,7 @@ ImageTab {
     max-width: 120;
     height: 1fr;
     width: 1fr;
-}
-
-
+    margin-bottom: 1; }
 
 #top {
     width: 1fr;

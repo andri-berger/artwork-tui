@@ -46,20 +46,20 @@ def action_next_table(self, event, prefix) -> None:
 
 
 def on_cell_highlighted_(self, coordinate) -> None:
-    cool = self.query_one("#cont-switch-1",ContentSwitcher)
-    digits = self.query_one("#digits-0", Digits)
-    label = self.query_one("#label-0", Label)
-    fourth = self.query_one("#fourth", Input)
-    third = self.query_one("#third", Input)
-    switch = cool.current.split("-")[-1]
-    switchers = '2' if switch == '3' else switch
-    config9 = self.app.store[f"2-{switchers}"]
-    config = self.app.store[f"3-{switchers}"]
+    f0 = self.query_one("#cont-switch-1")
+    f1 = self.query_one("#digits-0", Digits)
+    f2 = self.query_one("#label-0", Label)
+    f3 = self.query_one("#fourth", Input)
+    f4 = self.query_one("#third", Input)
+    f5 = f0.current.split("-")[-1]
+    f6 = '2' if f5 == '3' else f5
+    f7 = self.app.store[f"2-{f6}"]
+    f8 = self.app.store[f"3-{f6}"]
     row, col = coordinate
-    digits.update("")
-    label.update("")
-    third.value = ""
-    fourth.value = ""
+    f1.update("")
+    f2.update("")
+    f4.value = ""
+    f3.value = ""
 
     def safe(obj, *keys):
         for key in keys:
@@ -70,40 +70,40 @@ def on_cell_highlighted_(self, coordinate) -> None:
         return obj
 
     try:
-        switches = int(switch)
+        switches = int(f5)
         if switches in [0,4,5]:
-            cell = safe(config, row, col)
-            values_ = safe(config9, row, col) or ""
-            configs = safe(config9, row, col) or ""
+            cell = safe(f8, row, col)
+            values_ = safe(f7, row, col) or ""
+            configs = safe(f7, row, col) or ""
 
             if cell is not None:
-                label.update(cell)
+                f2.update(cell)
 
             if values_ is not None:
-                digits.update(values_[0])
+                f1.update(values_[0])
 
             if configs is not None:
                 rrr = configs[1]
                 rrt = configs[2]
-                fourth.value = rrr
-                third.value = rrt
+                f3.value = rrr
+                f4.value = rrt
 
         elif switches in [1,2,3]:
-            value = safe(config9, row) or ""
-            cell = safe(config, row) or ""
+            value = safe(f7, row) or ""
+            cell = safe(f8, row) or ""
             check = isinstance(cell, str)
             values = cell if check \
-                else safe(config, cell)
-            test_ = safe(config9, row,0) or ""
+                else safe(f8, cell)
+            test_ = safe(f7, row,0) or ""
 
             if value is not None:
-                fourth.value = value[1]
-                third.value = value[2] \
+                f3.value = value[1]
+                f4.value = value[2] \
                     if isinstance(value[2],str) \
                     else self.app.store["00"][value[2]][col]
 
             if values is not None:
-                label.update(values)
+                f2.update(values)
 
             if test_ is not None:
                 entries = ("", [""] +
@@ -115,7 +115,7 @@ def on_cell_highlighted_(self, coordinate) -> None:
                            [""] + [f"{letter}{n:02d}"
                             for letter in "DEF"
                             for n in range(100)])
-                digits.update(
+                f1.update(
                     entries[switches][col])
 
     except IndexError:
@@ -228,71 +228,62 @@ async def on_key_(self, event) -> None:
 
 
 def on_pressed(self, event, ImageTab) -> None:
-    zz = self.app.store
-    yy = self.app.stores
-    id = event.button.id
-    arr = zz["4-0"]
-    arr0 = zz["4-1"]
-    yes = yy.setdefault("0", {})
-    yay = yes.setdefault("42", {})
-    arr1 = arr.index(id) \
-        if id in arr else -1
+    f0 = self.app.store
+    f1 = self.app.stores
+    f2 = event.button.id
+    f3 = f1.setdefault("0", {})
+    f4 = f3.setdefault("42", {})
+    f5 =  f0["4-0"].index(f2) \
+        if f2 in f0["4-0"] else -1
 
-    self.notify(f"Button {id} {arr1} pressed")
-    texts = arr0[arr1]
+    texts = f0["4-1"][f5]
     self.label.update(texts)
 
-    if id == "button-0":
-        yay[0] = 1 - (yay.get(0) or 0)
+    if f2 == "button-0":
+        f4[0] = 1 - (f4.get(0) or 0)
         self.app.clear_notifications()
         self.notify(
-            f"A00 SEED {self.turi[yay[0]]} ")
-    elif id == "button-1":
-        yay[1] = 1 - (yay.get(1) or 0)
+            f"A00 SEED {self.turi[f4[0]]} ")
+    elif f2 == "button-1":
+        f4[1] = 1 - (f4.get(1) or 0)
         self.app.clear_notifications()
         self.notify(
-            f"B00 SEED {self.turi[yay[1]]}")
-    elif id == "button-2":
-        yay[2] = 1 - (yay.get(2) or 0)
+            f"B00 SEED {self.turi[f4[1]]}")
+    elif f2 == "button-2":
+        f4[2] = 1 - (f4.get(2) or 0)
         self.app.clear_notifications()
         self.notify(
-            f"D00 SEED {self.turi[yay[2]]} ")
+            f"D00 SEED {self.turi[f4[2]]} ")
 
-    if 12 <= arr1 <= 14:
+    elif f2 == "button-6":
+        self.app.stores = {}
+
+    if 12 <= f5 <= 14:
         self.notify("models-0")
-        pre = (1,2,0)[arr1-12]
+        pre = [2,1,0][f5-12]
+        pres = [2,3,0][f5-12]
         post = {**self.app.stores}
-        load = ({},post,post)[arr1-12]
-        load.update({'_': pre})
+        load = [{},post,post][f5-12]
+        load.update({'_': [pre,pres]})
         self.e_images.config = load
-        # self.e_images.mutate_reactive(
-        #     ImageTab.config)
-
-    if arr1 == 12:
-        CONFIGS.write_text(
-        json.dumps({}))
 
 
-def on_submitted(self, event, image) -> None:
+
+def on_submitted(self, event) -> None:
     if self.coord is not None:
-        e_tables = self.query_one(
+        f0 = self.query_one(
             f"#{self.f_right.current}", DataTable)
-        e_tables.update_cell_at(self.coord, event.value)
-        switches = self.f_right.current.split("-")[-1]
-        checker = 2 if 7 <= self.coord.row <= 16 else 1
-        checkers = checker if int(switches) == 0 else 1
-        tst = self.get_all_data(e_tables)
-        self.app.stores[switches] = tst
-        yays = {**self.app.stores}
-        yays.update({'_': checkers})
-
+        f0.update_cell_at(self.coord, event.value)
+        f1 = self.f_right.current.split("-")[-1]
+        f2 = 1 if 24 <= self.coord.row <= 30 else 2
+        f02 = f2 if self.coord.row >= 10 else 3
+        f3 = f02 if int(f1) == 0 else 2
+        f4 = self.get_all_data(f0)
+        self.app.stores[f1] = f4
+        f5 = {**self.app.stores}
+        f5.update({'_': [0,f3]})
         self.notify("models-1")
-        self.e_images.config = yays
+        self.e_images.config = f5
         self.e_third.value = ""
         self.coord = None
-        e_tables.focus()
-
-        CONFIGS.write_text(
-        json.dumps(self.app.stores))
-
-
+        f0.focus()

@@ -72,7 +72,7 @@ class TableApp(Widget):
 
     def compose(self) -> ComposeResult:
         with Horizontal(id="top"):
-            yield ImageTab()
+            yield ImageTab(name="")
             yield Digits("F00",
                          id="digits-0")
 
@@ -170,7 +170,7 @@ class TableApp(Widget):
 
     @on(Input.Submitted)
     def submitted(self, event: Input.Submitted) -> None:
-        on_submitted(self,event,ImageTab)
+        on_submitted(self,event)
 
     @on(Button.Pressed)
     def pressed(self, event: Button.Pressed) -> None:

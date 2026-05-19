@@ -238,7 +238,6 @@ k1.appendChild(l93);
 let l4 = k4('body>svg');
 let l5 = k4('body>div');
 let l6 = k5('body>style');
-console.log('hier',l)
 let l8 = h([l[0],l[1]]);
 l5.innerHTML = l8[1];
 l6[0].innerHTML = l8[2];
@@ -282,7 +281,7 @@ k0[2] ??= new Array();
 k0[2][1] = l13;
 k0[2][2] = l14; };
 
-const k16 = async l => {
+const k16 = async l => { console.log('k16',l)
 let l00 = _ => {
 let l01 = _.width;
 let l02 = _.height;
@@ -290,11 +289,16 @@ k13(['f2',l01/l[0]]);
 k13(['f3',l02/l[0]]);
 k1.innerHTML = '';
 k1.appendChild(_);
-console.log('hey',l[2])
-let test = [h0['0-0'],h0['0-1'],h0['0-2']]
-window.resolveCapture([
-    _.toDataURL(),
-    test,l[2]]); };
+console.log('hey',l)
+   // let test = [
+    // h0['0-0'],
+    // h0['0-1'],
+    // h0['0-2']];
+    let testr = [_.toDataURL()]; // make conditional
+    if (l[3] === 3) {
+        testr.push(l[2])
+    }
+window.resolveCapture(testr); };
 let l90 = l[2]['0']||{};
 let l91 = Object.keys(l90);
 let l0 =  l91.some(
@@ -697,7 +701,7 @@ l1['2'] = {...l1['2'],...l13};
 l1['3'] = {...l1['3'],...l12}; }}
 return l1; };
 
-const k24 = async l => {
+const k24 = async l => { console.log('k24',l)
 let l90 = l[1]?.['0']?.['89']||10;
 let l00 = l[1]?.['0']?.['90']||0;
 let l01 = l[1]?.['0']?.['91']||0;
@@ -705,7 +709,7 @@ let l09 = l[1]?.['0']?.['92']||6;
 let l08 = l[1]?.['0']?.['93']||5;
 let l1 = k0[2][1] + (l90 * 2);
 let l2 = k0[2][2] + (l90 * 2);
-let l0 = [l09,l08,l08][l[0]];
+let l0 = [l09,l08,l08,l08][l[0]];
 let l3 = k3('canvas');
 let l4 = l3.getContext('2d',
 { willReadFrequently: true});
@@ -732,7 +736,7 @@ l4.drawImage(
 l16,l13/2,0,
 l10,l11,l14/2,
 l15/2,l10,l11);
-k16([l0,l3,l[1]]); };
+k16([l0,l3,l[1],l[0]]); };
 
 
 window.testlaufs = l => {
@@ -751,21 +755,23 @@ window.testlaufs = l => {
     h0['00'] = l[2]?.['0']?.['89']||10;
     return new Promise(resolve => {
         window.resolveCapture = resolve;
-        if (l[0] === 2) {
+        if (l[0] === 3) {
             let l0 = l[1];
             let l1 = k23()
             for (let i in l0['0']) {
             h0[h2[i]] = l0['0'][i]; }
             k14([l[0],l1]);
             k24([l[0],l1]); }
-        if (l[0] <= 1) {
+        if (l[0] == 2) {
             k14(l);
             k24(l); }
+        if (l[0] == 1) { }
+        if (l[0] == 0) { }
 }); }
 
 
 // first params
-testlaufs([2, {
+testlaufs([3, {
   "0": {
     "38": {
       "0": "1779195974338",

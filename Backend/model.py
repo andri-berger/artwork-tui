@@ -1,4 +1,4 @@
-from textual.widgets import (DirectoryTree)
+from textual.widgets import DirectoryTree
 from textual.reactive import reactive
 from textual_image.widget import Image
 from textual.widgets import DataTable
@@ -8,13 +8,12 @@ from pathlib import Path
 from textual import on
 from .scripts import opencv
 from .script import testlauf
+from textual.app import ComposeResult
 import shutil
 import base64
 import time
 import json
 import cv2
-
-from dataclasses import dataclass
 
 
 CWD = Path.cwd()
@@ -27,99 +26,85 @@ CONFIGS = ASSETS_DIR / "model.json"
 class ImageTab(Widget):
     config: reactive[dict] = reactive(dict, init=False)
 
+    def compose(self) -> ComposeResult:
+        yield Image()
 
-    # async def watch_config(self, value: tuple):
     async def watch_config(self, value: dict):
+        cool = self.app.query_one("#cont-switch-1")
+        col = int(cool.current.split("-")[-1])
         f0 = self.app.query(DataTable)
         f2 = self.app.stores
         f1 = self.app.store
         f3 = self.app.page
-        self.notify("!!!!")
-        f4 = value.pop("_", None)
+        f4,f04 = value.pop("_", [])
         f5 = tui_to_web(value,f1)
-        f6 = [None, 100, 301]
+        f6 = [9, 100, 301, 300, 6, 6]
+        self.query_one(
+            Image).remove()
+        self.notify(
+            f"{f4} - {f04}")
 
-        self.notify(f"f4: {f4}")
 
-        # if f4 == 2:
-        #     with self.app.batch_update():
-        #         for i in range(1,2):
-        #             f0[i].clear(columns=False)
-        #             f7 = self.app.store[f"1-{i}"]
-        #             for row_i in range(len(f7)):
-        #                 row = [f7[row_i][0]]
-        #                 row.extend([""]*f6[i])
-        #                 f0[i].add_row(*row)
-        #
-        #
-        #
-        # try:
-        #     if f4 >= 1:
-        #         self.query_one(Image).remove()
-        # except Exception:
-        #     pass
-        #
-        #
-        # f10 = await (
-        #     f3.evaluate(
-        #     f1['4-2'][3],[f4,f5]))
-        # b64 = f10[0].split(',')[1]
-        # f11 = base64.b64decode(b64)
-        # f12 = f5.get('0',{})
-        #
-        #
-        #
-        # if (any(str(k) in f12.keys()
-        #        for k in range(80,84))):
-        #
-        #     settings = {
-        #         "set": f12.get('80',0),
-        #         "set0": f12.get('81',0),
-        #         "set1": f12.get('82',0),
-        #         "set2": f12.get('83',0),
-        #         "set3": f12.get('83',0) }
-        #     f11 = opencv(
-        #         f11,settings)
-        #
-        # if f4 == 0:
-        #     time_stamp = int(time.time())
-        #     image_outs_ = CWD / f"{time_stamp}.png"
-        #     with open(image_outs_, "wb") as f:
-        #         f.write(f11)
-        #
+        if f4 >= 1:
+            with self.app.batch_update():
+                f0[col].clear(columns=False)
+                f7 = self.app.store[f"1-{col}"]
+                self.notify(f"{len(f7)}")
+                for row_i in range(len(f7)):
+                    row = [f7[row_i][0]]
+                    row.extend([""]*f6[col])
+                    f0[col].add_row(*row)
+
+        if f04 >= 0:
+            f10 = await (
+                f3.evaluate(
+                f1['4-2'][3],[f04,f5]))
+            b64 = f10[0].split(',')[1]
+            f11 = base64.b64decode(b64)
+
+        if f04 == 0:
+            time_stamp = int(time.time())
+            image_outs_ = CWD / f"{time_stamp}.png"
+            with open(image_outs_, "wb") as f:
+                f.write(f11)
+
+        if f04 >= 1:
+            with open(image_outs, "wb") as f:
+                f.write(f11)
+            self.mount(Image(image_outs))
+            testlauf(self, image_outs, Image, cv2)
+
+        if f04 == 3:
+            here = web_to_tui(f10[1], f1)
+            f2 = {**f2, **here}
+
         # if f4 >= 1:
-        #     with open(image_outs, "wb") as f:
-        #         f.write(f11)
-        #
-        #
-        # if not self.is_mounted:
-        #     return
-        #
-        # if f4 >= 1:
-        #     self.mount(Image(image_outs))
-        #     testlauf(self, image_outs, Image, cv2)
-        #
-        # if f4 == 2:
-        #     f1['00'] = web_to_tui(f10[2], f1)
+        #     self.notify(f"F00 - {f2.keys()}")
+        #     ss = [0,6] if f4 == 2 else [1,3]
         #     with self.app.batch_update():
-        #         for i in range(1,2):
-        #             f7 = f1[f"1-{i}"]
-        #             test = f1['00'].get(str(i))
-        #             f0[i].clear(columns=False)
-        #             cols = [str(col_i) for
-        #                     col_i in range(f6[i])]
-        #             for row_i in range(len(f7)):
-        #                 row_key = str(row_i)
-        #                 yes = test.get(row_key, {})
-        #                 row = [f7[row_i][0]]
-        #                 for col in cols:
-        #                     row.append(
-        #                     str(yes.get(col,"")))
-        #                 f0[i].add_row(*row)
+        #         for i in range(*ss):
+        #             uv = int(i) == 3
+        #             st = 2 if uv else i
+        #             f7 = f1[f"1-{st}"]
+        #             test = f2.get(str(i))
+        #             if test is not None:
+        #                 f0[i].clear(columns=False)
+        #                 cols = [str(col_i) for
+        #                         col_i in range(f6[i])]
+        #                 for row_i in range(len(f7)):
+        #                     row_key = str(row_i)
+        #                     yes = test.get(row_key, {})
+        #                     row = [f7[row_i][0]]
+        #                     for col in cols:
+        #                         row.append(
+        #                         str(yes.get(col,"")))
+        #                     f0[i].add_row(*row)
         #
-        #     merged = {**f2, **f1['00']}
-        #     CONFIGS.write_text(
-        #     json.dumps(merged))
+        # CONFIGS.write_text(
+        # json.dumps(f2))
+
+    def render(self):
+        return ""
 
 
 class FileTypeTree(DirectoryTree):
@@ -193,6 +178,17 @@ class FileTypeTree(DirectoryTree):
             l20.update({'_': 1})
             self.e_images.config = l20
 
+            # f12 = f5.get('0',{})
+        # if (any(str(k) in f12.keys()
+        #        for k in range(80,84))):
+        #     settings = {
+        #         "set": f12.get('80',0),
+        #         "set0": f12.get('81',0),
+        #         "set1": f12.get('82',0),
+        #         "set2": f12.get('83',0),
+        #         "set3": f12.get('83',0) }
+        #     f11 = opencv(
+        #         f11,settings)
 
         # raus !!!
         # if any(f10[1]):
