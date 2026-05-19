@@ -1,115 +1,149 @@
 from textual.widgets import (DirectoryTree)
 from textual.reactive import reactive
 from textual_image.widget import Image
+from textual.widgets import DataTable
 from textual.widget import Widget
 from .script import tui_to_web, web_to_tui
 from pathlib import Path
 from textual import on
 from .scripts import opencv
+from .script import testlauf
 import shutil
 import base64
 import time
 import json
 import cv2
+import copy
+
 
 
 CWD = Path.cwd()
 APP = Path(__file__)
 APP_DIR = Path(__file__).parent
 ASSETS_DIR = APP_DIR.parent / "Fontend"
-
+image_outs = ASSETS_DIR / "model.png"
+CONFIGS = ASSETS_DIR / "model.json"
 
 class ImageTab(Widget):
-    image_outs = ASSETS_DIR / "model.png"
     config: reactive[tuple] = reactive(tuple, init=False)
-
-    def __init__(self):
-        super().__init__()
-
     async def watch_config(self, value: tuple):
-        rot = self.app.store
-        prefix, start = value
+        f0 = self.app.query(DataTable)
+        f2 = self.app.stores
+        f1 = self.app.store
+        page = self.app.page
+        f3, f4 = value
+        f5 = tui_to_web(f4,f1)
+        f6 = [None, 100, 301]
+        f40 = {}
 
-        d_transformed = tui_to_web(
-            start,rot)
+        if f3 == 2:
+            with self.app.batch_update():
+                for i in range(1,2):
+                    f0[i].clear(columns=False)
+                    f7 = self.app.store[f"1-{i}"]
+                    for row_i in range(len(f7)):
+                        row = [f7[row_i][0]]
+                        row.extend([""]*f6[i])
+                        f0[i].add_row(*row)
+
+
+
+        # unclear !!!
         try:
-            if prefix >= 1:
+            if f3 >= 1:
                 self.query_one(Image).remove()
         except Exception:
             pass
 
-        self.notify(f"{prefix} {value} {self.app.helpful} {d_transformed}")
-        config_ = [prefix,
-                   self.app.helpful,
-                   d_transformed]
-        page = self.app.page
-        data_url = await (
+
+        f10 = await (
             page.evaluate(
-            "async (store) => window.testlaufs(store)",config_))
-        # test = {'4': '23'}
-        # self.app.stores['4'] = {}
+            f1['4-2'][3],[f3,f5]))
+        b64 = f10[0].split(',')[1]
+        f11 = base64.b64decode(b64)
+        f12 = f5.get('0',{})
 
-        for i in data_url[1]:
-            self.app.helpful[i] = data_url[1][i]
-        b64 = data_url[0].split(',')[1]
-        img_bytes = base64.b64decode(b64)
-        l91 = d_transformed.get('0',{})
 
-        if (any(str(k) in l91.keys()
+
+        if (any(str(k) in f12.keys()
                for k in range(80,84))):
-            settings = {
-                "set": l91.get('80',0),
-                "set0": l91.get('81',0),
-                "set1": l91.get('82',0),
-                "set2": l91.get('83',0),
-                "set3": l91.get('83',0) }
-            img_bytes = opencv(
-                img_bytes,settings)
 
-        if prefix == 0:
+            settings = {
+                "set": f12.get('80',0),
+                "set0": f12.get('81',0),
+                "set1": f12.get('82',0),
+                "set2": f12.get('83',0),
+                "set3": f12.get('83',0) }
+            f11 = opencv(
+                f11,settings)
+
+        if f3 == 0:
             time_stamp = int(time.time())
             image_outs_ = CWD / f"{time_stamp}.png"
             with open(image_outs_, "wb") as f:
-                f.write(img_bytes)
+                f.write(f11)
 
-        if prefix >= 1:
-            with open(self.image_outs, "wb") as f:
-                f.write(img_bytes)
+        if f3 >= 1:
+            with open(image_outs, "wb") as f:
+                f.write(f11)
 
 
         if not self.is_mounted:
             return
 
-        if prefix >= 1:
-            self.mount(Image(self.image_outs))
-
-            size = self.size
-            cell_w, cell_h = 9, 18
-            target_w = size.width * cell_w
-            target_h = size.height * cell_h
-            container_ratio = target_w / target_h
-
-            img = cv2.imread(str(self.image_outs))
-            height, width = img.shape[:2]
-            img_ratio = width / height
+        if f3 >= 1:
+            self.mount(Image(image_outs))
+            testlauf(self, image_outs, Image, cv2)
 
 
-            if img_ratio > container_ratio:
-                self.query_one(Image).styles.width = "100%"
-                self.query_one(Image).styles.height = "auto"
-            else:
-                self.query_one(Image).styles.width = "auto"
-                self.query_one(Image).styles.height = "100%"
-
-
-        # test = web_to_tui(data_url[2],rot)
-        # self.notify(f"{test}")
-        # if prefix == 2:
-        #   CONFIGS.write_text(
-        #   json.dumps(self.app.stores))
+        # raus !!!
+        if any(f10[1]):
+            l0 = f2.setdefault('0', {})
+            l1 = l0.setdefault('38', {})
+            if f10[1][0] is not None:
+                l1['0'] = f10[1][0]
+            if f10[1][1] is not None:
+                l1['1'] = f10[1][1]
+            if f10[1][2] is not None:
+                l1['2'] = f10[1][2]
 
 
 
+        if f3 == 2:
+            turs = f10[2]
+            turi = web_to_tui(turs, f1)
+            with self.app.batch_update():
+                for i in range(1,2):
+                    f7 = f1[f"1-{i}"]
+                    test = turi.get(str(i))
+                    f0[i].clear(columns=False)
+                    cols = [str(col_i) for
+                            col_i in range(f6[i])]
+                    for row_i in range(len(f7)):
+                        row_key = str(row_i)
+                        yes = test.get(row_key, {})
+                        row = [f7[row_i][0]]
+                        for col in cols:
+                            row.append(
+                            str(yes.get(col,"")))
+                        f0[i].add_row(*row)
+
+            merged = {**f2, **turi}
+
+            # self.notify(f"f40 {f40.keys()}")
+            # self.notify(f"turi {turi.keys()}")
+            #
+            # for i,value in f2.items():
+            #     if i in turs.keys():
+            #         f40[i] = turs.get(i)
+            #         self.notify(f"yes {i}")
+            #     else:
+            #         self.notify(f"no {i}")
+            #         # f40[i] = {**value}
+
+
+            CONFIGS.write_text(
+            json.dumps(merged))
 
 
 class FileTypeTree(DirectoryTree):
@@ -146,7 +180,7 @@ class FileTypeTree(DirectoryTree):
         stamps = str(stamp)[-7:]
         id = event.control.id
         spl = id.split("-")[-1]
-        sps = str(int(spl)+3)
+        sps = str(int(spl)+145)
         if not src.is_file():
             return
 
@@ -173,7 +207,7 @@ class FileTypeTree(DirectoryTree):
             dest_dir = ASSETS_DIR / dest
             shutil.copy2(src, dest_dir)
             await self.reload()
-            self.app.helpful[sps] = stamps
+            self.app.stores[sps] = stamps
             self.notify(
             self.store.format(src=src))
             self.e_images.config = \

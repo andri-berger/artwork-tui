@@ -105,10 +105,10 @@ def tui_to_web(start, rot):
         if (int(row_i) <= 3):
             if row_i == '2':
                 if any(str(k) in i.keys()
-                       for k in range(44)):
+                       for k in range(45)):
                     d_transformed['3'] = {}
                 if any(str(k) in i.keys()
-                       for k in range(45 ,75)):
+                       for k in range(45,75)):
                     d_transformed['2'] = {}
             if row_i == '0' or row_i == '1':
                 d_transformed[row_i] = {}
@@ -145,5 +145,27 @@ def tui_to_web(start, rot):
                         l8 = str(l6[l7])
                         l5[l8] = i1
     return d_transformed
+
+
+
+def testlauf(self,image_outs,Image,cv2):
+    size = self.size
+    cell_w, cell_h = 9, 18
+    target_w = size.width * cell_w
+    target_h = size.height * cell_h
+    container_ratio = target_w / target_h
+
+    img = cv2.imread(str(image_outs))
+    height, width = img.shape[:2]
+    img_ratio = width / height
+
+    if img_ratio > container_ratio:
+        self.query_one(Image).styles.width = "100%"
+        self.query_one(Image).styles.height = "auto"
+    else:
+        self.query_one(Image).styles.width = "auto"
+        self.query_one(Image).styles.height = "100%"
+
+
 
 

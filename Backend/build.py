@@ -38,11 +38,6 @@ class CLIApp(App):
             CONFIGS.read_text()) \
             if CONFIGS.exists() else {}
 
-        subset = self.stores.get('0', {})
-        for i, store_key in enumerate(range(150, 156)):
-            if str(store_key) in subset:
-                self.helpful[str(i)] = subset[str(store_key)]
-
         self.store["1-4"] = make_new("Image")
         self.store["1-5"] = make_new("Text")
         self.store["2-4"] = make_news_0("Image")

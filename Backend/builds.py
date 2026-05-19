@@ -68,7 +68,7 @@ class TableApp(Widget):
                     table.add_column(
                         "",
                         width=checks0)
-            table.add_rows(rows[1:])
+            table.add_rows(rows[0:])
 
     def compose(self) -> ComposeResult:
         with Horizontal(id="top"):
