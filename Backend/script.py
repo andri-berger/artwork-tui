@@ -6,7 +6,7 @@ def make_layers(value="0"):
     return ["auto", "auto"] + [""] * 300 + [str(value)] * 300
 
 def make_new(value):
-    return ([[""]] + [[f"00 {value}"]]
+    return ([[f"00 {value}"]]
     + [[f"A{i:02d} {value}"] for i in range(100)]
     + [[f"B{i:02d} {value}"] for i in range(100)]
     + [[f"C{i:02d} {value}"] for i in range(100)]

@@ -13,8 +13,13 @@ import base64
 import time
 import json
 import cv2
-import copy
 
+from dataclasses import dataclass
+
+@dataclass
+class ConfigPayload:
+    prefix: int
+    data: dict
 
 
 CWD = Path.cwd()
@@ -25,7 +30,10 @@ image_outs = ASSETS_DIR / "model.png"
 CONFIGS = ASSETS_DIR / "model.json"
 
 class ImageTab(Widget):
-    config: reactive[tuple] = reactive(tuple, init=False)
+    #config: reactive[tuple] = reactive(tuple, init=False)
+    config: reactive[ConfigPayload | None] = reactive(None, init=False)
+
+
     async def watch_config(self, value: tuple):
         f0 = self.app.query(DataTable)
         f2 = self.app.stores
@@ -34,7 +42,8 @@ class ImageTab(Widget):
         f3, f4 = value
         f5 = tui_to_web(f4,f1)
         f6 = [None, 100, 301]
-        f40 = {}
+        self.notify(f"how many times {value}")
+
 
         if f3 == 2:
             with self.app.batch_update():
@@ -110,12 +119,11 @@ class ImageTab(Widget):
 
 
         if f3 == 2:
-            turs = f10[2]
-            turi = web_to_tui(turs, f1)
+            f1['00'] = web_to_tui(f10[2], f1)
             with self.app.batch_update():
                 for i in range(1,2):
                     f7 = f1[f"1-{i}"]
-                    test = turi.get(str(i))
+                    test = f1['00'].get(str(i))
                     f0[i].clear(columns=False)
                     cols = [str(col_i) for
                             col_i in range(f6[i])]
@@ -128,20 +136,7 @@ class ImageTab(Widget):
                             str(yes.get(col,"")))
                         f0[i].add_row(*row)
 
-            merged = {**f2, **turi}
-
-            # self.notify(f"f40 {f40.keys()}")
-            # self.notify(f"turi {turi.keys()}")
-            #
-            # for i,value in f2.items():
-            #     if i in turs.keys():
-            #         f40[i] = turs.get(i)
-            #         self.notify(f"yes {i}")
-            #     else:
-            #         self.notify(f"no {i}")
-            #         # f40[i] = {**value}
-
-
+            merged = {**f2, **f1['00']}
             CONFIGS.write_text(
             json.dumps(merged))
 
