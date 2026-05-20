@@ -9,6 +9,7 @@ import http.server
 import threading
 import functools
 import json
+import time
 
 
 PORT = 9000
@@ -81,6 +82,13 @@ class CLIApp(App):
             headless=True)
         self.page = await browser.new_page()
         await self.page.goto(DIR)
+
+        if self.stores == {}:
+            f1 = self.stores
+            now = int(time.time())
+            st = f1.setdefault('38', {})
+            for k in ['0', '1', '2']:
+                    st[k] = now
 
         l0 = {**self.stores}
         l0['_'] = [2,2 if l0 else 3]

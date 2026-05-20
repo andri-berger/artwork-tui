@@ -22,6 +22,8 @@ APP_DIR = Path(__file__).parent
 ASSETS_DIR = APP_DIR.parent / "Fontend"
 image_outs = ASSETS_DIR / "model.png"
 CONFIGS = ASSETS_DIR / "model.json"
+CONFIGS_ = ASSETS_DIR / "models.json"
+CONFIGS0_ = ASSETS_DIR / "models-.json"
 
 class ImageTab(Widget):
     config: reactive[dict] = reactive(dict, init=False)
@@ -37,19 +39,17 @@ class ImageTab(Widget):
         f1 = self.app.store
         f3 = self.app.page
         f4,f04 = value.pop("_", [])
-        f5 = tui_to_web(value,f1)
+        f5 = tui_to_web(value,f1) or {}
         f6 = [9, 100, 301, 300, 6, 6]
         self.query_one(
             Image).remove()
         self.notify(
             f"{f4} - {f04}")
 
-
         if f4 >= 1:
             with self.app.batch_update():
                 f0[col].clear(columns=False)
                 f7 = self.app.store[f"1-{col}"]
-                self.notify(f"{len(f7)}")
                 for row_i in range(len(f7)):
                     row = [f7[row_i][0]]
                     row.extend([""]*f6[col])
@@ -78,30 +78,30 @@ class ImageTab(Widget):
             here = web_to_tui(f10[1], f1)
             f2 = {**f2, **here}
 
-        # if f4 >= 1:
-        #     self.notify(f"F00 - {f2.keys()}")
-        #     ss = [0,6] if f4 == 2 else [1,3]
-        #     with self.app.batch_update():
-        #         for i in range(*ss):
-        #             uv = int(i) == 3
-        #             st = 2 if uv else i
-        #             f7 = f1[f"1-{st}"]
-        #             test = f2.get(str(i))
-        #             if test is not None:
-        #                 f0[i].clear(columns=False)
-        #                 cols = [str(col_i) for
-        #                         col_i in range(f6[i])]
-        #                 for row_i in range(len(f7)):
-        #                     row_key = str(row_i)
-        #                     yes = test.get(row_key, {})
-        #                     row = [f7[row_i][0]]
-        #                     for col in cols:
-        #                         row.append(
-        #                         str(yes.get(col,"")))
-        #                     f0[i].add_row(*row)
-        #
-        # CONFIGS.write_text(
-        # json.dumps(f2))
+        if f4 >= 1:
+            ss = [0,6] if f4 == 2 else [1,4]
+            with self.app.batch_update():
+                for i in range(*ss):
+                    uv = int(i) == 3
+                    st = 2 if uv else i
+                    f7 = f1[f"1-{st}"]
+                    test = f2.get(str(i),{})
+                    if test is not None:
+                        f0[i].clear(columns=False)
+                        cols = [str(col_i) for
+                                col_i in range(f6[i])]
+                        for row_i in range(len(f7)):
+                            row_key = str(row_i)
+                            yes = test.get(row_key)
+                            row = [f7[row_i][0]]
+                            if yes is not None:
+                                for col in cols:
+                                    row.append(
+                                    str(yes.get(col,"")))
+                            f0[i].add_row(*row)
+
+        CONFIGS.write_text(
+        json.dumps(f2))
 
     def render(self):
         return ""
@@ -162,7 +162,8 @@ class FileTypeTree(DirectoryTree):
             shutil.copy2(src, dir)
             cool = src.read_text()
             l20 = json.loads(cool)
-            l20.update({'_': 1})
+            l20.update({'_': [2,2]})
+            self.app.stores = l20
             self.e_images.config = l20
 
         if int(spl) >= 1:
@@ -172,11 +173,11 @@ class FileTypeTree(DirectoryTree):
             shutil.copy2(src, dest_dir)
             await self.reload()
             self.app.stores[sps] = stamps
+            l20 = {**self.app.stores}
+            l20.update({'_': [0,2]})
+            self.e_images.config = l20
             self.notify(
             self.store.format(src=src))
-            l20 = {**self.app.stores}
-            l20.update({'_': 1})
-            self.e_images.config = l20
 
             # f12 = f5.get('0',{})
         # if (any(str(k) in f12.keys()

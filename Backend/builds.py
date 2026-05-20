@@ -174,7 +174,7 @@ class TableApp(Widget):
 
     @on(Button.Pressed)
     def pressed(self, event: Button.Pressed) -> None:
-        on_pressed(self, event, ImageTab)
+        on_pressed(self, event)
 
     @on(events.Resize)
     def on_resize(self, event: events.Resize) -> None:
