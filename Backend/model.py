@@ -61,7 +61,6 @@ class ImageTab(Widget):
                 f1['4-2'][3],[f04,f5]))
             b64 = f10[0].split(',')[1]
             f11 = base64.b64decode(b64)
-            self.notify('done!!!')
 
         if f04 == 0:
             time_stamp = int(time.time())

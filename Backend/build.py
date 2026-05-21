@@ -78,8 +78,9 @@ class CLIApp(App):
         thread.start()
 
         self._pw = await async_playwright().start()
-        browser = await self._pw.chromium.launch(
-            headless=True)
+        browser = await (self._pw.chromium.launch(
+            headless=True
+        ))
         self.page = await browser.new_page()
         await self.page.goto(DIR)
 
