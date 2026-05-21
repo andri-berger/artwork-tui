@@ -15,14 +15,16 @@
 /** @param {Event} e */
 /** @returns {Promise<void>} */
 
-import { toCanvas } from 'html-to-image';
 import * as filters from 'pixi-filters';
-import * as PIXI from 'pixi-core';
-import * as d3 from 'random';
-import h from './script.js';
+import { toCanvas } from 'html-to-image';
+import * as PIXI from 'pixi.js';
+console.log('why', PIXI, filters)
 
-var h0 = { };
-var h1 = {
+import * as d3 from 'random';
+import k from './script.js';
+const k0 = Array();
+
+const k1 = {
     "4-0": {
     "l00-0": ["0",-10,10],
     "l00-1": ["-",60,100],
@@ -154,7 +156,7 @@ var h1 = {
     "3-3": ["hue","color","screen","lighten","darken","overlay","multiply","saturation","luminosity","color dodge","color burn","hard light","soft light"],
     "0-3": ["White","Transparent","Gainsboro","Wheat","Gold","Crimson","MediumVioletRed","MediumSeaGreen","SeaGreen","DeepSkyBlue","DodgerBlue","MediumSlateBlue","Black","Snow","HoneyDew","MintCream","Azure","AliceBlue","GhostWhite","WhiteSmoke","SeaShell","Beige","OldLace","FloralWhite","Ivory","AntiqueWhite","Linen","LavenderBlush","MistyRose","CornSilk","BlanchedAlmond","Bisque","NavajoWhite","BurlyWood","RosyBrown","SandyBrown","GoldenRod","DarkGoldenRod","Peru","Chocolate","SaddleBrown","Sienna","Brown","Maroon","LightGray","Silver","DarkGray","Gray","DimGray","LightSlateGray","SlateGray","DarkSlateGray","LightYellow","LemonChiffon","PapayaWhip","Moccasin","PeachPuff","PaleGoldenRod","Khaki","DarkKhaki","Coral","Tomato","OrangeRed","DarkOrange","IndianRed","LightCoral","Salmon","DarkSalmon","LightSalmon","FireBrick","DarkRed","Pink","LightPink","HotPink","DeepPink","PaleVioletRed","Lavender","Thistle","Plum","Violet","Orchid","Fuchsia","Magenta","MediumOrchid","MediumPurple","BlueViolet","DarkViolet","DarkOrchid","DarkMagenta","Purple","Indigo","SlateBlue","DarkSlateBlue","GreenYellow","Chartreuse","LimeGreen","PaleGreen","LightGreen","SpringGreen","ForestGreen","DarkGreen","YellowGreen","OliveDrab","Olive","DarkOliveGreen","MediumAquamarine","DarkSeaGreen","LightSeaGreen","DarkCyan","Teal","Aqua","Cyan","LightCyan","PaleTurquoise","AquaMarine","Turquoise","MediumTurquoise","DarkTurquoise","CadetBlue","SteelBlue","LightSteelBlue","PowderBlue","LightBlue","SkyBlue","LightSkyBlue","CornflowerBlue","RoyalBlue","MediumBlue","DarkBlue","MidnightBlue","Navy"]
     }};
-var h2 = {
+const k2 = {
     "110": "2-01",
     "111": "2-02",
     "112": "2-03",
@@ -196,22 +198,21 @@ var h2 = {
     "143": "0-1",
     "144": "0-2"
 };
+const k3 = document.body;
+const k4 = document.documentElement;
+const k5 = _ => document.createElement(_);
+const k6 = _ => document.querySelector(_);
+const k7 = _ => document.querySelectorAll(_);
+const k8 = _ => _.getBoundingClientRect();
+const k9 = _ => _[0].getAttribute(_[1]);
+const k10 = _ => _[0].removeAttribute(_[1]);
+const k11 = _ => String(_).padStart(2,'0');
+const k12 = _ => _[1]+(_[2]-_[1])*(_[0]/100);
+const k13 = _ => [1,10,100,1000,10000][_[0]];
+const k14 = _ => Math.round(_[1]*k13(_))/k13(_);
 
-var k1 = document.body;
-var k2 = document.documentElement;
-var k3 = _ => document.createElement(_);
-var k4 = _ => document.querySelector(_);
-var k5 = _ => document.querySelectorAll(_);
-var k6 = _ => _.getBoundingClientRect();
-var k7 = _ => _[0].getAttribute(_[1]);
-var k8 = _ => _[0].removeAttribute(_[1]);
-var k9 = _ => String(_).padStart(2,'0');
-var k10 = _ => _[1]+(_[2]-_[1])*(_[0]/100);
-var k11 = _ => [1,10,100,1000,10000][_[0]];
-var k12 = _ => Math.round(_[1]*k11(_))/k11(_);
-
-const k13 = l => {
-let l0 = k2.style;
+const h0 = l => {
+let l0 = k4.style;
 let l1 = [l[1],'px'];
 let l2 = `--${l[0]}`;
 let l3 = l1.join('');
@@ -220,32 +221,30 @@ let l4 = [l2,l3];
 l0.setProperty(...l4); }
 if (l[1] === 0) {
 l0.removeProperty(l2); }
-if (!k7([k2,'style'])) {
-k8([k2,'style']); }};
+if (!k9([k4,'style'])) {
+k10([k4,'style']); }};
 
-const k14 = l => {
-let l82 = k4('canvas')
+const h1 = l => {
+let l82 = k6('canvas')
  if (l82) {
-k1.removeChild(l82); }
-let l90 = k3('svg');
-let l91 = k3('div');
-let l92 = k3('style');
-let l93 = k3 ('style');
-k1.appendChild(l90);
-k1.appendChild(l91);
-k1.appendChild(l92);
-k1.appendChild(l93);
-let l4 = k4('body>svg');
-let l5 = k4('body>div');
-let l6 = k5('body>style');
-let l8 = h([l[0],l[1]]);
+k3.removeChild(l82); }
+let l90 = k5('svg');
+let l91 = k5('div');
+let l92 = k5('style');
+let l93 = k5 ('style');
+k3.appendChild(l90);
+k3.appendChild(l91);
+k3.appendChild(l92);
+k3.appendChild(l93);
+let l4 = k6('body>svg');
+let l5 = k6('body>div');
+let l6 = k7('body>style');
+let l8 = k([l[0],l[1]]);
 l5.innerHTML = l8[1];
 l6[0].innerHTML = l8[2];
-l6[1].innerHTML = l8[3];
-k15(0||'_'); };
+l6[1].innerHTML = l8[3]; };
 
-const k15 = () => {
-let l00 = h0['00'];
+const h2 = l => {
 let l0 = 'body>div';
 let l1 = '.t00,.t000';
 let l2 = `.k00,${l1}`;
@@ -254,11 +253,11 @@ let l5 = -Infinity;
 let l6 = -Infinity;
 let l7 = Infinity;
 let l8 = Infinity;
-k13(['f0',0||0]);
-k13(['f1',0||0]);
-k5(`${l0},${l3}`)
+h0(['f0',0||0]);
+h0(['f1',0||0]);
+k7(`${l0},${l3}`)
 .forEach(_ => {
-let l10 = k6(_);
+let l10 = k8(_);
 let l11 = l10.top;
 let l12 = l10.left;
 let l13 = l10.right;
@@ -267,42 +266,48 @@ l8 = Math.min(l8,l11);
 l7 = Math.min(l7,l12);
 l6 = Math.max(l6,l13);
 l5 = Math.max(l5,l14); });
-let l9 = k2.scrollTop||0;
-let l10 = k2.scrollWidth||0;
-let l11 = k2.scrollLeft * 2;
+let l9 = k4.scrollTop||0;
+let l10 = k4.scrollWidth||0;
+let l11 = k4.scrollLeft * 2;
 let l12 = l10 - l6 - l7 - l11;
-let l16 = Math.round(l00-l8-l9);
+let l16 = Math.round(l[0]-l8-l9);
 let l15 = Math.round(0.5*l12);
 let l13 = Math.round(l6-l7);
 let l14 = Math.round(l5-l8);
-k13(['f0',l15||Number()]);
-k13(['f1',l16||Number()]);
-k0[2] ??= new Array();
-k0[2][1] = l13;
-k0[2][2] = l14; };
+h0(['f0',l15||0]);
+h0(['f1',l16||0]);
+f0[1] = l13||0;
+f0[2] = l14||0; };
 
-const k16 = async l => { console.log('k16',l)
-let l00 = _ => {
-let l01 = _.width;
-let l02 = _.height;
-k13(['f2',l01/l[0]]);
-k13(['f3',l02/l[0]]);
-k1.innerHTML = '';
-k1.appendChild(_);
-
-    let testr = [_.toDataURL()]; // make conditional
-    if (l[3] === 3) {
-        delete l[2]['0']
-        testr.push(l[2])
-    }
-    console.log('NOW',testr)
-window.resolveCapture(testr); };
-let l90 = l[2]['0']||{};
-let l91 = Object.keys(l90);
-let l0 =  l91.some(
+// prefix, canvas, data
+const h3 = async l => { console.log('h3',l)
+    let l07 = l[2]['0']||{};
+    let l80 = l07['89']||10;
+    let l91 = Object.keys(l07);
+    let l0 =  l91.some(
     _ => _ >= 51 && _ <= 74);
+    let l81 = f0[1] + (l80 * 2);
+    let l82 = f0[2] + (l80 * 2);
+
+    let l00 = _ => {
+    h0(['f2',l81]);
+    h0(['f3',l82]);
+    k3.innerHTML = '';
+    k3.appendChild(_);
+    let l200 = '';
+    let l90 = ""
+
+
+        let testr = [_.toDataURL()]; // make conditional
+        if (l[0] === 3) {
+            delete l[2]['0']
+            testr.push(l[2])
+        }
+    window.resolveCapture(testr); };
+
+
 if (l0 === true) {
-let l2 = k3('canvas');
+let l2 = k5('canvas');
 let l3 = '/styles.js';
 let l4 = l[1].getContext('2d',
 { willReadFrequently: true });
@@ -321,183 +326,175 @@ l00(_.data[0]); }; }
 if (l0 === false) {
 l00(l[1]); }};
 
-const k17 = l => {
-let l0 = l[2][76]||0;
-let l1 = l[2][77]||0;
-let l2 = l[2][78]||0;
-let l3 = l[2][79]||0;
-let l7 = new Object();
-let l8 = filters;
-let l9 = l[1].height;
-let l10 = l[1].width;
-if (l[0] === 9) {
-l7 = new l8.
-ZoomBlurFilter({
-strength: k10([l0,0.2,2]),
-innerRadius:k10([l1,100,1000]),
-radius: k10([l2,100,1000]),
-centerY: l9 * k10([l3,0,1]),
-centerX: l10 * 0.5}); }
-if (l[0] === 10) {
-l7 = new l8.
-TwistFilter({
-offset: [l10 / 2,
-20 + k10([l0,100,900])
-+ l9 * k10([l0,0,1])],
-radius: k10([l1,100,900]),
-angle: k10([l2,0,100])}); }
-if (l[0] === 11) {
-l7 = new l8.
-BulgePinchFilter({
-radius: k10([l1,200,2000]),
-strength: k10([l2,-1,1]),
-center:{x: 0.5,
-y: k10([l0,0,1])}}); }
-if (l[0] === 12) {
-l7 = new l8.GlitchFilter({
-slices: k10([l0,0,100]),
-offset: k10([l1,-400,400]),
-direction:k10([l2,0,360]),
-sampleSize: k10([l3,512,1024])}); }
-if (l[0] === 13) {
-l7 = new l8.
-ReflectionFilter({
-boundary: k10([l0,0,0.9]),
-amplitudeEnd: k10([l2,2,200]),
-amplitudeStart: k10([l1,2,200]),
-wavelengthStart: k10([l3,2,200])/*,
-wavelengthEnd: k10([l4,2,200]),
-alphaStart: k10([l5,0.2,1]),
-alphaEnd: k10([l6,0.2,1]),
-mirror: k10([l6,0,1]) */}); }
-return l7; };
+const h4 = l => { console.log('h4',l)
+    let l0 = l[1][76]||0;
+    let l1 = l[1][77]||0;
+    let l2 = l[1][78]||0;
+    let l3 = l[1][79]||0;
+    let l07 = l[1]['0']||{};
+    let l80 = l07['89']||10;
+    let l81 = f0[1] + (l80 * 2);
+    let l82 = f0[2] + (l80 * 2);
+    let l9 = l82.height;
+    let l10 = l81.width;
+    let l8 = filters;
+    let l7 = {};
 
-const k18 = l => {
-let l0 = l[2][76]||0;
-let l1 = l[2][77]||0;
-let l2 = l[2][78]||0;
-let l3 = l[2][79]||0;
-let l6 = new Object();
-let l7 = filters;
-if (l[0] === 1) {
-l6 = new l7.
-AsciiFilter({
-size: k10(
-[l0,1,200])}); }
-if (l[0] === 2) {
-l6 = new PIXI.
-NoiseFilter({
-noise: k10([l0,0.2,2]),
-seed: k10([l1,0.01,100])}); }
-if (l[0] === 3) {
-l6 = new l7.DotFilter({
-scale: k10([l0,0,2]),
-angle: k10([l1,0,10]),
-grayscale: false}); }
-if (l[0] === 4) {
-l6 = new l7.CRTFilter({
-lineContrast: k10([l1,0.25,10]),
-lineWidth: k10([l0,1,100]),
-curvature: k10([l2,1,100]),
-verticalLine: k10([l3,0,1])
- > 0.5? true: false}); }
-if (l[0] === 5) {
-l6 = new l7.
-SimplexNoiseFilter({
-strength: k10([l0,0.3,0.9]),
-noiseScale: k10([l1,1,90]),
-offsetX: k10([l2,0,100]),
-offsetY: k10([l3,0,100])/*,
-offsetZ: k10([l4,0,100]),
-step: k10([l5,-1,1]) */}); }
-if (l[0] == 6) {
-l6 = new l7.GlowFilter({
-distance: k10([l0,1,100]),
-innerStrength: k10([l1,0.1,20]),
-outerStrength: k10([l2,0.1,20]),
-alpha: k10([l3,0.1,10])}); }
-if (l[0] === 7) {
-l6 = new l7.KawaseBlurFilter({
-strength: k10([l0,0,20]),
-quality: k10([l3,1,3]),
-pixelSize: {
-x:k10([l1,1,10]),
-y:k10([l2,1,10])}}); }
-if (l[0] === 8) {
-l6 = new l7.AdvancedBloomFilter({
-threshold: k10([l0,0.1,1]),
-bloomScale: k10([l1,0,2]),
-quality: k10([l2,0,10]),
-pixelSizeX: k10([l3,0,10]),
-/* pixelSizeY: k10([l4,0,10]),
-blur: k10([l5,0,10]) */}); }
-if (l[0] >= 9) {
-return k17(l); }
-if (l[0] <= 8) {
-return l6; }};
+    if (l[0] === 9) {
+    l7 = new l8.
+    ZoomBlurFilter({
+    strength: k12([l0,0.2,2]),
+    innerRadius:k12([l1,100,1000]),
+    radius: k12([l2,100,1000]),
+    centerY: l9 * k12([l3,0,1]),
+    centerX: l10 * 0.5}); }
+    if (l[0] === 10) {
+    l7 = new l8.
+    TwistFilter({
+    offset: [l10 / 2,
+    20 + k12([l0,100,900])
+    + l9 * k12([l0,0,1])],
+    radius: k12([l1,100,900]),
+    angle: k12([l2,0,100])}); }
+    if (l[0] === 11) {
+    l7 = new l8.
+    BulgePinchFilter({
+    radius: k12([l1,200,2000]),
+    strength: k12([l2,-1,1]),
+    center:{x: 0.5,
+    y: k12([l0,0,1])}}); }
+    if (l[0] === 12) {
+    l7 = new l8.GlitchFilter({
+    slices: k12([l0,0,100]),
+    offset: k12([l1,-400,400]),
+    direction:k12([l2,0,360]),
+    sampleSize: k12([l3,512,1024])}); }
+    if (l[0] === 13) {
+    l7 = new l8.
+    ReflectionFilter({
+    boundary: k12([l0,0,0.9]),
+    amplitudeEnd: k12([l2,2,200]),
+    amplitudeStart: k12([l1,2,200]),
+    wavelengthStart: k12([l3,2,200])/*,
+    wavelengthEnd: k10([l4,2,200]),
+    alphaStart: k10([l5,0.2,1]),
+    alphaEnd: k10([l6,0.2,1]),
+    mirror: k10([l6,0,1]) */}); }
+    return l7; };
+
+
+const h5 = l => { console.log('h5',l)
+    let l0 = l[1][76]||0;
+    let l1 = l[1][77]||0;
+    let l2 = l[1][78]||0;
+    let l3 = l[1][79]||0;
+    let l7 = filters;
+    let l6 = {};
+    if (l[0] === 1) {
+    l6 = new l7.
+    AsciiFilter({
+    size: k12(
+    [l0,1,200])}); }
+    if (l[0] === 2) {
+    l6 = new PIXI.
+    NoiseFilter({
+    noise: k12([l0,0.2,2]),
+    seed: k12([l1,0.01,100])}); }
+    if (l[0] === 3) {
+    l6 = new l7.DotFilter({
+    scale: k12([l0,0,2]),
+    angle: k12([l1,0,10]),
+    grayscale: false}); }
+    if (l[0] === 4) {
+    l6 = new l7.CRTFilter({
+    lineContrast: k12([l1,0.25,10]),
+    lineWidth: k12([l0,1,100]),
+    curvature: k12([l2,1,100]),
+    verticalLine: k12([l3,0,1])
+     > 0.5? true: false}); }
+    if (l[0] === 5) {
+    l6 = new l7.
+    SimplexNoiseFilter({
+    strength: k12([l0,0.3,0.9]),
+    noiseScale: k12([l1,1,90]),
+    offsetX: k12([l2,0,100]),
+    offsetY: k12([l3,0,100])/*,
+    offsetZ: k10([l4,0,100]),
+    step: k10([l5,-1,1]) */}); }
+    if (l[0] === 6) {
+    l6 = new l7.GlowFilter({
+    distance: k12([l0,1,100]),
+    innerStrength: k12([l1,0.1,20]),
+    outerStrength: k12([l2,0.1,20]),
+    alpha: k12([l3,0.1,10])}); }
+    if (l[0] === 7) {
+    l6 = new l7.KawaseBlurFilter({
+    strength: k12([l0,0,20]),
+    quality: k12([l3,1,3]),
+    pixelSize: {
+    x:k12([l1,1,10]),
+    y:k12([l2,1,10])}}); }
+    if (l[0] === 8) {
+    l6 = new l7.AdvancedBloomFilter({
+    threshold: k12([l0,0.1,1]),
+    bloomScale: k12([l1,0,2]),
+    quality: k12([l2,0,10]),
+    pixelSizeX: k12([l3,0,10]),
+    /* pixelSizeY: k10([l4,0,10]),
+    blur: k10([l5,0,10]) */}); }
+    if (l[0] >= 9) {
+    return h4(l); }
+    if (l[0] <= 8) {
+    return l6; }};
 
 
 // OK [resolution,canvas,data]
-const k19 = async l => {
-    let l90 = l[2]['0']||{};
-    let l91 = Object.keys(l90);
-    let l0 =  l91.some(
-    _ => _ >= 51 && _ <= 74);
-    let l1 = [l0[1],l[1]];
-let l2 = l0[1] >= 1;
-let l3 = l[2]['0'];
-let l4 = [...l1,l3];
-let l5 = l[1].height;
-let l6 = l[1].width;
-k0[10] = new PIXI.
-Application({
-width: l6||Number(),
-height: l5||Number(),
-preference: 'webgl',
-backgroundAlpha: 0,
-antialias: true});
+const h6 = async l => { console.log('h6',l)
+    let l0 = l[2]['0']||{};
+    let l1 = l0['75']||0;
+    let l2 = [l1,l0];
+    let l3 = l[1].height;
+    let l4 = l[1].width;
+    let l5 = PIXI.
+    Texture.from(l[1]);
+    if (!k0[1]) {
+        k0[1] = new PIXI.
+        Application();
+        await k0[1].init({
+            width: l4 || 0,
+            height: l3 || 0,
+            preference: 'webgpu',
+            backgroundAlpha: 0,
+            antialias: true
+        }); }
+    if (!k0[2]) {
+        k0[2] = new
+        PIXI.Sprite(l5);
+        k0[1].stage.
+        addChild(k0[2]); }
+    else if (k0[2]) {
+        k0[2].texture = l5; }
+        k0[2].width = l4;
+        k0[2].height = l3;
+    if (l1 >= 1) {
+        let l6 = h5(l2);
+        k0[2].filters = [l6];
+        k0[1].render() || null;
+        let l9 = k5('canvas');
+        let l10 = l9.getContext('2d',
+        { willReadFrequently: true });
+        l9.width = k0[1].renderer.width;
+        l9.height = k0[1].renderer.height;
+        l10.drawImage(k0[1].view,0,0);
+        h3([0,l9,l[2]]);
+        k0[0] = l9||{}; }
+    if (l1 === 0) {
+        h3([...l]); }};
 
-// PIXI.utils.clearTextureCache();
-
-let l7 = PIXI.
-Texture.from(l[1]);
 
 
 
-// k0[9] = new PIXI.
-// Sprite(0||0||l7);
-
-
-
-if (!k0[9]) {
-k0[9] = new PIXI.Sprite(l7);
-k0[9].width = l6;
-k0[9].height = l5;
-k0[10].stage.addChild(k0[9]);}
-else {
-k0[9].texture = l7;
-k0[9].width = l6;
-k0[9].height = l5;
-}
-
-if (l2 === true) {
-let l8 = k18(0||l4);
-k0[9].filters = [l8];
-k0[10].render() || null;
-let l9 = k3(0||'canvas');
-let l10 = l9.getContext('2d',
-{ willReadFrequently: true });
-l9.width = k0[10].renderer.width;
-l9.height = k0[10].renderer.height;
-l10.drawImage(k0[10].view,0,0);
-k16([0,l9,l[2]]);
-k0[5] = l9||{}; }
-
-if (l2 === false) {
-k16([l[0],l[1]]);
-}};
-
-const k20 = l => {
+const h7 = l => {
 if (l[0] <= 1) {
 let l0 = new Array();
 let l1 = d3.randomUniform;
@@ -524,7 +521,7 @@ l3)(l[2])); }
 return l0 || []; }
 if (l[0] === 2) {
 let l0 = Object();
-let l1 = h1['4-1'];                  // metadata ok
+let l1 = k1['4-1'];                  // metadata ok
 let l2 = l1[l[1]];
 for (let i in l[2]) {
 let l3 = l[2][0||i];
@@ -536,14 +533,14 @@ l0[l5] ??= {};
 l0[l5][i] = l6; }}
 return l0 || {}; }};
 
-const k21 = l => {
+const h8 = l => {
 let l0 = l[0][0];
 let l1 = l[0][1];
 let l2 = l[0][2];
 let l3 = l[0][3];
 let l03 = 1-l[0][4];
 let l4 = ['-','2'];
-let l5 = h1['6-0'][l1];
+let l5 = k1['6-0'][l1];
 let l6 = l[3].length-1;
 let l7 = l4.includes(l1);
 let l8 = new Object();
@@ -553,12 +550,12 @@ let l11 = _ => {
 let l12 = _[0] * l6;
 let l13 = _[0] * l10;
 let l14 = 0||l13 + l2;
-let l15 = k12([0,l14]);
-let l16 = k12([0,l12]);
+let l15 = k14([0,l14]);
+let l16 = k14([0,l12]);
 if (l1.length >= 3) {
 let l17 = l5.length-1;
 let l18 = [0,_[0]*l17];
-let l19 = k12(l18);
+let l19 = k14(l18);
 l9 = l5?.[l19]; }
 if (l1 === '-' ||
 l1 === '0') {
@@ -570,12 +567,12 @@ let l17 = ['k'];
 if (_[1] >= 1) {
 let l18 = Array.from(
 {length:_[1]},(_,_0)=>
-`${l0[0]}${k9(_0)}`);
+`${l0[0]}${k11(_0)}`);
 l17.push(...l18||[]); }
 let l19 = l17.length;
 let l20 = l03 * _[0]||0;
 let l21 = l20 * (l19-1);
-let l22 = k12([0,l21]);
+let l22 = k14([0,l21]);
 l9 = l17[l22]; }
 if (l1 === '3') {
 if (l[3].length) {
@@ -592,24 +589,24 @@ if (l7 === true
 l8[i] = l15; }}}
 return l8; };
 
-const k22 = l => {
-let l0 = h1['4-0'];                          // metadata ok
-let l1 = h1['4-1'];                          // metadata ok
+const h9 = l => {
+let l0 = k1['4-0'];                          // metadata ok
+let l1 = k1['4-1'];                          // metadata ok
 let l2 = {...l0,...l1};
 let l3 = {};
 let l4 = Number(l[1]);
 let l5 = l2[l[0]||''];
 let l6 = [l[4],l[5]];
-let l8 = k12([0,l[2]]);
+let l8 = k14([0,l[2]]);
 let l9 = l5[2] - l5[1];
 let l10 = {length:l9+1};
 let l11 = {length:l8+0};
 let l12 = 0.1 + 0.9 * l[9];
 let l13 = 0.1 + 0.9 * l[8];
-let l14 = k20([0,0,l12,l10,l4]);
-let l15 = k20([0,0,l[3],l10,l4+1]);
-let l16 = k20([1,...l6,l10,l4+2]);
-let l17 = k20([1,0,0,l10,l4+3]);
+let l14 = h7([0,0,l12,l10,l4]);
+let l15 = h7([0,0,l[3],l10,l4+1]);
+let l16 = h7([1,...l6,l10,l4+2]);
+let l17 = h7([1,0,0,l10,l4+3]);
 let l18 = l.slice(10).map(_ =>
 _.split('.').filter(Boolean));
 let l19 = _ => Object.keys(_);
@@ -631,20 +628,20 @@ let l33 = [l17[i],l[6]];
 let l34 = l30? l13: l16[i];
 let l35 = l30? l14[i]: l15[i];
 if (l31 || l35 || l28 === '-') {
-let l36 = k20([1,...l33,l11,l26]);
-let l37 = k20([0,0,l34,l11,l26]);
-let l38 = k20([1,0,0,l11,l26]);
+let l36 = h7([1,...l33,l11,l26]);
+let l37 = h7([0,0,l34,l11,l26]);
+let l38 = h7([1,0,0,l11,l26]);
 let l39 = [l[0],...l27,l[7]];
 let l40 = !l31? l36: l38;
 let l41 = [l37,l40,l22];
 let l42 = [l39,...l41];
-let l43 = k21(l42);
+let l43 = h8(l42);
 let l44 = l19(l43);
 if (l44.length) {
 l3[l32] = l43 }}}}
 return l3; };
 
-const k23 = () => {
+const h10 = () => {
 let l0 = [
 'l00','k00','t00'];
 let l1 = {};
@@ -656,12 +653,12 @@ let l2 = Number(i);
 let l3 = Date.now();
 let l4 = `f0-${l0[i]}`;
 let l5 = `f1-${l0[i]}`;
-let l6 = `${l2+2}-01`;              // Limit 2-01, 3-01, 4-01
+let l6 = `${l2+2}-01`;
 let l7 = new Array(9);
 let l8 = l7.fill(0);
 l8.push(String());
 l8.push(String());
-if (h0[l6] != null) {
+if (f1[l6] != null) {
 for (let i0 in l8) {
 let l10 = Number(i0);
 let l11 = l10 >= 9;
@@ -669,61 +666,47 @@ let l12 = l10 >= 7;
 let l13 = l12? 12: 0;
 let l14 = l10 + l13||0;
 let l15 = [0,2*l2+l10-6];
-let l16 = [l2+2,k9(l14)];
-let l17 = h0[l16.join('-')];                 // all others
-let l18 = h0[l15.join('-')];                 // all others
+let l16 = [l2+2,k11(l14)];
+let l17 = f1[l16.join('-')];
+let l18 = f1[l15.join('-')];
 let l19 = l11? l18: l17;
 if (l10 === 0) {
-
-
-
-
-let l20 = `0-2${l2+1}`;             // l/k/t-seed 0-21/0-22/0-23
-let l21 = `0-${l2+0}`;              // ID-Seed 0-0/0-1/0-2
-let l22 = h0[`${l21}`];
-let l23 = [l22,`${l3}`];
-let l25 = h0[l20] && l22;
-l8[0] = l23[l25?0:1];
-if (l25 == null) {
-    h0[l21] = `${l3}`; }}
-
-
-
-h0[l21] = `${l3}`;
-
-
-
+let l21 = `0-${l2}`;
+l8[0] = f1[l21] || `${l3}`;
+if (f1[l21] == null) {
+f1[l21] = `${l3}`; }}
 if (l10 === 1) {
 l8[l10] = l19; }
 if (l10 >= 2) {
 if (l19 != null) {
 let l20 = l19 / 100;
-let l21 = k12([3,l20]);
+let l21 = k14([3,l20]);
 l8[l10] = l11? l19: l21; }}}
-let l10 = k22([l4,...l8]);
-let l11 = k22([l5,...l8]);
-let l12 = k20([2,l0[i],l11]);
-let l13 = k20([2,l0[i],l10]);
-let l14 = k22([l0[i],...l8]);
+let l10 = h9([l4,...l8]);
+let l11 = h9([l5,...l8]);
+let l12 = h7([2,l0[i],l11]);
+let l13 = h7([2,l0[i],l10]);
+let l14 = h9([l0[i],...l8]);
 l1['1'] = {...l1['1'],...l14};
 l1['2'] = {...l1['2'],...l13};
 l1['3'] = {...l1['3'],...l12}; }}
 return l1; };
 
-const k24 = async l => { console.log('k24',l)
-let l90 = l[1]?.['0']?.['89']||10;
-let l00 = l[1]?.['0']?.['90']||0;
-let l01 = l[1]?.['0']?.['91']||0;
-let l09 = l[1]?.['0']?.['92']||6;
-let l08 = l[1]?.['0']?.['93']||5;
-let l1 = k0[2][1] + (l90 * 2);
-let l2 = k0[2][2] + (l90 * 2);
-let l0 = [l09,l08,l08,l08][l[0]];
-let l3 = k3('canvas');
+const h11 = async l => { console.log('h11',l)
+    let l07 = l[1]['0']||{};
+let l90 = l07['89']||10;
+let l00 = l07['90']||0;
+let l01 = l07['91']||0;
+let l09 = l07['92']||6;
+let l08 = l07['93']||5;
+let l0 = l[0]? l08: l09;
+let l1 = f0[1] + (l90 * 2);
+let l2 = f0[2] + (l90 * 2);
+let l3 = k5('canvas');
 let l4 = l3.getContext('2d',
 { willReadFrequently: true});
-let l5 = k2.scrollWidth;
-let l6 = k2.scrollHeight;
+let l5 = k4.scrollWidth;
+let l6 = k4.scrollHeight;
 let l7 = l0 * l00;
 let l8 = l0 * l01;
 let l14 = l0 * l7 * 2;
@@ -732,9 +715,8 @@ let l10 = l0 * l1;
 let l11 = l0 * l2;
 let l12 = l0 * l5;
 let l13 = l12 - l10;
-let l16 =
-await toCanvas(k1,{
-width: l5,
+let l16 = await toCanvas(
+k3,{ width: l5,
 height: l6,
 canvasWidth: l5,
 canvasHeight: l6,
@@ -745,44 +727,81 @@ l4.drawImage(
 l16,l13/2,0,
 l10,l11,l14/2,
 l15/2,l10,l11);
-k16([l0,l3,l[1],l[0]]); };
 
 
-window.testlaufs = l => {
-    h0 = {
-    "2-01": 20,
-    "2-02": 30,
-    "3-01": 20,
-    "3-02": 30,
-    "4-01": 20,
-    "4-02": 30,
-    "2-19": 100,
-    "3-19": 100,
-    "4-19": 100};
-    window.k0 = [];
+    {
+        let l0 = l[2]['0'] || {};
+        let l1 = l0['75'] || 0;
+        if (l1 >= 1) {
+            await h6([l[0], l3, l[1]]);
+        }
+        // h3([l[0],l3,l[1]]);
+
+    }
+
+
+
+k0[0] = l3; };
+
+
+window.testlaufs = async l => {
+    window.f0 = [];
+    window.f1 = {
+        "2-01": 20,
+        "2-02": 30,
+        "3-01": 20,
+        "3-02": 30,
+        "4-01": 20,
+        "4-02": 30,
+        "2-19": 100,
+        "3-19": 100,
+        "4-19": 100};
+        let l0 = l[1]||{};
+        let l1 = l0['0']||{};
+        let l2 = l1['89']||10;
+        let l3 = l1['92']||6;
+        let l4 = l1['93']||5;
+        let l5 = l3 === l4;
     document.body.innerHTML = '';
-    h0['00'] = l[2]?.['0']?.['89']||10;
-    return new Promise(resolve => {
+    return new Promise(async resolve => {
         window.resolveCapture = resolve;
         if (l[0] === 3) {
-            let l0 = l[1];
-            let l1 = k23()
-            for (let i in l0['0']) {
-            h0[h2[i]] = l0['0'][i]; }
-            k14([l[0],l1]);
-            k24([l[0],l1]); }
-        if (l[0] == 2) {
-            k14(l);
-            k24(l);
+            let l6 = h10()
+            for (let i in l1) {
+            f1[k2[i]] = l1[i]; }
+            h1([l[0],l6]);
+            h2([l2,'_']);
+            h11([l[0],l6]); }
+        if (l[0] === 2) {
+            h1([l[0],l[1]]);
+            h2([l2,'_']);
+            await h11([l[0],l[1]]);
         }
-        if (l[0] == 1) { }
-        if (l[0] == 0) { }
+        if (l[0] === 1) {
+            h1([l[0],l[1]]);
+            h2([l2,'_']);/*
+            h3([l[0],
+                k0[0],l[1]]); */
+            await h11([2,l[1]]);
+
+
+        }
+        if (l[0] === 0) {
+            if (l5 === false) {
+                h1([l[0],l[1]]);
+                h2([l2,'_']);
+                h11([l[0],l[1]]); }
+            if (l5 === true) {
+                let l4 = f0[0].toDataURL()
+                window.resolveCapture([l4,{}]); }
+        }
 }); }
 
 
 // first params
-testlaufs([3,
-    {}
+testlaufs([2,
+    {"0":{"75":1,"76":20},
+        "1":{"1":{"1":20,"2":80}}}
 ])
 
 
