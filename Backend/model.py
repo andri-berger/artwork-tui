@@ -191,13 +191,3 @@ class FileTypeTree(DirectoryTree):
         #     f11 = opencv(
         #         f11,settings)
 
-        # raus !!!
-        # if any(f10[1]):
-        #     l0 = f2.setdefault('0', {})
-        #     l1 = l0.setdefault('38', {})
-        #     if f10[1][0] is not None:
-        #         l1['0'] = f10[1][0]
-        #     if f10[1][1] is not None:
-        #         l1['1'] = f10[1][1]
-        #     if f10[1][2] is not None:
-        #         l1['2'] = f10[1][2]

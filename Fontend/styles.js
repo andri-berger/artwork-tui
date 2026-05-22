@@ -1,57 +1,57 @@
 self.onmessage = async l => {
-let l0 = l.data[2];
-let l1 = l.data[3];
-let l2 = l.data[4];
-let l29 = l2[50] || 0;
-let l3 = l2[51]*2+3||3;
-let l4 = l2[52]*2+3||3;
-let l5 = l2[53]/30||0;
-let l6 = l2[54]/30||0;
-let l7 = l2[55]/30||0;
-let l8 = l2[56]/30||0;
-let l9 = l2[57]/30||0;
-let l10 = l2[58]/30||0;
-let l11 = l2[59]/30||0;
-let l12 = l2[60]/30||0;
-let l13 = l2[61]/2||0;
-let l14 = l2[62]/2||0;
-let l15 = l2[63]/50||0;
-let l16 = l2[64]/50||0;
-let l17 = l2[65]/50||0;
-let l18 = l2[66]/50||0;
-let l19 = l2[67]/50||0;
-let l20 = l2[68]/50||0;
-let l21 = l2[67]/100*7||0;
-let l22 = l2[68]/100*7||0;
-let l23 = l2[69]/30||0;
-let l24 = l2[70]/30||0;
-let l25 = l2[71]/30||0;
-let l26 = l2[72]/30||0;
-let l27 = l2[73]/30||0;
-let l28 = l2[74]/30||0;
-let l31 = new Uint8ClampedArray(l0);
+let l00 = l.data[2];
+let l01 = l.data[3];
+let l02 = [l.data[0],l.data[1]]
+let l03 = new OffscreenCanvas(...l02)
+let l04 = l03.getContext('2d');
+let l05 = new Uint8ClampedArray(l00);
+
+let l2 = l01[50] || 0;
+let l3 = l01[51]*2+3||3;
+let l4 = l01[52]*2+3||3;
+let l5 = l01[53]/30||0;
+let l6 = l01[54]/30||0;
+let l7 = l01[55]/30||0;
+let l8 = l01[56]/30||0;
+let l9 = l01[57]/30||0;
+let l10 = l01[58]/30||0;
+let l11 = l01[59]/30||0;
+let l12 = l01[60]/30||0;
+let l13 = l01[61]/2||0;
+let l14 = l01[62]/2||0;
+let l15 = l01[63]/50||0;
+let l16 = l01[64]/50||0;
+let l17 = l01[65]/50||0;
+let l18 = l01[66]/50||0;
+let l19 = l01[67]/50||0;
+let l20 = l01[68]/50||0;
+let l21 = l01[67]/100*7||0;
+let l22 = l01[68]/100*7||0;
+let l23 = l01[69]/30||0;
+let l24 = l01[70]/30||0;
+let l25 = l01[71]/30||0;
+let l26 = l01[72]/30||0;
+let l27 = l01[73]/30||0;
+let l28 = l01[74]/30||0;
 let l32 = l5 <= 1? (1 - l5): l5;
 let l33 = l7 <= 1? (1 - l7): l7;
 let l34 = l9 <= 1? (1 - l9): l9;
 let l35 = l25 > 0 && l26 > 0;
 let l36 = l13 > 0 || l14 > 0
-let l37 = l36 || l29 >= 2;
+let l37 = l36 || l2 >= 2;
 let l38 = !l7? l32: l33;
 let l39 = !l9? l32: l34;
-l1.width = l.data[0];
-l1.height = l.data[1];
 
-let l40 = l1.getContext('2d');
 for (let x=0;x<l.data[0];x+=l3) {
 for (let y=0;y<l.data[1];y+=l4) {
 let l41 = (x+y*l.data[0]) * 4;
-let l42 = l31[l41+0];
-let l43 = l31[l41+1];
-let l44 = l31[l41+2];
-let l45 = l31[l41+3] / 255;
+let l42 = l05[l41+0];
+let l43 = l05[l41+1];
+let l44 = l05[l41+2];
+let l45 = l05[l41+3] / 255;
 let l46 = l45.toFixed(0||2);
 let l47 = [0||l42,l43,l44,l46];
-if (l31[l41+3] === 0) continue;
+if (l05[l41+3] === 0) continue;
 let l48 = Math.random();
 let l49 = Math.random();
 let l50 = Math.random();
@@ -132,34 +132,34 @@ let l118 = l102 - l96 + l96 * l67;
 let l119 = l103 - l97 + l97 * l68;
 let l120 = l102 - l96 + l96 * l69;
 let l121 = l103 - l97 + l97 * l70;
-l40.strokeStyle = `rgba(${l47})`;
-l40.fillStyle = `rgba(${l47})`;
-l40.lineCap = `square`;
-l40.lineWidth = l62;
-l40.beginPath();
+l04.strokeStyle = `rgba(${l47})`;
+l04.fillStyle = `rgba(${l47})`;
+l04.lineCap = `square`;
+l04.lineWidth = l62;
+l04.beginPath();
 
-if (l29 === 0) {
-l40.rect(...l109); }
-if (l29 === 1) {
-l40.ellipse(...l108); }
-if (l29 === 2) {
-l40.moveTo(...l116);
-l40.lineTo(...l117); }
-if (l29 === 3) {
+if (l2 === 0) {
+l04.rect(...l109); }
+if (l2 === 1) {
+l04.ellipse(...l108); }
+if (l2 === 2) {
+l04.moveTo(...l116);
+l04.lineTo(...l117); }
+if (l2 === 3) {
 if (l35 === false) {
-l40.moveTo(...l116);
-l40.quadraticCurveTo(
+l04.moveTo(...l116);
+l04.quadraticCurveTo(
 l118, l119,...l117); }
 if (l35 === true) {
-l40.moveTo(...l116);
-l40.bezierCurveTo(
+l04.moveTo(...l116);
+l04.bezierCurveTo(
 l118,l119,l120,
 l121,...l117); }}
 if (l37 === false) {
-l40.fill(); }
+l04.fill(); }
 if (l37 === true) {
-l40.stroke(); }}}
-let l99 = await l1.
-convertToBlob()||null;
-self.postMessage([l99]); };
+l04.stroke(); }}}
+let l41 = await createImageBitmap(l03)
+self.postMessage(l41, [l41])
+};
 

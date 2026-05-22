@@ -59,7 +59,7 @@ ImageTab {
 
 #bottoms {
     width: 1fr;
-    height: 2;
+    height: 3;
     background: $defaults;
     align: center middle;
 }

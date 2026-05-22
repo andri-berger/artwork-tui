@@ -235,8 +235,8 @@ def on_pressed(self, event) -> None:
     f3 = f1.setdefault("0", {})
     f4 = f3.setdefault("37", {})
     f5 = f3.setdefault("38", {})
-    f6 = {"6": 2, "4": 1, "3": 0}
-    f7 = {"6": 2, "4": 3, "3": 0}
+    f6 = {"6": 2, "3": 1, "4": 0}
+    f7 = {"6": 2, "3": 3, "4": 0}
     f8 =  f0["4-0"].index(f2) \
         if f2 in f0["4-0"] else -1
     f9 = self.turi
@@ -286,7 +286,10 @@ def on_submitted(self, event) -> None:
         f2 = 1 if 24 <= self.coord.row <= 30 else 2
         f3 = f2 if self.coord.row >= 10 else 3
         f4 = f3 if int(f1) == 0 else 2
+
         f5 = self.get_all_data(f0)
+
+        self.notify(f"here {f1.keys()}")
         self.app.stores[f1] = f5
         f6 = {**self.app.stores}
         f6.update({'_': [0,f4]})

@@ -329,6 +329,10 @@
     ["B0","0-100", "100"],
     ["C0","0-100", "100"]],
   [[""],
+    ["A0","0-100", ""],
+    ["B0","0-100", ""],
+    ["C0","0100", ""]],
+  [[""],
     ["A0","#hex", ""],
     ["B0","#hex", ""],
     ["C0","#hex", ""]],
@@ -696,11 +700,11 @@
       "9-1 DO THIS AND THAT. Lorem ipsum dolor sit amet.",
       "9-2 DO THIS AND THAT. Lorem ipsum dolor sit amet.",
       "9-3 DO THIS AND THAT. Lorem ipsum dolor sit amet."],
+    ["10-0 DO THIS AND THAT. Lorem ipsum dolor sit amet.",
+      "10-1 DO THIS AND THAT. Lorem ipsum dolor sit amet.",
+      "10-2 DO THIS AND THAT. Lorem ipsum dolor sit amet.",
+      "10-3 DO THIS AND THAT. Lorem ipsum dolor sit amet."],
     [""],
-    ["11-0 DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-      "11-1 DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-      "11-2 DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-      "11-3 DO THIS AND THAT. Lorem ipsum dolor sit amet."],
     ["12-0 DO THIS AND THAT. Lorem ipsum dolor sit amet.",
       "12-1 DO THIS AND THAT. Lorem ipsum dolor sit amet. => 0 = cover, 1 = contain, 2 = 200% auto, 3 = 250% auto, 4 = 300% auto, 5 = 350% auto, 6 = auto 200%, 7 = auto 250%, 8 = auto 300%, 9 = auto 350%, 10 = top, 11 = top left, 12 = top right, 13 = center, 14 = center left, 15 = center right, 16 = bottom, 17 = bottom left, 18 = bottom right, 19 = background-size, 20 = background-position",
       "12-2 DO THIS AND THAT. Lorem ipsum dolor sit amet. => 0 = cover, 1 = contain, 2 = 200% auto, 3 = 250% auto, 4 = 300% auto, 5 = 350% auto, 6 = auto 200%, 7 = auto 250%, 8 = auto 300%, 9 = auto 350%, 10 = top, 11 = top left, 12 = top right, 13 = center, 14 = center left, 15 = center right, 16 = bottom, 17 = bottom left, 18 = bottom right, 19 = background-size, 20 = background-position",
@@ -786,7 +790,7 @@
       "23-4 DO THIS AND THAT. Lorem ipsum dolor sit amet. => OpenCV Params 3",
       "23-5 DO THIS AND THAT. Lorem ipsum dolor sit amet. => OpenCV Params 4"],
     ["24-0 DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-      "24-1 DO THIS AND THAT. Lorem ipsum dolor sit amet. => Ascii, Noise, Dot, CRT, Simplex, Glow, Kawase, Advanced, ZoomBlur, Twist, Pinch, BulgePinch, Glitch, Reflection",
+      "24-1 DO THIS AND THAT. Lorem ipsum dolor sit amet. => 1 = Ascii, 2 = Noise, 3 = Dot, 4 = CRT, 5 = Simplex, 6 = Glow, 7 = Kawase, 8 = Advanced, 9 = ZoomBlur, 10 = Twist, 11 = BulgePinch, 12 = Glitch, 13 = Reflection",
       "24-2 DO THIS AND THAT. Lorem ipsum dolor sit amet. => Pixijs Params 1",
       "24-3 DO THIS AND THAT. Lorem ipsum dolor sit amet. => Pixijs Params 2",
       "24-4 DO THIS AND THAT. Lorem ipsum dolor sit amet. => Pixijs Params 3",
@@ -958,7 +962,7 @@
     "Image on path {src} has been chosen for canvas, congrats, good choice!",
     "",
     "",
-    "async (store) => window.testlaufs(store)"
+    "async (store) => h11(store)"
   ]
 
 }

@@ -1,13 +1,4 @@
 
-/*
-@font-face {
-    font-family: "RobotoMon";
-    src: url("model.otf") format("opentype");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-} */
-
 :root {
 --_00:                                                  RobotoMon;
 --_01:                                                  2px solid Transparent;
@@ -20,9 +11,6 @@
 --_08:                                                  calc(100% - 4px) calc(100% - 4px);
 --_09:							                        calc(100% - 0px) calc(100% - 0px);
 --_10:                                                  rgb(255, 255, 255); }
-
-
-
 
 body *,
 body ::after,
@@ -59,8 +47,8 @@ body > div {
     height: 						                        300px; }
 
 body > canvas {
-    width: 							                        var(--f2,400px);
-    height:	 						                        var(--f3,300px); }
+    width: 							                        var(--f2,420px);
+    height:	 						                        var(--f3,320px); }
 
 body var {
 font-style:                                             initial;
@@ -210,22 +198,12 @@ background-color:                                       White;
 visibility:                                             visible;
 position:                                               absolute; }
 
-
-/* .l00 > var:last-of-type,
-.k00 > var:last-of-type,
-.t00 > var:last-of-type,
-.t000 > var:last-of-type {
-    font-family: "Cascadia Code", "SF Mono", "Menlo", "Monaco", ui-monospace, monospace;
-} */
-
-
 .l00 > var,
 .k00 > var,
 .t00 > var,
 .t000 > var {
 padding:                                                2px;
 font-size:                                              16px; }
-
 
 body > div:has(+div) {
 z-index:                                                var(--f15,0); }
