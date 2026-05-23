@@ -191,3 +191,9 @@ class FileTypeTree(DirectoryTree):
         #     f11 = opencv(
         #         f11,settings)
 
+# variable to list / dictionairy transformion => check meticulously
+# '0'/14/26/38 set default 100 (image backgrounds should be visible) !!!
+# font-face / background-image universe
+
+
+

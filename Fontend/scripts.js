@@ -18,6 +18,7 @@ import k from './script.js';
 
 const k0 = {
     "3-0": [],
+    "3-1": null,
     "4-0": {
     "l00-0": ["0",-10,10],
     "l00-1": ["-",60,100],
@@ -216,6 +217,13 @@ const k14 = document.createElement('canvas');
 const k15 = k14.getContext(
     '2d',{ willReadFrequently: true });
 
+const h00 = l => {
+    let l0 = k4('canvas');
+    let l1 = l0.getContext('2d');
+    l0.height = l.height;
+    l0.width = l.width;
+    l1.drawImage(l, 0, 0); console.log('togo',l0)
+    k0['3-0'][0] = l0; };
 
 const h0 = l => {
     let l0 = k3.style;
@@ -590,52 +598,49 @@ const h9 = async l => {
     let l1 = k0['3-0'];
     let l2 = k14.height;
     let l3 = k14.width;
-    if (!l1[2]) {
-        l1[2] = new PIXI.
+    if (!l1[1]) {
+        l1[1] = new PIXI.
         Application();
-        await l1[2].init({
+        await l1[1].init({
             preference: 'webgl',
             backgroundAlpha: 0,
             antialias: true}); }
-   if (!l1[3]) {
-        l1[3] = new
+   if (!l1[2]) {
+        l1[2] = new
         PIXI.Sprite(l0);
-        l1[2].stage.
-        addChild(l1[3]); }
-   else if (l1[3]) {
-        l1[3].texture = l0;
-        l1[3].texture.update(); }
-   let l4 = l1[2].renderer;
+        l1[1].stage.
+        addChild(l1[2]); }
+   else if (l1[2]) {
+        l1[2].texture = l0;
+        l1[2].texture.update(); }
+   let l4 = l1[1].renderer;
+   let l5 = [h8(l)];
    l4.resize(l3, l2)
-   l1[3].width = l3;
-   l1[3].height = l2;
-   l1[3].filters = [h8(l)];
-   l1[2].render() || null;
-   let tt = l1[2].view;
+   l1[2].width = l3;
+   l1[2].height = l2;
+   l1[2].filters = l5;
+   l1[1].render() || null;
+   let tt = l1[1].view || null;
    k15.clearRect(0, 0, l3,l2)
    k15.drawImage(tt,0,0); };
 
 const h10 = async l => {
-    let l0 = l[2]['89']||10;
-    let l1 = l[2]['90']||0;
-    let l2 = l[2]['91']||0;
-    let l3 = l[2]['92']||6;
-    let l4 = l[2]['93']||5;
-    let l5 = l[1][0] + (l0 * 2);
-    let l6 = l[1][1] + (l0 * 2);
+    let l5 = l[1][0] + l[2][0] * 2;
+    let l6 = l[1][1] + l[2][0] * 2;
     let l7 = k3.scrollWidth;
     let l8 = k3.scrollHeight;
-    let l9 = l[0]? l4: l3;
-    let l10 = l9 * l1 * 2;
-    let l11 = l9 * l2 * 2;
+    let l3 = [l[2][3],l[2][4]];
+    let l9 = l3[l[0]? 1: 0];
+    let l10 = l9 * l[2][1] * 2;
+    let l11 = l9 * l[2][2] * 2;
     let l12 = l9 * l5;
     let l13 = l9 * l6;
     let l14 = l9 * l7;
     let l15 = l14 - l12;
     let l16 = l12 + l10;
     let l17 = l13 + l11;
-    let l18 = l5 + l1 * 2;
-    let l19 = l6 + l2 * 2;
+    let l18 = l5 + l[2][1] * 2;
+    let l19 = l6 + l[2][2] * 2;
     let l20 = await toCanvas(
     k2,{ width: l7,
     height: l8,
@@ -649,40 +654,52 @@ const h10 = async l => {
     l12,l13,l10/2,
     l11/2,l12,l13);
     h0(['f2',l18]);
-    h0(['f3',l19]);};
+    h0(['f3',l19]);
+    h00(k14); };
+
+
+// rewrite A-F => assignments
 
 window.h11 = async l => {
     k2.innerHTML = '';
     let l0 = l[1]||{};
     let l1 = l0['0']||{};
-    let l2 = k0['5-0'];
+    let l2 = k0['3-0'];
+    let l3 = k0['5-0'];
+    let l02 = l2[0]||k14;
+    let l4 = l[0] === 1;
     if (l[0] === 3) {
         for (let i in l1) {
-        l2[k1[i]] = l1[i]; }}
-    let l3 = l[0] <= 2;
-    let l4 = l1['75']||0;
-    let l5 = l1['89']||10;
-    let l6 = l1['92']||6;
-    let l7 = l1['93']||5;
-    let l8 = Object.keys(l1);
-    let l9 =  l8.some(
+        l3[k1[i]] = l1[i]; }}
+    let l5 = l[0] <= 2;
+    let l6 = l1['75']||0;
+    let l7 = l1['89']||10;
+    let l8 = l1['90']||0;
+    let l9 = l1['91']||0;
+    let l10 = l1['92']||6;
+    let l11 = l1['93']||5;
+    let l12 = Object.keys(l1);
+    let l13 =  l12.some(
         _ => _ >= 51 && _ <= 74);
-    let l10 = l3? l[1]: h6(l2);
-    let l11 = !l[0] && l6 !== l7;
-    let l12 = _ => [l[0],_,l1];
-    let l13 = [l[0],l5,l10];
-    let l20 = Number()||0;
-    if (l[0] >= 2 || l11) { console.log('should-not-anymore')
-        l20 = await h1(l13);
-        await h10(l12(l20)); }
-    if (l9 === true) {
+    let l14 = l5? l[1]: h6(l3);
+    let l15 = l4? l02: k14;
+    let l16 = [l7,l8,l9,l10,l11];
+    let l17 = _ => [l[0],_,l16];
+    let l18 = [l[0],l7,l14];
+    let l19 = Array();
+    if (l4 == false) {
+        l19 = await h1(l18);
+        await h10(l17(l19)); }
+    if (l13 === true) {
+        console.log('cool!')
         await h12(l1); }
-    if (l4 >= 1) {
+    if (l6 >= 1) {
         await h9(
-            [l20,l1]); }
+            [l19,l1]); }
+    console.log('yesh',l15);
         k2.innerHTML = '';
-        k2.appendChild(k14);
-    return [k14.toDataURL(),l[1]]};
+        k2.appendChild(l15);
+    return [l15.toDataURL(),l[1]]};
 
 window.h12 = l => {
     return new Promise(resolve => {
@@ -697,6 +714,8 @@ window.h12 = l => {
             _.data.close()
             resolve(); }; }); };
 
-h11([1, {"0":{"51":20,"52":20},"1":{"1":{"1":20,"2":80}}}])
+// h11([1, {"0":{"51":20,"52":20},"1":{"1":{"1":20,"2":80}}}])
+
+h11([2, {"1":{"1":{"1":20,"2":80}}}])
 
 

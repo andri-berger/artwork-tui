@@ -279,23 +279,24 @@ def on_pressed(self, event) -> None:
 
 def on_submitted(self, event) -> None:
     if self.coord is not None:
-        f0 = self.query_one(
-            f"#{self.f_right.current}", DataTable)
-        f0.update_cell_at(self.coord, event.value)
-        f1 = self.f_right.current.split("-")[-1]
-        f2 = 1 if 24 <= self.coord.row <= 30 else 2
-        f3 = f2 if self.coord.row >= 10 else 3
-        f4 = f3 if int(f1) == 0 else 2
-
-        f5 = self.get_all_data(f0)
-
-        self.notify(f"here {f1.keys()}")
-        self.app.stores[f1] = f5
-        f6 = {**self.app.stores}
-        f6.update({'_': [0,f4]})
-        self.e_images.config = f6
+        f0 = range(24, 31)
+        f1 = range(0, 10)
+        f2 = self.query_one(
+            f"#{self.f_right.current}")
+        f2.update_cell_at(self.coord, event.value)
+        f3 = self.f_right.current.split("-")[-1]
+        f4 = self.get_all_data(f2)
+        f5 = any(int(k) in f0 for k in f4)
+        f6 = any(int(k) in f1 for k in f4)
+        f7 = 3 if f6 else (1 if f5 else 2)
+        f8 = f7 if int(f3) == 0 else 2
+        self.notify(f"here {f8}")
+        self.app.stores[f3] = f4
+        f9 = {**self.app.stores}
+        f9.update({'_': [0,f8]})
+        self.e_images.config = f9
         self.e_third.value = ""
         self.coord = None
-        f0.focus()
+        f2.focus()
 
 
