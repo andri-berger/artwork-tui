@@ -33,18 +33,18 @@ class TableApp(Widget):
         self.turis = ['visible', 'hidden']
         self.lister = [9, 100, 301, 300, 6, 6]
         self.listers = [28, 22, 18, 18, 14, 14]
-        self.check_only = [8,7,7,7,7,7]
+        self.check_only = [8,8,8,7,7,7]
         self.check_only0 = [7,7,7,7,7,62]
 
     def on_mount(self) -> None:
-        self.f_left = self.query_one("#cont-switch-0", ContentSwitcher)
-        self.c_cont = self.query_one("#cont-switch-0", ContentSwitcher)
-        self.f_right = self.query_one("#cont-switch-1", ContentSwitcher)
-        self.d_digits = self.query_one("#digits-0",Digits)
-        self.c_digits = self.query_one("#digits-0",Digits)
-        self.e_fourth = self.query_one("#fourth", Input)
-        self.e_third = self.query_one("#third", Input)
-        self.label = self.query_one("#label-0", Label)
+        self.f_left = self.query_one("#cont-switch-0")
+        self.c_cont = self.query_one("#cont-switch-0")
+        self.f_right = self.query_one("#cont-switch-1")
+        self.d_digits = self.query_one("#digits-0")
+        self.c_digits = self.query_one("#digits-0")
+        self.e_fourth = self.query_one("#fourth")
+        self.e_third = self.query_one("#third")
+        self.label = self.query_one("#label-0")
         self.e_images = self.query_one(ImageTab)
         a_tables = self.query(DataTable)
 

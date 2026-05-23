@@ -16,7 +16,6 @@ import json
 import cv2
 
 
-CWD = Path.cwd()
 APP = Path(__file__)
 APP_DIR = Path(__file__).parent
 ASSETS_DIR = APP_DIR.parent / "Fontend"
@@ -32,76 +31,78 @@ class ImageTab(Widget):
         yield Image()
 
     async def watch_config(self, value: dict):
-        cool = self.app.query_one("#cont-switch-1")
-        col = int(cool.current.split("-")[-1])
-        f0 = self.app.query(DataTable)
-        f2 = self.app.stores
-        f1 = self.app.store
-        f3 = self.app.page
-        f4,f04 = value.pop("_", [])
-        f5 = tui_to_web(value,f1) or {}
-        f6 = [9, 100, 301, 300, 6, 6]
+        f0 = self.app.query_one("#cont-switch-1")
+        f1 = int(f0.current.split("-")[-1])
+        f2 = self.app.query(DataTable)
+        f3 = self.app.stores
+        f4 = self.app.store
+        f5 = self.app.page
+        f6,f7 = value.pop("_", [])
+        f8 = tui_to_web(value,f4) or {}
+        f9 = [9, 100, 301, 300, 6, 6]
+        f10 = f8.get('0', {})
         self.query_one(
             Image).remove()
         self.notify(
-            f"{f04} - {f5}")
+            f"{f7} - {f8}")
 
-        if f4 >= 1:
+        if f6 >= 1:
             with self.app.batch_update():
-                f0[col].clear(columns=False)
-                f7 = self.app.store[f"1-{col}"]
+                f2[f1].clear(columns=False)
+                f7 = self.app.store[f"1-{f1}"]
                 for row_i in range(len(f7)):
                     row = [f7[row_i][0]]
-                    row.extend([""]*f6[col])
-                    f0[col].add_row(*row)
+                    row.extend([""]*f9[f1])
+                    f2[f1].add_row(*row)
 
-        if f04 >= 0:
-            f10 = await (
-                f3.evaluate(
-                f1['4-2'][3],[f04,f5]))
-            b64 = f10[0].split(',')[1]
-            f11 = base64.b64decode(b64)
-
-        if f04 == 0:
-            time_stamp = int(time.time())
-            image_outs_ = CWD / f"{time_stamp}.png"
-            with open(image_outs_, "wb") as f:
-                f.write(f11)
-
-        if f04 >= 1:
+        if f7 >= 0:
+            f11 = await (
+                f5.evaluate(
+                f4['4-2'][3],[f7,f8]))
+            b64 = f11[0].split(',')[1]
+            f12 = base64.b64decode(b64)
             with open(image_outs, "wb") as f:
-                f.write(f11)
+                f.write(f12)
             self.mount(Image(image_outs))
             testlauf(self, image_outs, Image, cv2)
 
-        if f04 == 3:
-            here = web_to_tui(f10[1], f1)
-            f2 = {**f2, **here}
+            if f10.get('80',0) >= 1:
+                settings = {
+                    "set": f10.get('80',0),
+                    "set0": f10.get('81',0),
+                    "set1": f10.get('82',0),
+                    "set2": f10.get('83',0),
+                    "set3": f10.get('83',0) }
+                opencv(f12,settings)
 
-        if f4 >= 1:
-            ss = [0,6] if f4 == 2 else [1,4]
+        if f7 == 2:
+            here = web_to_tui(f11[1], f4)
+            f3 = {**f3, **here}
+
+        if f6 >= 1:
+            ss = [0,6] if f6 == 2 else [1,4]
             with self.app.batch_update():
                 for i in range(*ss):
                     uv = int(i) == 3
                     st = 2 if uv else i
-                    f7 = f1[f"1-{st}"]
-                    test = f2.get(str(i),{})
+                    f7 = f4[f"1-{st}"]
+                    test = f3.get(str(i),{})
                     if test is not None:
-                        f0[i].clear(columns=False)
+                        f2[i].clear(columns=False)
                         cols = [str(col_i) for
-                                col_i in range(f6[i])]
+                                col_i in range(f9[i])]
                         for row_i in range(len(f7)):
                             row_key = str(row_i)
                             yes = test.get(row_key)
                             row = [f7[row_i][0]]
                             if yes is not None:
-                                for col in cols:
+                                for f1 in cols:
                                     row.append(
-                                    str(yes.get(col,"")))
-                            f0[i].add_row(*row)
+                                    str(yes.get(f1,"")))
+                            f2[i].add_row(*row)
 
         CONFIGS.write_text(
-        json.dumps(f2))
+        json.dumps(f3))
 
     def render(self):
         return ""
@@ -109,6 +110,7 @@ class ImageTab(Widget):
 
 class FileTypeTree(DirectoryTree):
     show_root = False
+
     def __init__(self, path, file_type: str, **kwargs):
         self.file_type = file_type
         super().__init__(path, **kwargs)
@@ -136,63 +138,67 @@ class FileTypeTree(DirectoryTree):
 
     @on(DirectoryTree.FileSelected)
     async def selected(self, event: DirectoryTree.FileSelected) -> None:
-        src = event.path
-        stamp = int(time.time())
-        stamps = str(stamp)[-7:]
-        id = event.control.id
-        spl = id.split("-")[-1]
-        sps = str(int(spl)+145)
-        if not src.is_file():
+        f0 = event.path
+        f1 = self.app.stores
+        f2 = int(time.time())
+        f4 = event.control.id
+        f5 = f4.split("-")[-1]
+        f6 = ["module","modules"]
+        f7 = ['4','5'][int(f5)-1]
+        f8 = ['6','6'][int(f5)-1]
+        f9 = f6[int(f5)-1]
+        if not f0.is_file():
             return
 
         for f in ASSETS_DIR.glob("*.png"):
             if f.name != "model.png"\
-                    and f.name != src.name:
+                    and f.name != f0.name:
                 f.unlink()
 
         for f in ASSETS_DIR.glob("*.otf"):
             if f.name != "model.otf"\
-                    and f.name != src.name:
+                    and f.name != f0.name:
                 f.unlink()
 
-        if int(spl) == 0:
-            self.notify('model-0')
-            yeah = "model.json"
-            dir = ASSETS_DIR / yeah
-            shutil.copy2(src, dir)
-            cool = src.read_text()
-            l20 = json.loads(cool)
-            l20.update({'_': [2,2]})
-            self.app.stores = l20
-            self.e_images.config = l20
-
-        if int(spl) >= 1:
-            self.notify('model-1')
-            dest = f"{stamps}{src.suffix}"
-            dest_dir = ASSETS_DIR / dest
-            shutil.copy2(src, dest_dir)
+        if f4 == "dir-tree-0":
+            f20 = "model.json"
+            f21 = ASSETS_DIR / f20
+            shutil.copy2(f0, f21)
+            f22 = f0.read_text()
+            f36 = json.loads(f22)
+            f36.update({'_': [2,1]})
+            self.app.stores = f36
+            self.e_images.config = f36
             await self.reload()
-            self.app.stores[sps] = stamps
-            l20 = {**self.app.stores}
-            l20.update({'_': [0,2]})
-            self.e_images.config = l20
-            self.notify(
-            self.store.format(src=src))
 
-            # f12 = f5.get('0',{})
-        # if (any(str(k) in f12.keys()
-        #        for k in range(80,84))):
-        #     settings = {
-        #         "set": f12.get('80',0),
-        #         "set0": f12.get('81',0),
-        #         "set1": f12.get('82',0),
-        #         "set2": f12.get('83',0),
-        #         "set3": f12.get('83',0) }
-        #     f11 = opencv(
-        #         f11,settings)
+        elif (f4 == "dir-tree-1"
+              or f4 == "dir-tree-2"):
+                f30 = f0.suffix
+                f31 = f"{f2}{f30}"
+                f33 = ASSETS_DIR / f9 / f31
+                f34 = f1.setdefault(f7, {})
+                f35 = f34.setdefault('0', {})
+                shutil.copy2(f0, f33)
+                f35[f8] = f"{f2}"
+                f36 = {**self.app.stores}
+                f36.update({'_': [0,1]})
+                self.e_images.config = f36
+                self.notify(
+                self.store.format(src=f0))
+                await self.reload()
+
+                # f40 = self.app.query_one("#cont-switch-1")
+                # f41 = self.app.query_one(f"#{f40.current}")
+                # f41.focus()
+
+
+
+
+
+
+
 
 # variable to list / dictionairy transformion => check meticulously
-# '0'/14/26/38 set default 100 (image backgrounds should be visible) !!!
 # font-face / background-image universe
 
 

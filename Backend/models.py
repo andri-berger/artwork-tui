@@ -1,11 +1,13 @@
 from textual.widgets import (
-    DataTable, Input, ContentSwitcher, Digits, Button, Label)
+    DataTable, Input, ContentSwitcher, Digits, Label)
 from textual.coordinate import Coordinate
 from Backend.model import FileTypeTree
 from pathlib import Path
+import shutil
 import time
 
 
+CWD = Path.cwd()
 PATH_FILE = Path(__file__).parent
 STATIC_DIR = PATH_FILE.parent / "Fontend"
 CONFIGS = STATIC_DIR / "model.json"
@@ -186,6 +188,10 @@ async def on_key_(self, event) -> None:
             f2.value = ""
             f1.focus()
 
+
+    # IS THIS NEEDED ?????
+    # IS THIS NEEDED ?????
+
     if event.key == "v":  # enter/exit visual mode
         self._visual_mode = not self._visual_mode
         self._visual_start = self._cursor if self._visual_mode else None
@@ -227,54 +233,67 @@ async def on_key_(self, event) -> None:
             f1.update_cell_at(self._cursor, self._clipboard)
 
 
+
+
+
+
 def on_pressed(self, event) -> None:
     f0 = self.app.store
     f1 = self.app.stores
     f2 = event.button.id
-    f11 = f2.split("-")[-1]
-    f3 = f1.setdefault("0", {})
-    f4 = f3.setdefault("37", {})
-    f5 = f3.setdefault("38", {})
-    f6 = {"6": 2, "3": 1, "4": 0}
-    f7 = {"6": 2, "3": 3, "4": 0}
+    f3 = f2.split("-")[-1]
+    f5 = f1.setdefault("0", {})
+    f6 = f5.setdefault("37", {})
+    f7 = f5.setdefault("38", {})
     f8 =  f0["4-0"].index(f2) \
         if f2 in f0["4-0"] else -1
     f9 = self.turi
     f10 = f0["4-1"][f8]
     self.label.update(f10)
+    f11 = {"6": 2, "3": 1}
+    f12 = {"6": 1, "3": 2}
 
-    match f11:
-        case "6":
-            self.app.stores = {}
+    if f2 == "button-6":
+        self.app.stores = {}
 
-        case "0":
-            f4[0] = 1 - f4.get(0,0)
-            self.app.clear_notifications()
-            self.notify(f"A00 SEED {f9[f4[0]]} ")
+    elif f2 == "button-0":
+        f6[0] = 1 - f6.get(0,0)
+        self.app.clear_notifications()
+        self.notify(f"A00 SEED {f9[f6[0]]} ")
 
-        case "1":
-            f4[1] = 1 - f4.get(1,0)
-            self.app.clear_notifications()
-            self.notify(f"B00 SEED {f9[f4[1]]}")
+    elif f2 == "button-1":
+        f6[1] = 1 - f6.get(1,0)
+        self.app.clear_notifications()
+        self.notify(f"B00 SEED {f9[f6[1]]}")
 
-        case "2":
-            f4[2] = 1 - f4.get(2,0)
-            self.app.clear_notifications()
-            self.notify(f"D00 SEED {f9[f4[2]]} ")
+    elif f2 == "button-2":
+        f6[2] = 1 - f6.get(2,0)
+        self.app.clear_notifications()
+        self.notify(f"D00 SEED {f9[f6[2]]} ")
 
-        case "3":
-            f12 = f3.get('37', {})
-            f13 = int(time.time())
-            for k in ['0', '1', '2']:
-                if f12.get(k, 0) == 0:
-                    f5[k] = f13
+    elif f2 == "button-3":
+        f12 = f5.get('37', {})
+        f13 = int(time.time())
+        for k in ['0', '1', '2']:
+            if f12.get(k, 0) == 0:
+                f7[k] = f13
 
-    if f11 in ['6','3','4']:
-        f14 = {**self.app.stores}
-        f15 = {} if f11 == '6' else f14
-        f16 = [f6[f11],f7[f11]]
-        f15.update({'_': f16})
-        self.e_images.config = f15
+    elif f2 == "button-4":
+        f14 = int(time.time())
+        f16 = STATIC_DIR / "model.png"
+        f15 = STATIC_DIR / "model.json"
+        image_outs = CWD / f"{f14}.json"
+        image_outs_ = CWD / f"{f14}.png"
+        shutil.copy2(f15, image_outs)
+        shutil.copy2(f16, image_outs_)
+
+    if (f2 == "button-6"
+            or f2 == "button-3"):
+        f17 = {**self.app.stores}
+        f18 = {} if f3 == '6' else f17
+        f19 = [f11[f3],f12[f3]]
+        f18.update({'_': f19})
+        self.e_images.config = f18
 
 
 def on_submitted(self, event) -> None:
@@ -288,8 +307,8 @@ def on_submitted(self, event) -> None:
         f4 = self.get_all_data(f2)
         f5 = any(int(k) in f0 for k in f4)
         f6 = any(int(k) in f1 for k in f4)
-        f7 = 3 if f6 else (1 if f5 else 2)
-        f8 = f7 if int(f3) == 0 else 2
+        f7 = 2 if f6 else (0 if f5 else 1)
+        f8 = f7 if int(f3) == 0 else 1
         self.notify(f"here {f8}")
         self.app.stores[f3] = f4
         f9 = {**self.app.stores}
@@ -298,5 +317,4 @@ def on_submitted(self, event) -> None:
         self.e_third.value = ""
         self.coord = None
         f2.focus()
-
 

@@ -18,7 +18,7 @@ import k from './script.js';
 
 const k0 = {
     "3-0": [],
-    "3-1": null,
+    "3-1": {},
     "4-0": {
     "l00-0": ["0",-10,10],
     "l00-1": ["-",60,100],
@@ -143,22 +143,20 @@ const k0 = {
         "3-19": 100,
         "4-19": 100},
     "6-0": {
-    "0-0": ["false","true"],
-    "6-3": ["linear","radial"],
-    "0-1": ["start","ends","center"],
-    "1-3": ["both","axis x","axis y"],
-    "2-3": ["none","hidden","visible"],
-    "0-2": ["border","content","padding"],
-    "5-3": ["circle","ellipse","conical"],
-    "1-1": ["start","ends","center","stretch"],
-    "1-2": ["inset","outset","dotted","dashed"],
-    "3-2": ["start","ends","evenly","around","between"],
-    "4-2": ["ends","center","stretch","evenly","around","between"],
-    "2-2": ["top","left","right","bottom","angle nw","angle sw","angle ne","angle se"],
-    "4-3": ["top","left","right","bottom","angle nw","angle sw","angle ne","angle se"],
-    "3-3": ["hue","color","screen","lighten","darken","overlay","multiply","saturation","luminosity","color dodge","color burn","hard light","soft light"],
-    "0-3": ["White","Transparent","Gainsboro","Wheat","Gold","Crimson","MediumVioletRed","MediumSeaGreen","SeaGreen","DeepSkyBlue","DodgerBlue","MediumSlateBlue","Black","Snow","HoneyDew","MintCream","Azure","AliceBlue","GhostWhite","WhiteSmoke","SeaShell","Beige","OldLace","FloralWhite","Ivory","AntiqueWhite","Linen","LavenderBlush","MistyRose","CornSilk","BlanchedAlmond","Bisque","NavajoWhite","BurlyWood","RosyBrown","SandyBrown","GoldenRod","DarkGoldenRod","Peru","Chocolate","SaddleBrown","Sienna","Brown","Maroon","LightGray","Silver","DarkGray","Gray","DimGray","LightSlateGray","SlateGray","DarkSlateGray","LightYellow","LemonChiffon","PapayaWhip","Moccasin","PeachPuff","PaleGoldenRod","Khaki","DarkKhaki","Coral","Tomato","OrangeRed","DarkOrange","IndianRed","LightCoral","Salmon","DarkSalmon","LightSalmon","FireBrick","DarkRed","Pink","LightPink","HotPink","DeepPink","PaleVioletRed","Lavender","Thistle","Plum","Violet","Orchid","Fuchsia","Magenta","MediumOrchid","MediumPurple","BlueViolet","DarkViolet","DarkOrchid","DarkMagenta","Purple","Indigo","SlateBlue","DarkSlateBlue","GreenYellow","Chartreuse","LimeGreen","PaleGreen","LightGreen","SpringGreen","ForestGreen","DarkGreen","YellowGreen","OliveDrab","Olive","DarkOliveGreen","MediumAquamarine","DarkSeaGreen","LightSeaGreen","DarkCyan","Teal","Aqua","Cyan","LightCyan","PaleTurquoise","AquaMarine","Turquoise","MediumTurquoise","DarkTurquoise","CadetBlue","SteelBlue","LightSteelBlue","PowderBlue","LightBlue","SkyBlue","LightSkyBlue","CornflowerBlue","RoyalBlue","MediumBlue","DarkBlue","MidnightBlue","Navy"]
-    }};
+        "0-0": ["false","true"],
+        "6-3": ["linear","radial"],
+        "0-1": ["start","ends","center"],
+        "1-3": ["both","axis x","axis y"],
+        "2-3": ["none","hidden","visible"],
+        "3-3": [0,1,2,3,4,5,6,7,8,9,10,11,12],
+        "0-2": ["border","content","padding"],
+        "5-3": ["circle","ellipse","conical"],
+        "1-1": ["start","ends","center","stretch"],
+        "1-2": ["inset","outset","dotted","dashed"],
+        "3-2": ["start","ends","evenly","around","between"],
+        "4-2": ["ends","center","stretch","evenly","around","between"],
+        "2-2": ["top","left","right","bottom","angle nw","angle sw","angle ne","angle se"],
+        "4-3": ["top","left","right","bottom","angle nw","angle sw","angle ne","angle se"]}};
 const k1 = {
     "110": "2-01",
     "111": "2-02",
@@ -210,20 +208,37 @@ const k7 = _ => _.getBoundingClientRect();
 const k8 = _ => _[0].getAttribute(_[1]);
 const k9 = _ => _[0].removeAttribute(_[1]);
 const k10 = _ => String(_).padStart(2,'0');
+const k100 = _ => String(_).padStart(3,'0');
 const k11 = _ => _[1]+(_[2]-_[1])*(_[0]/100);
 const k12 = _ => [1,10,100,1000,10000][_[0]];
 const k13 = _ => Math.round(_[1]*k12(_))/k12(_);
 const k14 = document.createElement('canvas');
-const k15 = k14.getContext(
-    '2d',{ willReadFrequently: true });
+const k20 = document.createElement('canvas');
+const k21 = k20.getContext('2d');
+const k15 = k14.getContext('2d');
 
-const h00 = l => {
-    let l0 = k4('canvas');
-    let l1 = l0.getContext('2d');
-    l0.height = l.height;
-    l0.width = l.width;
-    l1.drawImage(l, 0, 0); console.log('togo',l0)
-    k0['3-0'][0] = l0; };
+
+const h01 = l => {
+let l0 = {'00':'k'};
+let l1 = _ => String(_).padStart(2,'0');
+let l2 = _ => String(_).padStart(3,'0');
+let l3 = "abc".split('');
+let l4 = "def".split('');
+for (let i = 0; i < l3.length; i++) {
+    for (let i0 = 0; i0 < 100; i0++) {
+        let l5 = `${l1(i0)}`;
+        let l6 = `${l3[i]}`;
+        let l7 = `${l6}${l5}`;
+        l0[l7] = `${'lkt'[i]}${l5}`; }}
+for (let i = 0; i < l4.length; i++) {
+    for (let i0 = 0; i0 < 100; i0++) {
+        let l5 = i * 100 + i0;
+        let l6 = `${l4[i]}`;
+        let l7 = `${l1(i0)}`;
+        let l8 = `${l6}${l7}`;
+        l0[l8] = `t${l2(l5)}`; }}
+return l0; };
+
 
 const h0 = l => {
     let l0 = k3.style;
@@ -551,13 +566,9 @@ const h8 = l => {
     let l4 = l[1]['79']||0;
     let l5 = filters;
     let l6 = {};
-    if (l0 === 1) {/* OK */
+    if (l0 === 1) {
     l6 = new l5.AsciiFilter({
         size: k11([l1, 1, 200])}); }
-    else if (l0 === 2) {
-    l6 = new PIXI.NoiseFilter({
-        noise: k11([l1, 0.2, 2]),
-        seed: k11([l2, 0.01, 100])}); }
     else if (l0 === 3) {
     l6 = new l5.DotFilter({
         scale: k11([l1, 0, 2]),
@@ -593,36 +604,43 @@ const h8 = l => {
     if (l0 <= 7) { return l6; }};
 
 const h9 = async l => {
-    let l0 = PIXI.
-    Texture.from(k14);
-    let l1 = k0['3-0'];
-    let l2 = k14.height;
-    let l3 = k14.width;
-    if (!l1[1]) {
-        l1[1] = new PIXI.
+    let l0 = () => {
+    return new PIXI.NoiseFilter({
+        noise: k11([l5, 0.2, 2]),
+        seed: k11([l6, 0.01, 100])}); }
+    let l1 = PIXI.Texture.from(k20);
+    let l2 = k20.height;
+    let l3 = k20.width;
+    let l4 = l[1][75]||0;
+    let l5 = l[1][76]||0;
+    let l6 = l[1][77]||0;
+    let l7 = l4 === 2;
+    let l8 = k0['3-0'];
+    if (!l8[1]) {
+        l8[1] = new PIXI.
         Application();
-        await l1[1].init({
+        await l8[1].init({
             preference: 'webgl',
             backgroundAlpha: 0,
             antialias: true}); }
-   if (!l1[2]) {
-        l1[2] = new
-        PIXI.Sprite(l0);
-        l1[1].stage.
-        addChild(l1[2]); }
-   else if (l1[2]) {
-        l1[2].texture = l0;
-        l1[2].texture.update(); }
-   let l4 = l1[1].renderer;
-   let l5 = [h8(l)];
-   l4.resize(l3, l2)
-   l1[2].width = l3;
-   l1[2].height = l2;
-   l1[2].filters = l5;
-   l1[1].render() || null;
-   let tt = l1[1].view || null;
+   if (!l8[2]) {
+        l8[2] = new
+        PIXI.Sprite(l1);
+        l8[1].stage.
+        addChild(l8[2]); }
+   else if (l8[2]) {
+        l8[2].texture = l1;
+        l8[2].texture.update(); }
+   let l9 = l7? l0(): h8(l);
+   let l10 = l8[1].renderer;
+   l10.resize(l3, l2)
+   l8[2].width = l3;
+   l8[2].height = l2;
+   l8[2].filters = [l9];
+   l8[1].render() || null;
+   let l12 = l8[1].view || null;
    k15.clearRect(0, 0, l3,l2)
-   k15.drawImage(tt,0,0); };
+   k15.drawImage(l12,0,0); };
 
 const h10 = async l => {
     let l5 = l[1][0] + l[2][0] * 2;
@@ -647,6 +665,8 @@ const h10 = async l => {
     canvasWidth: l7,
     canvasHeight: l8,
     pixelRatio: l9});
+    k20.height = l17;
+    k20.width = l16;
     k14.width = l16;
     k14.height = l17;
     k15.drawImage(
@@ -655,18 +675,15 @@ const h10 = async l => {
     l11/2,l12,l13);
     h0(['f2',l18]);
     h0(['f3',l19]);
-    h00(k14); };
+    k21.drawImage(
+        k14, 0, 0); };
 
-
-// rewrite A-F => assignments
 
 window.h11 = async l => {
     k2.innerHTML = '';
     let l0 = l[1]||{};
     let l1 = l0['0']||{};
-    let l2 = k0['3-0'];
     let l3 = k0['5-0'];
-    let l02 = l2[0]||k14;
     let l4 = l[0] === 1;
     if (l[0] === 3) {
         for (let i in l1) {
@@ -682,40 +699,39 @@ window.h11 = async l => {
     let l13 =  l12.some(
         _ => _ >= 51 && _ <= 74);
     let l14 = l5? l[1]: h6(l3);
-    let l15 = l4? l02: k14;
     let l16 = [l7,l8,l9,l10,l11];
     let l17 = _ => [l[0],_,l16];
     let l18 = [l[0],l7,l14];
+    let l30 = [l[0],l6,l1];
     let l19 = Array();
     if (l4 == false) {
         l19 = await h1(l18);
         await h10(l17(l19)); }
     if (l13 === true) {
-        console.log('cool!')
-        await h12(l1); }
+        await h12(l30); }
     if (l6 >= 1) {
         await h9(
             [l19,l1]); }
-    console.log('yesh',l15);
         k2.innerHTML = '';
-        k2.appendChild(l15);
-    return [l15.toDataURL(),l[1]]};
+        k2.appendChild(k14);
+    return [k14.toDataURL(),l[1]]};
 
 window.h12 = l => {
     return new Promise(resolve => {
-        let l0 = [k14.width,k14.height];
-        let l1 = k15.getImageData(0,0,...l0);
-        let l2 = new Worker('/styles.js');
-        let l3 = [...l0,l1.data.buffer,l]
-        l2.postMessage(l3,[l1.data.buffer]);
-        l2.onmessage = async _ => {
-            k15.clearRect(0, 0, ...l0)
-            k15.drawImage(_.data, 0, 0)
+        let l00 = l[1]? k21: k15;
+        let l3 = [k20.width,k20.height];
+        let l4 = k21.getImageData(0,0,...l3);
+        let l5 = new Worker('/styles.js');
+        let l6 = [...l3,l4.data.buffer,l[2]]
+        l5.postMessage(l6,[l4.data.buffer]);
+        l5.onmessage = async _ => {
+            l00.clearRect(0, 0, ...l3)
+            l00.drawImage(_.data, 0, 0)
             _.data.close()
             resolve(); }; }); };
 
+
 // h11([1, {"0":{"51":20,"52":20},"1":{"1":{"1":20,"2":80}}}])
-
 h11([2, {"1":{"1":{"1":20,"2":80}}}])
-
+// rewrite A-F => assignments
 

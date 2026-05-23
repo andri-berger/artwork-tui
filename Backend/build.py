@@ -87,12 +87,13 @@ class CLIApp(App):
         if self.stores == {}:
             f1 = self.stores
             now = int(time.time())
-            st = f1.setdefault('38', {})
+            ss = f1.setdefault('0', {})
+            st = ss.setdefault('38', {})
             for k in ['0', '1', '2']:
                     st[k] = now
 
         l0 = {**self.stores}
-        l0['_'] = [2,2 if l0 else 3]
+        l0['_'] = [2,1 if l0 else 2]
         self.e_images.config = l0
 
     async def on_unmount(self) -> None:
