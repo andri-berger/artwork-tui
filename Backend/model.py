@@ -49,9 +49,9 @@ class ImageTab(Widget):
         if f6 >= 1:
             with self.app.batch_update():
                 f2[f1].clear(columns=False)
-                f7 = self.app.store[f"1-{f1}"]
-                for row_i in range(len(f7)):
-                    row = [f7[row_i][0]]
+                f07 = self.app.store[f"1-{f1}"]
+                for row_i in range(len(f07)):
+                    row = [f07[row_i][0]]
                     row.extend([""]*f9[f1])
                     f2[f1].add_row(*row)
 
@@ -61,19 +61,20 @@ class ImageTab(Widget):
                 f4['4-2'][3],[f7,f8]))
             b64 = f11[0].split(',')[1]
             f12 = base64.b64decode(b64)
-            with open(image_outs, "wb") as f:
-                f.write(f12)
-            self.mount(Image(image_outs))
-            testlauf(self, image_outs, Image, cv2)
 
-            if f10.get('80',0) >= 1:
+            if f10.get('80',0) in range(1,5):
                 settings = {
                     "set": f10.get('80',0),
                     "set0": f10.get('81',0),
                     "set1": f10.get('82',0),
                     "set2": f10.get('83',0),
-                    "set3": f10.get('83',0) }
-                opencv(f12,settings)
+                    "set3": f10.get('83',0)}
+                f12 = opencv(f12,settings)
+
+            with open(image_outs, "wb") as f:
+                f.write(f12)
+            self.mount(Image(image_outs))
+            testlauf(self, image_outs, Image, cv2)
 
         if f7 == 2:
             here = web_to_tui(f11[1], f4)

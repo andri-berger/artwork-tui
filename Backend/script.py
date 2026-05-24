@@ -17,22 +17,37 @@ def make_new(value):
 
 def make_news(value):
     if value == "Image":
-        return ([["VARIOUS PROPERTIES. Lorem ipsum dolor sit amet.",
-        "CSS PADDING. Lorem ipsum dolor sit amet.",
-        "CSS PADDING. Lorem ipsum dolor sit amet.",
-        "CSS BACKGROUND. Lorem ipsum dolor sit amet.",
-        "CSS BACKGROUND-SIZE. Lorem ipsum dolor sit amet.",
-        "CSS BACKGROUND-POSITION. Lorem ipsum dolor sit amet.",
-        "CSS BACKGROUND-IMAGE. Lorem ipsum dolor sit amet."]] * 601)
+        return ([[
+        "VARIOUS PROPERTIES. Lorem ipsum dolor sit amet.",
+        "CSS PADDING-LEFT. Lorem ipsum dolor sit amet.",
+        "CSS PADDING-RIGHT. Lorem ipsum dolor sit amet.",
+        "CSS PADDING-TOP. Lorem ipsum dolor sit amet.",
+        "CSS PADDING-BOTTOM. Lorem ipsum dolor sit amet.",
+        "CSS BACKGROUND-COLOR. Lorem ipsum dolor sit amet.",
+        "CSS STYLE COLOR. Lorem ipsum dolor sit amet.",
+        "CSS ALIGN-ITEMS. Lorem ipsum dolor sit amet.",
+        "CSS TEXT-ALIGN. Lorem ipsum dolor sit amet.",
+        "CSS TEXT-DECORATION. Lorem ipsum dolor sit amet.",
+        "CSS FONT-WEIGHT. Lorem ipsum dolor sit amet.",
+        "CSS FONT-SIZE LINE-HEIGHT. Lorem ipsum dolor sit amet.",
+        "CSS FONT-FACE. Lorem ipsum dolor sit amet.",
+        "HTML SPAN ENTITY. Lorem ipsum dolor sit amet."]] * 601)
     elif value == "Content":
         return ([[
         "VARIOUS PROPERTIES. Lorem ipsum dolor sit amet.",
-        "CSS POSITION. Lorem ipsum dolor sit amet.",
-        "CSS COLOR. Lorem ipsum dolor sit amet.",
+        "CSS PADDING-LEFT. Lorem ipsum dolor sit amet.",
+        "CSS PADDING-RIGHT. Lorem ipsum dolor sit amet.",
+        "CSS PADDING-TOP. Lorem ipsum dolor sit amet.",
+        "CSS PADDING-BOTTOM. Lorem ipsum dolor sit amet.",
+        "CSS BACKGROUND-COLOR. Lorem ipsum dolor sit amet.",
+        "CSS STYLE COLOR. Lorem ipsum dolor sit amet.",
+        "CSS ALIGN-ITEMS. Lorem ipsum dolor sit amet.",
+        "CSS TEXT-ALIGN. Lorem ipsum dolor sit amet.",
         "CSS TEXT-DECORATION. Lorem ipsum dolor sit amet.",
         "CSS FONT-WEIGHT. Lorem ipsum dolor sit amet.",
-        "CSS FONT-SIZE. Lorem ipsum dolor sit amet.",
-        "CSS FONT-FACE. Lorem ipsum dolor sit amet."]] * 601)
+        "CSS FONT-SIZE LINE-HEIGHT. Lorem ipsum dolor sit amet.",
+        "CSS FONT-FACE. Lorem ipsum dolor sit amet.",
+        "HTML SPAN ENTITY. Lorem ipsum dolor sit amet."]] * 601)
 
 def make_news_0(value):
     if value == "Image":
@@ -56,17 +71,29 @@ def make_news_0(value):
         return ([[[""],
                   ["00","px",""],
                   ["00","px",""],
-                  ["00","unclear",""],
-                  ["00","list 6","cover"],
-                  ["00","list 3","contain"],
-                  ["00","path",""]]]
-                    + [[[""],
-                  [f"{i0}{i:02d}","px",""],
-                  [f"{i0}{i:02d}","px",""],
-                  [f"{i0}{i:02d}","unclear",""],
-                  [f"{i0}{i:02d}","list 6","cover"],
-                  [f"{i0}{i:02d}","list 3","contain"],
-                  [f"{i0}{i:02d}","path",""]]
+                  ["00", "px",""],
+                  ["00", "px",""],
+                  ["00","#hex",""],
+                  ["00","#hex",""],
+                  ["00","list 4","auto"],
+                  ["00","list 4","auto"],
+                  ["00","list 3","none"],
+                  ["00","1-9","4"],
+                  ["00","px,px","16"],
+                  ["00","path",""],
+                  ["00","text",""]]]
+                + [[[""],
+                    [f"{i0}{i:02d}","px",""],
+                    [f"{i0}{i:02d}","px",""],
+                    [f"{i0}{i:02d}","px",""],
+                    [f"{i0}{i:02d}","px",""],
+                    [f"{i0}{i:02d}","list 4","auto"],
+                    [f"{i0}{i:02d}","list 4","auto"],
+                    [f"{i0}{i:02d}","list 3","none"],
+                    [f"{i0}{i:02d}","1-9","4"],
+                    [f"{i0}{i:02d}","px,px","16"],
+                    [f"{i0}{i:02d}","path",""],
+                    [f"{i0}{i:02d}","text",""]]
                     for i0 in "ABCDEF"
                     for i in range(100)])
 

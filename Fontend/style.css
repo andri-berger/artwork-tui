@@ -128,8 +128,6 @@ display:						                        block; }
 
 :is(.l00,.k00) > div[data],
 :is(.t00,.t000) > div[data] {
-top:                                                    30px;
-right:                                                  30px;
 width:                                                  100%;
 margin-left:                                            -100%;
 pointer-events:					                        none;
@@ -138,8 +136,6 @@ display:						                        block; }
 
 :is(.l00,.k00) > [data] + div,
 :is(.t00,.t000) > [data] + div {
-top:                                                    30px;
-right:                                                  30px;
 width:                                                  100%;
 margin-left:                                            -100%;
 pointer-events:                                         none;

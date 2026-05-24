@@ -506,14 +506,14 @@ const h6 = l => {
     return l1; };
 
 const h7 = l => {
-    let l0 = l[1]['75']||0;
-    let l1 = l[1]['76']||0;
-    let l2 = l[1]['77']||0;
-    let l3 = l[1]['78']||0;
-    let l4 = l[1]['79']||0;
-    let l5 = l[1]['89']||10;
-    let l6 = l[0][1] + (l5 * 2);
-    let l7 = l[0][2] + (l5 * 2);
+    let l0 = l[2]['75']||0;
+    let l1 = l[2]['76']||0;
+    let l2 = l[2]['77']||0;
+    let l3 = l[2]['78']||0;
+    let l4 = l[2]['79']||0;
+    let l5 = l[2]['89']||10;
+    let l6 = l[0] + (l5 * 2);
+    let l7 = l[1] + (l5 * 2);
     let l8 = filters;
     let l9 = {};
     if (l0 === 8) {
@@ -559,11 +559,11 @@ const h7 = l => {
     return l9; };
 
 const h8 = l => {
-    let l0 = l[1]['75']||0;
-    let l1 = l[1]['76']||0;
-    let l2 = l[1]['77']||0;
-    let l3 = l[1]['78']||0;
-    let l4 = l[1]['79']||0;
+    let l0 = l[2]['75']||0;
+    let l1 = l[2]['76']||0;
+    let l2 = l[2]['77']||0;
+    let l3 = l[2]['78']||0;
+    let l4 = l[2]['79']||0;
     let l5 = filters;
     let l6 = {};
     if (l0 === 1) {
@@ -606,15 +606,13 @@ const h8 = l => {
 const h9 = async l => {
     let l0 = () => {
     return new PIXI.NoiseFilter({
-        noise: k11([l5, 0.2, 2]),
-        seed: k11([l6, 0.01, 100])}); }
+        noise: k11([l[76]||0, 0.2, 2]),
+        seed: k11([l[77]||0, 0.01, 100])}); }
     let l1 = PIXI.Texture.from(k20);
     let l2 = k20.height;
     let l3 = k20.width;
-    let l4 = l[1][75]||0;
-    let l5 = l[1][76]||0;
-    let l6 = l[1][77]||0;
-    let l7 = l4 === 2;
+    let l90 = [l[0],l3,l2];
+    let l7 = l[75] === 2;
     let l8 = k0['3-0'];
     if (!l8[1]) {
         l8[1] = new PIXI.
@@ -631,7 +629,7 @@ const h9 = async l => {
    else if (l8[2]) {
         l8[2].texture = l1;
         l8[2].texture.update(); }
-   let l9 = l7? l0(): h8(l);
+   let l9 = l7? l0(): h8(l90);
    let l10 = l8[1].renderer;
    l10.resize(l3, l2)
    l8[2].width = l3;
@@ -643,22 +641,21 @@ const h9 = async l => {
    k15.drawImage(l12,0,0); };
 
 const h10 = async l => {
-    let l5 = l[1][0] + l[2][0] * 2;
-    let l6 = l[1][1] + l[2][0] * 2;
+    let l9 = l[1][3];
+    let l5 = l[0][0] + l[1][0] * 2;
+    let l6 = l[0][1] + l[1][0] * 2;
     let l7 = k3.scrollWidth;
     let l8 = k3.scrollHeight;
-    let l3 = [l[2][3],l[2][4]];
-    let l9 = l3[l[0]? 1: 0];
-    let l10 = l9 * l[2][1] * 2;
-    let l11 = l9 * l[2][2] * 2;
+    let l10 = l9 * l[1][1] * 2;
+    let l11 = l9 * l[1][2] * 2;
     let l12 = l9 * l5;
     let l13 = l9 * l6;
     let l14 = l9 * l7;
     let l15 = l14 - l12;
     let l16 = l12 + l10;
     let l17 = l13 + l11;
-    let l18 = l5 + l[2][1] * 2;
-    let l19 = l6 + l[2][2] * 2;
+    let l18 = l5 + l[1][1] * 2;
+    let l19 = l6 + l[1][2] * 2;
     let l20 = await toCanvas(
     k2,{ width: l7,
     height: l8,
@@ -678,60 +675,55 @@ const h10 = async l => {
     k21.drawImage(
         k14, 0, 0); };
 
-
 window.h11 = async l => {
     k2.innerHTML = '';
     let l0 = l[1]||{};
-    let l1 = l0['0']||{};
-    let l3 = k0['5-0'];
-    let l4 = l[0] === 1;
-    if (l[0] === 3) {
-        for (let i in l1) {
-        l3[k1[i]] = l1[i]; }}
-    let l5 = l[0] <= 2;
-    let l6 = l1['75']||0;
-    let l7 = l1['89']||10;
-    let l8 = l1['90']||0;
-    let l9 = l1['91']||0;
-    let l10 = l1['92']||6;
-    let l11 = l1['93']||5;
-    let l12 = Object.keys(l1);
+    let l1 = k0['5-0'];
+    let l2 = l0['0']||{};
+    if (l[0] === 2) {
+        for (let i in l2) {
+            l1[k1[i]||i] = l2[i]; }}
+    console.log('what',l1);
+    let l4 = l[0] <= 1;
+    let l5 = l[0] === 0;
+    let l6 = l2['75']||0;
+    let l7 = l2['89']||10;
+    let l8 = l2['90']||0;
+    let l9 = l2['91']||0;
+    let l10 = l2['92']||5;
+    let l12 = Object.keys(l2);
     let l13 =  l12.some(
         _ => _ >= 51 && _ <= 74);
-    let l14 = l5? l[1]: h6(l3);
-    let l16 = [l7,l8,l9,l10,l11];
-    let l17 = _ => [l[0],_,l16];
-    let l18 = [l[0],l7,l14];
-    let l30 = [l[0],l6,l1];
-    let l19 = Array();
-    if (l4 == false) {
-        l19 = await h1(l18);
-        await h10(l17(l19)); }
+    if (l5 === false) {
+        let l14 = l4? l[1]: h6(l1);
+        let l16 = [l7,l8,l9,l10];
+        let l18 = [l[0],l7,l14];
+        let l19 = await h1(l18);
+        await h10([l19,l16]); }
     if (l13 === true) {
-        await h12(l30); }
+        await h12([l6,l2]); }
     if (l6 >= 1) {
-        await h9(
-            [l19,l1]); }
+        await h9(l2); }
         k2.innerHTML = '';
         k2.appendChild(k14);
     return [k14.toDataURL(),l[1]]};
 
 window.h12 = l => {
     return new Promise(resolve => {
-        let l00 = l[1]? k21: k15;
-        let l3 = [k20.width,k20.height];
-        let l4 = k21.getImageData(0,0,...l3);
-        let l5 = new Worker('/styles.js');
-        let l6 = [...l3,l4.data.buffer,l[2]]
-        l5.postMessage(l6,[l4.data.buffer]);
-        l5.onmessage = async _ => {
-            l00.clearRect(0, 0, ...l3)
-            l00.drawImage(_.data, 0, 0)
+        let l0 = l[0]? k21: k15;
+        let l1 = [k20.width,k20.height];
+        let l2 = k21.getImageData(0,0,...l1);
+        let l3 = new Worker('/styles.js');
+        let l4 = [...l1,l2.data.buffer,l[1]]
+        l3.postMessage(l4,[l2.data.buffer]);
+        l3.onmessage = async _ => {
+            l0.clearRect(0, 0, ...l1)
+            l0.drawImage(_.data, 0, 0)
             _.data.close()
             resolve(); }; }); };
 
 
 // h11([1, {"0":{"51":20,"52":20},"1":{"1":{"1":20,"2":80}}}])
-h11([2, {"1":{"1":{"1":20,"2":80}}}])
+h11([1, {"1":{"1":{"1":20,"2":80}}}])
 // rewrite A-F => assignments
 

@@ -88,7 +88,7 @@ class CLIApp(App):
             f1 = self.stores
             now = int(time.time())
             ss = f1.setdefault('0', {})
-            st = ss.setdefault('38', {})
+            st = ss.setdefault('39', {})
             for k in ['0', '1', '2']:
                     st[k] = now
 

@@ -1,6 +1,4 @@
-from textual.widgets import (
-    DataTable, Input, ContentSwitcher, Digits, Label)
-from textual.coordinate import Coordinate
+from textual.widgets import (DataTable, Input)
 from Backend.model import FileTypeTree
 from pathlib import Path
 import shutil
@@ -13,8 +11,8 @@ STATIC_DIR = PATH_FILE.parent / "Fontend"
 CONFIGS = STATIC_DIR / "model.json"
 
 def action_next_table(self, event, prefix) -> None:
-    f0 = self.query_one("#cont-switch-0", ContentSwitcher)
-    f1 = self.query_one("#cont-switch-1", ContentSwitcher)
+    f0 = self.query_one("#cont-switch-0")
+    f1 = self.query_one("#cont-switch-1")
     f2 = self.full_IDs.index(self.app.focused.id)
     f3 = (f2 + prefix) % len(self.full_IDs)
     f4 = self.app.store["4-1"]
@@ -33,8 +31,7 @@ def action_next_table(self, event, prefix) -> None:
 
     if f3 in [3,4,5,6,7,8]:
         f1.current = f5
-        table = self.query_one(
-            f"#{f5}", DataTable)
+        table = self.query_one(f"#{f5}")
         coordinates = table.cursor_coordinate
         on_cell_highlighted_(self, coordinates)
 
@@ -47,10 +44,10 @@ def action_next_table(self, event, prefix) -> None:
 
 def on_cell_highlighted_(self, coordinate) -> None:
     f0 = self.query_one("#cont-switch-1")
-    f1 = self.query_one("#digits-0", Digits)
-    f2 = self.query_one("#label-0", Label)
-    f3 = self.query_one("#fourth", Input)
-    f4 = self.query_one("#third", Input)
+    f1 = self.query_one("#digits-0")
+    f2 = self.query_one("#label-0")
+    f3 = self.query_one("#fourth")
+    f4 = self.query_one("#third")
     f5 = f0.current.split("-")[-1]
     f6 = '2' if f5 == '3' else f5
     f7 = self.app.store[f"2-{f6}"]
@@ -126,7 +123,8 @@ def on_cell_highlighted_(self, coordinate) -> None:
 async def on_key_(self, event) -> None:
     f0 = self.query_one("#cont-switch-1")
     f1 = self.query_one(f"#{f0.current}")
-    f2 = self.query_one("#third", Input)
+    f2 = self.query_one("#third")
+    f30 = ["backspace", "space"]
     f3 = event.key
 
     match f3:
@@ -161,26 +159,21 @@ async def on_key_(self, event) -> None:
             action_next_table(self,event,-1)
 
     if isinstance(self.app.focused, DataTable):
-        cursor_coord = f1.cursor_coordinate
-
-        if len(event.key) == 1 and event.key.isprintable() or event.key == "backspace":
-            current_value = f1.get_cell_at(cursor_coord)
-
-            if len(event.key) == 1 and event.key.isprintable() or event.key == "backspace":
-                f2.value = "" if event.key == "backspace" else event.key
-                f2.cursor_position = len(event.key)
-                self.notify("yes")
-            else:
-                self.notify("no")
-                f2.value = str(current_value)
-
-            self.coord = cursor_coord
+        if (len(f3) == 1 or f3 in f30):
+            f4 = f1.cursor_coordinate
+            f5 = f1.get_cell_at(f4)
+            self.coord = f4
             f2.focus()
             event.stop()
 
-            def after_focus():
-                f2.cursor_position = len(f2.value)
-            self.call_after_refresh(after_focus)
+            if f3 in f30:
+                f2.value = str(f5)
+
+            elif len(f3) == 1:
+                f2.value = f3
+                def after_focus():
+                    f2.cursor_position = len(f3)
+                self.call_after_refresh(after_focus)
 
     if isinstance(self.app.focused, Input):
         if event.key == "escape":
@@ -188,63 +181,15 @@ async def on_key_(self, event) -> None:
             f2.value = ""
             f1.focus()
 
-
-    # IS THIS NEEDED ?????
-    # IS THIS NEEDED ?????
-
-    if event.key == "v":  # enter/exit visual mode
-        self._visual_mode = not self._visual_mode
-        self._visual_start = self._cursor if self._visual_mode else None
-        self.notify("VISUAL" if self._visual_mode else "NORMAL")
-
-    elif event.key == "y":
-        if self._visual_mode and self._visual_start:  # yank rectangle
-            r1 = min(self._visual_start.row, self._cursor.row)
-            r2 = max(self._visual_start.row, self._cursor.row)
-            c1 = min(self._visual_start.column, self._cursor.column)
-            c2 = max(self._visual_start.column, self._cursor.column)
-
-            self._clipboard = [
-                [f1.get_cell_at(Coordinate(r, c)) for c in range(c1, c2 + 1)]
-                for r in range(r1, r2 + 1)
-            ]
-            self._visual_mode = False
-            self._visual_start = None
-            self.notify(f"Yanked {r2 - r1 + 1}×{c2 - c1 + 1}")
-
-        else:          # yank
-            self._clipboard = f1.get_cell_at(self._cursor)
-            self.notify(f"Copied: {self._clipboard}")  # toast confirmation
-
-    elif event.key == "p" and self._clipboard is not None:  # paste
-        if isinstance(self._clipboard, list):
-            for ri, row in enumerate(self._clipboard):
-                for ci, val in enumerate(row):
-                    try:
-                        f1.update_cell_at(
-                            Coordinate(self._cursor.row + ri, self._cursor.column + ci),
-                            val
-                        )
-                    except Exception:
-                        pass  # silently skip out-of-bounds
-            self.notify(f"Pasted {len(self._clipboard)}×{len(self._clipboard[0])}")
-
-        else:
-            f1.update_cell_at(self._cursor, self._clipboard)
-
-
-
-
-
-
 def on_pressed(self, event) -> None:
     f0 = self.app.store
     f1 = self.app.stores
     f2 = event.button.id
     f3 = f2.split("-")[-1]
     f5 = f1.setdefault("0", {})
-    f6 = f5.setdefault("37", {})
-    f7 = f5.setdefault("38", {})
+    f6 = f5.setdefault("38", {})
+    f7 = f5.setdefault("39", {})
+    f07 = ["button-3","button-6"]
     f8 =  f0["4-0"].index(f2) \
         if f2 in f0["4-0"] else -1
     f9 = self.turi
@@ -272,7 +217,7 @@ def on_pressed(self, event) -> None:
         self.notify(f"D00 SEED {f9[f6[2]]} ")
 
     elif f2 == "button-3":
-        f12 = f5.get('37', {})
+        f12 = f5.get('38', {})
         f13 = int(time.time())
         for k in ['0', '1', '2']:
             if f12.get(k, 0) == 0:
@@ -297,24 +242,40 @@ def on_pressed(self, event) -> None:
 
 
 def on_submitted(self, event) -> None:
+    self.notify(f"Submitted {self.coord}")
+    f20 = self.query_one("#cont-switch-1")
+    f11 = self.query_one(f"#{f20.current}")
+    f21 = int(f20.current.split("-")[-1])
+    f22 = self.query_one("#third")
+
     if self.coord is not None:
         f0 = range(24, 31)
         f1 = range(0, 10)
-        f2 = self.query_one(
-            f"#{self.f_right.current}")
-        f2.update_cell_at(self.coord, event.value)
-        f3 = self.f_right.current.split("-")[-1]
-        f4 = self.get_all_data(f2)
-        f5 = any(int(k) in f0 for k in f4)
-        f6 = any(int(k) in f1 for k in f4)
-        f7 = 2 if f6 else (0 if f5 else 1)
-        f8 = f7 if int(f3) == 0 else 1
-        self.notify(f"here {f8}")
-        self.app.stores[f3] = f4
-        f9 = {**self.app.stores}
-        f9.update({'_': [0,f8]})
-        self.e_images.config = f9
-        self.e_third.value = ""
-        self.coord = None
-        f2.focus()
+        f00 = [[11,23,31],
+               [18,36,54,73,92],
+               [10,22,33,44,55,65],
+               [10,22,33,44,55,65],[],[]]
 
+        if self.coord.row not in f00[f21]:
+            f11.update_cell_at(self.coord, event.value)
+            f3 = self.f_right.current.split("-")[-1]
+            f4 = self.get_all_data(f11)
+
+            f5 = any(int(k) in f0 for k in f4)
+            f6 = any(int(k) in f1 for k in f4)
+            f7 = 2 if f6 else (0 if f5 else 1)
+            f8 = f7 if int(f3) == 0 else 1
+
+            self.notify(f"here {f8}")
+
+            self.app.stores[f3] = f4
+            f9 = {**self.app.stores}
+            f9.update({'_': [0,f8]})
+            self.e_images.config = f9
+            self.e_third.value = ""
+            self.coord = None
+            f11.focus()
+        else:
+            self.coord = None
+            f22.value = ""
+            f11.focus()
