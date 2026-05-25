@@ -1,38 +1,44 @@
 
+@font-face {
+    font-family:                                        body;
+    font-display:                                       swap;
+    src:                                                url('model.otf'); }
+
 :root {
---_00:                                                  RobotoMon;
---_01:                                                  2px solid Transparent;
---_02:                                                  1px solid Black;
---_03:                                                  1px solid Gray;
---_04:                                                  0 0 0px 1px Gray inset;
---_05:                                                  0 0 0px 1px DarkGray inset;
---_06:                                                  linear-gradient(White,White);
---_07:                                                  radial-gradient(White,White);
---_08:                                                  calc(100% - 4px) calc(100% - 4px);
---_09:							                        calc(100% - 0px) calc(100% - 0px);
---_10:                                                  rgb(255, 255, 255); }
+    --_02:                                              1px solid Black;
+    --_03:                                              1px solid Gray;
+    --_01:                                              2px solid Transparent;
+    --_04:                                              0 0 0px 1px Gray inset;
+    --_05:                                              0 0 0px 1px DarkGray inset;
+    --_06:                                              linear-gradient(White,White);
+    --_07:                                              radial-gradient(White,White);
+    --_08:                                              calc(100% - 4px) calc(100% - 4px);
+    --_09:							                    calc(100% - 0px) calc(100% - 0px);
+    --_10:                                              rgb(255, 255, 255); }
 
 body *,
 body ::after,
 body ::before {
-    box-sizing: border-box;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    object-fit: contain;
-    object-position: center
-}
+    box-sizing:                                         border-box;
+    background-repeat:                                  no-repeat;
+    background-position:                                center;
+    background-size:                                    cover; }
+
+body var:empty {
+    display:                                            none; }
+
+body var {
+    font-style:                                         initial;
+    font-weight: 					                    inherit;
+    font-family:                                        body; }
 
 body {
-    margin-left: 0px;
-    margin-right: 0px;
-    margin-top: 0px;
-    margin-bottom: 0px;
-}
+    font-family:                                        body;
+    margin:                                             0px; }
 
 body > svg {
-inset:                                                  0px;
-position:                                               absolute;   }
+    inset:                                              0px;
+    position:                                           absolute;   }
 
 body > div,
 body > canvas {
@@ -49,14 +55,6 @@ body > div {
 body > canvas {
     width: 							                        var(--f2,420px);
     height:	 						                        var(--f3,320px); }
-
-body var {
-font-style:                                             initial;
-font-weight: 					                        inherit;
-font-family: 					                        inherit; }
-
-body var:empty {
-display:                                                none; }
 
 .l00 {
 outline-offset:                                         -3px;
@@ -188,7 +186,6 @@ margin:                                                 2px; }
 .t00 > var:last-of-type,
 .t000 > var:last-of-type {
 border:                                                 var(--_02);
-font-family:                                            var(--_00);
 text-align:                                             center;
 background-color:                                       White;
 visibility:                                             visible;
