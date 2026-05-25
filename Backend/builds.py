@@ -31,10 +31,10 @@ class TableApp(Widget):
         self.full_IDs = self.app.store["4-0"]
         self.turi = ['activated', 'deactivated']
         self.turis = ['visible', 'hidden']
-        self.lister = [9, 100, 301, 300, 6, 6]
+        self.lister = [9, 100, 301, 300, 12, 13]
         self.listers = [28, 22, 18, 18, 14, 14]
         self.check_only = [8,8,8,7,7,7]
-        self.check_only0 = [7,7,7,7,7,62]
+        self.check_only0 = [8,8,8,8,8,8,8,8,8,8,8,30,60]
 
     def on_mount(self) -> None:
         self.f_left = self.query_one("#cont-switch-0")

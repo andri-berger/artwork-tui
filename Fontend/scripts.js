@@ -704,8 +704,8 @@ window.h11 = async l => {
         await h12([l6,l2]); }
     if (l6 >= 1) {
         await h9(l2); }
-        k2.innerHTML = '';
-        k2.appendChild(k14);
+        // k2.innerHTML = '';
+        // k2.appendChild(k14);
     return [k14.toDataURL(),l[1]]};
 
 window.h12 = l => {
