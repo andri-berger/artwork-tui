@@ -119,6 +119,11 @@ def on_cell_highlighted_(self, coordinate) -> None:
     except IndexError:
         return
 
+def on_message(self,value,hash) -> None:
+    self.app.clear_notifications()
+    test = {
+        "f1": f"{value} deleted from table"}
+    self.notify(test.get(hash, ""))
 
 
 async def on_key_(self, event) -> None:
@@ -128,9 +133,36 @@ async def on_key_(self, event) -> None:
     f30 = ["backspace", "space"]
     f3 = event.key
 
-    self.log(f"key: {event.key}")
-
     match f3:
+        case "f1":
+            coord = f1.cursor_coordinate
+            value = f1.get_cell_at(coord)
+            f1.update_cell_at(coord, None)
+            on_message(self,value,"f1")
+
+
+        case "f2":
+            coord = f1.cursor_coordinate
+            value = f1.get_cell_at(coord)
+            self._clipboard = str(value)
+            f1.update_cell_at(coord, None)
+            self.app.clear_notifications()
+            self.notify(f"{value} cut to clipboard")
+
+        case "f3":
+            coord = f1.cursor_coordinate
+            value = f1.get_cell_at(coord)
+            self._clipboard = str(value)
+            self.app.clear_notifications()
+            self.notify(f"{value} copied to clipboard")
+
+        case "f4":
+            clipboard = self._clipboard
+            coord = f1.cursor_coordinate
+            f1.update_cell_at(coord, clipboard)
+            self.app.clear_notifications()
+            self.notify(f"{clipboard} pasted from clipboard")
+
         case "f5":
             self.notify(f"{f3} pressed")
             self.query_one("#button-0").press()
@@ -161,59 +193,9 @@ async def on_key_(self, event) -> None:
         case "shift+tab":
             action_next_table(self,event,-1)
 
-        case "alt+c":
-            self.app.clear_notifications()
-            self.notify('copy')
-
-            self._visual_mode = not self._visual_mode
-            self._visual_start = self._cursor if self._visual_mode else None
-            self.notify("VISUAL" if self._visual_mode else "NORMAL")
-
-
-        case "alt+x":
-            self.app.clear_notifications()
-            self.notify('cut')
-
-            if self._visual_mode and self._visual_start:  # yank rectangle
-                r1 = min(self._visual_start.row, self._cursor.row)
-                r2 = max(self._visual_start.row, self._cursor.row)
-                c1 = min(self._visual_start.column, self._cursor.column)
-                c2 = max(self._visual_start.column, self._cursor.column)
-
-                self._clipboard = [
-                    [f1.get_cell_at(Coordinate(r, c)) for c in range(c1, c2 + 1)]
-                    for r in range(r1, r2 + 1)]
-                self._visual_mode = False
-                self._visual_start = None
-                self.notify(f"Yanked {r2 - r1 + 1}×{c2 - c1 + 1}")
-            else:  # yank
-                self._clipboard = f1.get_cell_at(self._cursor)
-                self.notify(f"Copied: {self._clipboard}")
-
-        case "alt+v":
-            self.app.clear_notifications()
-            self.notify('paste')
-
-            if self._clipboard is not None:
-                if isinstance(self._clipboard, list):
-                    for ri, row in enumerate(self._clipboard):
-                        for ci, val in enumerate(row):
-                            try:
-                                f1.update_cell_at(
-                                    Coordinate(self._cursor.row + ri, self._cursor.column + ci),
-                                    val
-                                )
-                            except Exception:
-                                pass  # silently skip out-of-bounds
-                    self.notify(f"Pasted {len(self._clipboard)}×{len(self._clipboard[0])}")
-
-                else:
-                    f1.update_cell_at(self._cursor, self._clipboard)
-
-
-
     if isinstance(self.app.focused, DataTable):
         if (len(f3) == 1 or f3 in f30):
+            self.notify(f"{f3} pressed")
             f4 = f1.cursor_coordinate
             f5 = f1.get_cell_at(f4)
             self.coord = f4
