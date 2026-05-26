@@ -192,15 +192,9 @@ class FileTypeTree(DirectoryTree):
                 # f41 = self.app.query_one(f"#{f40.current}")
                 # f41.focus()
 
-
-
-
-
-
-
-
-# variable to list / dictionairy transformion => check meticulously
-# font-face / background-image universe
-
+# a/b/c to l/k/t transformation (and back)
+# Ctrl/V/C/P => re-energize CUA on textual grid
+# filepicker full functionality (full cycle)
+# export functionality (within 0-prefix)
 
 

@@ -1,59 +1,17 @@
-
-# tui-specific
 Fontend/model.png
-
-# Python-generated files
+.eslintcache
+*.tsbuildinfo
 __pycache__/
-*.py[oc]
-build/
-dist/
-wheels/
-*.egg-info/
-*.egg-info
-.venv/
-*.pyc
-*.pyo
-*.pyd
-.eggs/
-
-# Build output
-*.min.js
-*.min.css
-*.tgz
-out
-dist
-
-# Environment / secrets
-.env
-.env.local
-.env.*.local
-*.pem
-*.key
-secrets.json
-
-# JetBrains
+.pytest_cache/
+.ruff_cache/
 .idea/
-*.iml
-*.iws
-*.ipr
-
-# macOS
-.DS_Store
-.AppleDouble
-
-# Temporary / generated
+.venv/
 *.log
 *.tmp
+.cache
 .cache/
 .temp/
-
-# dotenv environment variable files
-.env.development.local
-.env.test.local
-.env.production.local
-
-# caches
-.eslintcache
-.cache
-*.tsbuildinfo
-
+temp/
+.env
+*.pem
+*.key
