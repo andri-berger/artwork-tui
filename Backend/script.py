@@ -176,6 +176,3 @@ def testlauf(self,image_outs,Image,cv2):
         self.query_one(Image).styles.width = "auto"
         self.query_one(Image).styles.height = "100%"
 
-
-
-

@@ -1,4 +1,5 @@
 from textual.widgets import (DataTable, Input)
+from textual.coordinate import Coordinate
 from Backend.model import FileTypeTree
 from pathlib import Path
 import shutil
@@ -127,6 +128,8 @@ async def on_key_(self, event) -> None:
     f30 = ["backspace", "space"]
     f3 = event.key
 
+    self.log(f"key: {event.key}")
+
     match f3:
         case "f5":
             self.notify(f"{f3} pressed")
@@ -157,6 +160,57 @@ async def on_key_(self, event) -> None:
 
         case "shift+tab":
             action_next_table(self,event,-1)
+
+        case "alt+c":
+            self.app.clear_notifications()
+            self.notify('copy')
+
+            self._visual_mode = not self._visual_mode
+            self._visual_start = self._cursor if self._visual_mode else None
+            self.notify("VISUAL" if self._visual_mode else "NORMAL")
+
+
+        case "alt+x":
+            self.app.clear_notifications()
+            self.notify('cut')
+
+            if self._visual_mode and self._visual_start:  # yank rectangle
+                r1 = min(self._visual_start.row, self._cursor.row)
+                r2 = max(self._visual_start.row, self._cursor.row)
+                c1 = min(self._visual_start.column, self._cursor.column)
+                c2 = max(self._visual_start.column, self._cursor.column)
+
+                self._clipboard = [
+                    [f1.get_cell_at(Coordinate(r, c)) for c in range(c1, c2 + 1)]
+                    for r in range(r1, r2 + 1)]
+                self._visual_mode = False
+                self._visual_start = None
+                self.notify(f"Yanked {r2 - r1 + 1}×{c2 - c1 + 1}")
+            else:  # yank
+                self._clipboard = f1.get_cell_at(self._cursor)
+                self.notify(f"Copied: {self._clipboard}")
+
+        case "alt+v":
+            self.app.clear_notifications()
+            self.notify('paste')
+
+            if self._clipboard is not None:
+                if isinstance(self._clipboard, list):
+                    for ri, row in enumerate(self._clipboard):
+                        for ci, val in enumerate(row):
+                            try:
+                                f1.update_cell_at(
+                                    Coordinate(self._cursor.row + ri, self._cursor.column + ci),
+                                    val
+                                )
+                            except Exception:
+                                pass  # silently skip out-of-bounds
+                    self.notify(f"Pasted {len(self._clipboard)}×{len(self._clipboard[0])}")
+
+                else:
+                    f1.update_cell_at(self._cursor, self._clipboard)
+
+
 
     if isinstance(self.app.focused, DataTable):
         if (len(f3) == 1 or f3 in f30):
@@ -279,3 +333,4 @@ def on_submitted(self, event) -> None:
             self.coord = None
             f22.value = ""
             f11.focus()
+
