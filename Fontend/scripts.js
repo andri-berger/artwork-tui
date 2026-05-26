@@ -661,37 +661,35 @@ const h10 = async l => {
 
 window.h11 = async l => {
     k2.innerHTML = '';
-    let l0 = l[1]||{};
+    let l0 = l[1]||{};          // evtl raus !!
     let l1 = k0['02'];
     let l2 = l0['0']||{};
     if (l[0] === 2) {
         for (let i in l2) {
             if (k1[i] != null) {
-            l1[k1[i]] = l2[i]; }}}
-    let l4 = l[0] <= 1;
-    let l5 = l[0] === 0;
+            l1[k1[i]] = l2[i]; }}} /* replace with ...spread-overlay */
     let l6 = l2['75']||0;
     let l7 = l2['89']||10;
     let l8 = l2['90']||0;
     let l9 = l2['91']||0;
     let l10 = l2['92']||2;
     let l12 = Object.keys(l2);
-    let l13 =  l12.some(
-        _ => _ >= 51 && _ <= 74);
-    let l14 = l4? l[1]: h6(l1);
-    if (l5 === false) {
+    if (l[0] === 2) {
+        l0 = { ...l0, ...h6(l1) }}
+    if (l[0] >= 1) {
         let l15 = [l7,l8,l9,l10];
-        let l16 = [l[0],l7,l14];
-        l14[1] = h12(l14[1]||{});
+        let l16 = [l[0],l7,l0];
+        l0[1] = h12(l0[1]||{});
         let l17 = await h1(l16);
         await h10([l17,l15]); }
-    if (l13 === true) {
+    if (l12.some(_=>
+        _ >= 51 && _ <= 74)) {
         await h13([l6,l2]); }
     if (l6 >= 1) {
         await h9(l2); }
         k2.innerHTML = '';
         k2.appendChild(k15);
-    return [k15.toDataURL(), l14]};
+    return [k15.toDataURL(), l0]};
 
 window.h12 = l => {
     let l0 = [17,35,53];
@@ -735,7 +733,7 @@ window.h13 = l => {
             resolve(); }; }); };
 
 // h11([1, {"0":{"51":20,"52":20},"1":{"1":{"1":20,"2":80}}}])
-h11([3, {"1":{"1":{"0": 20, "1":20,"2":60}}}])
+h11([2, {"1":{"1":{"0": 20, "1":20,"2":60}}}])
 // rewrite A-F => assignments
 
 

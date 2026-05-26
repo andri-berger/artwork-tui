@@ -76,6 +76,11 @@ class ImageTab(Widget):
             self.mount(Image(image_outs))
             testlauf(self, image_outs, Image, cv2)
 
+
+        if f7 == 1 and 1 ==1:
+            pass
+
+
         if f7 == 2:
             here = web_to_tui(f11[1], f4)
             f3 = {**f3, **here}
@@ -192,8 +197,6 @@ class FileTypeTree(DirectoryTree):
                 # f41 = self.app.query_one(f"#{f40.current}")
                 # f41.focus()
 
-
-# Ctrl/V/C/P => re-energize CUA on textual grid
 # filepicker full functionality (full cycle)
 # export functionality (within 0-prefix)
 

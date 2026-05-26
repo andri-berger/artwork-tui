@@ -11,6 +11,23 @@ PATH_FILE = Path(__file__).parent
 STATIC_DIR = PATH_FILE.parent / "Fontend"
 CONFIGS = STATIC_DIR / "model.json"
 
+def on_message(self,value,hash) -> None:
+    self.app.clear_notifications()
+    test = {
+        "f1": f"{value} deleted from table",
+        "f2": f"{value} cut to clipboard",
+        "f3": f"{value} copied to clipboard",
+        "f4": f"{value} pasted from clipboard",
+        "f5": f"{value} Yay!",
+        "f6": f"{value} Yay!",
+        "f7": f"{value} Yay!",
+        "f8": f"{value} Yay!",
+        "f9": f"{value} Yay!",
+        "f10": f"{value} Yay!"}
+    self.notify(
+        test.get(
+            hash, ""))
+
 def action_next_table(self, event, prefix) -> None:
     f0 = self.query_one("#cont-switch-0")
     f1 = self.query_one("#cont-switch-1")
@@ -41,7 +58,6 @@ def action_next_table(self, event, prefix) -> None:
         tree = self.query_one(
             f"#{f5}", FileTypeTree)
         tree.reload()
-
 
 def on_cell_highlighted_(self, coordinate) -> None:
     f0 = self.query_one("#cont-switch-1")
@@ -119,73 +135,63 @@ def on_cell_highlighted_(self, coordinate) -> None:
     except IndexError:
         return
 
-def on_message(self,value,hash) -> None:
-    self.app.clear_notifications()
-    test = {
-        "f1": f"{value} deleted from table"}
-    self.notify(test.get(hash, ""))
-
-
 async def on_key_(self, event) -> None:
     f0 = self.query_one("#cont-switch-1")
     f1 = self.query_one(f"#{f0.current}")
-    f2 = self.query_one("#third")
-    f30 = ["backspace", "space"]
-    f3 = event.key
+    f4 = self.query_one("#third")
+    f2 = f1.cursor_coordinate
+    f3 = f1.get_cell_at(f2)
+    f5 = ["backspace", "space"]
+    f6 = event.key
 
-    match f3:
+    match f6:
         case "f1":
-            coord = f1.cursor_coordinate
-            value = f1.get_cell_at(coord)
-            f1.update_cell_at(coord, None)
-            on_message(self,value,"f1")
-
+            self.coord = f2
+            on_message(self,f3,"f1")
+            self.post_message(Input.Submitted(
+                f4,""))
 
         case "f2":
-            coord = f1.cursor_coordinate
-            value = f1.get_cell_at(coord)
-            self._clipboard = str(value)
-            f1.update_cell_at(coord, None)
-            self.app.clear_notifications()
-            self.notify(f"{value} cut to clipboard")
+            self.coord = f2
+            self._clipboard = str(f3)
+            on_message(self,f3,"f2")
+            self.post_message(Input.Submitted(
+                f4,f4.value))
 
         case "f3":
-            coord = f1.cursor_coordinate
-            value = f1.get_cell_at(coord)
-            self._clipboard = str(value)
-            self.app.clear_notifications()
-            self.notify(f"{value} copied to clipboard")
+            self._clipboard = str(f3)
+            on_message(self,f3,"f3")
 
         case "f4":
+            self.coord = f2
             clipboard = self._clipboard
-            coord = f1.cursor_coordinate
-            f1.update_cell_at(coord, clipboard)
-            self.app.clear_notifications()
-            self.notify(f"{clipboard} pasted from clipboard")
+            on_message(self, clipboard, "f4")
+            self.post_message(Input.Submitted(
+                f4,clipboard))
 
         case "f5":
-            self.notify(f"{f3} pressed")
-            self.query_one("#button-0").press()
+            self.query_one(
+                "#button-0").press()
 
         case "f6":
-            self.notify(f"{f3} pressed")
-            self.query_one("#button-1").press()
+            self.query_one(
+                "#button-1").press()
 
         case "f7":
-            self.notify(f"{f3} pressed")
-            self.query_one("#button-2").press()
+            self.query_one(
+                "#button-2").press()
 
         case "f8":
-            self.notify(f"{f3} pressed")
-            self.query_one("#button-6").press()
+            self.query_one(
+                "#button-6").press()
 
         case "f9":
-            self.notify(f"{f3} pressed")
-            self.query_one("#button-3").press()
+            self.query_one(
+                "#button-3").press()
 
         case "f10":
-            self.notify(f"{f3} pressed")
-            self.query_one("#button-4").press()
+            self.query_one(
+                "#button-4").press()
 
         case "tab":
             action_next_table(self,event,1)
@@ -194,27 +200,26 @@ async def on_key_(self, event) -> None:
             action_next_table(self,event,-1)
 
     if isinstance(self.app.focused, DataTable):
-        if (len(f3) == 1 or f3 in f30):
-            self.notify(f"{f3} pressed")
-            f4 = f1.cursor_coordinate
-            f5 = f1.get_cell_at(f4)
-            self.coord = f4
-            f2.focus()
+        if (len(f6) == 1 or f6 in f5):
+            f7 = f1.cursor_coordinate
+            f8 = f1.get_cell_at(f7)
+            self.coord = f7
+            f4.focus()
             event.stop()
 
-            if f3 in f30:
-                f2.value = str(f5)
+            if f6 in f5:
+                f4.value = str(f8)
 
-            elif len(f3) == 1:
-                f2.value = f3
+            elif len(f6) == 1:
+                f4.value = f6
                 def after_focus():
-                    f2.cursor_position = len(f3)
+                    f4.cursor_position = len(f6)
                 self.call_after_refresh(after_focus)
 
     if isinstance(self.app.focused, Input):
         if event.key == "escape":
             self.coord = None
-            f2.value = ""
+            f4.value = ""
             f1.focus()
 
 def on_pressed(self, event) -> None:
@@ -225,94 +230,94 @@ def on_pressed(self, event) -> None:
     f5 = f1.setdefault("0", {})
     f6 = f5.setdefault("38", {})
     f7 = f5.setdefault("39", {})
-    f07 = ["button-3","button-6"]
     f8 =  f0["4-0"].index(f2) \
         if f2 in f0["4-0"] else -1
-    f9 = self.turi
     f10 = f0["4-1"][f8]
     self.label.update(f10)
     f11 = {"6": 2, "3": 1}
     f12 = {"6": 1, "3": 2}
+    f9 = self.turi
+
+    if f2 == "button-4":
+        pass
+        # on_message(self, "export to disk", "f10")
 
     if f2 == "button-6":
         self.app.stores = {}
+        # on_message(self,  "third seed C0", "f8")
 
     elif f2 == "button-0":
         f6[0] = 1 - f6.get(0,0)
         self.app.clear_notifications()
         self.notify(f"A00 SEED {f9[f6[0]]} ")
+        # on_message(self, "close", "f5")
 
     elif f2 == "button-1":
         f6[1] = 1 - f6.get(1,0)
         self.app.clear_notifications()
         self.notify(f"B00 SEED {f9[f6[1]]}")
+        # on_message(self, "first seed A0", "f6")
 
     elif f2 == "button-2":
         f6[2] = 1 - f6.get(2,0)
         self.app.clear_notifications()
         self.notify(f"D00 SEED {f9[f6[2]]} ")
+        # on_message(self, "second seed B0", "f7")
 
     elif f2 == "button-3":
-        f12 = f5.get('38', {})
-        f13 = int(time.time())
-        for k in ['0', '1', '2']:
-            if f12.get(k, 0) == 0:
-                f7[k] = f13
-
-    elif f2 == "button-4":
+        f13 = f5.get('38', {})
         f14 = int(time.time())
-        f16 = STATIC_DIR / "model.png"
-        f15 = STATIC_DIR / "model.json"
-        image_outs = CWD / f"{f14}.json"
-        image_outs_ = CWD / f"{f14}.png"
-        shutil.copy2(f15, image_outs)
-        shutil.copy2(f16, image_outs_)
+        for k in ['0', '1', '2']:
+            if f13.get(k, 0) == 0:
+                f7[k] = f14
+        # on_message(self, "regenerate Art", "f9")
 
-    if (f2 == "button-6"
-            or f2 == "button-3"):
+    if f3 == "6" or f3 == "3":
+        f18 = {**self.app.stores}
+        f19 = {} if f3 == '6' else f18
+        f20 = [f11[f3],f12[f3]]
+        f19.update({'_': f20})
+        self.e_images.config = f19
+
+    if f3 == "4":
+        f15 = int(time.time())
+        f16 = STATIC_DIR / "model.json"
+        image_outs = CWD / f"{f15}.json"
+        shutil.copy2(f16, image_outs)
         f17 = {**self.app.stores}
-        f18 = {} if f3 == '6' else f17
-        f19 = [f11[f3],f12[f3]]
-        f18.update({'_': f19})
-        self.e_images.config = f18
-
+        f17.update({'_': [0,0]})
+        self.e_images.config = f17
 
 def on_submitted(self, event) -> None:
-    self.notify(f"Submitted {self.coord}")
-    f20 = self.query_one("#cont-switch-1")
-    f11 = self.query_one(f"#{f20.current}")
-    f21 = int(f20.current.split("-")[-1])
-    f22 = self.query_one("#third")
+    f1 = self.query_one("#cont-switch-1")
+    f2 = self.query_one(f"#{f1.current}")
+    f3 = f1.current.split("-")[-1]
+    f00 = event.value
+    f0 = self.coord
 
-    if self.coord is not None:
-        f0 = range(24, 31)
-        f1 = range(0, 10)
-        f00 = [[11,23,31],
+    if f0 is not None:
+        f4 = [[11,23,31],
                [18,36,54,73,92],
                [10,22,33,44,55,65],
                [10,22,33,44,55,65],[],[]]
 
-        if self.coord.row not in f00[f21]:
-            f11.update_cell_at(self.coord, event.value)
-            f3 = self.f_right.current.split("-")[-1]
-            f4 = self.get_all_data(f11)
+        if f0.row not in f4[f3]:
+            f2.update_cell_at(f0,f00)
+            f6 = self.get_all_data(f2)
+            f8 = f0.row in range(0, 10)
+            f7 = f0.row in range(24, 31)
+            f9 = 2 if f8 else (0 if f7 else 1)
+            f10 = f9 if int(f3) == 0 else 1
 
-            f5 = any(int(k) in f0 for k in f4)
-            f6 = any(int(k) in f1 for k in f4)
-            f7 = 2 if f6 else (0 if f5 else 1)
-            f8 = f7 if int(f3) == 0 else 1
-
-            self.notify(f"here {f8}")
-
-            self.app.stores[f3] = f4
-            f9 = {**self.app.stores}
-            f9.update({'_': [0,f8]})
-            self.e_images.config = f9
-            self.e_third.value = ""
+            self.app.stores[f3] = f6
+            f11 = {**self.app.stores}
+            f11.update({'_': [0,f10]})
+            self.e_images.config = f11
+            event.input.value = ""
             self.coord = None
-            f11.focus()
+            f2.focus()
         else:
             self.coord = None
-            f22.value = ""
-            f11.focus()
+            event.input.value = ""
+            f2.focus()
 

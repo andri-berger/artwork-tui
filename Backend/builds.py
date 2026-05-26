@@ -26,8 +26,6 @@ class TableApp(Widget):
         self.coord = None
         self._cursor = None
         self._clipboard = None
-        self._visual_start = None
-        self._visual_mode = False
         self.full_IDs = self.app.store["4-0"]
         self.turi = ['activated', 'deactivated']
         self.turis = ['visible', 'hidden']
