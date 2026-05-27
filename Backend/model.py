@@ -16,13 +16,12 @@ import json
 import cv2
 
 
+CWD = Path.cwd()
 APP = Path(__file__)
 APP_DIR = Path(__file__).parent
 ASSETS_DIR = APP_DIR.parent / "Fontend"
-image_outs = ASSETS_DIR / "model.png"
+ASSETS = ASSETS_DIR / "model.png"
 CONFIGS = ASSETS_DIR / "model.json"
-CONFIGS_ = ASSETS_DIR / "models.json"
-CONFIGS0_ = ASSETS_DIR / "models-.json"
 
 class ImageTab(Widget):
     config: reactive[dict] = reactive(dict, init=False)
@@ -63,23 +62,24 @@ class ImageTab(Widget):
             f12 = base64.b64decode(b64)
 
             if f10.get('80',0) in range(1,5):
-                settings = {
-                    "set": f10.get('80',0),
+                f20 = { "set": f10.get('80',0),
                     "set0": f10.get('81',0),
                     "set1": f10.get('82',0),
                     "set2": f10.get('83',0),
                     "set3": f10.get('83',0)}
-                f12 = opencv(f12,settings)
+                f12 = opencv(f12,f20)
 
-            with open(image_outs, "wb") as f:
+        if f7 == 4:
+            f25 = int(time.time())
+            f26 = CWD / f"{f25}.png"
+            with open(f26, "wb") as f:
                 f.write(f12)
-            self.mount(Image(image_outs))
-            testlauf(self, image_outs, Image, cv2)
 
-
-        if f7 == 1 and 1 ==1:
-            pass
-
+        if f7 <= 3:
+            with open(ASSETS, "wb") as f:
+                f.write(f12)
+            self.mount(Image(ASSETS))
+            testlauf(self,ASSETS,Image,cv2)
 
         if f7 == 2:
             here = web_to_tui(f11[1], f4)

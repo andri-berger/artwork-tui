@@ -285,7 +285,7 @@ def on_pressed(self, event) -> None:
         image_outs = CWD / f"{f15}.json"
         shutil.copy2(f16, image_outs)
         f17 = {**self.app.stores}
-        f17.update({'_': [0,0]})
+        f17.update({'_': [0,4]})
         self.e_images.config = f17
 
 def on_submitted(self, event) -> None:
