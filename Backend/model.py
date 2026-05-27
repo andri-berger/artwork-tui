@@ -9,6 +9,7 @@ from textual import on
 from .scripts import opencv
 from .script import testlauf
 from textual.app import ComposeResult
+from .models import on_message
 import shutil
 import base64
 import time
@@ -144,60 +145,66 @@ class FileTypeTree(DirectoryTree):
 
     @on(DirectoryTree.FileSelected)
     async def selected(self, event: DirectoryTree.FileSelected) -> None:
-        f0 = event.path
-        f1 = self.app.stores
-        f2 = int(time.time())
-        f4 = event.control.id
-        f5 = f4.split("-")[-1]
-        f6 = ["module","modules"]
-        f7 = ['4','5'][int(f5)-1]
-        f8 = ['6','6'][int(f5)-1]
-        f9 = f6[int(f5)-1]
-        if not f0.is_file():
+        f0 = self.query_one("#cont-switch-1")
+        f1 = self.query_one(f"#{f0.current}")
+        f2 = f0.current.split("-")[-1]
+        f3 = self.app.stores
+        f4 = self.app.coord
+        f5 = event.control.id
+        f6 = f5.split("-")[-1]
+        f7 = ['4','5'][int(f6)-1]
+        f8 = ["module","modules"]
+        f9 = f8[int(f6)-1]
+        f10 = event.path
+
+        if not f10.is_file():
             return
 
-        for f in ASSETS_DIR.glob("*.png"):
-            if f.name != "model.png"\
-                    and f.name != f0.name:
-                f.unlink()
+        if f5 == "dir-tree-0":
+            f11 = "model.json"
+            f12 = ASSETS_DIR / f11
+            shutil.copy2(f10, f12)
 
-        for f in ASSETS_DIR.glob("*.otf"):
-            if f.name != "model.otf"\
-                    and f.name != f0.name:
-                f.unlink()
-
-        if f4 == "dir-tree-0":
-            f20 = "model.json"
-            f21 = ASSETS_DIR / f20
-            shutil.copy2(f0, f21)
-            f22 = f0.read_text()
-            f36 = json.loads(f22)
-            f36.update({'_': [2,1]})
-            self.app.stores = f36
-            self.e_images.config = f36
+            f13 = f10.read_text()
+            f14 = json.loads(f13)
+            f14.update({'_': [2,1]})
+            self.app.stores = f14
+            self.e_images.config = f14
             await self.reload()
 
-        elif (f4 == "dir-tree-1"
-              or f4 == "dir-tree-2"):
-                f30 = f0.suffix
-                f31 = f"{f2}{f30}"
-                f33 = ASSETS_DIR / f9 / f31
-                f34 = f1.setdefault(f7, {})
-                f35 = f34.setdefault('0', {})
-                shutil.copy2(f0, f33)
-                f35[f8] = f"{f2}"
-                f36 = {**self.app.stores}
-                f36.update({'_': [0,1]})
-                self.e_images.config = f36
-                self.notify(
-                self.store.format(src=f0))
+        elif f6 == "1" or f6 == "2":
+                f15 = ASSETS_DIR / f9
+                f16 = f15 / f10.name
+                f17 = f4.column
+                f18 = f4.row
+
+                if (int(f2) in [4, 5]
+                        and f17 == 12):
+                    f19 = f3.setdefault(f7, {})
+                    f20 = f19.setdefault(f18, {})
+                    f20[f17 or '11'] = f10.name
+                    f21 = f1.get_cell_at(f4)
+                    f22 = f15 / f21.name
+                    if f22.exists():
+                        f22.unlink()
+                    f1.update_cell_at(
+                        f4,f10.name)
+                else:
+                    f23 = f3.setdefault('0', {})
+                    f24 = f23.setdefault('40', {})
+                    f25 = f24[int(f6)-1] or ""
+                    f24[int(f6)-1] = f10.name
+                    f26 = f15 / f25
+                    if f26.exists():
+                        f26.unlink()
+
+                shutil.copy2(f10, f16)
+                f27 = {**self.app.stores}
+                f27.update({'_':  [0,1]})
+                self.e_images.config = f27
                 await self.reload()
-
-                # f40 = self.app.query_one("#cont-switch-1")
-                # f41 = self.app.query_one(f"#{f40.current}")
-                # f41.focus()
-
-# filepicker full functionality (full cycle)
-# export functionality (within 0-prefix)
+                on_message(self,
+                           f10.name,
+                           "f0")
 
 

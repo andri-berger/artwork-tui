@@ -35,14 +35,14 @@ class TableApp(Widget):
         self.check_only0 = [8,8,8,8,8,8,8,8,8,8,8,30,60]
 
     def on_mount(self) -> None:
-        self.f_left = self.query_one("#cont-switch-0")
-        self.c_cont = self.query_one("#cont-switch-0")
-        self.f_right = self.query_one("#cont-switch-1")
-        self.d_digits = self.query_one("#digits-0")
-        self.c_digits = self.query_one("#digits-0")
-        self.e_fourth = self.query_one("#fourth")
-        self.e_third = self.query_one("#third")
-        self.label = self.query_one("#label-0")
+        self.f_left = self.query_one("#cont-switch-0")      # decentralize !!
+        self.c_cont = self.query_one("#cont-switch-0")      # decentralize !!
+        self.f_right = self.query_one("#cont-switch-1")     # decentralize !!
+        self.d_digits = self.query_one("#digits-0")         # decentralize !!
+        self.c_digits = self.query_one("#digits-0")         # decentralize !!
+        self.e_fourth = self.query_one("#fourth")           # decentralize !!
+        self.e_third = self.query_one("#third")             # decentralize !!
+        self.label = self.query_one("#label-0")             # decentralize !!
         self.e_images = self.query_one(ImageTab)
         a_tables = self.query(DataTable)
 

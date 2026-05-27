@@ -96,6 +96,17 @@ class CLIApp(App):
         l0['_'] = [2,1 if l0 else 2]
         self.e_images.config = l0
 
+        # clean sweep png/otf in module/modules
+        # for f in ASSETS_DIR.glob("*.png"):
+        #     if f.name != "model.png"\
+        #             and f.name != f10.name:
+        #         f.unlink()
+        #
+        # for f in ASSETS_DIR.glob("*.otf"):
+        #     if f.name != "model.otf"\
+        #             and f.name != f10.name:
+        #         f.unlink()
+
     async def on_unmount(self) -> None:
         if self._server:
             self._server.shutdown()
