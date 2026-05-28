@@ -13,8 +13,28 @@ Generative design tool with a terminal UI — compose layouts, render to canvas,
 
 <img src="Backend/module/project.png" width="100%">
 
-<!-- <table>
+<table>
   <tr>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+  </tr>
+<!--   <tr>
     <td><a href="Backend/module/project.png">
     <img src="Backend/module/project.png">
     </a></td>
@@ -93,30 +113,10 @@ Generative design tool with a terminal UI — compose layouts, render to canvas,
     <td><a href="Backend/module/project.png">
     <img src="Backend/module/project.png">
     </a></td>
-  </tr>
-  <tr>
-    <td><a href="Backend/module/project.png">
-    <img src="Backend/module/project.png">
-    </a></td>
-    <td><a href="Backend/module/project.png">
-    <img src="Backend/module/project.png">
-    </a></td>
-    <td><a href="Backend/module/project.png">
-    <img src="Backend/module/project.png">
-    </a></td>
-    <td><a href="Backend/module/project.png">
-    <img src="Backend/module/project.png">
-    </a></td>
-    <td><a href="Backend/module/project.png">
-    <img src="Backend/module/project.png">
-    </a></td>
-    <td><a href="Backend/module/project.png">
-    <img src="Backend/module/project.png">
-    </a></td>
-  </tr>
+  </tr> -->
 </table>
 <br>
-<br> -->
+<br>
 
 
 
