@@ -11,7 +11,7 @@ Generative design tool with a terminal UI — compose layouts, render to canvas,
 
 
 
-<img src="project.png" width="100%">
+<img src="Backend/modules/project.png" width="100%">
 <br>
 <br>
 
@@ -133,67 +133,89 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
         <th align="left">Description</th>
     </tr>
     <tr>
+        <td>F1</td>
+        <td>Delete (CUA)</td>
+        <td>Delete table/grid cell. Think of it as DEL or BACKSPACE in a spreadsheet. </td>
+    </tr>
+    <tr>
+        <td>F2</td>
+        <td>Copy (CUA)</td>
+        <td>Delete table/grid cell. Think of it as Ctrl-C in a spreadsheet. </td>
+    </tr>
+    <tr>
+        <td>F3</td>
+        <td>Cut (CUA)</td>
+        <td>Delete table/grid cell. Think of it as Ctrl-C in a spreadsheet. </td>
+    </tr>
+    <tr>
+        <td>F4</td>
+        <td>Paste (CUA)</td>
+        <td>Delete table/grid cell. Think of it as Ctrl-V in a spreadsheet. </td>
+    </tr>
+    <tr>
         <td>F5</td>
-        <td>Afs</td>
-        <td>Set Seed for A00-A99 Elements - ring in typing-mode. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</td>
+        <td>Clear</td>
+        <td>Clear the Canvas. Lorem ipsum dolor sit amet.</td>
     </tr>
     <tr>
         <td>F6</td>
-        <td>Bfs</td>
-        <td>Enable anchoring in navigation-mode. Lorem ipsum dolor sit amet.</td>
+        <td>Afs</td>
+        <td>Set Seed for A00-A99 Elements. Lorem ipsum dolor sit amet.</td>
     </tr>
     <tr>
         <td>F7</td>
-        <td>Cfs</td>
-        <td>Enable anchoring in org-mode. Lorem ipsum dolor sit amet.</td>
+        <td>Bfs</td>
+        <td>Set Seed for B00-B99. Lorem ipsum dolor sit amet.</td>
     </tr>
     <tr>
         <td>F8</td>
-        <td>Clear</td>
-        <td>LTR vs RTL Alignment. Lorem ipsum dolor sit amet.</td>
+        <td>Cfs</td>
+        <td>Set Seed for C00-C99. Lorem ipsum dolor sit amet.</td>
     </tr>
     <tr>
         <td>F9</td>
         <td>Create</td>
-        <td>Centering horizontally. Lorem ipsum dolor sit amet.</td>
+        <td>Generate Artwork via Random Generator. Lorem ipsum dolor sit amet.</td>
     </tr>
     <tr>
         <td>F10</td>
         <td>Export</td>
-        <td>Max-width in chars. Lorem ipsum dolor sit amet.</td>
+        <td>Export both generated (png) and project file (json) into the directory from where the app was executed / started.</td>
     </tr>
     <tr>
         <td>Tab</td>
         <td>Navigate</td>
-        <td>Left fringe width in px. Lorem ipsum dolor sit amet.</td>
+        <td>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</td>
     </tr>
     <tr>
         <td>Shift-Tab</td>
         <td>Navigate</td>
-        <td>Vertical gap at the edge in px. Lorem ipsum dolor sit amet.</td>
+        <td>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</td>
     </tr>
     <tr>
         <td>Arrow-keys</td>
-        <td>Grid</td>
-        <td>Vertical gap fringe left in px. Lorem ipsum dolor sit amet.</td>
+        <td>Navigation</td>
+        <td>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</td>
+    </tr>
+    <tr>
+        <td>BackSpace</td>
+        <td>Navigation</td>
+        <td>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</td>
     </tr>
     <tr>
         <td>Space</td>
-        <td>Select 0-3</td>
-        <td>Line-styles. 
-        <br>0 = Lorem ipsum dolor sit amet. 
-        <br>1 = Lorem ipsum dolor sit amet. 
-        <br>2 = Lorem ipsum dolor sit amet. 
-        <br>3 = Lorem ipsum dolor sit amet.</td>
+        <td>Navigation</td>
+        <td>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</td>
     </tr>
     <tr>
         <td>Enter</td>
-        <td>Various</td>
-        <td>Hierarchy treshold. 
-        <br>0 = Lorem ipsum dolor sit amet. 
-        <br>1 = Lorem ipsum dolor sit amet. 
-        <br>2 = Lorem ipsum dolor sit amet. 
-        <br>3 = Lorem ipsum dolor sit amet.</td>
+        <td>Navigation</td>
+        <td>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</td>
+    </tr>
+    <tr>
+        <td>Ctrl-Q</td>
+        <td>System</td>
+        <td>Exit the app. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</td>
     </tr>
 </table>
 
@@ -208,39 +230,22 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
         <th align="left">
         Link <img width="560"></th>
     </tr>
-    <tr>
+    </tr>
+        <tr>
         <td>Build</td>
         <td>Apng</td><td>
         <a href="//github.com/apngasm/apngasm">
-        https://github.com/apngasm/apngasm</a></td>
+        https://github.com/apngasm/apng</a></td>
     </tr>
     <tr>
         <td>Build</td>
-        <td>Grip</td><td>
-        <a href="//github.com/chrishrb/go-grip">
-        https://github.com/chrishrb/go-grip</a></td>
+        <td>Watch</td><td>
+        <a href="//github.com/samuelcolvin/watchfiles">
+        https://github.com/samuelcolvin</a></td>
     </tr>
     <tr>
         <td>Build</td>
-        <td>Biome</td><td>
-        <a href="//github.com/biomejs/biome">
-        https://github.com/biomejs/biome</a></td>
-    </tr>
-    <tr>
-        <td>Build</td>
-        <td>Pyright</td><td>
-        <a href="//github.com/microsoft/pyright">
-        https://github.com/microsoft/pyright</a></td>
-    </tr>
-    <tr>
-        <td>Build</td>
-        <td>Ruff</td><td>
-        <a href="//github.com/astral-sh/ruff">
-        https://github.com/astral-sh/ruff</a></td>
-    </tr>
-    <tr>
-        <td>Build</td>
-        <td>Uv</td><td>
+        <td>Pip Uv</td><td>
         <a href="//github.com/astral-sh/uv">
         https://github.com/astral-sh/uv</a></td>
     </tr>
@@ -377,7 +382,7 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
     <img src="Backend/module/1744168591.png">
     </a></td>
     <td><a href="Backend/module/1744168589.png">
-    <img src="Backend/module/1744168589.png"">
+    <img src="Backend/module/1744168589.png">
     </a></td>
   </tr>
   <tr>
@@ -423,6 +428,15 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
     </a></td>
   </tr>
 </table>
+
+
+
+## Rationale
+
+If you encounter any issues, please file an issue on GitHub.
+<br>If you find this module useful, please consider starring the repository on GitHub. 
+
+This project began by moving most of the functionality from a commercial WEB SaaS-project https://print-artwork.com (minus the physical print / POD, minus the vectorizer => vtracer), free of charge, now at the complete opposite in copyleft territory, with some additional code-tweaks to accommodate the different UI-requirements in archaic TUI-land as opposed to shiny WEB-land. The app has been split up into the generation part, the meat and bones with this repository, and the glaze/gloss with the sibling <a href="https://github.com/andri-berger/filterx-tui>filterx-TUI">filterx-TUI</a> listed under the same GitHub Profile. Thus, they complement each another really well. One for the substance, the matter, the other for the refinement. We strongly believe that the TUI's very own nature, its limitations are its biggest strength! They might outlast every centralized UI-App (UI's are hostage to the cyclic Zeitgeist) due to their self-sufficient, decentralized nature, taking advantage of each user's own infrastructure. The less visual features there are, the less maintenance, the less choices, the less moving parts, the less friction, the more ease of mind, the more sparked creativity, the longer lasting a tool will be — this is our deepest conviction. Ultimately, what we strive for are timeless, stateless conditions, derived from first-order principles (like stone, wind or water), be it in Art, Engineering or Elsewhere.
 
 
 <!-- Abstract Art	
