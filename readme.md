@@ -133,87 +133,104 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
         <th align="left">Description</th>
     </tr>
     <tr>
-        <td>F1</td>
-        <td>Delete (CUA)</td>
+        <td><kbd>F1
+        </kbd></td>
+        <td>Delete</td>
         <td>Delete table/grid cell. Think of it as DEL or BACKSPACE in a spreadsheet. </td>
     </tr>
     <tr>
-        <td>F2</td>
-        <td>Copy (CUA)</td>
+        <td><kbd>F2
+        </kbd></td>
+        <td>Copy</td>
         <td>Delete table/grid cell. Think of it as Ctrl-C in a spreadsheet. </td>
     </tr>
     <tr>
-        <td>F3</td>
-        <td>Cut (CUA)</td>
+        <td><kbd>F3
+        </kbd></td>
+        <td>Cut</td>
         <td>Delete table/grid cell. Think of it as Ctrl-C in a spreadsheet. </td>
     </tr>
     <tr>
-        <td>F4</td>
-        <td>Paste (CUA)</td>
+        <td><kbd>
+        F4</kbd></td>
+        <td>Paste</td>
         <td>Delete table/grid cell. Think of it as Ctrl-V in a spreadsheet. </td>
     </tr>
     <tr>
-        <td>F5</td>
+        <td><kbd>
+        F5</kbd></td>
         <td>Clear</td>
         <td>Clear the Canvas. Lorem ipsum dolor sit amet.</td>
     </tr>
     <tr>
-        <td>F6</td>
+        <td><kbd>
+        F6</kbd></td>
         <td>Afs</td>
         <td>Set Seed for A00-A99 Elements. Lorem ipsum dolor sit amet.</td>
     </tr>
     <tr>
-        <td>F7</td>
+        <td><kbd>
+        F7</kbd></td>
         <td>Bfs</td>
         <td>Set Seed for B00-B99. Lorem ipsum dolor sit amet.</td>
     </tr>
     <tr>
-        <td>F8</td>
+        <td><kbd>
+        F8</kbd></td>
         <td>Cfs</td>
         <td>Set Seed for C00-C99. Lorem ipsum dolor sit amet.</td>
     </tr>
     <tr>
-        <td>F9</td>
+        <td><kbd>
+        F9</kbd></td>
         <td>Create</td>
         <td>Generate Artwork via Random Generator. Lorem ipsum dolor sit amet.</td>
     </tr>
     <tr>
-        <td>F10</td>
+        <td><kbd>
+        F10</kbd></td>
         <td>Export</td>
         <td>Export both generated (png) and project file (json) into the directory from where the app was executed / started.</td>
     </tr>
     <tr>
-        <td>Tab</td>
+        <td><kbd>
+        Tab</kbd></td>
         <td>Navigate</td>
-        <td>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</td>
+        <td>Cycle forward all navigational UI-Elements. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</td>
     </tr>
     <tr>
-        <td>Shift-Tab</td>
+        <td><kbd>
+        Shift-Tab</kbd></td>
         <td>Navigate</td>
-        <td>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</td>
+        <td>Cycle backward all navigational UI-Elements. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</td>
     </tr>
     <tr>
-        <td>Arrow-keys</td>
+        <td><kbd>
+        Arrow-keys</kbd></td>
+        <td>Navigation</td>
+        <td>Navigate table/grid cells in all directions, left, right, top, bottom. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</td>
+    </tr>
+    <tr>
+        <td><kbd>
+        BackSpace</kbd></td>
         <td>Navigation</td>
         <td>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</td>
     </tr>
     <tr>
-        <td>BackSpace</td>
+        <td><kbd>
+        Space</kbd></td>
         <td>Navigation</td>
         <td>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</td>
     </tr>
     <tr>
-        <td>Space</td>
+        <td><kbd>
+        Enter</kbd></td>
         <td>Navigation</td>
         <td>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</td>
     </tr>
     <tr>
-        <td>Enter</td>
-        <td>Navigation</td>
-        <td>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</td>
-    </tr>
-    <tr>
-        <td>Ctrl-Q</td>
+        <td><kbd>
+        Ctrl-Q</kbd></td>
         <td>System</td>
         <td>Exit the app. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</td>
     </tr>
@@ -231,68 +248,79 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
         Link <img width="560"></th>
     </tr>
     </tr>
-        <tr>
-        <td>Build</td>
+    <tr>
+        <td><kbd>
+        Build</kbd></td>
         <td>Apng</td><td>
         <a href="//github.com/apngasm/apngasm">
         https://github.com/apngasm/apng</a></td>
     </tr>
     <tr>
-        <td>Build</td>
+        <td><kbd>
+        Build</kbd></td>
         <td>Watch</td><td>
         <a href="//github.com/samuelcolvin/watchfiles">
         https://github.com/samuelcolvin</a></td>
     </tr>
     <tr>
-        <td>Build</td>
+        <td><kbd>
+        Build</kbd></td>
         <td>Pip Uv</td><td>
         <a href="//github.com/astral-sh/uv">
         https://github.com/astral-sh/uv</a></td>
     </tr>
     <tr>
-        <td>Utilities</td>
+        <td><kbd>
+        Utilities</kbd></td>
         <td>Numpy</td><td>
         <a href="//github.com/numpy/numpy">
         https://github.com/numpy/numpy</a></td>
     </tr>
     <tr>
-        <td>Utilities</td>
+        <td><kbd>
+        Utilities</kbd></td>
         <td>Random</td><td>
         <a href="https://github.com/d3/d3-random">
         https://github.com/d3/d3-random</a></td>
     </tr>
     <tr>
-        <td>Framework</td>
+        <td><kbd>
+        Framework</kbd></td>
         <td>Textual</td><td>
         <a href="//github.com/Textualize/textual">
         https://github.com/Textualize/textual</a></td>
     </tr>
     <tr>
-        <td>Framework</td>
+        <td><kbd>
+        Framework</kbd></td>
         <td>Textual Img</td><td>
         <a href="//github.com/lnqs/textual-image">
         https://github.com/lnqs/textual-image</a></td>
     </tr>
     <tr>
-        <td>Conversion</td>
+        <td><kbd>
+        Conversion</kbd></td>
         <td>Html Image</td><td>
         <a href="//github.com/bubkoo/html-to-image">
         https://github.com/bubkoo/html-to-image</a></td>
     </tr>
     <tr>
-        <td>Conversion</td>
+        <td><kbd>
+        Conversion</kbd></td>
         <td>Playwright</td><td>
         <a href="https://github.com/microsoft/playwright">
         https://github.com/microsoft/playwright</a></td>
     </tr>
     <tr>
-        <td>Conversion</td>
+        <td><kbd>
+        Conversion</kbd></td>
         <td>OpenCV</td><td>
         <a href="https://github.com/opencv/opencv">
         https://github.com/opencv/opencv</a></td>
     </tr>
     <tr>
-        <td>Processing</td>
+        <td><kbd>
+        Processing</kbd></td>
         <td>PixiJs</td><td>
         <a href="//github.com/pixijs/filters">
         https://github.com/pixijs/filters</a></td>
@@ -301,7 +329,7 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 
-## Gallery
+## API Gallery
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 
 <table>
@@ -438,7 +466,7 @@ If you encounter any issues, please file an issue on GitHub.
 
 This project began by moving most of the functionality from a commercial WEB SaaS-project https://print-artwork.com (minus the physical print / POD, minus the vectorizer => vtracer), free of charge, now at the complete opposite in copyleft territory, with some additional code-tweaks to accommodate the different UI-requirements in archaic TUI-land as opposed to shiny WEB-land. The app has been split up into the generation part, the meat and bones with this repository, and the glaze/gloss with the sibling <a href="https://github.com/andri-berger/filterx-tui>filterx-TUI">filterx-TUI</a> listed under the same GitHub Profile. Thus, they complement each another really well. One for the substance, the matter, the other for the refinement. 
 
-We strongly believe that the TUI's very own nature, its limitations are its biggest strength! They might outlast every centralized UI-App (UI's are hostage to the cyclic Zeitgeist) due to their self-sufficient, decentralized nature, taking advantage of each user's own infrastructure. The less visual features there are, the less maintenance, the less choices, the less moving parts, the less friction, the more ease of mind, the more sparked creativity, the longer lasting a tool will be — this is our deepest conviction. Ultimately, what we strive for are timeless, stateless conditions, derived from first-order principles (like stone, wind or water), be it in Art, Engineering or Elsewhere.
+We strongly believe that the TUI's very own nature, its limitations are its biggest strength! They might outlast every centralized UI-App (UI's are hostage to the cyclic Zeitgeist) due to their self-sufficient, decentralized nature, taking advantage of each user's own infrastructure. The less visual features there are, the less maintenance, the less choices, the less moving parts, the less friction, the more ease of mind, the more sparked creativity, the longer lasting a tool will be — this is our deepest conviction. Ultimately, what we strive for are timeless, stateless conditions, derived from first-order principles, from basic building blocks, be it in Art, Engineering or Elsewhere.
 
 
 <!-- Abstract Art	
