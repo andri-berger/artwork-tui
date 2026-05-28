@@ -968,7 +968,7 @@
     "GENERATE ART(WORK) ON CANVAS",
     "SAVE IMAGE TO DISK"],
   "4-2": [
-    "Image on path {src} has been chosen for canvas, congrats, good choice!",
+    "",
     "",
     "",
     "async (store) => window.h11(store)"

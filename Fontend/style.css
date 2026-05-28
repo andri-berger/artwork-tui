@@ -2,7 +2,7 @@
 @font-face {
     font-family:                                        body;
     font-display:                                       swap;
-    src:                                                url('model.otf'); }
+    src:                                                url('modules/gitkp.otf'); }
 
 :root {
     --_02:                                              1px solid Black;

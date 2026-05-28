@@ -11,11 +11,162 @@ Generative design tool with a terminal UI — compose layouts, render to canvas,
 
 
 
-<img src="Backend/modules/project.png" width="100%">
+<img src="Backend/module/project.png" width="100%">
+
+<!-- <table>
+  <tr>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+  </tr>
+  <tr>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+  </tr>
+  <tr>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+  </tr>
+  <tr>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+  </tr>
+  <tr>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+  </tr>
+</table>
 <br>
-<br>
+<br> -->
+
+
 
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+Modern Art	
+Geometric Art	
+Minimalist Art	
+Generative Art	
+Algorithmic Art	
+Procedural Art	
+Contemporary Art
+Abstract Painting
+Modern Painting
+Geometric Painting
+Minimalist Painting
+Generative Painting
+Algorithmic Painting
+Procedural Painting
+Contemporary Painting
+Create Abstract Art Fast
+Your Custom Art in HD
+Abstract Prints, Your Way
+Make Unique Abstract Art
+Design Abstract Art Now
+Abstract Art, No AI Needed
+Generate Art, Download HD
+Abstract Canvas Generator
+Abstract Art — Your Style
+Make Art, Print on Canvas
+Create Abstract Wall Art
+DIY Abstract Art Online
+High-Res Abstract Prints
+Custom Art, Instant File
+Abstract Art, No Limits
+Design Abstract Wall Art, Print It, Show It Off
+Make Abstract Art That’s 100% You — No AI Required
+Tired of AI Art? Make Your Own Abstract Masterpiece
+Design Abstract Art, Download in HD, Print on Canvas
+Create Custom Abstract Art — High-Res, Ready to Print
+Abstract Art Generator: From Screen to Wall in Minutes
+Generate Abstract Art You Can Actually Download & Print
+DIY Abstract Art: Make It, Download It, Print It, Flex It
+Design Your Own Abstract Art — No AI, Just Your Imagination
+Unleash Your Inner Artist: Create Custom Abstract Art for Print
+Your Vision, Your Art: Generate Stunning Abstracts, Download or Print
+Make custom abstract art in minutes. Download or print your masterpiece!
+Design your abstract art and print it or download high-res files instantly.
+Create unique abstract artwork online — print on canvas or download HD art.
+Generate abstract art that’s 100% yours. Print or save high-resolution art.
+Your art, your rules. Create abstract pieces, download, or print on canvas.
 
 ## Installation
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
@@ -329,130 +480,109 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 
-## API Gallery
+## PI Gallery
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 
 <table>
   <tr>
-    <td><a href="Backend/module/1745003993.png">
-    <img src="Backend/module/1745003993.png">
+    <td><a href="Backend/module/17000000000.png">
+    <img src="Backend/module/17000000000.png">
     </a></td>
-    <td><a href="Backend/module/1745003866.png">
-    <img src="Backend/module/1745003866.png">
+    <td><a href="Backend/module/17000000001.png">
+    <img src="Backend/module/17000000001.png">
     </a></td>
-    <td><a href="Backend/module/1745003804.png">
-    <img src="Backend/module/1745003804.png">
+    <td><a href="Backend/module/17000000002.png">
+    <img src="Backend/module/17000000002.png">
     </a></td>
-    <td><a href="Backend/module/1745003726.png">
-    <img src="Backend/module/1745003726.png">
+    <td><a href="Backend/module/17000000003.png">
+    <img src="Backend/module/17000000003.png">
     </a></td>
-    <td><a href="Backend/module/1745003613.png">
-    <img src="Backend/module/1745003613.png">
+    <td><a href="Backend/module/17000000004.png">
+    <img src="Backend/module/17000000004.png">
     </a></td>
-    <td><a href="Backend/module/1745003563.png">
-    <img src="Backend/module/1745003563.png">
-    </a></td>
-  </tr>
-  <tr>
-    <td><a href="Backend/module/1745003407.png">
-    <img src="Backend/module/1745003407.png">
-    </a></td>
-    <td><a href="Backend/module/1745003074.png">
-    <img src="Backend/module/1745003074.png">
-    </a></td>
-    <td><a href="Backend/module/1745002977.png">
-    <img src="Backend/module/1745002977.png">
-    </a></td>
-    <td><a href="Backend/module/1745002888.png">
-    <img src="Backend/module/1745002888.png">
-    </a></td>
-    <td><a href="Backend/module/1745002495.png">
-    <img src="Backend/module/1745002495.png">
-    </a></td>
-    <td><a href="Backend/module/1744168809.png">
-    <img src="Backend/module/1744168809.png">
+    <td><a href="Backend/module/17000000005.png">
+    <img src="Backend/module/17000000005.png">
     </a></td>
   </tr>
   <tr>
-    <td><a href="Backend/module/1744168798.png">
-    <img src="Backend/module/1744168798.png">
+    <td><a href="Backend/module/17000000006.png">
+    <img src="Backend/module/17000000006.png">
     </a></td>
-    <td><a href="Backend/module/1744168791.png">
-    <img src="Backend/module/1744168791.png">
+    <td><a href="Backend/module/17000000007.png">
+    <img src="Backend/module/17000000007.png">
     </a></td>
-    <td><a href="Backend/module/1744168777.png">
-    <img src="Backend/module/1744168777.png">
+    <td><a href="Backend/module/17000000008.png">
+    <img src="Backend/module/17000000008.png">
     </a></td>
-    <td><a href="Backend/module/1744168764.png">
-    <img src="Backend/module/1744168764.png">
+    <td><a href="Backend/module/17000000009.png">
+    <img src="Backend/module/17000000009.png">
     </a></td>
-    <td><a href="Backend/module/1744168743.png">
-    <img src="Backend/module/1744168743.png">
+    <td><a href="Backend/module/17000000010.png">
+    <img src="Backend/module/17000000010.png">
     </a></td>
-    <td><a href="Backend/module/1744168733.png">
-    <img src="Backend/module/1744168733.png">
-    </a></td>
-  </tr>
-  <tr>
-    <td><a href="Backend/module/1744168727.png">
-    <img src="Backend/module/1744168727.png">
-    </a></td>
-    <td><a href="Backend/module/1744168722.png">
-    <img src="Backend/module/1744168722.png">
-    </a></td>
-    <td><a href="Backend/module/1744168599.png">
-    <img src="Backend/module/1744168599.png">
-    </a></td>
-    <td><a href="Backend/module/1744168593.png">
-    <img src="Backend/module/1744168593.png">
-    </a></td>
-    <td><a href="Backend/module/1744168591.png">
-    <img src="Backend/module/1744168591.png">
-    </a></td>
-    <td><a href="Backend/module/1744168589.png">
-    <img src="Backend/module/1744168589.png">
+    <td><a href="Backend/module/17000000011.png">
+    <img src="Backend/module/17000000011.png">
     </a></td>
   </tr>
   <tr>
-    <td><a href="Backend/module/1744168586.png">
-    <img src="Backend/module/1744168586.png">
+    <td><a href="Backend/module/17000000012.png">
+    <img src="Backend/module/17000000012.png">
     </a></td>
-    <td><a href="Backend/module/1744168580.png">
-    <img src="Backend/module/1744168580.png">
+    <td><a href="Backend/module/17000000013.png">
+    <img src="Backend/module/17000000013.png">
     </a></td>
-    <td><a href="Backend/module/1744168563.png">
-    <img src="Backend/module/1744168563.png">
+    <td><a href="Backend/module/17000000014.png">
+    <img src="Backend/module/17000000014.png">
     </a></td>
-    <td><a href="Backend/module/1744168542.png">
-    <img src="Backend/module/1744168542.png">
+    <td><a href="Backend/module/17000000015.png">
+    <img src="Backend/module/17000000015.png">
     </a></td>
-    <td><a href="Backend/module/1744168532.png">
-    <img src="Backend/module/1744168532.png">
+    <td><a href="Backend/module/17000000016.png">
+    <img src="Backend/module/17000000016.png">
     </a></td>
-    <td><a href="Backend/module/1744168518.png">
-    <img src="Backend/module/1744168518.png">
+    <td><a href="Backend/module/17000000017.png">
+    <img src="Backend/module/17000000017.png">
     </a></td>
   </tr>
-
   <tr>
-    <td><a href="Backend/module/1744168512.png">
-    <img src="Backend/module/1744168512.png">
+    <td><a href="Backend/module/17000000018.png">
+    <img src="Backend/module/17000000018.png">
     </a></td>
-    <td><a href="Backend/module/1744168505.png">
-    <img src="Backend/module/1744168505.png">
+    <td><a href="Backend/module/17000000019.png">
+    <img src="Backend/module/17000000019.png">
     </a></td>
-    <td><a href="Backend/module/1744168452.png">
-    <img src="Backend/module/1744168452.png">
+    <td><a href="Backend/module/17000000020.png">
+    <img src="Backend/module/17000000020.png">
     </a></td>
-    <td><a href="Backend/module/1744168430.png">
-    <img src="Backend/module/1744168430.png">
+    <td><a href="Backend/module/17000000021.png">
+    <img src="Backend/module/17000000021.png">
     </a></td>
-    <td><a href="Backend/module/1744168424.png">
-    <img src="Backend/module/1744168424.png">
+    <td><a href="Backend/module/17000000022.png">
+    <img src="Backend/module/17000000022.png">
     </a></td>
-    <td><a href="Backend/module/1744168421.png">
+    <td><a href="Backend/module/17000000023.png">
+    <img src="Backend/module/17000000023.png">
+    </a></td>
+  </tr>
+  <tr>
+    <td><a href="Backend/module/17000000024.png">
+    <img src="Backend/module/17000000024.png">
+    </a></td>
+    <td><a href="Backend/module/17000000025.png">
+    <img src="Backend/module/17000000025.png">
+    </a></td>
+    <td><a href="Backend/module/17000000026.png">
+    <img src="Backend/module/17000000026.png">
+    </a></td>
+    <td><a href="Backend/module/17000000027.png">
+    <img src="Backend/module/17000000027.png">
+    </a></td>
+    <td><a href="Backend/module/17000000028.png">
+    <img src="Backend/module/17000000028.png">
+    </a></td>
+    <td><a href="Backend/module/17000000029.png">
     <!-- replace with bandcamp album-link !!! -->
-    <img src="Backend/module/1744168421.png">
+    <img src="Backend/module/17000000029.png">
     </a></td>
   </tr>
 </table>
@@ -467,59 +597,6 @@ If you encounter any issues, please file an issue on GitHub.
 This project began by moving most of the functionality from a commercial WEB SaaS-project https://print-artwork.com (minus the physical print / POD, minus the vectorizer => vtracer), free of charge, now at the complete opposite in copyleft territory, with some additional code-tweaks to accommodate the different UI-requirements in archaic TUI-land as opposed to shiny WEB-land. The app has been split up into the generation part, the meat and bones with this repository, and the glaze/gloss with the sibling <a href="https://github.com/andri-berger/filterx-tui>filterx-TUI">filterx-TUI</a> listed under the same GitHub Profile. Thus, they complement each another really well. One for the substance, the matter, the other for the refinement. 
 
 We strongly believe that the TUI's very own nature, its limitations are its biggest strength! They might outlast every centralized UI-App (UI's are hostage to the cyclic Zeitgeist) due to their self-sufficient, decentralized nature, taking advantage of each user's own infrastructure. The less visual features there are, the less maintenance, the less choices, the less moving parts, the less friction, the more ease of mind, the more sparked creativity, the longer lasting a tool will be — this is our deepest conviction. Ultimately, what we strive for are timeless, stateless conditions, derived from first-order principles, from basic building blocks, be it in Art, Engineering or Elsewhere.
-
-
-<!-- Abstract Art	
-Modern Art	
-Geometric Art	
-Minimalist Art	
-Generative Art	
-Algorithmic Art	
-Procedural Art	
-Contemporary Art	
-
-Abstract Painting
-Modern Painting
-Geometric Painting
-Minimalist Painting
-Generative Painting
-Algorithmic Painting
-Procedural Painting
-Contemporary Painting
-
-Create Abstract Art Fast
-Your Custom Art in HD
-Abstract Prints, Your Way
-Make Unique Abstract Art
-Design Abstract Art Now
-Abstract Art, No AI Needed
-Generate Art, Download HD
-Abstract Canvas Generator
-Abstract Art — Your Style
-Make Art, Print on Canvas
-Create Abstract Wall Art
-DIY Abstract Art Online
-High-Res Abstract Prints
-Custom Art, Instant File
-Abstract Art, No Limits
-
-Design Abstract Wall Art, Print It, Show It Off
-Make Abstract Art That’s 100% You — No AI Required
-Tired of AI Art? Make Your Own Abstract Masterpiece
-Design Abstract Art, Download in HD, Print on Canvas
-Create Custom Abstract Art — High-Res, Ready to Print
-Abstract Art Generator: From Screen to Wall in Minutes
-Generate Abstract Art You Can Actually Download & Print
-DIY Abstract Art: Make It, Download It, Print It, Flex It
-Design Your Own Abstract Art — No AI, Just Your Imagination
-Unleash Your Inner Artist: Create Custom Abstract Art for Print
-Your Vision, Your Art: Generate Stunning Abstracts, Download or Print
-Make custom abstract art in minutes. Download or print your masterpiece!
-Design your abstract art and print it or download high-res files instantly.
-Create unique abstract artwork online — print on canvas or download HD art.
-Generate abstract art that’s 100% yours. Print or save high-resolution art.
-Your art, your rules. Create abstract pieces, download, or print on canvas.
--->
 
 <br>
 <br>

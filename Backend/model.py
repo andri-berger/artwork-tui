@@ -82,34 +82,37 @@ class ImageTab(Widget):
             self.mount(Image(ASSETS))
             testlauf(self,ASSETS,Image,cv2)
 
-        if f7 == 2:
-            here = web_to_tui(f11[1], f4)
-            f3 = {**f3, **here}
+        # if f7 == 2:
+        #     here = web_to_tui(f11[1], f4)
+        #     f3 = {**f3, **here}
 
-        if f6 >= 1:
-            ss = [0,6] if f6 == 2 else [1,4]
-            with self.app.batch_update():
-                for i in range(*ss):
-                    uv = int(i) == 3
-                    st = 2 if uv else i
-                    f7 = f4[f"1-{st}"]
-                    test = f3.get(str(i),{})
-                    if test is not None:
-                        f2[i].clear(columns=False)
-                        cols = [str(col_i) for
-                                col_i in range(f9[i])]
-                        for row_i in range(len(f7)):
-                            row_key = str(row_i)
-                            yes = test.get(row_key)
-                            row = [f7[row_i][0]]
-                            if yes is not None:
-                                for f1 in cols:
-                                    row.append(
-                                    str(yes.get(f1,"")))
-                            f2[i].add_row(*row)
+        # if f6 >= 1:
+        #     ss = [0,6] if f6 == 2 else [1,4]
+        #     with self.app.batch_update():
+        #         for i in range(*ss):
+        #             uv = int(i) == 3
+        #             st = 2 if uv else i
+        #             f7 = f4[f"1-{st}"]
+        #             test = f3.get(str(i),{})
+        #             if test is not None:
+        #                 f2[i].clear(columns=False)
+        #                 cols = [str(col_i) for
+        #                         col_i in range(f9[i])]
+        #                 for row_i in range(len(f7)):
+        #                     row_key = str(row_i)
+        #                     yes = test.get(row_key)
+        #                     row = [f7[row_i][0]]
+        #                     if yes is not None:
+        #                         for f1 in cols:
+        #                             row.append(
+        #                             str(yes.get(f1,"")))
+        #                     f2[i].add_row(*row)
+
+        # CONFIGS.write_text(
+        # json.dumps(f3))
 
         CONFIGS.write_text(
-        json.dumps(f3))
+        json.dumps(f11[1]))
 
     def render(self):
         return ""
