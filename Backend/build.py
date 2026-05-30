@@ -15,10 +15,11 @@ import time
 PORT = 9000
 PATH_FILE = Path(__file__).parent
 STATIC_DIR = PATH_FILE.parent / "Fontend"
+STATIC_FOR = PATH_FILE.parent / "Formula"
 DIR = f"http://localhost:{PORT}/build.html"
 CSS_PATHS = STATIC_DIR / "style.tcss"
 CONFIG = STATIC_DIR / "build.json"
-CONFIGS = STATIC_DIR / "model.json"
+CONFIGS = STATIC_FOR / "za.json"
 
 
 class CLIApp(App):
@@ -85,6 +86,7 @@ class CLIApp(App):
         await self.page.goto(DIR)
 
         if self.stores == {}:
+            self.notify("No Data")
             f1 = self.stores
             now = int(time.time())
             ss = f1.setdefault('0', {})
@@ -92,9 +94,11 @@ class CLIApp(App):
             for k in ['0', '1', '2']:
                     st[k] = now
 
-        l0 = {**self.stores}
-        l0['_'] = [2,1 if l0 else 2]
-        self.e_images.config = l0
+        elif self.stores != {}:
+            self.notify("Data Loaded")
+            l0 = {**self.stores}
+            l0['_'] = [2,1 if l0 else 2]
+            self.e_images.config = l0
 
         # clean sweep png/otf in module/modules
         # for f in ASSETS_DIR.glob("*.png"):

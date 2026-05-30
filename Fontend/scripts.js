@@ -687,8 +687,8 @@ window.h11 = async l => {
         await h13([l6,l2]); }
     if (l6 >= 1) {
         await h9(l2); }
-        k2.innerHTML = '';
-        k2.appendChild(k15);
+        // k2.innerHTML = '';
+        // k2.appendChild(k15);
     return [k15.toDataURL(),l0]};
 
 window.h12 = l => {
@@ -732,9 +732,16 @@ window.h13 = l => {
             _.data.close()
             resolve(); }; }); };
 
-h11([2, {"1":{"1":{"1":20,"2":80},"19":{"1":20,"2":80}}}])
+
+
+// "5": {"0": {"1": 10, "2": 20, "3": 30, "5": "aabbcc", "6": "center", "7": "center", "8": "under", "9": 7, "10": 40, "12": " safasdfl!! yes, this is amazing", "11": "EBGaramond-Italic.otf"}}
+// "5": {"0": {"4": "#ffffff", "5": "#ffffff", "12": "asdfasdflk"}
+// h11([1, {"1":{"1":{"0":80,"1":20}},"5":{"0": {"0": 100, "10": 30, "1": 20, "2": 10, "6": "center", "7": "center", "11": "EBGaramond-Italic.otf", "12": "asdfas dofiqwe f"}, "1": {"3": 19, "6": "center", "7": "center"}}}])
+
+h11([1, {"1": {"1": {"0": 80, "2": 20}}, "4": {"0": {"11": "za"}}, "5": {"0": {"5": "aabbcc", "6": "center", "10": 20, "11": "NimbusMonoPS-BoldItalic", "12": " safasdfl!! yes, this is amazing"}}}]);
 // h11([2, {'0': {'146': 1779991499, '147': 1779991499, '148': 1779991499}}])
 // rewrite A-F => assignments
 
+// {"0": {"39": {"0": 1780167776, "1": 1780167776, "2": 1780167776}}, "1": {"1": {"0": 80, "2": 20}}, "5": {"0": {"5": "aabbcc", "6": "center", "10": 20, "11": "EBGaramond-Medium", "12": " safasdfl!! yes, this is amazing"}}, "4": {"0": {"11": "za"}}}
 // {'0': {'146': 1779991499, '147': 1779991499, '148': 1779991499}}
 

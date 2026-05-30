@@ -120,7 +120,7 @@ def tui_to_web(start, rot):
           if any(str(k) in i.keys()
                  for k in range(45,75)):
               d_transformed['3'] = {}
-      if row_i == '0' or row_i == '1':
+      elif int(row_i) in [0,1,4,5]:
           d_transformed[row_i] = {}
       l0 = rot.get(f"0-{row_i}", {})
       for col_i0, i0 in i.items():
@@ -129,17 +129,14 @@ def tui_to_web(start, rot):
               l2 = l1 <= 44
               l3 = '2' if l2 else '3'
               l4 = d_transformed[l3]
-          if row_i == '0' or row_i == '1':
+          elif int(row_i) in [0,1,4,5]:
               l5 = d_transformed[row_i]
           for cell_i1, i1 in i0.items():
-              if (row_i == '1'
-                  or row_i == '4'
-                  or row_i == '5'):
+              if int(row_i) in [1,4,5]:
                   if col_i0 not in l5:
                       l5[col_i0] = {}
                   l5[col_i0][cell_i1] = i1
-              if (row_i == '2'
-                  or row_i == '3'):
+              if int(row_i) in [2,3]:
                   l6 = row_i == '3'
                   l7 = str(l0[l1])
                   l8 = int(cell_i1)

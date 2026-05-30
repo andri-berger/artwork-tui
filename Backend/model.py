@@ -10,6 +10,7 @@ from .scripts import opencv
 from .script import testlauf
 from textual.app import ComposeResult
 from .models import on_message
+
 import shutil
 import base64
 import time
@@ -20,15 +21,25 @@ import cv2
 CWD = Path.cwd()
 APP = Path(__file__)
 APP_DIR = Path(__file__).parent
+ASSETS_FOR = APP_DIR.parent / "Formula"
 ASSETS_DIR = APP_DIR.parent / "Fontend"
-ASSETS = ASSETS_DIR / "model.png"
-CONFIGS = ASSETS_DIR / "model.json"
+
+ASSETS_MOD = ASSETS_DIR / "module"
+ASSETS_MODS = ASSETS_DIR / "modules"
+
+ASSETS = ASSETS_FOR  / "za.png"
+CONFIGS = ASSETS_FOR / "za.json"
+TEST = ASSETS_DIR / "model.png"
 
 class ImageTab(Widget):
     config: reactive[dict] = reactive(dict, init=False)
 
     def compose(self) -> ComposeResult:
-        yield Image()
+        yield Image(TEST)
+
+    def on_mount(self) -> None:
+        self.query_one(Image).styles.width = "auto"
+        self.query_one(Image).styles.height = "100%"
 
     async def watch_config(self, value: dict):
         f0 = self.app.query_one("#cont-switch-1")
@@ -39,12 +50,14 @@ class ImageTab(Widget):
         f5 = self.app.page
         f6,f7 = value.pop("_", [])
         f8 = tui_to_web(value,f4) or {}
-        f9 = [9, 100, 301, 300, 6, 6]
+        f9 = [9, 100, 301, 300, 12, 13]
         f10 = f8.get('0', {})
         self.query_one(
             Image).remove()
+        # self.notify(
+        #     f"{f7} - {f8}")
         self.notify(
-            f"{f7} - {f8}")
+            f"!!! {value}")
 
         if f6 >= 1:
             with self.app.batch_update():
@@ -79,40 +92,41 @@ class ImageTab(Widget):
         if f7 <= 3:
             with open(ASSETS, "wb") as f:
                 f.write(f12)
-            self.mount(Image(ASSETS))
+            await self.mount(Image(ASSETS))
+            self.notify(f"{self.size}")
             testlauf(self,ASSETS,Image,cv2)
 
-        # if f7 == 2:
-        #     here = web_to_tui(f11[1], f4)
-        #     f3 = {**f3, **here}
+        if f7 == 2:
+            here = web_to_tui(f11[1], f4)
+            f3 = {**f3, **here}
 
-        # if f6 >= 1:
-        #     ss = [0,6] if f6 == 2 else [1,4]
-        #     with self.app.batch_update():
-        #         for i in range(*ss):
-        #             uv = int(i) == 3
-        #             st = 2 if uv else i
-        #             f7 = f4[f"1-{st}"]
-        #             test = f3.get(str(i),{})
-        #             if test is not None:
-        #                 f2[i].clear(columns=False)
-        #                 cols = [str(col_i) for
-        #                         col_i in range(f9[i])]
-        #                 for row_i in range(len(f7)):
-        #                     row_key = str(row_i)
-        #                     yes = test.get(row_key)
-        #                     row = [f7[row_i][0]]
-        #                     if yes is not None:
-        #                         for f1 in cols:
-        #                             row.append(
-        #                             str(yes.get(f1,"")))
-        #                     f2[i].add_row(*row)
-
-        # CONFIGS.write_text(
-        # json.dumps(f3))
+        if f6 >= 1:
+            ss = [0,6] if f6 == 2 else [1,4]
+            with self.app.batch_update():
+                for i in range(*ss):
+                    uv = int(i) == 3
+                    st = 2 if uv else i
+                    f7 = f4[f"1-{st}"]
+                    test = f3.get(str(i),{})
+                    if test is not None:
+                        f2[i].clear(columns=False)
+                        cols = [str(col_i) for
+                                col_i in range(f9[i])]
+                        for row_i in range(len(f7)):
+                            row_key = str(row_i)
+                            yes = test.get(row_key)
+                            row = [f7[row_i][0]]
+                            if yes is not None:
+                                for f1 in cols:
+                                    row.append(
+                                    str(yes.get(f1,"")))
+                            f2[i].add_row(*row)
 
         CONFIGS.write_text(
-        json.dumps(f11[1]))
+        json.dumps(f3))
+
+        # CONFIGS.write_text(
+        # json.dumps(f11[1]))
 
     def render(self):
         return ""
@@ -148,11 +162,10 @@ class FileTypeTree(DirectoryTree):
 
     @on(DirectoryTree.FileSelected)
     async def selected(self, event: DirectoryTree.FileSelected) -> None:
-        f0 = self.query_one("#cont-switch-1")
-        f1 = self.query_one(f"#{f0.current}")
+        f0 = self.app.query_one("#cont-switch-1")
+        f1 = self.app.query_one(f"#{f0.current}")
         f2 = f0.current.split("-")[-1]
         f3 = self.app.stores
-        f4 = self.app.coord
         f5 = event.control.id
         f6 = f5.split("-")[-1]
         f7 = ['4','5'][int(f6)-1]
@@ -163,11 +176,9 @@ class FileTypeTree(DirectoryTree):
         if not f10.is_file():
             return
 
+        self.notify(f"now {f5}")
         if f5 == "dir-tree-0":
-            f11 = "model.json"
-            f12 = ASSETS_DIR / f11
-            shutil.copy2(f10, f12)
-
+            shutil.copy2(f10, CONFIGS)
             f13 = f10.read_text()
             f14 = json.loads(f13)
             f14.update({'_': [2,1]})
@@ -175,39 +186,47 @@ class FileTypeTree(DirectoryTree):
             self.e_images.config = f14
             await self.reload()
 
-        elif f6 == "1" or f6 == "2":
-                f15 = ASSETS_DIR / f9
-                f16 = f15 / f10.name
-                f17 = f4.column
-                f18 = f4.row
+        elif (f5 == "dir-tree-1"
+              or f5 == "dir-tree-2"):
+            f4 = f1.cursor_coordinate
+            f15 = ASSETS_DIR / f9
+            f16 = f15 / f10.name
+            f18 = str(f4.row)
+            f17 = f4.column
 
-                if (int(f2) in [4, 5]
-                        and f17 == 12):
-                    f19 = f3.setdefault(f7, {})
-                    f20 = f19.setdefault(f18, {})
-                    f20[f17 or '11'] = f10.name
-                    f21 = f1.get_cell_at(f4)
-                    f22 = f15 / f21.name
-                    if f22.exists():
-                        f22.unlink()
-                    f1.update_cell_at(
-                        f4,f10.name)
-                else:
-                    f23 = f3.setdefault('0', {})
-                    f24 = f23.setdefault('40', {})
-                    f25 = f24[int(f6)-1] or ""
-                    f24[int(f6)-1] = f10.name
-                    f26 = f15 / f25
-                    if f26.exists():
-                        f26.unlink()
+            self.notify("aa")
+            if (int(f2) in [4, 5]
+                    and f17 == 12):
+                f19 = f3.setdefault(f7, {})
+                f20 = f19.setdefault(f18, {})
+                f60 = f10.name.split(".")[0]
+                f20[str(f17-1)] = f60
+                f21 = f1.get_cell_at(f4)
+                f80 = f"{str(f21)}.otf"
+                f22 = f15 / f80
+                self.notify(f"now {f22}")
+                if (f21 and f22.is_file()
+                        and f22.exists()):
+                    f22.unlink()
+                f1.update_cell_at(
+                    f4,f60)
+            else:
+                f23 = f3.setdefault('0', {})
+                f24 = f23.setdefault('40', {})
+                f25 = f24[int(f6)-1] or ""
+                f24[int(f6)-1] = f10.name
+                f26 = f15 / f25
+                if f26.exists():
+                    f26.unlink()
 
-                shutil.copy2(f10, f16)
-                f27 = {**self.app.stores}
-                f27.update({'_':  [0,1]})
-                self.e_images.config = f27
-                await self.reload()
-                on_message(self,
-                           f10.name,
-                           "f0")
+            self.notify(f"{f7} {f18} {f17} {f3}")
+            shutil.copy2(f10, f16)
+            f27 = {**self.app.stores}
+            f27.update({'_':  [0,1]})
+            self.e_images.config = f27
+            await self.reload()
+            on_message(self,
+                       f10.name,
+                       "f0")
 
 

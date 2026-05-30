@@ -8,7 +8,8 @@ import time
 CWD = Path.cwd()
 PATH_FILE = Path(__file__).parent
 STATIC_DIR = PATH_FILE.parent / "Fontend"
-CONFIGS = STATIC_DIR / "model.json"
+STATIC_FOR = PATH_FILE.parent / "Fontend"
+CONFIGS = STATIC_FOR / "za.json"
 
 
 
@@ -164,8 +165,10 @@ async def on_key_(self, event) -> None:
 
             if (int(f01) in [4,5]
                     and f2.column == 12):
+                f01 = f0.current.split("-")[-1]
                 sarin = int(f01) - 3
                 sar = f"dir-tree-{sarin}"
+                self.notify(f"??? {sar}")
                 self.query_one(f"#{sar}").focus()
                 f00.current = sar
                 event.stop()
@@ -315,9 +318,8 @@ def on_pressed(self, event) -> None:
 
     if f3 == "4":
         f15 = int(time.time())
-        f16 = STATIC_DIR / "model.json"
         image_outs = CWD / f"{f15}.json"
-        shutil.copy2(f16, image_outs)
+        shutil.copy2(CONFIGS, image_outs)
         f17 = {**self.app.stores}
         f17.update({'_': [0,4]})
         self.e_images.config = f17

@@ -1,9 +1,0 @@
-{
-  "compilerOptions": {
-    "checkJs": true,
-    "allowJs": true,
-    "noEmit": true,
-    "strict": true
-  },
-  "include": ["frontend/*.js"]
-}

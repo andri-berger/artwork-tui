@@ -15,7 +15,6 @@ dependencies = [
 
 [dependency-groups]
 dev = [
-    "pyright>=1.1.408",
     "ruff>=0.15.4",
     "textual-dev>=1.8.0"]
 
@@ -44,30 +43,5 @@ ignore = ["E501"]
 [tool.ruff.lint.per-file-ignores]
 "tests/**" = ["F401"]
 
-[tool.pyright]
-pythonVersion = "3.14"
-typeCheckingMode = "strict"   # off / basic / standard / strict
-venvPath = "."
-venv = ".venv"
-include = ["backend"]
-exclude = ["tests"]
-
-# check-js = "tsc --noEmit"
-# check-py = "uv run pyright"
-# lint-py = "uv run ruff check"
-# lint-js = "biome check"
-# build = "uv build"
-
-
-#######
-
-# Toast
-# Button
-# DataTable
-# ContentSwitcher
-# DirectoryTree
-# Input
-# Label
-# ProgressBar (???)
 
 

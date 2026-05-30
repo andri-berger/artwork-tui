@@ -61,26 +61,7 @@ class Tap < Formula
     end
   end
 
-  
-  # def caveats  <<~EOS
-  #     Chromium is managed by Playwright and installed separately.
-  #     If Chromium is missing or broken, reinstall it manually:
-  #      #{libexec}/bin/playwright install chromium
 
-  #     On Linux, system dependencies may also be needed:
-  #        #{libexec}/bin/playwright install chromium --with-deps
-  #     EOS
-  # end
-
-  def caveats
-    <<~EOS
-    artwork-tui requires Chromium via Playwright.
-    After installation run:
-
-    playwright install chromium
-
-    EOS
-  end
 
   test do
     system "#{bin}/artwork-tui", "--version"
