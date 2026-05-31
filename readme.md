@@ -16,9 +16,6 @@ Generative design tool with a terminal UI — compose layouts, render to canvas,
     <td><a href="Backend/modules/17100000000.png">
     <img src="Backend/modules/17100000000.png">
     </a></td>
-    <td><a href="Backend/modules/17100000000.png">
-    <img src="Backend/modules/17100000000.png">
-    </a></td>
     <td><a href="Backend/modules/17100000001.png">
     <img src="Backend/modules/17100000001.png">
     </a></td>
@@ -35,9 +32,6 @@ Generative design tool with a terminal UI — compose layouts, render to canvas,
 
 <!-- 
 <tr>
-    <td><a href="Backend/modules/1710000007.png">
-    <img src="Backend/modules/1710000007.png">
-    </a></td>
     <td><a href="Backend/modules/1710000008.png">
     <img src="Backend/modules/1710000008.png">
     </a></td>
@@ -55,9 +49,6 @@ Generative design tool with a terminal UI — compose layouts, render to canvas,
     </a></td>
   </tr>
   <tr>
-    <td><a href="Backend/modules/1710000013.png">
-    <img src="Backend/modules/1710000013.png">
-    </a></td>
     <td><a href="Backend/modules/1710000014.png">
     <img src="Backend/modules/1710000014.png">
     </a></td>
@@ -75,9 +66,6 @@ Generative design tool with a terminal UI — compose layouts, render to canvas,
     </a></td>
   </tr>
   <tr>
-    <td><a href="Backend/modules/1710000019.png">
-    <img src="Backend/modules/1710000019.png">
-    </a></td>
     <td><a href="Backend/modules/1710000020.png">
     <img src="Backend/modules/1710000020.png">
     </a></td>
@@ -95,9 +83,6 @@ Generative design tool with a terminal UI — compose layouts, render to canvas,
     </a></td>
   </tr>
   <tr>
-    <td><a href="Backend/modules/1710000025.png">
-    <img src="Backend/modules/1710000025.png">
-    </a></td>
     <td><a href="Backend/modules/1710000026.png">
     <img src="Backend/modules/1710000026.png">
     </a></td>
