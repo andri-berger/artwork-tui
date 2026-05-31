@@ -163,7 +163,7 @@ class FileTypeTree(DirectoryTree):
         f6 = f5.split("-")[-1]
         f7 = ['4','5'][int(f6)-1]
         f8 = ["module","modules"]
-        f08 ['png','otf']
+        f08 = ['png','otf']
         f09 = f08[int(f6)-1]
         f9 = f8[int(f6)-1]
         f10 = event.path
@@ -216,9 +216,10 @@ class FileTypeTree(DirectoryTree):
             shutil.copy2(f10, f16)
             f27 = {**self.app.stores}
             f27.update({'_':  [0,1]})
-            self.e_images.config = f27
-            on_message(self,
-                       f10.name,
-                       "f0")
+            self.app.query_one(ImageTab).config = f27
+            # self.app.e_images.config = f27
+            # on_message(self,
+            #           f10.name,
+            #           "f0")
 
 

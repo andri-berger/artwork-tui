@@ -1,7 +1,7 @@
 
 ![Readme](./readme.png)
 # Artwork-TUI (WIP)
-Generative design tool with a terminal UI — compose layouts, render to canvas, export to Hi-Res Png (any resolution your machine can handle). artwork-tui is a terminal-native artwork and layout generator built on G'MIC, operating entirely within the constraints of the TUI. It combines a spreadsheet-driven interface for manual layout composition with a randomizer engine for generative artwork, supporting custom fonts and image assets. The tool emerged from a simple frustration: existing creative layout tools are either locked behind expensive subscriptions, tied to a specific OS, or bloated with features that obscure rather than enable the creative process. The terminal, by contrast, offers a direct and honest working surface – what you type is what happens, no hidden layers, no telemetry, no forced updates. artwork-tui occupies a genuinely vacant niche: somewhere between a generative art framework (too code-heavy, no interface) and a design tool (too GUI-dependent, too opinionated), it offers a middle ground that has no real equivalent in the current landscape. The spreadsheet metaphor is deliberate – familiar enough to require no learning curve, structured enough to impose a productive constraint on the creative process.L
+Generative design tool with a terminal UI — compose layouts, render to canvas, export to Hi-Res Png (any resolution your machine can handle). artwork-tui is a terminal-native artwork and layout generator, operating entirely within the constraints of the TUI. It combines a spreadsheet-driven interface for manual layout composition with a randomizer engine for generative artwork, supporting custom fonts and image assets. The tool emerged from a simple frustration: existing creative layout tools are either locked behind expensive subscriptions, tied to a specific OS, or bloated with features that obscure rather than enable the creative process. The terminal, by contrast, offers a direct and honest working surface – what you type is what happens, no hidden layers, no telemetry, no forced updates. artwork-tui occupies a genuinely vacant niche: somewhere between a generative art framework (too code-heavy, no interface) and a design tool (too GUI-dependent, too opinionated), it offers a middle ground that has no real equivalent in the current landscape. The spreadsheet metaphor is deliberate – familiar enough to require no learning curve, structured enough to impose a productive constraint on the creative process.
 
 [Installation](#installation) / 
 [Configuration](#configuration) / 
@@ -10,9 +10,7 @@ Generative design tool with a terminal UI — compose layouts, render to canvas,
 [Gallery](#gallery)
 
 
-
 <img src="Backend/modules/17100000000.png" width="100%">
-
 <table>
   <tr>
     <td><a href="Backend/modules/17100000000.png">
@@ -21,106 +19,105 @@ Generative design tool with a terminal UI — compose layouts, render to canvas,
     <td><a href="Backend/modules/17100000000.png">
     <img src="Backend/modules/17100000000.png">
     </a></td>
-    <td><a href="Backend/modules/17100000000.png">
-    <img src="Backend/modules/17100000000.png">
+    <td><a href="Backend/modules/17100000001.png">
+    <img src="Backend/modules/17100000001.png">
     </a></td>
-    <td><a href="Backend/modules/17100000000.png">
-    <img src="Backend/modules/17100000000.png">
+    <td><a href="Backend/modules/17100000001.png">
+    <img src="Backend/modules/17100000001.png">
     </a></td>
-    <td><a href="Backend/modules/17100000000.png">
-    <img src="Backend/modules/17100000000.png">
+    <td><a href="Backend/modules/17100000002.png">
+    <img src="Backend/modules/17100000002.png">
     </a></td>
-    <td><a href="Backend/modules/17100000000.png">
-    <img src="Backend/modules/17100000000.png">
-    </a></td>
-  </tr>
-<!--   <tr>
-    <td><a href="Backend/modules/17100000000.png">
-    <img src="Backend/module/project.png">
-    </a></td>
-    <td><a href="Backend/modules/17100000000.png">
-    <img src="Backend/modules/17100000000.png">
-    </a></td>
-    <td><a href="Backend/modules/17100000000.png">
-    <img src="Backend/modules/17100000000.png">
-    </a></td>
-    <td><a href="Backend/modules/17100000000.png">
-    <img src="Backend/modules/17100000000.png">
-    </a></td>
-    <td><a href="Backend/modules/17100000000.png">
-    <img src="Backend/modules/17100000000.png">
-    </a></td>
-    <td><a href="Backend/modules/17100000000.png">
-    <img src="Backend/modules/17100000000.png">
+    <td><a href="Backend/modules/17100000002.png">
+    <img src="Backend/modules/17100000002.png">
     </a></td>
   </tr>
-  <tr>
-    <td><a href="Backend/modules/17100000000.png">
-    <img src="Backend/modules/17100000000.png">
+
+<!-- 
+<tr>
+    <td><a href="Backend/modules/1710000007.png">
+    <img src="Backend/modules/1710000007.png">
     </a></td>
-    <td><a href="Backend/modules/17100000000.png">
-    <img src="Backend/modules/17100000000.png">
+    <td><a href="Backend/modules/1710000008.png">
+    <img src="Backend/modules/1710000008.png">
     </a></td>
-    <td><a href="Backend/modules/17100000000.png">
-    <img src="Backend/modules/17100000000.png">
+    <td><a href="Backend/modules/1710000009.png">
+    <img src="Backend/modules/1710000009.png">
     </a></td>
-    <td><a href="Backend/modules/17100000000.png">
-    <img src="Backend/modules/17100000000.png">
+    <td><a href="Backend/modules/1710000010.png">
+    <img src="Backend/modules/1710000010.png">
     </a></td>
-    <td><a href="Backend/modules/17100000000.png">
-    <img src="Backend/modules/17100000000.png">
+    <td><a href="Backend/modules/1710000011.png">
+    <img src="Backend/modules/1710000011.png">
     </a></td>
-    <td><a href="Backend/modules/17100000000.png">
-    <img src="Backend/modules/17100000000.png">
+    <td><a href="Backend/modules/1710000012.png">
+    <img src="Backend/modules/1710000012.png">
     </a></td>
   </tr>
   <tr>
-    <td><a href="Backend/modules/17100000000.png">
-    <img src="Backend/modules/17100000000.png">
+    <td><a href="Backend/modules/1710000013.png">
+    <img src="Backend/modules/1710000013.png">
     </a></td>
-    <td><a href="Backend/modules/17100000000.png">
-    <img src="Backend/modules/17100000000.png">
+    <td><a href="Backend/modules/1710000014.png">
+    <img src="Backend/modules/1710000014.png">
     </a></td>
-    <td><a href="Backend/modules/17100000000.png">
-    <img src="Backend/modules/17100000000.png">
+    <td><a href="Backend/modules/1710000015.png">
+    <img src="Backend/modules/1710000015.png">
     </a></td>
-    <td><a href="Backend/modules/17100000000.png">
-    <img src="Backend/modules/17100000000.png">
+    <td><a href="Backend/modules/1710000016.png">
+    <img src="Backend/modules/1710000016.png">
     </a></td>
-    <td><a href="Backend/modules/17100000000.png">
-    <img src="Backend/modules/17100000000.png">
+    <td><a href="Backend/modules/1710000017.png">
+    <img src="Backend/modules/1710000017.png">
     </a></td>
-    <td><a href="Backend/modules/17100000000.png">
-    <img src="Backend/modules/17100000000.png">
+    <td><a href="Backend/modules/1710000018.png">
+    <img src="Backend/modules/1710000018.png">
     </a></td>
   </tr>
   <tr>
-    <td><a href="Backend/modules/17100000000.png">
-    <img src="Backend/modules/17100000000.png">
+    <td><a href="Backend/modules/1710000019.png">
+    <img src="Backend/modules/1710000019.png">
     </a></td>
-    <td><a href="Backend/modules/17100000000.png">
-    <img src="Backend/modules/17100000000.png">
+    <td><a href="Backend/modules/1710000020.png">
+    <img src="Backend/modules/1710000020.png">
     </a></td>
-    <td><a href="Backend/modules/17100000000.png">
-    <img src="Backend/modules/17100000000.png">
+    <td><a href="Backend/modules/1710000021.png">
+    <img src="Backend/modules/1710000021.png">
     </a></td>
-    <td><a href="Backend/modules/17100000000.png">
-    <img src="Backend/modules/17100000000.png">
+    <td><a href="Backend/modules/1710000022.png">
+    <img src="Backend/modules/1710000022.png">
     </a></td>
-    <td><a href="Backend/modules/17100000000.png">
-    <img src="Backend/modules/17100000000.png">
+    <td><a href="Backend/modules/1710000023.png">
+    <img src="Backend/modules/1710000023.png">
     </a></td>
-    <td><a href="Backend/modules/17100000000.png">
-    <img src="Backend/modules/17100000000.png">
+    <td><a href="Backend/modules/1710000024.png">
+    <img src="Backend/modules/1710000024.png">
     </a></td>
-  </tr> -->
+  </tr>
+  <tr>
+    <td><a href="Backend/modules/1710000025.png">
+    <img src="Backend/modules/1710000025.png">
+    </a></td>
+    <td><a href="Backend/modules/1710000026.png">
+    <img src="Backend/modules/1710000026.png">
+    </a></td>
+    <td><a href="Backend/modules/1710000027.png">
+    <img src="Backend/modules/1710000027.png">
+    </a></td>
+    <td><a href="Backend/modules/1710000028.png">
+    <img src="Backend/modules/1710000028.png">
+    </a></td>
+    <td><a href="Backend/modules/1710000029.png">
+    <img src="Backend/modules/1710000029.png">
+    </a></td>
+    <td><a href="Backend/modules/1710000030.png">
+    <img src="Backend/modules/1710000030.png">
+    </a></td>
+  </tr> 
+-->
 </table>
 <br>
-<br>
 
-
-
-artwork-tui is a terminal-native artwork and layout generator built on G'MIC, operating entirely within the constraints of the TUI. It combines a spreadsheet-driven interface for manual layout composition with a randomizer engine for generative artwork, supporting custom fonts and image assets. The tool emerged from a simple frustration: existing creative layout tools are either locked behind expensive subscriptions, tied to a specific OS, or bloated with features that obscure rather than enable the creative process. The terminal, by contrast, offers a direct and honest working surface – what you type is what happens, no hidden layers, no telemetry, no forced updates. artwork-tui occupies a genuinely vacant niche: somewhere between a generative art framework (too code-heavy, no interface) and a design tool (too GUI-dependent, too opinionated), it offers a middle ground that has no real equivalent in the current landscape. The spreadsheet metaphor is deliberate – familiar enough to require no learning curve, structured enough to impose a productive constraint on the creative process.
 
 ## Installation
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.

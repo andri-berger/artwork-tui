@@ -90,7 +90,6 @@ async def on_key_(self, event) -> None:
     f1 = self.query_one(f"#{f0.current}")
     f01 = f0.current.split("-")[-1]
     f4 = self.query_one("#third")
-    f90 = self.app.store[f"2-{f01}"]
     f2 = f1.cursor_coordinate
     f3 = f1.get_cell_at(f2) or ""
     f6 = event.key
