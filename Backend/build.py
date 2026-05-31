@@ -17,7 +17,7 @@ PATH_FILE = Path(__file__).parent
 STATIC_DIR = PATH_FILE.parent / "Fontend"
 STATIC_FOR = PATH_FILE.parent / "Formula"
 DIR = f"http://localhost:{PORT}/build.html"
-CSS_PATHS = STATIC_DIR / "style.tcss"
+CSS_PATHS = STATIC_DIR / "script.tcss"
 CONFIG = STATIC_DIR / "build.json"
 CONFIGS = STATIC_FOR / "za.json"
 
