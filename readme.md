@@ -1,7 +1,7 @@
 
 ![Readme](./readme.png)
 # Artwork-TUI (WIP)
-Generative design tool with a terminal UI — compose layouts, render to canvas, export to SVG/PDF. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+Generative design tool with a terminal UI — compose layouts, render to canvas, export to Hi-Res Png (any resolution your machine can handle). artwork-tui is a terminal-native artwork and layout generator built on G'MIC, operating entirely within the constraints of the TUI. It combines a spreadsheet-driven interface for manual layout composition with a randomizer engine for generative artwork, supporting custom fonts and image assets. The tool emerged from a simple frustration: existing creative layout tools are either locked behind expensive subscriptions, tied to a specific OS, or bloated with features that obscure rather than enable the creative process. The terminal, by contrast, offers a direct and honest working surface – what you type is what happens, no hidden layers, no telemetry, no forced updates. artwork-tui occupies a genuinely vacant niche: somewhere between a generative art framework (too code-heavy, no interface) and a design tool (too GUI-dependent, too opinionated), it offers a middle ground that has no real equivalent in the current landscape. The spreadsheet metaphor is deliberate – familiar enough to require no learning curve, structured enough to impose a productive constraint on the creative process.L
 
 [Installation](#installation) / 
 [Configuration](#configuration) / 
@@ -120,53 +120,7 @@ Generative design tool with a terminal UI — compose layouts, render to canvas,
 
 
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-Modern Art	
-Geometric Art	
-Minimalist Art	
-Generative Art	
-Algorithmic Art	
-Procedural Art	
-Contemporary Art
-Abstract Painting
-Modern Painting
-Geometric Painting
-Minimalist Painting
-Generative Painting
-Algorithmic Painting
-Procedural Painting
-Contemporary Painting
-Create Abstract Art Fast
-Your Custom Art in HD
-Abstract Prints, Your Way
-Make Unique Abstract Art
-Design Abstract Art Now
-Abstract Art, No AI Needed
-Generate Art, Download HD
-Abstract Canvas Generator
-Abstract Art — Your Style
-Make Art, Print on Canvas
-Create Abstract Wall Art
-DIY Abstract Art Online
-High-Res Abstract Prints
-Custom Art, Instant File
-Abstract Art, No Limits
-Design Abstract Wall Art, Print It, Show It Off
-Make Abstract Art That’s 100% You — No AI Required
-Tired of AI Art? Make Your Own Abstract Masterpiece
-Design Abstract Art, Download in HD, Print on Canvas
-Create Custom Abstract Art — High-Res, Ready to Print
-Abstract Art Generator: From Screen to Wall in Minutes
-Generate Abstract Art You Can Actually Download & Print
-DIY Abstract Art: Make It, Download It, Print It, Flex It
-Design Your Own Abstract Art — No AI, Just Your Imagination
-Unleash Your Inner Artist: Create Custom Abstract Art for Print
-Your Vision, Your Art: Generate Stunning Abstracts, Download or Print
-Make custom abstract art in minutes. Download or print your masterpiece!
-Design your abstract art and print it or download high-res files instantly.
-Create unique abstract artwork online — print on canvas or download HD art.
-Generate abstract art that’s 100% yours. Print or save high-resolution art.
-Your art, your rules. Create abstract pieces, download, or print on canvas.
+artwork-tui is a terminal-native artwork and layout generator built on G'MIC, operating entirely within the constraints of the TUI. It combines a spreadsheet-driven interface for manual layout composition with a randomizer engine for generative artwork, supporting custom fonts and image assets. The tool emerged from a simple frustration: existing creative layout tools are either locked behind expensive subscriptions, tied to a specific OS, or bloated with features that obscure rather than enable the creative process. The terminal, by contrast, offers a direct and honest working surface – what you type is what happens, no hidden layers, no telemetry, no forced updates. artwork-tui occupies a genuinely vacant niche: somewhere between a generative art framework (too code-heavy, no interface) and a design tool (too GUI-dependent, too opinionated), it offers a middle ground that has no real equivalent in the current landscape. The spreadsheet metaphor is deliberate – familiar enough to require no learning curve, structured enough to impose a productive constraint on the creative process.
 
 ## Installation
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
@@ -286,62 +240,80 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
     <tr>
         <td><kbd>F1
         </kbd></td>
-        <td>Delete</td>
-        <td>Delete table/grid cell. Think of it as DEL or BACKSPACE in a spreadsheet. </td>
+        <td>Copy</td>
+        <td>Copy table cell. Think of it as Ctrl-C in a spreadsheet. </td>
     </tr>
     <tr>
         <td><kbd>F2
         </kbd></td>
-        <td>Copy</td>
-        <td>Delete table/grid cell. Think of it as Ctrl-C in a spreadsheet. </td>
+        <td>Cut</td>
+        <td>Cut table cell. Think of it as Ctrl-C in a spreadsheet. </td>
     </tr>
     <tr>
-        <td><kbd>F3
-        </kbd></td>
-        <td>Cut</td>
-        <td>Delete table/grid cell. Think of it as Ctrl-C in a spreadsheet. </td>
+        <td><kbd>
+        F3</kbd></td>
+        <td>Paste</td>
+        <td>Paste table cell. Think of it as Ctrl-V in a spreadsheet. </td>
     </tr>
     <tr>
         <td><kbd>
         F4</kbd></td>
-        <td>Paste</td>
-        <td>Delete table/grid cell. Think of it as Ctrl-V in a spreadsheet. </td>
-    </tr>
-    <tr>
-        <td><kbd>
-        F5</kbd></td>
         <td>Clear</td>
         <td>Clear the Canvas. Lorem ipsum dolor sit amet.</td>
     </tr>
     <tr>
         <td><kbd>
-        F6</kbd></td>
+        F5</kbd></td>
         <td>Afs</td>
         <td>Set Seed for A00-A99 Elements. Lorem ipsum dolor sit amet.</td>
     </tr>
     <tr>
         <td><kbd>
-        F7</kbd></td>
+        F6</kbd></td>
         <td>Bfs</td>
         <td>Set Seed for B00-B99. Lorem ipsum dolor sit amet.</td>
     </tr>
     <tr>
         <td><kbd>
-        F8</kbd></td>
+        F7</kbd></td>
         <td>Cfs</td>
         <td>Set Seed for C00-C99. Lorem ipsum dolor sit amet.</td>
     </tr>
     <tr>
         <td><kbd>
-        F9</kbd></td>
+        F8</kbd></td>
         <td>Create</td>
         <td>Generate Artwork via Random Generator. Lorem ipsum dolor sit amet.</td>
     </tr>
     <tr>
         <td><kbd>
-        F10</kbd></td>
+        F9</kbd></td>
         <td>Export</td>
         <td>Export both generated (png) and project file (json) into the directory from where the app was executed / started.</td>
+    </tr>
+    <tr>
+        <td><kbd>
+        F10</kbd></td>
+        <td>Scrolling</td>
+        <td>Extra functionality (I) with regards to fullscreen toggle and scroll-emulation (=> see also shift-arrows)</td>
+    </tr>
+    <tr>
+        <td><kbd>
+        F11</kbd></td>
+        <td>Scrolling</td>
+        <td>Extra functionality (II) with regards to fullscreen toggle and scroll-emulation (=> see also shift-arrows)</td>
+    </tr>
+    <tr>
+        <td><kbd>
+        F12</kbd></td>
+        <td>Scrolling</td>
+        <td>Extra functionality (II) with regards to fullscreen toggle and scroll-emulation (=> see also shift-arrows)</td>
+    </tr>
+    <tr>
+        <td><kbd>Del
+        </kbd></td>
+        <td>Delete</td>
+        <td>Delete table/grid cell.</td>
     </tr>
     <tr>
         <td><kbd>
@@ -354,6 +326,12 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
         Shift-Tab</kbd></td>
         <td>Navigate</td>
         <td>Cycle backward all navigational UI-Elements. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</td>
+    </tr>
+    <tr>
+        <td><kbd>
+        Shift-Arrow</kbd></td>
+        <td>Navigation</td>
+        <td>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</td>
     </tr>
     <tr>
         <td><kbd>
@@ -406,12 +384,12 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
         <a href="//github.com/apngasm/apngasm">
         https://github.com/apngasm/apng</a></td>
     </tr>
-    <tr>
-        <td><kbd>
+    </tr>
+        <tr><td><kbd>
         Build</kbd></td>
-        <td>Watch</td><td>
-        <a href="//github.com/samuelcolvin/watchfiles">
-        https://github.com/samuelcolvin</a></td>
+        <td>Grim</td><td>
+        <a href="//github.com/emersion/grim">
+        https://github.com/emersion/grim</a></td>
     </tr>
     <tr>
         <td><kbd>

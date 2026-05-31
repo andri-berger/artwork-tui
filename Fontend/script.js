@@ -723,7 +723,7 @@ window.h13 = l => {
         let l0 = l[0]? k17: k18;
         let l1 = [k16.width,k16.height];
         let l2 = k17.getImageData(0,0,...l1);
-        let l3 = new Worker('/styles.js');
+        let l3 = new Worker('/scripts.js');
         let l4 = [...l1,l2.data.buffer,l[1]]
         l3.postMessage(l4,[l2.data.buffer]);
         l3.onmessage = async _ => {

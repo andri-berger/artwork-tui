@@ -966,12 +966,6 @@
     "SET THE SEED FOR ALL 100 C-ELEMENTS. Reproduce the result on canvas faithfully on subsequent Regenerations.",
     "CLEAR ALL DATA IN PROJECT JSON",
     "GENERATE ART(WORK) ON CANVAS",
-    "SAVE IMAGE TO DISK"],
-  "4-2": [
-    "",
-    "",
-    "",
-    "async (store) => window.h11(store)"
-  ]
+    "SAVE IMAGE TO DISK"]
 
 }

@@ -23,6 +23,7 @@ APP = Path(__file__)
 APP_DIR = Path(__file__).parent
 ASSETS_FOR = APP_DIR.parent / "Formula"
 ASSETS_DIR = APP_DIR.parent / "Fontend"
+TT = "async (store) => window.h11(store)"
 
 ASSETS_MOD = ASSETS_DIR / "module"
 ASSETS_MODS = ASSETS_DIR / "modules"
@@ -70,8 +71,7 @@ class ImageTab(Widget):
 
         if f7 >= 0:
             f11 = await (
-                f5.evaluate(
-                f4['4-2'][3],[f7,f8]))
+                f5.evaluate(TT,[f7,f8]))
             b64 = f11[0].split(',')[1]
             f12 = base64.b64decode(b64)
 
@@ -125,9 +125,6 @@ class ImageTab(Widget):
         CONFIGS.write_text(
         json.dumps(f3))
 
-        # CONFIGS.write_text(
-        # json.dumps(f11[1]))
-
     def render(self):
         return ""
 
@@ -138,10 +135,6 @@ class FileTypeTree(DirectoryTree):
     def __init__(self, path, file_type: str, **kwargs):
         self.file_type = file_type
         super().__init__(path, **kwargs)
-        self.store = self.app.store["4-2"][0]
-
-    def on_mount(self):
-        self.e_images = self.app.query_one(ImageTab)
 
     def filter_paths(self, paths):
         return [p for p in paths if not p.name.startswith(".") and self._is_allowed(p)]
@@ -170,6 +163,8 @@ class FileTypeTree(DirectoryTree):
         f6 = f5.split("-")[-1]
         f7 = ['4','5'][int(f6)-1]
         f8 = ["module","modules"]
+        f08 ['png','otf']
+        f09 = f08[int(f6)-1]
         f9 = f8[int(f6)-1]
         f10 = event.path
 
@@ -184,7 +179,6 @@ class FileTypeTree(DirectoryTree):
             f14.update({'_': [2,1]})
             self.app.stores = f14
             self.e_images.config = f14
-            await self.reload()
 
         elif (f5 == "dir-tree-1"
               or f5 == "dir-tree-2"):
@@ -202,7 +196,7 @@ class FileTypeTree(DirectoryTree):
                 f60 = f10.name.split(".")[0]
                 f20[str(f17-1)] = f60
                 f21 = f1.get_cell_at(f4)
-                f80 = f"{str(f21)}.otf"
+                f80 = f"{str(f21)}.{f09}"
                 f22 = f15 / f80
                 self.notify(f"now {f22}")
                 if (f21 and f22.is_file()
@@ -219,12 +213,10 @@ class FileTypeTree(DirectoryTree):
                 if f26.exists():
                     f26.unlink()
 
-            self.notify(f"{f7} {f18} {f17} {f3}")
             shutil.copy2(f10, f16)
             f27 = {**self.app.stores}
             f27.update({'_':  [0,1]})
             self.e_images.config = f27
-            await self.reload()
             on_message(self,
                        f10.name,
                        "f0")

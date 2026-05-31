@@ -159,13 +159,6 @@ class TableApp(Widget):
     def highlighted(self, event: DataTable.CellHighlighted) -> None:
         on_cell_highlighted_(self, event.coordinate)
 
-    @on(DataTable.CellSelected)
-    async def selected(self, event: DataTable.CellSelected) -> None:
-        self.coord = event.coordinate
-        if event.value is not None:
-            self.e_third.value = str(event.value)
-        self.e_third.focus()
-
     @on(Input.Submitted)
     def submitted(self, event: Input.Submitted) -> None:
         on_submitted(self,event)

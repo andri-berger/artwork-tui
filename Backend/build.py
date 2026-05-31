@@ -12,12 +12,11 @@ import json
 import time
 
 
-PORT = 9000
 PATH_FILE = Path(__file__).parent
+DIR = "http://localhost:9000/build.html"
 STATIC_DIR = PATH_FILE.parent / "Fontend"
 STATIC_FOR = PATH_FILE.parent / "Formula"
-DIR = f"http://localhost:{PORT}/build.html"
-CSS_PATHS = STATIC_DIR / "script.tcss"
+CSS_PATHS = STATIC_DIR / "style.tcss"
 CONFIG = STATIC_DIR / "build.json"
 CONFIGS = STATIC_FOR / "za.json"
 
@@ -72,7 +71,7 @@ class CLIApp(App):
             http.server.SimpleHTTPRequestHandler,
             directory=str(STATIC_DIR))
         self._server = http.server.HTTPServer(
-            ("localhost", PORT), handler)
+            ("localhost", 9000), handler)
         thread = threading.Thread(
             target=self._server.serve_forever,
             daemon=True)
@@ -110,6 +109,7 @@ class CLIApp(App):
         #     if f.name != "model.otf"\
         #             and f.name != f10.name:
         #         f.unlink()
+
 
     async def on_unmount(self) -> None:
         if self._server:
