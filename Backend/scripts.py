@@ -1,75 +1,78 @@
-
 import numpy as np
 import cv2
 
+def scripts_f0(h, h0, h1) -> float:
+    f0 = min(h, 100)
+    f1 = max(f0,0)
+    f2 = f1 / 100
+    f3 = h0 - h1
+    f4 = f3 * f2
+    f5 = f4 + h1
+    return f5
 
-def clamp(value, max_val, min_val):
-    value = max(0, min(value, 100))
-    range = max_val - min_val
-    ranges = value / 100.0
-    total = range * ranges
-    return total + min_val
+def scripts_f1(h, h0) -> bytes:
+    f0 = h0['set']
+    f1 = h0['set0']
+    f2 = h0['set1']
+    f3 = h0['set2']
 
-def opencv(args, args0):
-    setting = args0['set']
-    setting0 = args0['set0']
-    setting1 = args0['set1']
-    setting2 = args0['set2']
-
-    img = cv2.imdecode(
-        np.frombuffer(args,
-        dtype=np.uint8),
+    f4 = cv2.imdecode(
+        np.frombuffer(
+            h, dtype=np.uint8),
         cv2.IMREAD_UNCHANGED)
 
-    rgb = img[:, :, :3]
-    alpha = img[:, :, 3]
-    ys, xs = np.where(alpha > 0)
-    y_min, y_max = ys.min(), ys.max()
-    x_min, x_max = xs.min(), xs.max()
-    sub_rgb = rgb[y_min:y_max + 1, x_min:x_max + 1]
-    enhanced = None
+    f5 = f4[:, :, 3]
+    f6 = f4[:, :, :3]
+    f7, f8 = np.where(f5 > 0)
+    f9, f10 = f7.min(), f7.max()
+    f11, f12 = f8.min(), f8.max()
+    f13 = f6[f9:f10+1, f11:f12+1]
+    f14 = None
 
-    if setting == 0:
+    if f0 == 0:
         return
 
-    if setting == 1:
-        enhanced = cv2.bitwise_not(sub_rgb)
+    if f0 == 1:
+        f14 = cv2.bitwise_not(f13)
 
-    # if setting == 1:
-    #    enhanced = cv2.Canny(img, 10, 20)
+    if f0 == 2:
+        f14 = cv2.Canny(f4, 10, 20)
 
-    if setting == 2:
-        enhanced = cv2.stylization(sub_rgb,
-            sigma_s=int(clamp(setting0, 30, 100)),
-            sigma_r=float(clamp(setting1, 0.2, 0.7)))
+    if f0 == 3:
+        f14 = cv2.stylization(
+            f13,sigma_s=int(scripts_f0(f1, 30, 100)),
+            sigma_r=float(scripts_f0(f2, 0.2, 0.7)))
 
-    elif setting == 3:
-        enhanced = cv2.detailEnhance(sub_rgb,
-            sigma_s=float(clamp(setting0, 5, 100)),
-            sigma_r=float(clamp(setting1, 0.1, 0.5)))
+    elif f0 == 4:
+        f14 = cv2.detailEnhance(
+            f13, sigma_s=float(scripts_f0(f1, 5, 100)),
+            sigma_r=float(scripts_f0(f2, 0.1, 0.5)))
 
-    elif setting == 4:
-        _, enhanced = cv2.pencilSketch(sub_rgb,
-            sigma_s=float(clamp(setting0, 30, 100)),
-            sigma_r=float(clamp(setting1, 0.05, 0.3)),
-            shade_factor=float(clamp(setting2, 0.02, 0.05)))
+    elif f0 == 5:
+        _, f14 = cv2.pencilSketch(
+            f13, sigma_s=float(scripts_f0(f1, 30, 100)),
+            sigma_r=float(scripts_f0(f2, 0.05, 0.3)),
+            shade_factor=float(scripts_f0(f3, 0.02, 0.05)))
 
-    elif setting == 5:
-        adaptive_II = int(clamp(setting1, 0, 20))
-        adaptive_I = int(clamp(setting0, 3, 51)) | 1
-        medianBlur = int(clamp(setting2, 3, 15)) | 1
+    elif f0 == 6:
+        f15 = int(scripts_f0(f2, 0, 20))
+        f16 = int(scripts_f0(f1, 3, 51)) | 1
+        f17 = int(scripts_f0(f3, 3, 15)) | 1
 
-        gray = cv2.cvtColor(sub_rgb, cv2.COLOR_RGB2GRAY)
-        gray_blur = cv2.medianBlur(gray, medianBlur)
-        edges = cv2.adaptiveThreshold(
-            gray_blur, 255, cv2.ADAPTIVE_THRESH_MEAN_C,
-            cv2.THRESH_BINARY, adaptive_I, adaptive_II)
-        color = cv2.bilateralFilter(sub_rgb, 24, 75, 75)
-        enhanced = cv2.bitwise_and(color, color, mask=edges)
+        f18 = cv2.cvtColor(f13, cv2.COLOR_RGB2GRAY)
+        f19 = cv2.medianBlur(f18, f17)
+        f20 = cv2.adaptiveThreshold(
+            f19, 255,
+            cv2.ADAPTIVE_THRESH_MEAN_C,
+            cv2.THRESH_BINARY, f16, f15)
+        f21 = cv2.bilateralFilter(
+            f13, 24, 75, 75)
+        f14 = cv2.bitwise_and(
+            f21, f21, mask=f20)
 
-    rgb[y_min:y_max + 1, x_min:x_max + 1] = enhanced
-    b, g, r = cv2.split(rgb)
-    processed = cv2.merge([b, g, r, alpha])
-    _, encoded_img = cv2.imencode('.png', processed)
-    image_bytes = encoded_img.tobytes()
-    return image_bytes
+    f6[f9:f10+1, f11:f12+1] = f14
+    f22, f23, f24 = cv2.split(f6)
+    f25 = cv2.merge([f22, f23, f24, f5])
+    _, f26 = cv2.imencode('.png', f25)
+    f27 = f26.tobytes()
+    return f27
