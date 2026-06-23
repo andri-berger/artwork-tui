@@ -1,7 +1,7 @@
-pkgname=artwork-tui
-pkgver=0.0.1
 pkgrel=1
+pkgver=0.0.1
 arch=('x86_64')
+pkgname=artwork-tui
 license=('GPL-3.0-only')
 provides=('artwork-tui')
 conflicts=('artwork-tui')

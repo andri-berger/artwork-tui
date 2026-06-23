@@ -1,13 +1,9 @@
-.eslintcache
 Formula/*.png
 Formula/*.json
 __pycache__/
-.pytest_cache/
 .ruff_cache/
 .idea/
 .venv/
-*.log
-*.tmp
 .cache
 .cache/
 .temp/
@@ -15,3 +11,5 @@ temp/
 .env
 *.pem
 *.key
+*.log
+*.tmp

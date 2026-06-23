@@ -1,6 +1,6 @@
 [project]
-name = "artwork-tui"
 version = "1.0.0"
+name = "artwork-tui"
 description = "artwork generator"
 license = { file = "LICENSE" }
 authors = [{ name = "Andri Berger" }]
@@ -34,11 +34,8 @@ line-length = 88
 target-version = "py314"
 
 [tool.ruff.lint]
-select = ["E", "F", "I"]     # error, pyflakes, isort
+select = ["E", "F", "I"]
 ignore = ["E501"]
 
 [tool.ruff.lint.per-file-ignores]
 "tests/**" = ["F401"]
-
-
-
