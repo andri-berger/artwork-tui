@@ -11,7 +11,6 @@
     46, 47, 73, 74, 61, 62, 63, 64,
     66, 67, 68, 69, 70, 71, 72,
     56, 57, 58, 59, 60],
-
   "0-0": [
     [110, 118, 126],
     [111, 119, 127],
@@ -298,7 +297,6 @@
     ["blend I"],
     ["blend II"]
   ],
-
   "2-0": [
   [[""],
     ["A0","0-100", "20"],
@@ -969,8 +967,6 @@
         "CSS FONT-FACE. Lorem ipsum dolor sit amet.",
         "HTML SPAN ENTITY. Lorem ipsum dolor sit amet."],
 
-
-
   "4-0": [
     "dir-tree-0",
     "dir-tree-1",
@@ -997,8 +993,7 @@
     "SET THE SEED FOR ALL 100 C-ELEMENTS. Reproduce the result on canvas faithfully on subsequent Regenerations.",
     "GENERATE ART(WORK) ON CANVAS. Attention! will overwrite existing data, so export first if you want to keep your work.",
     "SAVE IMAGE TO DISK. Both png and json file will be saved to where the app has been executed from."],
-
-  "6-0": {
+  "4-2": {
     "dir-tree-0": "FILE {f3} has been chosen and applied!",
     "dir-tree-1": "FILE {f3} has been chosen and applied!",
     "dir-tree-2": "FX {f3} has been chosen and applied!",
@@ -1008,7 +1003,7 @@
     "button-3": "FX {f3}ACTIVATED Randomize Seed for C00 elements!",
     "button-4": "ARTWORK has been regenerated via random function!",
     "button-5": "PNG AND JSON FILES have been saved to disk!"},
-  "6-1": {
+  "4-3": {
     "delete": "DELETE cell contents or files in local file picker.",
     "f1": "COPY TABLE cell contents.",
     "f2": "CUT TABLE cell contents.",

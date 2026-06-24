@@ -61,8 +61,6 @@ class Tap < Formula
     end
   end
 
-
-
   test do
     system "#{bin}/artwork-tui", "--version"
   end

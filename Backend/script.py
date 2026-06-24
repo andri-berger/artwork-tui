@@ -56,7 +56,7 @@ def script_f4(h) -> list:
 
 def script_f5(self, h) -> None:
     f0 = self.query_one("#label-0")
-    f1 = self.app.store["6-0"]
+    f1 = self.app.store["4-2"]
     f2 = self.app.textfield
     f0.update(f1.get(h, ""))
     self.app.textfields = (
@@ -66,7 +66,7 @@ def script_f5(self, h) -> None:
 
 def script_f6(self, h, h0) -> None:
     f0 = self.query_one("#label-0")
-    f1 = self.app.store["6-1"]
+    f1 = self.app.store["4-3"]
     f2 = self.app.textfield
     f3 = f1.get(h, "")
     f0.update(f3.format(

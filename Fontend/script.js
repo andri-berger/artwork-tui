@@ -1,16 +1,3 @@
-/** @type {string} */
-/** * @param {number} x
-* @param {number} y
-* @returns {number} */
-/** @typedef {{ name: string, age: number }} User */
-/** @type {User} */
-/** @type {string[]} */
-/** @type {Map<string, number>} */
-/** @type {import('./types.js').MyType} */
-/** @param {Event} e */
-/** @returns {Promise<void>} */
-
-
 import { toCanvas } from 'html-to-image';
 import * as filters from 'pixi-filters';
 import * as PIXI from 'pixi.js';
