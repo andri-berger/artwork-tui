@@ -1,256 +1,85 @@
 
-$default-0: $surface-lighten-1;
-$default: $surface;
-$defaults: transparent;
-$brand: $primary;
-
-
 Screen {
-    align: center middle;
-    background: $default;
-    color: ansi_default;
     layers: base overlay;
-}
-
-ModalScreen {
-    offset: 1% 1%;
-    width: 10%;
-    height: 10%;
-    background: $defaults;
-}
-
-
-
-
-
-
-
-TableApp {
     align: center middle;
-    background: $defaults;
+    background: $surface; }
+
+MainApp {
     width: 90%;
     height: 80%;
-}
-
-ImageTab {
-    align: center middle;
-    background: $defaults;
-    max-width: 120;
-    height: 1fr;
-    width: 1fr;
-    margin-bottom: 1; }
-
-#top {
-    width: 1fr;
-    height: 2fr;
+    background: $surface;
     align: center middle; }
 
-#bottom {
-    width: 1fr;
-    height: 1fr;
-    align: center middle;
-}
-
-#status {
-    width: 1fr;
-    height: 5;
-    align: center middle;
-}
-
-#bottoms {
-    width: 1fr;
-    height: 3;
-    background: $defaults;
-    align: center middle;
-}
-
-#label-0 {
-    width: 70;
-    height: 1fr;
-    text-align: center;
-    background: $defaults;
-}
-
-
-#first {
-  border: hkey $brand;
-    text-style: bold;
-    width: 10;
-    background: transparent;
-}
-
-#second {
-  border: hkey white;
-    width: auto;
-    background: $defaults;
-    padding: 0 0;
-}
-
-
-#fourth {
-  border: hkey white;
-    width: 9;
-    background: $defaults;
-    text-align: center;
-    padding-left: 0;
-}
-
-#third {
-  border: hkey white;
-    width: 30;
-    background: $defaults;
-    text-align: center;
-    padding-left: 0;
-}
-
-#first > .input--placeholder {
-    color: $text;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-#cont-switch-0 {
-    width: 22;
-    height: 1fr; }
-
-DirectoryTree {
-offset: 0 0;
-     background: $defaults; }
-
-DirectoryTree > .tree--cursor {
-    background: $brand;
-     padding: 0;}
-DirectoryTree > .tree--guides {
-    padding: 0;}
-DirectoryTree > .tree--guides-hover {
-    padding: 0;}
-DirectoryTree > .tree--guides-selected {
-    padding: 0;}
-DirectoryTree > .tree--highlight {
-    padding: 0; }
-DirectoryTree > .tree--highlight-line {
-    padding: 0;}
-DirectoryTree > .tree--label {
-    padding: 0;}
-
-
-
-
-
-#cont-switch-1 {
-    background: $defaults;
-    max-width: 90;
-    width: 1fr;
-    height: 1fr; }
-
-DataTable {
-    background: $defaults; }
+MainTab {
+    max-width: 112;
+    margin-bottom: 1;
+    align: center bottom; }
 
 DataTable,
-#dir-tree-0,
-#dir-tree-1,
- #dir-tree-2 {
-    scrollbar-visibility: hidden;
-}
-
-DataTable > .datatable--cursor,
-DataTable > .datatable--header-cursor,
-DataTable > .datatable--fixed-cursor {
-    background: $brand;
-    text-align: center;
-}
-
-DataTable > .datatable--hover,
-DataTable > .datatable--header-hover {
-    background: $brand;
-}
-
-DataTable > .datatable--header,
- DataTable > .datatable--fixed {
-    background: $defaults;
-}
-
-DataTable > .datatable--even-row {
-    background: $default-0;
-}
-
-DataTable > .datatable--odd-row {
-    background: $defaults;
-}
-
-Input {
+FileTree {
     border: hkey white;
-}
-
+    scrollbar-visibility: hidden; }
 
 Button {
-    margin: 0;
-    padding: 0;
     min-width: 0;
-    text-style: none;/*
-    border-top: heavy white;
-    border-bottom: solid white; */
-    border: hkey white;
-}
+    text-style: none;
+    border: hkey white; }
 
-#digits-0 {
-    width: auto;
+Input {
+    padding: 0;
+    border: hkey white; }
+
+Digits {
+    layer: overlay;
+    dock: left;
+    color: white; }
+
+Label {
+    width: 70;
+    text-align: center; }
+
+#layer-0 {
     height: 1fr;
-}
+    align: center bottom; }
 
+#layer-1 {
+    height: 12;
+    align: center middle; }
 
+#layer-2 {
+    height: 5;
+    align: center middle; }
 
+#layer-3 {
+    height: 3;
+    align: center top; }
 
-DirectoryTree,
-DataTable {
-    border: hkey white;
-}
+#cont-switch-0 {
+    width: 22; }
 
+#cont-switch-1 {
+    width: 1fr;
+    max-width: 90; }
+
+#input-1 {
+    width: 1fr;
+    max-width: 30; }
+
+#input-0 {
+    width: 9; }
+
+Input:focus,
 Button:focus,
-DirectoryTree:focus,
-DataTable:focus {
-    background: $defaults;
-    border: hkey $brand;
-}
+DataTable:focus,
+DirectoryTree:focus {
+    background: transparent;
+    border: hkey $primary; }
 
-Horizontal,
-DirectoryTree,
-ContentSwitcher {
-    layer: base;
-}
+DataTable > .datatable--fixed {
+    background: transparent; }
 
-Digits {
-layer: overlay;
-dock: left;
-}
+DataTable > .datatable--odd-row {
+    background: transparent; }
 
-
-Digits {
-    color: white;
-}
-
-
-Toast.-information {
-    /* Styling here. */
-}
-
-Toast.-warning {
-    /* Styling here. */
-}
-
-Toast.-error {
-    /* Styling here. */
-}
-
-
-
+DataTable > .datatable--even-row {
+    background: $surface-lighten-1; }

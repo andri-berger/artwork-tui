@@ -1,9 +1,12 @@
 from playwright.async_api import async_playwright
 from textual.app import App, ComposeResult
-from .script import (make_layer,
-make_layers, make_new, make_news, make_news_0)
-from .model import ImageTab
-from .builds import TableApp
+from .script import (script_f0,
+                     script_f1,
+                     script_f4,
+                     script_f2,
+                     script_f3)
+from .model import MainTab
+from .builds import MainApp
 from pathlib import Path
 import http.server
 import threading
@@ -11,109 +14,87 @@ import functools
 import json
 import time
 
-
-PATH_FILE = Path(__file__).parent
-DIR = "http://localhost:9000/build.html"
-STATIC_DIR = PATH_FILE.parent / "Fontend"
-STATIC_FOR = PATH_FILE.parent / "Formula"
-CSS_PATHS = STATIC_DIR / "style.tcss"
-CONFIG = STATIC_DIR / "build.json"
-CONFIGS = STATIC_FOR / "za.json"
-
+PORT = Path(__file__).parent
+PORT_0 = PORT.parent / "Fontend"
+PORT_1 = PORT.parent / "Formula"
+PATH_1 = PORT_0 / "style.tcss"
+PATH_2 = PORT_0 / "build.json"
+PATH_3 = PORT_1 / "za.json"
+PATH = ("http://localhost:"
+       "9000/build.html")
 
 class CLIApp(App):
+    AUTO_FOCUS = None
     COMMAND_PALETTE_DISPLAY = None
-    NOTIFICATION_TIMEOUT = 2
-    CSS_PATH = CSS_PATHS
-    AUTO_FOCUS = '*'
+    ENABLE_COMMAND_PALETTE = False
+    NOTIFICATION_TIMEOUT = 10
+    CSS_PATH = PATH_1
 
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__()
-        self.helpful = {}
-        self.page = None
-        self._pw = None
-        self._server = None
+        self.vertical = 1
+        self.horizontal = 0
+        self.clipboards = ""
+        self.textfield = ""
+        self.textfields = None
+        self.playwright = None
         self.store = json.loads(
-            CONFIG.read_text())
+            PATH_2.read_text())
         self.stores = json.loads(
-            CONFIGS.read_text()) \
-            if CONFIGS.exists() else {}
+            PATH_3.read_text()) \
+            if PATH_3.exists() else {}
 
-        self.store["1-4"] = make_new("Image")
-        self.store["1-5"] = make_new("Text")
-        self.store["2-4"] = make_news_0("Image")
-        self.store["2-5"] = make_news_0("Text")
-        self.store["3-4"] = make_news("Image")
-        self.store["3-5"] = make_news("Text")
-
-        self.store["00"] = [
-            make_layer("1"),
-            make_layer("2"),
-            make_layer("-3"),
-            make_layer("808080"),
-            make_layer("ffffff"),
-            make_layers("ffffff"),
-            make_layers("808080"),
-            make_layers("0"),
-            make_layers("1"),
-            make_layers("2")]
-
-
-    def compose(self) -> ComposeResult:
-        yield TableApp()
+        f0 = self.store or {}
+        f0["1-4"] = script_f4(0)
+        f0["1-5"] = script_f4(1)
+        f0["2-4"] = script_f2()
+        f0["2-5"] = script_f3()
+        f0["00"] = [
+            script_f0("1"),
+            script_f0("2"),
+            script_f0("-3"),
+            script_f0("808080"),
+            script_f0("ffffff"),
+            script_f1("ffffff"),
+            script_f1("808080"),
+            script_f1("0"),
+            script_f1("1"),
+            script_f1("2")]
 
     async def on_mount(self) -> None:
-        self.e_images = self.query_one(ImageTab)
-        dt = self.query_one("#data-table-0")
-        self.set_focus(dt)
+        f0 = self.query_one(MainTab)
+        f1 = ("localhost", 9000)
+        f2 = functools.partial(
+            http.server.
+            SimpleHTTPRequestHandler,
+            directory=str(PORT_0))
+        f3 = (http.server.
+              HTTPServer(f1, f2))
+        threading.Thread(
+            target=f3.serve_forever,
+            daemon=True).start()
 
-        handler = functools.partial(
-            http.server.SimpleHTTPRequestHandler,
-            directory=str(STATIC_DIR))
-        self._server = http.server.HTTPServer(
-            ("localhost", 9000), handler)
-        thread = threading.Thread(
-            target=self._server.serve_forever,
-            daemon=True)
-        thread.start()
+        f4 = await async_playwright().start()
+        f5 = await f4.chromium.launch(headless=True)
+        self.playwright = await f5.new_page()
+        await self.playwright.goto(PATH)
+        f6 = self.stores.get("0")
 
-        self._pw = await async_playwright().start()
-        browser = await (self._pw.chromium.launch(
-            headless=True
-        ))
-        self.page = await browser.new_page()
-        await self.page.goto(DIR)
-
-        if self.stores == {}:
-            self.notify("No Data")
-            f1 = self.stores
-            now = int(time.time())
-            ss = f1.setdefault('0', {})
-            st = ss.setdefault('39', {})
+        if f6 is None:
+            self.notify("No")
+            f10 = self.stores
+            f11 = int(time.time())
+            f12 = f10.setdefault('0', {})
+            f13 = f12.setdefault('39', {})
             for k in ['0', '1', '2']:
-                    st[k] = now
+                    f13[k] = f11
 
-        elif self.stores != {}:
-            self.notify("Data Loaded")
-            l0 = {**self.stores}
-            l0['_'] = [2,1 if l0 else 2]
-            self.e_images.config = l0
+        elif f6 is not None:
+            self.notify("Yes")
+            f14 = {**self.stores}
+            f15 = 1 if f14 else 2
+            f14['_'] = [2,f15]
+            f0.config = f14
 
-        # clean sweep png/otf in module/modules
-        # for f in ASSETS_DIR.glob("*.png"):
-        #     if f.name != "model.png"\
-        #             and f.name != f10.name:
-        #         f.unlink()
-        #
-        # for f in ASSETS_DIR.glob("*.otf"):
-        #     if f.name != "model.otf"\
-        #             and f.name != f10.name:
-        #         f.unlink()
-
-
-    async def on_unmount(self) -> None:
-        if self._server:
-            self._server.shutdown()
-        if self._pw:
-        # if self.page:
-            await self._pw.stop()
+    def compose(self) -> ComposeResult:
+        yield MainApp()

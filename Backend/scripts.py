@@ -11,14 +11,14 @@ def scripts_f0(h, h0, h1) -> float:
     return f5
 
 def scripts_f1(h, h0) -> bytes:
-    f0 = h0['set']
-    f1 = h0['set0']
-    f2 = h0['set1']
-    f3 = h0['set2']
+    f0 = max(h['h'],1)
+    f1 = h['h0'] or 0
+    f2 = h['h1'] or 0
+    f3 = h['h2'] or 0
 
     f4 = cv2.imdecode(
         np.frombuffer(
-            h, dtype=np.uint8),
+            h0, dtype=np.uint8),
         cv2.IMREAD_UNCHANGED)
 
     f5 = f4[:, :, 3]
@@ -28,9 +28,6 @@ def scripts_f1(h, h0) -> bytes:
     f11, f12 = f8.min(), f8.max()
     f13 = f6[f9:f10+1, f11:f12+1]
     f14 = None
-
-    if f0 == 0:
-        return
 
     if f0 == 1:
         f14 = cv2.bitwise_not(f13)

@@ -3,223 +3,213 @@ from textual.reactive import reactive
 from textual_image.widget import Image
 from textual.widgets import DataTable
 from textual.widget import Widget
-from .script import tui_to_web, web_to_tui
+from textual.binding import Binding
+from .script import script_f9, script_f8
 from pathlib import Path
 from textual import on
-from .scripts import opencv
-from .script import testlauf
+from .scripts import scripts_f1
+from .script import script_f7
 from textual.app import ComposeResult
-from .models import on_message
 
 import shutil
 import base64
 import time
 import json
-import cv2
 
+PORT = Path.cwd()
+PORT_0 = Path(__file__)
+PORT_1 = Path(__file__).parent
+PORT_2 = PORT_1.parent / "Fontend"
+PORT_3 = PORT_1.parent / "Formula"
+PORT_4 = PORT_2 / "modules"
+PORT_5 = PORT_2 / "module"
+PATH_5 = PORT_3 / "za.png"
+PATH_6 = PORT_3 / "za.json"
+PATH_7 = PORT_2 / "model.png"
+PATH = ("async (store) => "
+        "window.h11(store)")
 
-CWD = Path.cwd()
-APP = Path(__file__)
-APP_DIR = Path(__file__).parent
-ASSETS_FOR = APP_DIR.parent / "Formula"
-ASSETS_DIR = APP_DIR.parent / "Fontend"
-TT = "async (store) => window.h11(store)"
+# right order fontend / formula
+# f[4-1] convert indices to key-based (more robust)
+# increase robustness swalling store.json (onmount)
+# decide on anfangs-focus (on startup/mount)
+# sticky position grid-cell and focused app
+# enter on property (not overwrite) => protected zones
+# filterx-tui highlighed/shift_tab rüber nach models.json
+# filterx-tui click assignment to shift_tab
 
-ASSETS_MOD = ASSETS_DIR / "module"
-ASSETS_MODS = ASSETS_DIR / "modules"
-
-ASSETS = ASSETS_FOR  / "za.png"
-CONFIGS = ASSETS_FOR / "za.json"
-TEST = ASSETS_DIR / "model.png"
-
-class ImageTab(Widget):
-    config: reactive[dict] = reactive(dict, init=False)
+class MainTab(Widget):
+    config: reactive[dict] = reactive(
+        dict, init=False)
 
     def compose(self) -> ComposeResult:
-        yield Image(TEST)
+        yield Image(PATH_7)
 
     def on_mount(self) -> None:
-        self.query_one(Image).styles.width = "auto"
-        self.query_one(Image).styles.height = "100%"
+        f0 = self.query_one(Image)
+        f0.styles.width = "auto"
+        f0.styles.height = "100%"
 
-    async def watch_config(self, value: dict):
+    async def watch_config(self, path: dict) -> None:
         f0 = self.app.query_one("#cont-switch-1")
-        f1 = int(f0.current.split("-")[-1])
-        f2 = self.app.query(DataTable)
-        f3 = self.app.stores
-        f4 = self.app.store
-        f5 = self.app.page
-        f6,f7 = value.pop("_", [])
-        f8 = tui_to_web(value,f4) or {}
-        f9 = [9, 100, 301, 300, 12, 13]
-        f10 = f8.get('0', {})
-        self.query_one(
-            Image).remove()
-        # self.notify(
-        #     f"{f7} - {f8}")
-        self.notify(
-            f"!!! {value}")
+        h2 = int(f0.current.split("-")[-1])
+        f2 = [9, 100, 301, 300, 12, 13]
+        f3 = self.app.query(DataTable)
+        f4 = self.app.playwright
+        f5 = self.app.stores
+        f6 = self.app.store
 
-        if f6 >= 1:
+        f7, f8 = path.pop("_", [])
+        f9 = script_f9(path, f6)
+        if self.query_one(Image):
+            self.query_one(
+                Image).remove()
+
+        if f7 >= 1:
+            f10 = f6[f"1-{h2}"]
             with self.app.batch_update():
-                f2[f1].clear(columns=False)
-                f07 = self.app.store[f"1-{f1}"]
-                for row_i in range(len(f07)):
-                    row = [f07[row_i][0]]
-                    row.extend([""]*f9[f1])
-                    f2[f1].add_row(*row)
+                f3[h2].clear(columns=False)
+                for h1 in range(len(f10)):
+                    f29 = [f10[h1][0]] or []
+                    f29.extend([""]*f2[h2])
+                    f3[h2].add_row(*f29)
 
-        if f7 >= 0:
+        if f8 >= 0:
             f11 = await (
-                f5.evaluate(TT,[f7,f8]))
-            b64 = f11[0].split(',')[1]
-            f12 = base64.b64decode(b64)
+                f4.evaluate(PATH, [f8, f9]))
+            f12 = f11[0].split(',')[1]
+            f13 = base64.b64decode(f12)
+            f14 = f9.get('0', {})
+            f15 = f14.get('80',0)
 
-            if f10.get('80',0) in range(1,5):
-                f20 = { "set": f10.get('80',0),
-                    "set0": f10.get('81',0),
-                    "set1": f10.get('82',0),
-                    "set2": f10.get('83',0),
-                    "set3": f10.get('83',0)}
-                f12 = opencv(f12,f20)
+            if f15 in range(1,5):
+                f16 = {"h": f15,
+                    "h0": f14.get('81',0),
+                    "h1": f14.get('82',0),
+                    "h2": f14.get('83',0)}
+                f13 = scripts_f1(f16, f13)
 
-        if f7 == 4:
-            f25 = int(time.time())
-            f26 = CWD / f"{f25}.png"
-            with open(f26, "wb") as f:
-                f.write(f12)
+        if f8 == 4:
+            f17 = int(time.time())
+            f18 = PORT / f"{f17}.png"
+            with open(f18, "wb") as f:
+                f.write(f13)
 
-        if f7 <= 3:
-            with open(ASSETS, "wb") as f:
-                f.write(f12)
-            await self.mount(Image(ASSETS))
-            self.notify(f"{self.size}")
-            testlauf(self,ASSETS,Image,cv2)
+        if f8 <= 3:
+            with open(PATH_5, "wb") as f:
+                f.write(f13)
+            await self.mount(
+                Image(PATH_5))
+            script_f7(self,
+                      PATH_5,
+                      Image)
 
-        if f7 == 2:
-            here = web_to_tui(f11[1], f4)
-            f3 = {**f3, **here}
+        if f8 == 2:
+            f19 = script_f8(
+                f11[1], f6)
+            f5 = {**f5, **f19}
 
-        if f6 >= 1:
-            ss = [0,6] if f6 == 2 else [1,4]
+        if f7 >= 1:
+            f20 = f7 == 2
+            f21 = (0,6) if f20 else (1,4)
             with self.app.batch_update():
-                for i in range(*ss):
-                    uv = int(i) == 3
-                    st = 2 if uv else i
-                    f7 = f4[f"1-{st}"]
-                    test = f3.get(str(i),{})
-                    if test is not None:
-                        f2[i].clear(columns=False)
-                        cols = [str(col_i) for
-                                col_i in range(f9[i])]
-                        for row_i in range(len(f7)):
-                            row_key = str(row_i)
-                            yes = test.get(row_key)
-                            row = [f7[row_i][0]]
-                            if yes is not None:
-                                for f1 in cols:
-                                    row.append(
-                                    str(yes.get(f1,"")))
-                            f2[i].add_row(*row)
+                for h in range(*f21):
+                    f22 = int(h) == 3
+                    f23 = 2 if f22 else h
+                    f24 = f6[f"1-{f23}"]
+                    f25 = f5.get(str(h),{})
+                    if f25 is not None:
+                        f3[h].clear(
+                            columns=False)
+                        f26 = [str(h0) for
+                                h0 in range(f2[h])]
+                        for h1 in range(len(f24)):
+                            f28 = f25.get(str(h1))
+                            f29 = [f24[h1][0]]
+                            if f28 is not None:
+                                for h2 in f26:
+                                    f29.append(
+                                    str(f28.get(
+                                        h2,"")))
+                            f3[h].add_row(*f29)
 
-        CONFIGS.write_text(
-        json.dumps(f3))
+        PATH_6.write_text(
+        json.dumps(f5))
 
     def render(self):
         return ""
 
-
-class FileTypeTree(DirectoryTree):
+class FileTree(DirectoryTree):
     show_root = False
+    BINDINGS = [
+        Binding("space",
+        "select_cursor",
+        "Select")]
 
-    def __init__(self, path, file_type: str, **kwargs):
-        self.file_type = file_type
+    def __init__(self, path,
+                 file_type, **kwargs) -> None:
         super().__init__(path, **kwargs)
+        self.file_type = file_type
 
-    def filter_paths(self, paths):
-        return [p for p in paths if not p.name.startswith(".") and self._is_allowed(p)]
-
-    def _is_allowed(self, p):
-        if p.is_dir():
-            return True  # always show dirs for navigation
-
-        match self.file_type:
-            case "image":
-                return p.suffix.lower() == ".png"
-            case "font":
-                return p.suffix.lower() == ".otf"
-            case "json":
-                return p.suffix.lower() == ".json"
-        return False
-
+    def filter_paths(self, path) -> list:
+        f0 = self.file_type
+        return [h for h in path
+                if (h.is_dir()
+                or f0 == h.suffix.lower())
+                and not h.name.startswith(".")]
 
     @on(DirectoryTree.FileSelected)
-    async def selected(self, event: DirectoryTree.FileSelected) -> None:
+    def selected(self, event: DirectoryTree.FileSelected) -> None:
         f0 = self.app.query_one("#cont-switch-1")
         f1 = self.app.query_one(f"#{f0.current}")
-        f2 = f0.current.split("-")[-1]
-        f3 = self.app.stores
+        f2 = self.app.query_one(MainTab)
+        f3 = f0.current.split("-")[-1]
+        f4 = f1.cursor_coordinate
         f5 = event.control.id
-        f6 = f5.split("-")[-1]
-        f7 = ['4','5'][int(f6)-1]
-        f8 = ["module","modules"]
-        f08 = ['png','otf']
-        f09 = f08[int(f6)-1]
-        f9 = f8[int(f6)-1]
-        f10 = event.path
+        f6 = self.app.stores
+        f7 = f5.split("-")[-1]
+        f8 = ['4','5'][int(f7)-1]
+        f9 = ["module","modules"]
+        f10 = ['png','otf']
+        f11 = event.path
 
-        if not f10.is_file():
-            return
+        if int(f7) >= 1:
+            f12 = f4.column
+            f13 = str(f4.row)
+            f14 = f10[int(f7)-1]
+            f15 = f9[int(f7)-1]
+            f16 = PORT_2 / f15
+            f17 = f16 / f11.name
 
-        self.notify(f"now {f5}")
-        if f5 == "dir-tree-0":
-            shutil.copy2(f10, CONFIGS)
-            f13 = f10.read_text()
-            f14 = json.loads(f13)
-            f14.update({'_': [2,1]})
-            self.app.stores = f14
-            self.e_images.config = f14
-
-        elif (f5 == "dir-tree-1"
-              or f5 == "dir-tree-2"):
-            f4 = f1.cursor_coordinate
-            f15 = ASSETS_DIR / f9
-            f16 = f15 / f10.name
-            f18 = str(f4.row)
-            f17 = f4.column
-
-            self.notify("aa")
-            if (int(f2) in [4, 5]
-                    and f17 == 12):
-                f19 = f3.setdefault(f7, {})
-                f20 = f19.setdefault(f18, {})
-                f60 = f10.name.split(".")[0]
-                f20[str(f17-1)] = f60
+            if (int(f3) >= 4
+                    and f12 == 12):
+                f18 = f6.setdefault(f8, {})
+                f19 = f18.setdefault(f13, {})
+                f20 = f11.name.split(".")
+                f19[str(f12-1)] = f20[0]
                 f21 = f1.get_cell_at(f4)
-                f80 = f"{str(f21)}.{f09}"
-                f22 = f15 / f80
-                self.notify(f"now {f22}")
-                if (f21 and f22.is_file()
-                        and f22.exists()):
-                    f22.unlink()
+                f22 = f"{str(f21)}.{f14}"
+                f23 = f16 / f22 / ""
+                if f23.exists():
+                    f23.unlink()
                 f1.update_cell_at(
-                    f4,f60)
-            else:
-                f23 = f3.setdefault('0', {})
-                f24 = f23.setdefault('40', {})
-                f25 = f24[int(f6)-1] or ""
-                f24[int(f6)-1] = f10.name
-                f26 = f15 / f25
-                if f26.exists():
-                    f26.unlink()
+                    f4,f20[0])
 
-            shutil.copy2(f10, f16)
-            f27 = {**self.app.stores}
-            f27.update({'_':  [0,1]})
-            self.app.query_one(ImageTab).config = f27
-            # self.app.e_images.config = f27
-            # on_message(self,
-            #           f10.name,
-            #           "f0")
+            elif int(f3) <= 3 or f12 != 12:
+                f24 = f6.setdefault('0', {})
+                f25 = f24.setdefault('40', {})
+                f25[str(int(f7)+2)] = f11.name
+                if f17.exists():
+                    f17.unlink()
 
+            shutil.copy2(f11, f17)
+            f26 = {**self.app.stores}
+            f26.update({'_':  [0,1]})
+            f2.config = f26
 
+        elif int(f7) == 0:
+            f27 = f11.read_text()
+            f28 = json.loads(f27)
+            f28.update({'_': [2,1]})
+            self.app.stores = f28
+            f2.config = f28

@@ -1,99 +1,77 @@
 from .models import (
-    on_cell_highlighted_,
-    on_key_, on_pressed,
-    on_submitted)
+    on_highlighted,
+    on_key, on_pressed,
+    on_submitted, on_shift_tab)
 from textual.widgets import (
-    DataTable, Input, Button,
+    DataTable, Input,
+    Button, DirectoryTree,
     ContentSwitcher, Digits, Label)
-
-from .model import FileTypeTree, ImageTab
+from .model import FileTree, MainTab
 from textual.containers import Horizontal
 from textual.app import ComposeResult
 from textual.widget import Widget
-from textual.events import Key
 from textual import events, on
-from itertools import cycle
-cursors = cycle(["cell"])
 
-
-class NoSelectInput(Input):
-    def on_focus(self):
-        self.cursor_position = len(self.value)
-
-class TableApp(Widget):
+class MainApp(Widget):
     def __init__(self) -> None:
         super().__init__()
-        self.coord = None
-        self._cursor = None
-        self._clipboard = None
-        self.full_IDs = self.app.store["4-0"]
-        self.turi = ['activated', 'deactivated']
-        self.turis = ['visible', 'hidden']
-        self.lister = [9, 100, 301, 300, 12, 13]
-        self.listers = [28, 22, 18, 18, 14, 14]
-        self.check_only = [8,8,8,7,7,7]
-        self.check_only0 = [8,8,8,8,8,8,8,8,8,8,8,30,60]
 
     def on_mount(self) -> None:
-        self.f_left = self.query_one("#cont-switch-0")      # decentralize !!
-        self.c_cont = self.query_one("#cont-switch-0")      # decentralize !!
-        self.f_right = self.query_one("#cont-switch-1")     # decentralize !!
-        self.d_digits = self.query_one("#digits-0")         # decentralize !!
-        self.c_digits = self.query_one("#digits-0")         # decentralize !!
-        self.e_fourth = self.query_one("#fourth")           # decentralize !!
-        self.e_third = self.query_one("#third")             # decentralize !!
-        self.label = self.query_one("#label-0")             # decentralize !!
-        self.e_images = self.query_one(ImageTab)
-        a_tables = self.query(DataTable)
+        f4 = [8,8,8,8,8,8,8,8,8,8,8,30,60]
+        f1 = [9,100,301,300,12,13]
+        f2 = [28,22,18,18,14,14]
+        f3 = [8,8,8,7,7,7]
+        f5 = self.app.store
+        f0 = self.query(
+            DataTable)
 
-        for i, table in enumerate(a_tables):
-            i0 = '2' if i == 3 else i
-            rows = self.app.store[f"1-{i0}"]
-            checks = self.check_only[i]
-            table.cursor_type = "cell"
-            table.zebra_stripes = True
-            table.fixed_columns = 1
-            table.fixed_rows = 0
-            table.add_column(
-                "", width=self.listers[i])
-            for _ in range(self.lister[i]):
-                if i <= 3:
-                    table.add_column(
+        for h, h0 in enumerate(f0):
+            f6 = '2' if h == 3 else h
+            f7 = f5[f"1-{f6}"]
+            h0.cursor_type = "cell"
+            h0.zebra_stripes = True
+            h0.fixed_columns = 1
+            h0.fixed_rows = 0
+            h0.add_column(
+                "", width=f2[h])
+            for _ in range(f1[h]):
+                if h <= 3:
+                    h0.add_column(
                         "",
-                        width=checks)
-                elif i >= 4:
-                    checks0 = self.check_only0[_]
-                    table.add_column(
+                        width=f3[h])
+                elif h >= 4:
+                    checks0 = f4[_]
+                    h0.add_column(
                         "",
                         width=checks0)
-            table.add_rows(rows[0:])
+            h0.add_rows(f7[0:])
 
     def compose(self) -> ComposeResult:
-        with Horizontal(id="top"):
-            yield ImageTab(name="")
-            yield Digits("F00",
+        with Horizontal(id="layer-0"):
+            yield MainTab(name="")
+            yield Digits("A00",
                          id="digits-0")
 
-        with Horizontal(id="bottom"):
+        with Horizontal(id="layer-1"):
             with ContentSwitcher(
-                    initial="dir-tree-0",
-                    id="cont-switch-0"):
-                yield FileTypeTree(
+                    id="cont-switch-0",
+                    initial="dir-tree-0"):
+                yield FileTree(
                     "/",
-                    file_type="json",
+                    file_type=".json",
                     id="dir-tree-0")
-                yield FileTypeTree(
+                yield FileTree(
                     "/",
-                    file_type="image",
+                    file_type=".png",
                     id="dir-tree-1")
-                yield FileTypeTree(
+                yield FileTree(
                     "/",
-                    file_type="font",
+                    file_type=".otf",
                     id="dir-tree-2")
 
             with ContentSwitcher(
-                    initial="data-table-0",
-                    id="cont-switch-1"):
+                    id="cont-switch-1",
+                    initial="data-table-0"):
                 yield DataTable(
                     show_header=False,
                     id="data-table-0")
@@ -113,66 +91,88 @@ class TableApp(Widget):
                     show_header=False,
                     id="data-table-5")
 
-        with Horizontal(id="status"):
-            yield Button("X", id="button-6")
-            yield Button("AS", id="button-0")
-            yield Button("BS", id="button-1")
-            yield Button("CS", id="button-2")
-            yield Button("CREATE", id="button-3")
-            yield Button("EXPORT", id="button-4")
-            yield Input(id="fourth", disabled=False)
-            yield Input(id="third", disabled=False)
+        with Horizontal(id="layer-2"):
+            yield Button("X", id="button-0")
+            yield Button("AS", id="button-1")
+            yield Button("BSS", id="button-2")
+            yield Button("CSS", id="button-3")
+            yield Button("CREATE", id="button-4")
+            yield Button("EXPORT", id="button-5")
+            yield Input(disabled=False, id="input-0")
+            yield Input(disabled=False, id="input-1")
 
-        with Horizontal(id="bottoms"):
+        with Horizontal(id="layer-3"):
             yield Label(id="label-0")
 
-    def get_all_data(self, table: DataTable):
-        skip_rows = 0
-        skip_cols = 1
+    def get_data(self, h0) -> dict:
+        f0 = self.app.horizontal
+        f1 = self.app.vertical
 
-        def coerce(v):
-            if not isinstance(v, str):  # only convert actual strings
+        def data(v) -> int | float | str:
+            if not isinstance(v, str):
                 return v
             for cast in (int, float):
                 try:
                     return cast(v)
-                except (ValueError, TypeError):
+                except (ValueError,
+                        TypeError):
                     pass
             return v
 
         return {
             str(row_i): d
-            for row_i, r in enumerate(range(skip_rows, len(table.rows)))
+            for row_i, r in enumerate(
+                range(f0, len(h0.rows)))
             if (d := {
-                str(i): coerce(v)
-                for i, v in enumerate(table.get_row_at(r)[skip_cols:])
-                if v is not None and v != ''
-            })
-        }
+                str(i): data(v)
+                for i, v in enumerate(
+                    h0.get_row_at(r)[f1:])
+                if v is not None and v != ''})}
 
-    def _position_digits(self):
-        x_offset = self.c_cont.region.x - self.c_digits.region.x
-        y_offset = self.c_cont.region.y - self.c_digits.region.y - 3
-        self.c_digits.styles.offset = (x_offset, y_offset)
+    def position_digits(self) -> None:
+        f0 = self.query_one("#cont-switch-0")
+        f1 = self.query_one("#digits-0")
+        f2 = f0.region.x - f1.region.x
+        f3 = f0.region.y - f1.region.y
+        f1.styles.offset = (f2, f3 - 3)
 
     @on(DataTable.CellHighlighted)
-    def highlighted(self, event: DataTable.CellHighlighted) -> None:
-        on_cell_highlighted_(self, event.coordinate)
+    def highlighted(self, event: DataTable.CellHighlighted):
+        on_highlighted(self, event.coordinate)
 
     @on(Input.Submitted)
-    def submitted(self, event: Input.Submitted) -> None:
+    def submitted(self, event: Input.Submitted):
         on_submitted(self,event)
 
     @on(Button.Pressed)
-    def pressed(self, event: Button.Pressed) -> None:
+    def pressed(self, event: Button.Pressed):
         on_pressed(self, event)
 
-    @on(events.Resize)
-    def on_resize(self, event: events.Resize) -> None:
-        self.d_digits.styles.offset = (0, 0)
-        self.call_after_refresh(
-            self._position_digits)
+    @on(events.Key)
+    async def key(self, event: events.Key):
+        await on_key(self, event)
 
-    @on(Key)
-    async def key(self, event) -> None:
-        await on_key_(self, event)
+    @on(events.Resize)
+    def resized(self):
+        f0 = self.query_one(
+            "#digits-0")
+        f0.styles.offset = (0, 0)
+        self.call_after_refresh(
+            self.position_digits)
+
+    @on(events.Click)
+    def clicked(self):
+        f0 = self.app
+        f1 = f0.focused
+        f2 = f0.textfields
+        f3 = DirectoryTree
+        f4 = DataTable
+        if f2 is not None:
+            f0.textfields.stop()
+            f0.textfields = None
+        f5 = isinstance(f1, f3)
+        f6 = isinstance(f1, f4)
+        if f5 or f6:
+            on_shift_tab(self,
+                     None,
+                     0)
