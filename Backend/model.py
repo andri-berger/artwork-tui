@@ -4,12 +4,12 @@ from textual_image.widget import Image
 from textual.widgets import DataTable
 from textual.widget import Widget
 from textual.binding import Binding
+from textual.app import ComposeResult
 from .script import script_f9, script_f8
-from pathlib import Path
-from textual import on
 from .scripts import scripts_f1
 from .script import script_f7
-from textual.app import ComposeResult
+from pathlib import Path
+from textual import on
 
 import shutil
 import base64
