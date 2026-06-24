@@ -1,3 +1,5 @@
+Fontend/modules/*.json
+Fontend/module/*.png
 Formula/*.png
 Formula/*.json
 __pycache__/
