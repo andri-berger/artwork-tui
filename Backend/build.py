@@ -19,7 +19,7 @@ PORT_0 = PORT.parent / "Fontend"
 PORT_1 = PORT.parent / "Formula"
 PATH_1 = PORT_0 / "style.tcss"
 PATH_2 = PORT_0 / "build.json"
-PATH_3 = PORT_1 / "za.json"
+PATH_3 = PORT_1 / "var.json"
 PATH = ("http://localhost:"
        "9000/build.html")
 

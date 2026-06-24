@@ -63,8 +63,7 @@
 # typeset-tui – Font, image and layout composition engine for the terminal
 # castbox – Terminal-native artwork caster with randomized generation and manual layout control
 
-# apngasm output.apng frame1.png frame2.png frame3.png -d 100  # 100ms per frame
-# apngasm output.apng frame1.png 1/2 frame2.png 1/4 frame3.png 1/1
+# apngasm output.apng frames/*.png -d 100  # 100ms per frame
 # apngasm output.apng frames/*.png -d 10  # 10ms per frame
 # apngasm output.apng frame*.png 1 10
 

@@ -9,7 +9,7 @@ import json
 PORT = Path.cwd()
 PORT_0 = Path(__file__).parent
 PORT_1 = PORT_0.parent / "Formula"
-PATH_1 = PORT_1 / "za.json"
+PATH_1 = PORT_1 / "var.json"
 
 def on_submitted(self, event) -> None:
     f0 = self.query_one("#cont-switch-1")
