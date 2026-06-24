@@ -136,16 +136,16 @@ def on_highlighted(self, event) -> None:
                 else f10["00"][f18[2]][f13]
 
             f2.update(("", [""] +
-                       [f"{f18[0][0]}{n:02d}"
-                        for n in range(100)],
+                       [f"{f18[0][0]}{h:02d}"
+                        for h in range(100)],
                        ["","00"] +
-                       [f"{letter}{n:02d}"
-                        for letter in "ABC"
-                        for n in range(100)],
+                       [f"{h0}{h1:02d}"
+                        for h0 in "ABC"
+                        for h1 in range(100)],
                        [""] +
-                       [f"{letter}{n:02d}"
-                        for letter in "DEF"
-                        for n in range(100)])
+                       [f"{h2}{h3:02d}"
+                        for h2 in "DEF"
+                        for h3 in range(100)])
                       [int(f6)][f13])
 
     elif int(f6) in (0,4,5):

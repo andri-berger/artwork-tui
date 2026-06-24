@@ -105,30 +105,30 @@ class MainApp(Widget):
         with Horizontal(id="layer-3"):
             yield Label(id="label-0")
 
-    def get_data(self, h0) -> dict:
+    def get_data(self, event) -> dict:
         f0 = self.app.horizontal
         f1 = self.app.vertical
 
-        def data(v) -> int | float | str:
-            if not isinstance(v, str):
-                return v
+        def data(h) -> int | float | str:
+            if not isinstance(h, str):
+                return h
             for cast in (int, float):
                 try:
-                    return cast(v)
+                    return cast(h)
                 except (ValueError,
                         TypeError):
                     pass
-            return v
+            return h
 
         return {
-            str(row_i): d
-            for row_i, r in enumerate(
-                range(f0, len(h0.rows)))
+            str(h0): d
+            for h0, h1 in enumerate(
+                range(f0, len(event.rows)))
             if (d := {
-                str(i): data(v)
-                for i, v in enumerate(
-                    h0.get_row_at(r)[f1:])
-                if v is not None and v != ''})}
+                str(h2): data(h3)
+                for h2, h3 in enumerate(
+                    event.get_row_at(h1)[f1:])
+                if h3 is not None and h3 != ''})}
 
     def position_digits(self) -> None:
         f0 = self.query_one("#cont-switch-0")
