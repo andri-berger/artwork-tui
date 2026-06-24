@@ -990,12 +990,11 @@
   "4-1": [
     "JSON FILE PICKER. Choose your base project file.",
     "PNG FILE PICKER. Choose your base image file for canvas",
-    "FONT OTF FILE PICKER. Chose your base font file for canvas",
-    "","","","","","",
+    "FONT OTF FILE PICKER. Chose your base font file for canvas","","","","","","",
+    "CLEAR ALL DATA IN PROJECT JSON. Create a fresh clean state and start from scratch.",
     "SET THE SEED FOR ALL 100 A-ELEMENTS. Reproduce the result on canvas faithfully on subsequent Regenerations.",
     "SET THE SEED FOR ALL 100 B-ELEMENTS. Reproduce the result on canvas faithfully on subsequent Regenerations.",
     "SET THE SEED FOR ALL 100 C-ELEMENTS. Reproduce the result on canvas faithfully on subsequent Regenerations.",
-    "CLEAR ALL DATA IN PROJECT JSON. Create a fresh clean state and start from scratch.",
     "GENERATE ART(WORK) ON CANVAS. Attention! will overwrite existing data, so export first if you want to keep your work.",
     "SAVE IMAGE TO DISK. Both png and json file will be saved to where the app has been executed from."],
 

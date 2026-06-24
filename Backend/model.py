@@ -29,15 +29,6 @@ PATH_7 = PORT_2 / "model.png"
 PATH = ("async (store) => "
         "window.h11(store)")
 
-# right order fontend / formula
-# f[4-1] convert indices to key-based (more robust)
-# increase robustness swalling store.json (onmount)
-# decide on anfangs-focus (on startup/mount)
-# sticky position grid-cell and focused app
-# enter on property (not overwrite) => protected zones
-# filterx-tui highlighed/shift_tab rüber nach models.json
-# filterx-tui click assignment to shift_tab
-
 class MainTab(Widget):
     config: reactive[dict] = reactive(
         dict, init=False)

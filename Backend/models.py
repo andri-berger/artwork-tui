@@ -178,8 +178,8 @@ def on_pressed(self, event) -> None:
     f9 =  f2["4-0"].index(f4) \
         if f4 in f2["4-0"] else -1
     f10 = f2["4-1"][f9]
-    f11 = {"6": 2, "3": 1}
-    f12 = {"6": 1, "3": 2}
+    f11 = {"0": 2, "4": 1}
+    f12 = {"0": 1, "4": 2}
     self.app.textfield = f10
     f0.update(f10)
 

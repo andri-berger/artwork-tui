@@ -81,20 +81,18 @@ class CLIApp(App):
         f6 = self.stores.get("0")
 
         if f6 is None:
-            self.notify("No")
-            f10 = self.stores
-            f11 = int(time.time())
-            f12 = f10.setdefault('0', {})
-            f13 = f12.setdefault('39', {})
-            for k in ['0', '1', '2']:
-                    f13[k] = f11
+            f7 = self.stores
+            f8 = int(time.time())
+            f9 = f7.setdefault('0', {})
+            f10 = f9.setdefault('39', {})
+            for k in ('0', '1', '2'):
+                    f10[k] = f8
 
         elif f6 is not None:
-            self.notify("Yes")
-            f14 = {**self.stores}
-            f15 = 1 if f14 else 2
-            f14['_'] = [2,f15]
-            f0.config = f14
+            f11 = {**self.stores}
+            f12 = 1 if f11 else 2
+            f11['_'] = [2,f12]
+            f0.config = f11
 
     def compose(self) -> ComposeResult:
         yield MainApp()

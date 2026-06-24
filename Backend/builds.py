@@ -17,33 +17,33 @@ class MainApp(Widget):
         super().__init__()
 
     def on_mount(self) -> None:
-        f4 = [8,8,8,8,8,8,8,8,8,8,8,30,60]
+        f0 = [8,8,8,8,8,8,8,8,8,8,8,30,60]
         f1 = [9,100,301,300,12,13]
         f2 = [28,22,18,18,14,14]
         f3 = [8,8,8,7,7,7]
-        f5 = self.app.store
-        f0 = self.query(
+        f4 = self.app.store
+        f5 = self.query(
             DataTable)
 
-        for h, h0 in enumerate(f0):
-            f6 = '2' if h == 3 else h
-            f7 = f5[f"1-{f6}"]
+        for h, h0 in enumerate(f5):
+            f6 = 2 if h == 3 else h
+            f7 = f4[f"1-{str(f6)}"]
             h0.cursor_type = "cell"
             h0.zebra_stripes = True
             h0.fixed_columns = 1
             h0.fixed_rows = 0
             h0.add_column(
                 "", width=f2[h])
-            for _ in range(f1[h]):
+
+            for h1 in range(f1[h]):
                 if h <= 3:
+                    f8 = f3[h]
                     h0.add_column(
-                        "",
-                        width=f3[h])
+                        "",width=f8)
                 elif h >= 4:
-                    checks0 = f4[_]
+                    f9 = f0[h1]
                     h0.add_column(
-                        "",
-                        width=checks0)
+                        "",width=f9)
             h0.add_rows(f7[0:])
 
     def compose(self) -> ComposeResult:
