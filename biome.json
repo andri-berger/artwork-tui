@@ -24,9 +24,9 @@
 	},
 	"files": {
 		"includes": [
-			"Fontend/*.tcss",
-			"Fontend/*.css",
 			"Fontend/*.js",
+			"Fontend/*.css",
+			"Fontend/*.json",
 			"!Fontend/model.js"
 		]
 	},

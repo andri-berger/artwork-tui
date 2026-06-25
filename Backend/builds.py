@@ -1,30 +1,23 @@
-from .models import (
-    on_highlighted,
-    on_key, on_pressed,
-    on_submitted, on_shift_tab)
-from textual.widgets import (
-    DataTable, Input,
-    Button, DirectoryTree,
-    ContentSwitcher, Digits, Label)
+from .models import on_highlighted, on_key, on_pressed, on_submitted, on_shift_tab
+from textual.widgets import DataTable, Input, Button, DirectoryTree, ContentSwitcher, Digits, Label
 from .model import FileTree, MainTab
 from textual.containers import Horizontal
 from textual.app import ComposeResult
 from textual.widget import Widget
 from textual import events, on
 
+
 class MainApp(Widget):
     def __init__(self) -> None:
         super().__init__()
 
     def on_mount(self) -> None:
-        f0 = (8, 8, 8, 8, 8, 8,
-              8, 8, 8, 8, 8, 30, 60)
+        f0 = (8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 30, 60)
         f1 = (6, 100, 301, 300, 12, 13)
         f2 = (22, 22, 18, 18, 14, 14)
         f3 = (8, 8, 8, 7, 7, 7)
         f4 = self.app.store
-        f5 = self.query(
-            DataTable)
+        f5 = self.query(DataTable)
 
         for h, h0 in enumerate(f5):
             f6 = 2 if h == 3 else h
@@ -33,64 +26,35 @@ class MainApp(Widget):
             h0.zebra_stripes = True
             h0.fixed_columns = 1
             h0.fixed_rows = 0
-            h0.add_column(
-                "", width=f2[h])
+            h0.add_column("", width=f2[h])
 
             for h1 in range(f1[h]):
                 if h <= 3:
                     f8 = f3[h]
-                    h0.add_column(
-                        "",width=f8)
+                    h0.add_column("", width=f8)
                 elif h >= 4:
                     f9 = f0[h1]
-                    h0.add_column(
-                        "",width=f9)
+                    h0.add_column("", width=f9)
             h0.add_rows(f7[0:])
 
     def compose(self) -> ComposeResult:
         with Horizontal(id="layer-0"):
             yield MainTab(name="")
-            yield Digits("A00",
-                         id="digits-0")
+            yield Digits("A00", id="digits-0")
 
         with Horizontal(id="layer-1"):
-            with ContentSwitcher(
-                    id="cont-switch-0",
-                    initial="dir-tree-0"):
-                yield FileTree(
-                    "/",
-                    file_type=".json",
-                    id="dir-tree-0")
-                yield FileTree(
-                    "/",
-                    file_type=".png",
-                    id="dir-tree-1")
-                yield FileTree(
-                    "/",
-                    file_type=".otf",
-                    id="dir-tree-2")
+            with ContentSwitcher(id="cont-switch-0", initial="dir-tree-0"):
+                yield FileTree("/", file_type=".json", id="dir-tree-0")
+                yield FileTree("/", file_type=".png", id="dir-tree-1")
+                yield FileTree("/", file_type=".otf", id="dir-tree-2")
 
-            with ContentSwitcher(
-                    id="cont-switch-1",
-                    initial="data-table-0"):
-                yield DataTable(
-                    show_header=False,
-                    id="data-table-0")
-                yield DataTable(
-                    show_header=False,
-                    id="data-table-1")
-                yield DataTable(
-                    show_header=False,
-                    id="data-table-2")
-                yield DataTable(
-                    show_header=False,
-                    id="data-table-3")
-                yield DataTable(
-                    show_header=False,
-                    id="data-table-4")
-                yield DataTable(
-                    show_header=False,
-                    id="data-table-5")
+            with ContentSwitcher(id="cont-switch-1", initial="data-table-0"):
+                yield DataTable(show_header=False, id="data-table-0")
+                yield DataTable(show_header=False, id="data-table-1")
+                yield DataTable(show_header=False, id="data-table-2")
+                yield DataTable(show_header=False, id="data-table-3")
+                yield DataTable(show_header=False, id="data-table-4")
+                yield DataTable(show_header=False, id="data-table-5")
 
         with Horizontal(id="layer-2"):
             yield Button("X", id="button-0")
@@ -115,20 +79,21 @@ class MainApp(Widget):
             for cast in (int, float):
                 try:
                     return cast(h)
-                except (ValueError,
-                        TypeError):
+                except ValueError, TypeError:
                     pass
             return h
 
         return {
             str(h0): d
-            for h0, h1 in enumerate(
-                range(f0, len(event.rows)))
-            if (d := {
-                str(h2): data(h3)
-                for h2, h3 in enumerate(
-                    event.get_row_at(h1)[f1:])
-                if h3 is not None and h3 != ''})}
+            for h0, h1 in enumerate(range(f0, len(event.rows)))
+            if (
+                d := {
+                    str(h2): data(h3)
+                    for h2, h3 in enumerate(event.get_row_at(h1)[f1:])
+                    if h3 is not None and h3 != ""
+                }
+            )
+        }
 
     def position_digits(self) -> None:
         f0 = self.query_one("#cont-switch-0")
@@ -143,7 +108,7 @@ class MainApp(Widget):
 
     @on(Input.Submitted)
     def submitted(self, event: Input.Submitted):
-        on_submitted(self,event)
+        on_submitted(self, event)
 
     @on(Button.Pressed)
     def pressed(self, event: Button.Pressed):
@@ -155,11 +120,9 @@ class MainApp(Widget):
 
     @on(events.Resize)
     def resized(self):
-        f0 = self.query_one(
-            "#digits-0")
+        f0 = self.query_one("#digits-0")
         f0.styles.offset = (0, 0)
-        self.call_after_refresh(
-            self.position_digits)
+        self.call_after_refresh(self.position_digits)
 
     @on(events.Click)
     def clicked(self):
@@ -174,6 +137,4 @@ class MainApp(Widget):
         f5 = isinstance(f1, f3)
         f6 = isinstance(f1, f4)
         if f5 or f6:
-            on_shift_tab(self,
-                     None,
-                     0)
+            on_shift_tab(self, None, 0)
