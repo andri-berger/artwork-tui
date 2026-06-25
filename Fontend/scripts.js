@@ -1,165 +1,174 @@
-self.onmessage = async l => {
-let l00 = l.data[2];
-let l01 = l.data[3];
-let l02 = [l.data[0],l.data[1]]
-let l03 = new OffscreenCanvas(...l02)
-let l04 = l03.getContext('2d');
-let l05 = new Uint8ClampedArray(l00);
+self.onmessage = async (l) => {
+	const l0 = l.data[2]
+	const l1 = l.data[3]
+	const l2 = [l.data[0], l.data[1]]
+	const l3 = new OffscreenCanvas(...l2)
+	const l4 = new Uint8ClampedArray(l0)
+	const l5 = l3.getContext('2d')
 
-let l2 = l01[50] || 0;
-let l3 = l01[51]*2+3||3;
-let l4 = l01[52]*2+3||3;
-let l5 = l01[53]/30||0;
-let l6 = l01[54]/30||0;
-let l7 = l01[55]/30||0;
-let l8 = l01[56]/30||0;
-let l9 = l01[57]/30||0;
-let l10 = l01[58]/30||0;
-let l11 = l01[59]/30||0;
-let l12 = l01[60]/30||0;
-let l13 = l01[61]/2||0;
-let l14 = l01[62]/2||0;
-let l15 = l01[63]/50||0;
-let l16 = l01[64]/50||0;
-let l17 = l01[65]/50||0;
-let l18 = l01[66]/50||0;
-let l19 = l01[67]/50||0;
-let l20 = l01[68]/50||0;
-let l21 = l01[67]/100*7||0;
-let l22 = l01[68]/100*7||0;
-let l23 = l01[69]/30||0;
-let l24 = l01[70]/30||0;
-let l25 = l01[71]/30||0;
-let l26 = l01[72]/30||0;
-let l27 = l01[73]/30||0;
-let l28 = l01[74]/30||0;
-let l32 = l5 <= 1? (1 - l5): l5;
-let l33 = l7 <= 1? (1 - l7): l7;
-let l34 = l9 <= 1? (1 - l9): l9;
-let l35 = l25 > 0 && l26 > 0;
-let l36 = l13 > 0 || l14 > 0
-let l37 = l36 || l2 >= 2;
-let l38 = !l7? l32: l33;
-let l39 = !l9? l32: l34;
+	const l6 = l1[50] || 0
+	const l7 = l1[51] * 2 + 3 || 3
+	const l8 = l1[52] * 2 + 3 || 3
+	const l9 = l1[53] / 30 || 0
+	const l10 = l1[54] / 30 || 0
+	const l11 = l1[55] / 30 || 0
+	const l12 = l1[56] / 30 || 0
+	const l13 = l1[57] / 30 || 0
+	const l14 = l1[58] / 30 || 0
+	const l15 = l1[59] / 30 || 0
+	const l16 = l1[60] / 30 || 0
+	const l17 = l1[61] / 2 || 0
+	const l18 = l1[62] / 2 || 0
+	const l19 = l1[63] / 50 || 0
+	const l20 = l1[64] / 50 || 0
+	const l21 = l1[65] / 50 || 0
+	const l22 = l1[66] / 50 || 0
+	const l23 = l1[67] / 50 || 0
+	const l24 = l1[68] / 50 || 0
+	const l25 = (l1[67] / 100) * 7 || 0
+	const l26 = (l1[68] / 100) * 7 || 0
+	const l27 = l1[69] / 30 || 0
+	const l28 = l1[70] / 30 || 0
+	const l29 = l1[71] / 30 || 0
+	const l30 = l1[72] / 30 || 0
+	const l31 = l1[73] / 30 || 0
+	const l32 = l1[74] / 30 || 0
 
-for (let x=0;x<l.data[0];x+=l3) {
-for (let y=0;y<l.data[1];y+=l4) {
-let l41 = (x+y*l.data[0]) * 4;
-let l42 = l05[l41+0];
-let l43 = l05[l41+1];
-let l44 = l05[l41+2];
-let l45 = l05[l41+3] / 255;
-let l46 = l45.toFixed(0||2);
-let l47 = [0||l42,l43,l44,l46];
-if (l05[l41+3] === 0) continue;
-let l48 = Math.random();
-let l49 = Math.random();
-let l50 = Math.random();
-let l51 = Math.random();
-let l52 = Math.random();
-let l53 = Math.random();
-let l54 = Math.random();
-let l55 = Math.random();
-let l56 = Math.random();
-let l57 = Math.random();
-let l58 = Math.random();
-let l59 = Math.random();
-let l60 = Math.random();
-let l61 = Math.random();
+	const l33 = l9 <= 1 ? 1 - l9 : l9
+	const l34 = l11 <= 1 ? 1 - l11 : l11
+	const l35 = l13 <= 1 ? 1 - l13 : l13
+	const l36 = l29 > 0 && l30 > 0
+	const l37 = l17 > 0 || l18 > 0
+	const l38 = l37 || l6 >= 2
+	const l39 = !l11 ? l33 : l34
+	const l40 = !l13 ? l33 : l35
 
-let l62 = l48 * l14 + l13;
-let l63 = l49 * l27 + l23;
-let l64 = l50 * l28 + l24;
-let l65 = l51 * l27 + l25;
-let l66 = l52 * l28 + l26;
-let l71 = l53 * l22 + l21;
-let l74 = l54 * l18 + l17;
-let l75 = l55 * l16 + l15;
-let l76 = l56 * l20 + l19;
-let l67 = Math.min(3,l63);
-let l68 = Math.min(3,l64);
-let l69 = Math.min(3,l65);
-let l70 = Math.min(3,l66);
-let l72 = Math.min(7,l71);
-let l73 = Math.round(l72);
-let l77 = 2-Math.min(2,l75);
-let l78 = Math.min(2,l74);
-let l83 = l57 - 0.5;
-let l84 = l58 - 0.5;
-let l85 = l59 * l6;
-let l86 = l60 * l8;
-let l87 = l61 * l10;
-let l88 = l83 * l11 * l3;
-let l89 = l84 * l12 * l4;
-let l90 = !l8? l85: l86;
-let l91 = !l10? l85: l87;
-let l92 = (l90 + l38) * l3;
-let l93 = (l91 + l39) * l4;
-let l96 = Math.max(0,l92-l62);
-let l97 = Math.max(0,l93-l62);
-let l82 = (l77+l78) * Math.PI;
-let l80 = l78 * Math.PI;
-let l81 = l76 * Math.PI;
-let l98 = (l96 - l3) / 2;
-let l99 = (l97 - l4) / 2;
-let l100 = x - l98 + l88;
-let l101 = y - l99 + l89;
-let l102 = l100 - l3 / 2;
-let l103 = l101 - l4 / 2;
-let l104 = [l81,l80,l82];
-let l105 = [l96/2,l97/2];
-let l106 = [x+l88,y+l89];
-let l107 = [...l105,...l104];
-let l108 = [...l106,...l107];
-let l109 = [l102,l103,l96,l97];
-let l110 = l103 + l97 / 2;
-let l111 = l102 + l96 / 2;
-let l112 = l103 + l97;
-let l113 = l102 + l96;
-let l114 = [
-[l102,l103,l113,l112],
-[l102,l110,l113,l110],
-[l102,l112,l113,l103],
-[l111,l112,l111,l103],
-[l113,l112,l102,l103],
-[l113,l110,l102,l110],
-[l113,l103,l102,l112],
-[l111,l103,l111,l112]];
-let l115 = l114[l73];
-let l116 = l115.slice(0,2);
-let l117 = l115.slice(2,4);
-let l118 = l102 - l96 + l96 * l67;
-let l119 = l103 - l97 + l97 * l68;
-let l120 = l102 - l96 + l96 * l69;
-let l121 = l103 - l97 + l97 * l70;
-l04.strokeStyle = `rgba(${l47})`;
-l04.fillStyle = `rgba(${l47})`;
-l04.lineCap = `square`;
-l04.lineWidth = l62;
-l04.beginPath();
+	for (let x = 0; x < l.data[0]; x += l7) {
+		for (let y = 0; y < l.data[1]; y += l8) {
+			const l41 = (x + y * l.data[0]) * 4
+			const l42 = l4[l41 + 0]
+			const l43 = l4[l41 + 1]
+			const l44 = l4[l41 + 2]
+			const l45 = l4[l41 + 3] / 255
+			const l46 = l45.toFixed(0 || 2)
+			const l47 = [0 || l42, l43, l44, l46]
+			if (l4[l41 + 3] === 0) continue
+			const l48 = Math.random()
+			const l49 = Math.random()
+			const l50 = Math.random()
+			const l51 = Math.random()
+			const l52 = Math.random()
+			const l53 = Math.random()
+			const l54 = Math.random()
+			const l55 = Math.random()
+			const l56 = Math.random()
+			const l57 = Math.random()
+			const l58 = Math.random()
+			const l59 = Math.random()
+			const l60 = Math.random()
+			const l61 = Math.random()
 
-if (l2 === 0) {
-l04.rect(...l109); }
-if (l2 === 1) {
-l04.ellipse(...l108); }
-if (l2 === 2) {
-l04.moveTo(...l116);
-l04.lineTo(...l117); }
-if (l2 === 3) {
-if (l35 === false) {
-l04.moveTo(...l116);
-l04.quadraticCurveTo(
-l118, l119,...l117); }
-if (l35 === true) {
-l04.moveTo(...l116);
-l04.bezierCurveTo(
-l118,l119,l120,
-l121,...l117); }}
-if (l37 === false) {
-l04.fill(); }
-if (l37 === true) {
-l04.stroke(); }}}
-let l41 = await createImageBitmap(l03)
-self.postMessage(l41, [l41])
-};
+			const l62 = l48 * l18 + l17
+			const l63 = l49 * l31 + l27
+			const l64 = l50 * l32 + l28
+			const l65 = l51 * l31 + l29
+			const l66 = l52 * l32 + l30
+			const l71 = l53 * l26 + l25
+			const l74 = l54 * l22 + l21
+			const l75 = l55 * l20 + l19
+			const l76 = l56 * l24 + l23
+			const l67 = Math.min(3, l63)
+			const l68 = Math.min(3, l64)
+			const l69 = Math.min(3, l65)
+			const l70 = Math.min(3, l66)
+			const l72 = Math.min(7, l71)
+			const l73 = Math.round(l72)
+			const l77 = 2 - Math.min(2, l75)
+			const l78 = Math.min(2, l74)
+			const l83 = l57 - 0.5
+			const l84 = l58 - 0.5
+			const l85 = l59 * l10
+			const l86 = l60 * l12
+			const l87 = l61 * l14
+			const l88 = l83 * l15 * l7
+			const l89 = l84 * l16 * l8
+			const l90 = !l12 ? l85 : l86
+			const l91 = !l14 ? l85 : l87
+			const l92 = (l90 + l39) * l7
+			const l93 = (l91 + l40) * l8
+			const l96 = Math.max(0, l92 - l62)
+			const l97 = Math.max(0, l93 - l62)
+			const l82 = (l77 + l78) * Math.PI
+			const l80 = l78 * Math.PI
+			const l81 = l76 * Math.PI
+			const l98 = (l96 - l7) / 2
+			const l99 = (l97 - l8) / 2
+			const l100 = x - l98 + l88
+			const l101 = y - l99 + l89
+			const l102 = l100 - l7 / 2
+			const l103 = l101 - l8 / 2
+			const l104 = [l81, l80, l82]
+			const l105 = [l96 / 2, l97 / 2]
+			const l106 = [x + l88, y + l89]
+			const l107 = [...l105, ...l104]
+			const l108 = [...l106, ...l107]
+			const l109 = [l102, l103, l96, l97]
+			const l110 = l103 + l97 / 2
+			const l111 = l102 + l96 / 2
+			const l112 = l103 + l97
+			const l113 = l102 + l96
+			const l114 = [
+				[l102, l103, l113, l112],
+				[l102, l110, l113, l110],
+				[l102, l112, l113, l103],
+				[l111, l112, l111, l103],
+				[l113, l112, l102, l103],
+				[l113, l110, l102, l110],
+				[l113, l103, l102, l112],
+				[l111, l103, l111, l112],
+			]
 
+			const l115 = l114[l73]
+			const l116 = l115.slice(0, 2)
+			const l117 = l115.slice(2, 4)
+			const l118 = l102 - l96 + l96 * l67
+			const l119 = l103 - l97 + l97 * l68
+			const l120 = l102 - l96 + l96 * l69
+			const l121 = l103 - l97 + l97 * l70
+			l5.strokeStyle = `rgba(${l47})`
+			l5.fillStyle = `rgba(${l47})`
+			l5.lineCap = `square`
+			l5.lineWidth = l62
+			l5.beginPath()
+
+			if (l6 === 0) {
+				l5.rect(...l109)
+			}
+			if (l6 === 1) {
+				l5.ellipse(...l108)
+			}
+			if (l6 === 2) {
+				l5.moveTo(...l116)
+				l5.lineTo(...l117)
+			}
+			if (l6 === 3) {
+				if (l36 === false) {
+					l5.moveTo(...l116)
+					l5.quadraticCurveTo(l118, l119, ...l117)
+				}
+				if (l36 === true) {
+					l5.moveTo(...l116)
+					l5.bezierCurveTo(l118, l119, l120, l121, ...l117)
+				}
+			}
+			if (l38 === false) {
+				l5.fill()
+			}
+			if (l38 === true) {
+				l5.stroke()
+			}
+		}
+	}
+	const l41 = await createImageBitmap(l3)
+	self.postMessage(l41, [l41])
+}
