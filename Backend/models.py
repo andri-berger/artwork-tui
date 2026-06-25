@@ -144,14 +144,32 @@ def on_highlighted(self, event) -> None:
             f3.update(f20)
         if len(f18) > 2:
             f4.value = f18[1]
-            f5.value = f9 or f18[2] if isinstance(f18[2], str) else f10["00"][f18[2]][f13]
+            f5.value = (
+                f9 or f18[2]
+                if isinstance(f18[2], str)
+                else f10["00"][f18[2]][f13]
+            )
 
             f2.update(
                 (
                     "",
-                    [""] + [f"{f18[0][0]}{h:02d}" for h in range(100)],
-                    ["", "00"] + [f"{h0}{h1:02d}" for h0 in "ABC" for h1 in range(100)],
-                    [""] + [f"{h2}{h3:02d}" for h2 in "DEF" for h3 in range(100)],
+                    [""]
+                    + [
+                        f"{f18[0][0]}{h:02d}"
+                        for h in range(100)
+                    ],
+                    ["", "00"]
+                    + [
+                        f"{h0}{h1:02d}"
+                        for h0 in "ABC"
+                        for h1 in range(100)
+                    ],
+                    [""]
+                    + [
+                        f"{h2}{h3:02d}"
+                        for h2 in "DEF"
+                        for h3 in range(100)
+                    ],
                 )[int(f6)][f13]
             )
 
@@ -246,7 +264,18 @@ def on_pressed(self, event) -> None:
 
 
 async def on_key(self, event) -> None:
-    f0 = ("delete", "f1", "f2", "f3", "f4", "f5", "f6", "f7", "f8", "f9")
+    f0 = (
+        "delete",
+        "f1",
+        "f2",
+        "f3",
+        "f4",
+        "f5",
+        "f6",
+        "f7",
+        "f8",
+        "f9",
+    )
     f1 = ("backspace", "space", "enter")
     f2 = self.query_one("#cont-switch-0")
     f3 = self.query_one("#cont-switch-1")
@@ -279,7 +308,9 @@ async def on_key(self, event) -> None:
         if f17 == "tab":
             event.stop()
             event.prevent_default()
-            self.post_message(Input.Submitted(f11, f11.value))
+            self.post_message(
+                Input.Submitted(f11, f11.value)
+            )
         if event.key == "escape":
             on_highlighted(self, f13)
             f4.focus()
@@ -292,7 +323,9 @@ async def on_key(self, event) -> None:
             event.stop()
 
             if f18 and f19:
-                f21 = self.query_one(f"dir-tree-{f20}")
+                f21 = self.query_one(
+                    f"dir-tree-{f20}"
+                )
                 f22 = f"dir-tree-{f20}"
                 f2.current = f22
                 f21.focus()
@@ -305,23 +338,33 @@ async def on_key(self, event) -> None:
                 elif len(f17) == 1:
                     f11.value = f17
                     f23 = "cursor_position"
-                    self.call_after_refresh(lambda: setattr(f11, f23, len(f17)))
+                    self.call_after_refresh(
+                        lambda: setattr(
+                            f11, f23, len(f17)
+                        )
+                    )
 
     match f17:
         case "delete":
-            self.post_message(Input.Submitted(f11, ""))
+            self.post_message(
+                Input.Submitted(f11, "")
+            )
 
         case "f1":
             f39 = self.app
             f39.clipboards = f16
-            self.post_message(Input.Submitted(f11, ""))
+            self.post_message(
+                Input.Submitted(f11, "")
+            )
 
         case "f2":
             f39 = self.app
             f39.clipboards = f16
 
         case "f3":
-            self.post_message(Input.Submitted(f11, f70))
+            self.post_message(
+                Input.Submitted(f11, f70)
+            )
 
         case "f4":
             f6.press()

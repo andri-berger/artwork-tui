@@ -2,10 +2,24 @@ from textual import events, on
 from textual.app import ComposeResult
 from textual.containers import Horizontal
 from textual.widget import Widget
-from textual.widgets import Button, ContentSwitcher, DataTable, Digits, DirectoryTree, Input, Label
+from textual.widgets import (
+    Button,
+    ContentSwitcher,
+    DataTable,
+    Digits,
+    DirectoryTree,
+    Input,
+    Label,
+)
 
 from .model import FileTree, MainTab
-from .models import on_highlighted, on_key, on_pressed, on_shift_tab, on_submitted
+from .models import (
+    on_highlighted,
+    on_key,
+    on_pressed,
+    on_shift_tab,
+    on_submitted,
+)
 
 
 class MainApp(Widget):
@@ -13,7 +27,21 @@ class MainApp(Widget):
         super().__init__()
 
     def on_mount(self) -> None:
-        f0 = (8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 30, 60)
+        f0 = (
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            30,
+            60,
+        )
         f1 = (6, 100, 301, 300, 12, 13)
         f2 = (22, 22, 18, 18, 14, 14)
         f3 = (8, 8, 8, 7, 7, 7)
@@ -44,18 +72,54 @@ class MainApp(Widget):
             yield Digits("A00", id="digits-0")
 
         with Horizontal(id="layer-1"):
-            with ContentSwitcher(id="cont-switch-0", initial="dir-tree-0"):
-                yield FileTree("/", file_type=".json", id="dir-tree-0")
-                yield FileTree("/", file_type=".png", id="dir-tree-1")
-                yield FileTree("/", file_type=".otf", id="dir-tree-2")
+            with ContentSwitcher(
+                id="cont-switch-0",
+                initial="dir-tree-0",
+            ):
+                yield FileTree(
+                    "/",
+                    file_type=".json",
+                    id="dir-tree-0",
+                )
+                yield FileTree(
+                    "/",
+                    file_type=".png",
+                    id="dir-tree-1",
+                )
+                yield FileTree(
+                    "/",
+                    file_type=".otf",
+                    id="dir-tree-2",
+                )
 
-            with ContentSwitcher(id="cont-switch-1", initial="data-table-0"):
-                yield DataTable(show_header=False, id="data-table-0")
-                yield DataTable(show_header=False, id="data-table-1")
-                yield DataTable(show_header=False, id="data-table-2")
-                yield DataTable(show_header=False, id="data-table-3")
-                yield DataTable(show_header=False, id="data-table-4")
-                yield DataTable(show_header=False, id="data-table-5")
+            with ContentSwitcher(
+                id="cont-switch-1",
+                initial="data-table-0",
+            ):
+                yield DataTable(
+                    show_header=False,
+                    id="data-table-0",
+                )
+                yield DataTable(
+                    show_header=False,
+                    id="data-table-1",
+                )
+                yield DataTable(
+                    show_header=False,
+                    id="data-table-2",
+                )
+                yield DataTable(
+                    show_header=False,
+                    id="data-table-3",
+                )
+                yield DataTable(
+                    show_header=False,
+                    id="data-table-4",
+                )
+                yield DataTable(
+                    show_header=False,
+                    id="data-table-5",
+                )
 
         with Horizontal(id="layer-2"):
             yield Button("X", id="button-0")
@@ -64,8 +128,12 @@ class MainApp(Widget):
             yield Button("CSS", id="button-3")
             yield Button("CREATE", id="button-4")
             yield Button("EXPORT", id="button-5")
-            yield Input(disabled=False, id="input-0")
-            yield Input(disabled=False, id="input-1")
+            yield Input(
+                disabled=False, id="input-0"
+            )
+            yield Input(
+                disabled=False, id="input-1"
+            )
 
         with Horizontal(id="layer-3"):
             yield Label(id="label-0")
@@ -86,11 +154,15 @@ class MainApp(Widget):
 
         return {
             str(h0): d
-            for h0, h1 in enumerate(range(f0, len(event.rows)))
+            for h0, h1 in enumerate(
+                range(f0, len(event.rows))
+            )
             if (
                 d := {
                     str(h2): data(h3)
-                    for h2, h3 in enumerate(event.get_row_at(h1)[f1:])
+                    for h2, h3 in enumerate(
+                        event.get_row_at(h1)[f1:]
+                    )
                     if h3 is not None and h3 != ""
                 }
             )
@@ -104,7 +176,9 @@ class MainApp(Widget):
         f1.styles.offset = (f2, f3 - 3)
 
     @on(DataTable.CellHighlighted)
-    def highlighted(self, event: DataTable.CellHighlighted):
+    def highlighted(
+        self, event: DataTable.CellHighlighted
+    ):
         on_highlighted(self, event.coordinate)
 
     @on(Input.Submitted)
@@ -123,7 +197,9 @@ class MainApp(Widget):
     def resized(self):
         f0 = self.query_one("#digits-0")
         f0.styles.offset = (0, 0)
-        self.call_after_refresh(self.position_digits)
+        self.call_after_refresh(
+            self.position_digits
+        )
 
     @on(events.Click)
     def clicked(self):

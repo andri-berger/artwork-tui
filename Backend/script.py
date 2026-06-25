@@ -6,7 +6,11 @@ def script_f0(h) -> list:
 
 
 def script_f1(h) -> list:
-    return ["auto", "auto"] + [""] * 300 + [str(h)] * 300
+    return (
+        ["auto", "auto"]
+        + [""] * 300
+        + [str(h)] * 300
+    )
 
 
 def script_f2() -> list:
@@ -58,11 +62,26 @@ def script_f4(h) -> list:
     f0 = f" {['Text', 'Image'][h]}"
     f1 = (
         [[f"A{h0:02d}{f0}"] for h0 in range(100)]
-        + [[f"B{h0:02d}{f0}"] for h0 in range(100)]
-        + [[f"C{h0:02d}{f0}"] for h0 in range(100)]
-        + [[f"D{h0:02d}{f0}"] for h0 in range(100)]
-        + [[f"E{h0:02d}{f0}"] for h0 in range(100)]
-        + [[f"F{h0:02d}{f0}"] for h0 in range(100)]
+        + [
+            [f"B{h0:02d}{f0}"]
+            for h0 in range(100)
+        ]
+        + [
+            [f"C{h0:02d}{f0}"]
+            for h0 in range(100)
+        ]
+        + [
+            [f"D{h0:02d}{f0}"]
+            for h0 in range(100)
+        ]
+        + [
+            [f"E{h0:02d}{f0}"]
+            for h0 in range(100)
+        ]
+        + [
+            [f"F{h0:02d}{f0}"]
+            for h0 in range(100)
+        ]
     )
     return f1
 
@@ -72,7 +91,9 @@ def script_f5(self, h) -> None:
     f1 = self.app.store["4-1"]
     f2 = self.app.textfield
     f0.update(f1.get(h, ""))
-    self.app.textfields = self.set_timer(3, lambda: f0.update(f2))
+    self.app.textfields = self.set_timer(
+        3, lambda: f0.update(f2)
+    )
 
 
 def script_f6(self, h, h0) -> None:
@@ -81,7 +102,9 @@ def script_f6(self, h, h0) -> None:
     f2 = self.app.textfield
     f3 = f1.get(h, "")
     f0.update(f3.format(f3=h0.upper()))
-    self.app.textfields = self.set_timer(3, lambda: f0.update(f2))
+    self.app.textfields = self.set_timer(
+        3, lambda: f0.update(f2)
+    )
 
 
 def script_f7(self, h, h0) -> None:
@@ -130,9 +153,15 @@ def script_f9(h, h0) -> dict:
     f1 = h.items()
     for h1, h2 in f1:
         if h1 == "2":
-            if any(str(k) in h2.keys() for k in range(45)):
+            if any(
+                str(k) in h2.keys()
+                for k in range(45)
+            ):
                 f0["2"] = {}
-            if any(str(k) in h2.keys() for k in range(45, 75)):
+            if any(
+                str(k) in h2.keys()
+                for k in range(45, 75)
+            ):
                 f0["3"] = {}
         elif int(h1) in [0, 1, 4, 5]:
             f0[h1] = {}

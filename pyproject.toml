@@ -31,8 +31,7 @@ artwork-tui ="pyproject:pyproject"
 
 [tool.ruff.lint]
 select = ["E", "F", "I"]
-ignore = ["E501"]
 
 [tool.ruff]
-line-length = 100
+line-length = 50
 target-version = "py314"

@@ -10,7 +10,13 @@ from textual.app import App, ComposeResult
 
 from .builds import MainApp
 from .model import MainTab
-from .script import script_f0, script_f1, script_f2, script_f3, script_f4
+from .script import (
+    script_f0,
+    script_f1,
+    script_f2,
+    script_f3,
+    script_f4,
+)
 
 PORT = Path(__file__).parent
 PORT_0 = PORT.parent / "Fontend"
@@ -36,8 +42,14 @@ class CLIApp(App):
         self.textfield = ""
         self.textfields = None
         self.playwright = None
-        self.store = json.loads(PATH_2.read_text())
-        self.stores = json.loads(PATH_3.read_text()) if PATH_3.exists() else {}
+        self.store = json.loads(
+            PATH_2.read_text()
+        )
+        self.stores = (
+            json.loads(PATH_3.read_text())
+            if PATH_3.exists()
+            else {}
+        )
 
         f0 = self.store or {}
         f0["1-4"] = script_f4(0)
@@ -71,12 +83,19 @@ class CLIApp(App):
         f9 = (3, 4, 5, 6, 7, 8)
         f10 = (0, 1, 2)
 
-        f11 = functools.partial(http.server.SimpleHTTPRequestHandler, directory=str(PORT_0))
+        f11 = functools.partial(
+            http.server.SimpleHTTPRequestHandler,
+            directory=str(PORT_0),
+        )
         f12 = http.server.HTTPServer(f8, f11)
-        threading.Thread(target=f12.serve_forever, daemon=True).start()
+        threading.Thread(
+            target=f12.serve_forever, daemon=True
+        ).start()
 
         f13 = await async_playwright().start()
-        f14 = await f13.chromium.launch(headless=True)
+        f14 = await f13.chromium.launch(
+            headless=True
+        )
         self.playwright = await f14.new_page()
         await self.playwright.goto(PATH)
 

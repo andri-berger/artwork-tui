@@ -9,10 +9,18 @@ from textual.app import ComposeResult
 from textual.binding import Binding
 from textual.reactive import reactive
 from textual.widget import Widget
-from textual.widgets import DataTable, DirectoryTree
+from textual.widgets import (
+    DataTable,
+    DirectoryTree,
+)
 from textual_image.widget import Image
 
-from .script import script_f6, script_f7, script_f8, script_f9
+from .script import (
+    script_f6,
+    script_f7,
+    script_f8,
+    script_f9,
+)
 from .scripts import scripts_f1
 
 PORT = Path.cwd()
@@ -29,7 +37,9 @@ PATH = "async (store) => window.h11(store)"
 
 
 class MainTab(Widget):
-    config: reactive[dict] = reactive(dict, init=False)
+    config: reactive[dict] = reactive(
+        dict, init=False
+    )
 
     def compose(self) -> ComposeResult:
         yield Image(PATH_7)
@@ -39,7 +49,9 @@ class MainTab(Widget):
         f0.styles.width = "auto"
         f0.styles.height = "100%"
 
-    async def watch_config(self, path: dict) -> None:
+    async def watch_config(
+        self, path: dict
+    ) -> None:
         f0 = self.app.query_one("#cont-switch-1")
         f1 = int(f0.current.split("-")[-1])
         f2 = [6, 100, 301, 300, 12, 13]
@@ -62,7 +74,12 @@ class MainTab(Widget):
         f16 = f15.get("80", 0)
 
         if f16 in range(1, 5):
-            f17 = {"h": f16, "h0": f15.get("81", 0), "h1": f15.get("82", 0), "h2": f15.get("83", 0)}
+            f17 = {
+                "h": f16,
+                "h0": f15.get("81", 0),
+                "h1": f15.get("82", 0),
+                "h2": f15.get("83", 0),
+            }
             f14 = scripts_f1(f17, f14)
 
         if f10 == 4:
@@ -100,19 +117,35 @@ class MainTab(Widget):
                     f29 = f6.get(f"1-{f28}")
                     f30 = f5.get(str(h0), {})
                     if f30 is not None:
-                        f3[h0].clear(columns=False)
-                        f31 = [str(h1) for h1 in range(f2[h0])]
+                        f3[h0].clear(
+                            columns=False
+                        )
+                        f31 = [
+                            str(h1)
+                            for h1 in range(
+                                f2[h0]
+                            )
+                        ]
                         for h2 in range(len(f29)):
                             f32 = f30.get(str(h2))
                             f33 = [f29[h2][0]]
                             if f32 is not None:
                                 for h3 in f31:
-                                    f33.append(str(f32.get(h3, "")))
+                                    f33.append(
+                                        str(
+                                            f32.get(
+                                                h3,
+                                                "",
+                                            )
+                                        )
+                                    )
                             f3[h0].add_row(*f33)
 
                 f34 = f8.get("1", 0)
                 f35 = f8.get("2", 0)
-                f3[f23].move_cursor(row=f34, column=f35)
+                f3[f23].move_cursor(
+                    row=f34, column=f35
+                )
 
         PATH_6.write_text(json.dumps(f5))
 
@@ -124,20 +157,34 @@ class FileTree(DirectoryTree):
     show_root = False
     show_guides = True
     guide_depth = 4
-    BINDINGS = [Binding("space", "select_cursor", "Select")]
+    BINDINGS = [
+        Binding(
+            "space", "select_cursor", "Select"
+        )
+    ]
 
-    def __init__(self, path, file_type, **kwargs) -> None:
+    def __init__(
+        self, path, file_type, **kwargs
+    ) -> None:
         super().__init__(path, **kwargs)
         self.file_type = file_type
 
     def filter_paths(self, path) -> list:
         f0 = self.file_type
         return [
-            h for h in path if (h.is_dir() or f0 == h.suffix.lower()) and not h.name.startswith(".")
+            h
+            for h in path
+            if (
+                h.is_dir()
+                or f0 == h.suffix.lower()
+            )
+            and not h.name.startswith(".")
         ]
 
     @on(DirectoryTree.FileSelected)
-    def selected(self, event: DirectoryTree.FileSelected) -> None:
+    def selected(
+        self, event: DirectoryTree.FileSelected
+    ) -> None:
         f0 = self.app.query_one("#cont-switch-1")
         f1 = self.app.query_one(f"#{f0.current}")
         f2 = self.app.query_one(MainTab)
