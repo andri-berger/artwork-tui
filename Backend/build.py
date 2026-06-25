@@ -1,14 +1,16 @@
+import functools
+import http.server
+import json
+import threading
+import time
+from pathlib import Path
+
 from playwright.async_api import async_playwright
 from textual.app import App, ComposeResult
-from .script import script_f0, script_f1, script_f4, script_f2, script_f3
-from .model import MainTab
+
 from .builds import MainApp
-from pathlib import Path
-import http.server
-import threading
-import functools
-import json
-import time
+from .model import MainTab
+from .script import script_f0, script_f1, script_f2, script_f3, script_f4
 
 PORT = Path(__file__).parent
 PORT_0 = PORT.parent / "Fontend"

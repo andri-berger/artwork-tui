@@ -1,10 +1,11 @@
-from .models import on_highlighted, on_key, on_pressed, on_submitted, on_shift_tab
-from textual.widgets import DataTable, Input, Button, DirectoryTree, ContentSwitcher, Digits, Label
-from .model import FileTree, MainTab
-from textual.containers import Horizontal
-from textual.app import ComposeResult
-from textual.widget import Widget
 from textual import events, on
+from textual.app import ComposeResult
+from textual.containers import Horizontal
+from textual.widget import Widget
+from textual.widgets import Button, ContentSwitcher, DataTable, Digits, DirectoryTree, Input, Label
+
+from .model import FileTree, MainTab
+from .models import on_highlighted, on_key, on_pressed, on_shift_tab, on_submitted
 
 
 class MainApp(Widget):

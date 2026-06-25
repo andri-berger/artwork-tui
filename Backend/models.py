@@ -1,10 +1,12 @@
-from textual.widgets import DataTable, Input
-from .model import MainTab
-from pathlib import Path
-from .script import script_f5, script_f6
+import json
 import shutil
 import time
-import json
+from pathlib import Path
+
+from textual.widgets import DataTable, Input
+
+from .model import MainTab
+from .script import script_f5, script_f6
 
 PORT = Path.cwd()
 PORT_0 = Path(__file__).parent

@@ -1,20 +1,19 @@
-from textual.widgets import DirectoryTree
-from textual.reactive import reactive
-from textual_image.widget import Image
-from textual.widgets import DataTable
-from textual.widget import Widget
-from textual.binding import Binding
-from textual.app import ComposeResult
-from .script import script_f6, script_f8, script_f9
-from .scripts import scripts_f1
-from .script import script_f7
-from pathlib import Path
-from textual import on
-
-import shutil
 import base64
-import time
 import json
+import shutil
+import time
+from pathlib import Path
+
+from textual import on
+from textual.app import ComposeResult
+from textual.binding import Binding
+from textual.reactive import reactive
+from textual.widget import Widget
+from textual.widgets import DataTable, DirectoryTree
+from textual_image.widget import Image
+
+from .script import script_f6, script_f7, script_f8, script_f9
+from .scripts import scripts_f1
 
 PORT = Path.cwd()
 PORT_0 = Path(__file__)
