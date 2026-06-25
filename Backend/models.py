@@ -21,34 +21,37 @@ def on_submitted(self, event) -> None:
     f6 = event.value
     f7 = event.input
     f8 = int(f4[-1])
-    f9 = str(f8)
+    f9 = f3.column
     f10 = f3.row
+    f11 = str(f8)
     f7.value = ""
     f1.focus()
 
-    f11 = ((11,23,31),
+    f12 = ((11,23,31),
            (18,36,54,73,92),
            (10,22,33,44,55,65),
            (10,22,33,44,55,65),(),())
 
-    if f10 not in f11[f8]:
+    if f10 not in f12[f8] and f9 >= 1:
+        f13 = f10 in range(24, 31)
+        f14 = f10 in range(0, 10)
+        f15 = 0 if f13 else 1
+        f16 = 2 if f14 else f15
+        f17 = f16 if f8 == 0 else 1
         f1.update_cell_at(f3,f6)
-        f5[f9] = self.get_data(f1)
-        f12 = f10 in range(24, 31)
-        f13 = f10 in range(0, 10)
-        f14 = 0 if f12 else 1
-        f15 = 2 if f13 else f14
-        f16 = f15 if f8 == 0 else 1
+        f5[f11] = self.get_data(f1)
 
-        f17 = {**self.app.stores}
-        f17.update({'_': [0,f16]})
-        f2.config = f17
+        f18 = {**self.app.stores}
+        f18.update({'_': [0,f17]})
+        f2.config = f18
 
     if not event.value:
         on_highlighted(
             self, f3)
 
 def on_shift_tab(self, event, prefix) -> None:
+    f00 = (-1, 0, 1, 3, 4, 5, 6, 7, 14)
+    f01 = (0, 1, 2, 9, 10, 11, 12, 13, 14)
     f0 = self.query_one("#cont-switch-0")
     f1 = self.query_one("#cont-switch-1")
     f2 = self.query_one("#dir-tree-0")
@@ -58,44 +61,48 @@ def on_shift_tab(self, event, prefix) -> None:
     f6 = self.query_one("#input-0")
     f7 = self.query_one("#label-0")
     f8 = self.app.store["4-0"]
-    f9 = self.app.store["4-1"]
-    f89 = self.app.stores
-    f10 = self.app.focused
-    f11 = f8.index(f10.id)
-    f12 = f11 + prefix
-    f13 = f12 % len(f8)
-    f14 = min(prefix,0)
-    f15 = f8[f13] or ""
-    f16 = f11 + f14
+    f9 = self.app.store["000"]
+    f10 = self.app.stores
+    f11 = self.app.focused
+    f12 = f9.index(f11.id)
+    f13 = f12 + prefix
+    f14 = f13 % len(f9)
+    f15 = min(prefix,0)
+    f16 = f9[f14] or ""
+    f17 = f12 + f15
 
-    if (event is not None and
-            f16 in (-1,0,1,3,4,5,6,7,14)):
+    if (event is not None
+            and f17 in f00):
         event.prevent_default()
         event.stop()
 
-    if f13 in (0,1,2,9,10,11,12,13,14):
-        self.app.textfield = f9[f13]
-        f7.update(f9[f13])
+    if f14 in f01:
+        f18 = f8.get(f9[f14],"")
+        self.app.textfield = f18
+        f7.update(f18)
         f3.update("")
         f5.value = ""
         f6.value = ""
 
-    if f13 in (3,4,5,6,7,8):
-        f17 = self.query_one(f"#{f15}")
-        f18 = f17.cursor_coordinate
-        on_highlighted(self, f18)
-        f1.current = f15
+    f19 = f10.setdefault('0', {})
+    f20 = f19.setdefault('40', {})
+    if f14 in (3, 4, 5, 6, 7, 8):
+        f21 = self.query_one(f"#{f16}")
+        f22 = f21.cursor_coordinate
+        f20["2"] = f22.column
+        f20["1"] = f22.row
+        f1.current = f16
+        on_highlighted(
+            self, f22)
 
-    if f13 in (0,1,2):
-        f0.current = f15
-    if f16 == 14: f2.focus()
-    if f16 == -1: f4.focus()
+    if f14 in (0, 1, 2):
+        f0.current = f16
+    if f17 == 14: f2.focus()
+    if f17 == -1: f4.focus()
 
-    f24 = f89.setdefault('0', {})
-    f25 = f24.setdefault('40', {})
-    f25["0"] = f13 or "" or 0
+    f20["0"] = f14 + 1
     PATH_1.write_text(
-        json.dumps(f89))
+        json.dumps(f10))
 
 def on_highlighted(self, event) -> None:
     f0 = self.query_one("#cont-switch-1")
@@ -158,78 +165,85 @@ def on_highlighted(self, event) -> None:
             if int(f6) == 0:
                 f3.update(f24)
         if int(f6) in (4,5):
-            f22 = f12[f13]
-            f3.update(f22)
+            f25 = f12[f13]
+            f3.update(f25)
         if len(f22) > 2:
             f2.update(f22[0])
             f4.value = f9 or f22[1]
             f5.value = f9 or f22[2]
 
 def on_pressed(self, event) -> None:
-    f0 = self.query_one("#label-0")
-    f1 = self.query_one(MainTab)
-    f2 = self.app.store
-    f3 = self.app.stores
-    f4 = event.button.id
-    f5 = f4.split("-")[-1]
-    f6 = f3.setdefault("0",{})
-    f7 = f6.setdefault("38",{})
-    f8 = f6.setdefault("39",{})
-    f9 =  f2["4-0"].index(f4) \
-        if f4 in f2["4-0"] else -1
-    f10 = f2["4-1"][f9]
-    f11 = {"0": 2, "4": 1}
-    f12 = {"0": 1, "4": 2}
-    self.app.textfield = f10
-    f0.update(f10)
+    f0 = self.query_one("#cont-switch-1")
+    f1 = self.query_one(f"#{f0.current}")
+    f2 = self.query_one("#label-0")
+    f3 = self.query_one(MainTab)
+    f4 = f1.cursor_coordinate
+    f5 = self.app.store
+    f6 = self.app.stores
+    f7 = event.button.id
+    f8 = {"0": 1, "4": 2}
+    f9 = {"0": 2, "4": 1}
+    f10 = f7.split("-")[-1]
+    f11 = f6.setdefault("0",{})
+    f12 = f11.setdefault("38",{})
+    f13 = f11.setdefault("39",{})
+    f14 = f5["4-0"].get(f7,"")
+    self.app.textfield = f14
+    f2.update(f14)
 
-    if int(f5) == 1:
-        f13 = f7.get("0",0)
-        f7[0] = 1 - f13
+    if int(f10) == 1:
+        f15 = f12.get("0",0)
+        f12[0] = 1 - f15
 
-    elif int(f5) == 2:
-        f14 = f7.get("1",0)
-        f7[1] = 1 - f14
+    elif int(f10) == 2:
+        f16 = f12.get("1",0)
+        f12[1] = 1 - f16
 
-    elif int(f5) == 3:
-        f15 = f7.get("2",0)
-        f7[2] = 1 - f15
+    elif int(f10) == 3:
+        f17 = f12.get("2",0)
+        f12[2] = 1 - f17
 
-    elif int(f5) == 4:
-        f16 = int(time.time())
-        f17 = f6.get('38', {})
-        for h in ('0','1','2'):
-            if f17.get(h, 0) == 0:
-                f8[h] = f16
-
-    elif int(f5) == 5:
+    elif int(f10) == 4:
         f18 = int(time.time())
-        f19 = PORT / f"{f18}.json"
-        shutil.copy2(PATH_1,f19)
-        f20 = {**self.app.stores}
-        f20.update({'_': [0,4]})
-        f1.config = f20
+        f19 = f11.get('38', {})
+        for h in ('0','1','2'):
+            if f19.get(h, 0) == 0:
+                f13[h] = f18
 
-    elif int(f5) == 0:
+    elif int(f10) == 5:
+        f20 = int(time.time())
+        f21 = PORT / f"{f20}.json"
+        shutil.copy2(PATH_1,f21)
+        f22 = {**self.app.stores}
+        f22.update({'_': [0,4]})
+        f3.config = f22
+
+    elif int(f10) == 0:
         self.app.stores = {}
+        f23 = self.app.stores
+        f24 = f23.setdefault('0',{})
+        f25 = f24.setdefault('40',{})
+        f23.setdefault('39',{})
+        f25['2'] = f4.column
+        f25['1'] = f4.row
 
-    if int(f5) in (0,4):
-        f21 = {**self.app.stores}
-        f22 = [f11[f5],f12[f5]]
-        f21.update({'_': f22})
-        f1.config = f21
+    if int(f10) in (0,4):
+        f26 = {**self.app.stores}
+        f27 = [f9[f10],f8[f10]]
+        f26.update({'_': f27})
+        f3.config = f26
 
-    if int(f5) in (1,2,3):
-        f23 = int(f5) - 1
-        f24 = f7.get(
-            str(f23), 0)
-        f25 = ['', 'de']
-        f26 = f25[f24]
+    if int(f10) in (1,2,3):
+        f28 = int(f10) - 1
+        f29 = f12.get(
+            str(f28), 0)
+        f30 = ['', 'de']
+        f31 = f30[f29]
         script_f6(
-            self, f4, f26)
+            self, f7, f31)
 
-    if int(f5) in (0,4,5):
-        script_f6(self, f4, "")
+    if int(f10) in (0,4,5):
+        script_f6(self, f7, "")
 
 async def on_key(self, event) -> None:
     f0 = ("delete","f1","f2","f3",

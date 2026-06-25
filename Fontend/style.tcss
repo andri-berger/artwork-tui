@@ -30,9 +30,10 @@ Input {
     border: hkey white; }
 
 Digits {
+    width: auto;
     layer: overlay;
-    dock: left;
-    color: white; }
+    color: white;
+    dock: left; }
 
 Label {
     width: 70;

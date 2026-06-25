@@ -62,37 +62,59 @@ class CLIApp(App):
             script_f1("2")]
 
     async def on_mount(self) -> None:
-        f0 = self.query_one(MainTab)
-        f1 = ("localhost", 9000)
-        f2 = functools.partial(
+        f0 = self.query_one("#cont-switch-0")
+        f1 = self.query_one("#cont-switch-1")
+        f2 = self.query_one(MainTab)
+        f3 = self.store.get("000")
+        f4 = self.stores.get(
+            "0",{})
+
+        f5 = f4.get("40")
+        f6 = f4.get("40",{})
+        f7 = f6.get("0") or 4
+        f8 = ("localhost", 9000)
+        f9 = (3, 4, 5, 6, 7, 8)
+        f10 = (0, 1, 2)
+
+        f11 = functools.partial(
             http.server.
             SimpleHTTPRequestHandler,
             directory=str(PORT_0))
-        f3 = (http.server.
-              HTTPServer(f1, f2))
+        f12 = (http.server.
+              HTTPServer(f8, f11))
         threading.Thread(
-            target=f3.serve_forever,
+            target=f12.serve_forever,
             daemon=True).start()
 
-        f4 = await async_playwright().start()
-        f5 = await f4.chromium.launch(headless=True)
-        self.playwright = await f5.new_page()
+        f13 = await async_playwright().start()
+        f14 = await f13.chromium.launch(headless=True)
+        self.playwright = await f14.new_page()
         await self.playwright.goto(PATH)
-        f6 = self.stores.get("0")
 
-        if f6 is None:
-            f7 = self.stores
-            f8 = int(time.time())
-            f9 = f7.setdefault('0', {})
-            f10 = f9.setdefault('39', {})
+        if len(f3) > f7:
+            f15 = f3[f7-1]
+            f16 = "data-table-0"
+            f17 = self.query_one(
+                f"#{f15 or f16}")
+            self.set_focus(f17)
+            if (f7-1) in f9:
+                f1.current = f15
+            elif (f7-1) in f10:
+                f0.current = f15
+
+        if f5 is not None:
+            f18 = {**self.stores}
+            f19 = 1 if f18 else 2
+            f18['_'] = [2,f19]
+            f2.config = f18
+
+        elif f5 is None:
+            fxx17 = self.stores
+            fxx18 = int(time.time())
+            fxx19 = fxx17.setdefault('0', {})
+            fxx20 = fxx19.setdefault('39', {})
             for k in ('0', '1', '2'):
-                    f10[k] = f8
-
-        elif f6 is not None:
-            f11 = {**self.stores}
-            f12 = 1 if f11 else 2
-            f11['_'] = [2,f12]
-            f0.config = f11
+                    fxx20[k] = fxx18
 
     def compose(self) -> ComposeResult:
         yield MainApp()

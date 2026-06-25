@@ -1,4 +1,20 @@
 {
+  "000": [
+    "dir-tree-0",
+    "dir-tree-1",
+    "dir-tree-2",
+    "data-table-0",
+    "data-table-1",
+    "data-table-2",
+    "data-table-3",
+    "data-table-4",
+    "data-table-5",
+    "button-0",
+    "button-1",
+    "button-2",
+    "button-3",
+    "button-4",
+    "button-5"],
   "00-2": [11, 12, 13, 14,
     15, 0, 1, 2, 3, 4, 5, 6, 7,
     8, 9, 16, 17, 18, 19, 20, 21,
@@ -11,6 +27,7 @@
     46, 47, 73, 74, 61, 62, 63, 64,
     66, 67, 68, 69, 70, 71, 72,
     56, 57, 58, 59, 60],
+
   "0-0": [
     [110, 118, 126],
     [111, 119, 127],
@@ -967,33 +984,17 @@
         "CSS FONT-FACE. Lorem ipsum dolor sit amet.",
         "HTML SPAN ENTITY. Lorem ipsum dolor sit amet."],
 
-  "4-0": [
-    "dir-tree-0",
-    "dir-tree-1",
-    "dir-tree-2",
-    "data-table-0",
-    "data-table-1",
-    "data-table-2",
-    "data-table-3",
-    "data-table-4",
-    "data-table-5",
-    "button-0",
-    "button-1",
-    "button-2",
-    "button-3",
-    "button-4",
-    "button-5"],
-  "4-1": [
-    "JSON FILE PICKER. Choose your base project file.",
-    "PNG FILE PICKER. Choose your base image file for canvas",
-    "FONT OTF FILE PICKER. Chose your base font file for canvas","","","","","","",
-    "CLEAR ALL DATA IN PROJECT JSON. Create a fresh clean state and start from scratch.",
-    "SET THE SEED FOR ALL 100 A-ELEMENTS. Reproduce the result on canvas faithfully on subsequent Regenerations.",
-    "SET THE SEED FOR ALL 100 B-ELEMENTS. Reproduce the result on canvas faithfully on subsequent Regenerations.",
-    "SET THE SEED FOR ALL 100 C-ELEMENTS. Reproduce the result on canvas faithfully on subsequent Regenerations.",
-    "GENERATE ART(WORK) ON CANVAS. Attention! will overwrite existing data, so export first if you want to keep your work.",
-    "SAVE IMAGE TO DISK. Both png and json file will be saved to where the app has been executed from."],
-  "4-2": {
+  "4-0": {
+    "dir-tree-0": "JSON FILE PICKER. Choose your base project file.",
+    "dir-tree-1": "PNG FILE PICKER. Choose your base image file for canvas",
+    "dir-tree-2": "FONT OTF FILE PICKER. Chose your base font file for canvas",
+    "button-0": "CLEAR ALL DATA IN PROJECT JSON. Create a fresh clean state and start from scratch.",
+    "button-1": "SET THE SEED FOR ALL 100 A-ELEMENTS. Reproduce the result on canvas faithfully on subsequent Regenerations.",
+    "button-2": "SET THE SEED FOR ALL 100 B-ELEMENTS. Reproduce the result on canvas faithfully on subsequent Regenerations.",
+    "button-3": "SET THE SEED FOR ALL 100 C-ELEMENTS. Reproduce the result on canvas faithfully on subsequent Regenerations.",
+    "button-4": "GENERATE ART(WORK) ON CANVAS. Attention! will overwrite existing data, so export first if you want to keep your work.",
+    "button-5": "SAVE IMAGE TO DISK. Both png and json file will be saved to where the app has been executed from."},
+  "4-1": {
     "dir-tree-0": "FILE {f3} has been chosen and applied!",
     "dir-tree-1": "FILE {f3} has been chosen and applied!",
     "dir-tree-2": "FX {f3} has been chosen and applied!",
@@ -1003,7 +1004,7 @@
     "button-3": "FX {f3}ACTIVATED Randomize Seed for C00 elements!",
     "button-4": "ARTWORK has been regenerated via random function!",
     "button-5": "PNG AND JSON FILES have been saved to disk!"},
-  "4-3": {
+  "4-2": {
     "delete": "DELETE cell contents or files in local file picker.",
     "f1": "COPY TABLE cell contents.",
     "f2": "CUT TABLE cell contents.",

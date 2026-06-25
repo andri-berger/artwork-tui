@@ -5,7 +5,7 @@ from textual.widgets import DataTable
 from textual.widget import Widget
 from textual.binding import Binding
 from textual.app import ComposeResult
-from .script import script_f9, script_f8
+from .script import script_f6, script_f8, script_f9
 from .scripts import scripts_f1
 from .script import script_f7
 from pathlib import Path
@@ -43,86 +43,93 @@ class MainTab(Widget):
 
     async def watch_config(self, path: dict) -> None:
         f0 = self.app.query_one("#cont-switch-1")
-        h2 = int(f0.current.split("-")[-1])
-        f2 = [9, 100, 301, 300, 12, 13]
+        f1 = int(f0.current.split("-")[-1])
+        f2 = [6, 100, 301, 300, 12, 13]
         f3 = self.app.query(DataTable)
         f4 = self.app.playwright
         f5 = self.app.stores
         f6 = self.app.store
 
-        f7, f8 = path.pop("_", [])
-        f9 = script_f9(path, f6)
+        f7 = f5.get("0", {})
+        f8 = f7.get("40", {})
+        f9, f10 = path.pop("_", [])
+        f11 = script_f9(path, f6)
         if self.query_one(Image):
             self.query_one(
                 Image).remove()
 
-        if f7 >= 1:
-            f10 = f6[f"1-{h2}"]
-            with self.app.batch_update():
-                f3[h2].clear(columns=False)
-                for h1 in range(len(f10)):
-                    f29 = [f10[h1][0]] or []
-                    f29.extend([""]*f2[h2])
-                    f3[h2].add_row(*f29)
+        f12 = await (
+            f4.evaluate(PATH, [f10, f11]))
+        f13 = f12[0].split(',')[1]
+        f14 = base64.b64decode(f13)
+        f15 = f11.get('0', {})
+        f16 = f15.get('80',0)
 
-        if f8 >= 0:
-            f11 = await (
-                f4.evaluate(PATH, [f8, f9]))
-            f12 = f11[0].split(',')[1]
-            f13 = base64.b64decode(f12)
-            f14 = f9.get('0', {})
-            f15 = f14.get('80',0)
+        if f16 in range(1,5):
+            f17 = {"h": f16,
+                "h0": f15.get('81',0),
+                "h1": f15.get('82',0),
+                "h2": f15.get('83',0)}
+            f14 = scripts_f1(f17, f14)
 
-            if f15 in range(1,5):
-                f16 = {"h": f15,
-                    "h0": f14.get('81',0),
-                    "h1": f14.get('82',0),
-                    "h2": f14.get('83',0)}
-                f13 = scripts_f1(f16, f13)
+        if f10 == 4:
+            f18 = int(time.time())
+            f19 = PORT / f"{f18}.png"
+            with open(f19, "wb") as f:
+                f.write(f14)
 
-        if f8 == 4:
-            f17 = int(time.time())
-            f18 = PORT / f"{f17}.png"
-            with open(f18, "wb") as f:
-                f.write(f13)
-
-        if f8 <= 3:
+        if f10 <= 3:
             with open(PATH_5, "wb") as f:
-                f.write(f13)
+                f.write(f14)
             await self.mount(
                 Image(PATH_5))
             script_f7(self,
                       PATH_5,
                       Image)
 
-        if f8 == 2:
-            f19 = script_f8(
-                f11[1], f6)
-            f5 = {**f5, **f19}
+        if f10 == 2:
+            f20 = script_f8(
+                f12[1], f6)
+            f5 = {**f5, **f20}
 
-        if f7 >= 1:
-            f20 = f7 == 2
-            f21 = (0,6) if f20 else (1,4)
+        if f9 >= 1:
+            f21 = f9 == 2
+            f22 = f1 == 3
+            f23 = 2 if f22 else f1
+            f24 = f6.get(f"1-{f23}")
+            f25 = (0,6) if f21 else (1,4)
             with self.app.batch_update():
-                for h in range(*f21):
-                    f22 = int(h) == 3
-                    f23 = 2 if f22 else h
-                    f24 = f6[f"1-{f23}"]
-                    f25 = f5.get(str(h),{})
-                    if f25 is not None:
-                        f3[h].clear(
+                f3[f23].clear(columns=False)
+                for h in range(len(f24)):
+                    f26 = [f24[h][0]] or []
+                    f26.extend([""]*f2[f23])
+                    f3[f23].add_row(*f26)
+
+                for h0 in range(*f25):
+                    f27 = int(h0) == 3
+                    f28 = 2 if f27 else h0
+                    f29 = f6.get(f"1-{f28}")
+                    f30 = f5.get(str(h0),{})
+                    if f30 is not None:
+                        f3[h0].clear(
                             columns=False)
-                        f26 = [str(h0) for
-                                h0 in range(f2[h])]
-                        for h1 in range(len(f24)):
-                            f28 = f25.get(str(h1))
-                            f29 = [f24[h1][0]]
-                            if f28 is not None:
-                                for h2 in f26:
-                                    f29.append(
-                                    str(f28.get(
-                                        h2,"")))
-                            f3[h].add_row(*f29)
+                        f31 = [str(h1) for
+                                h1 in range(f2[h0])]
+                        for h2 in range(len(f29)):
+                            f32 = f30.get(str(h2))
+                            f33 = [f29[h2][0]]
+                            if f32 is not None:
+                                for h3 in f31:
+                                    f33.append(
+                                    str(f32.get(
+                                        h3,"")))
+                            f3[h0].add_row(*f33)
+
+                f34 = f8.get("1", 0)
+                f35 = f8.get("2", 0)
+                f3[f23].move_cursor(
+                    row=f34,
+                    column=f35)
 
         PATH_6.write_text(
         json.dumps(f5))
@@ -159,48 +166,51 @@ class FileTree(DirectoryTree):
         f5 = event.control.id
         f6 = self.app.stores
         f7 = f5.split("-")[-1]
-        f8 = ['4','5'][int(f7)-1]
+        f8 = ["4","5"][int(f7)-1]
         f9 = ["module","modules"]
         f10 = ['png','otf']
         f11 = event.path
+        f12 = f11.name
+        script_f6(self,
+                  f5, f12)
 
         if int(f7) >= 1:
-            f12 = f4.column
-            f13 = str(f4.row)
-            f14 = f10[int(f7)-1]
+            f13 = f4.column
+            f14 = str(f4.row)
             f15 = f9[int(f7)-1]
-            f16 = PORT_2 / f15
-            f17 = f16 / f11.name
+            f16 = f10[int(f7)-1]
+            f17 = f12.split(".")
+            f18 = PORT_2 / f15
+            f19 = f18 / f12
 
             if (int(f3) >= 4
-                    and f12 == 12):
-                f18 = f6.setdefault(f8, {})
-                f19 = f18.setdefault(f13, {})
-                f20 = f11.name.split(".")
-                f19[str(f12-1)] = f20[0]
-                f21 = f1.get_cell_at(f4)
-                f22 = f"{str(f21)}.{f14}"
-                f23 = f16 / f22 / ""
-                if f23.exists():
-                    f23.unlink()
+                    and f13 == 12):
+                f20 = f6.setdefault(f8, {})
+                f21 = f20.setdefault(f14, {})
+                f21[str(f13-1)] = f17[0]
+                f22 = f1.get_cell_at(f4)
+                f23 = f"{str(f22)}.{f16}"
+                f24 = f18 / f23 / ""
+                if f24.exists():
+                    f24.unlink()
                 f1.update_cell_at(
-                    f4,f20[0])
+                    f4,f17[0])
 
-            elif int(f3) <= 3 or f12 != 12:
-                f24 = f6.setdefault('0', {})
-                f25 = f24.setdefault('40', {})
-                f25[str(int(f7)+2)] = f11.name
-                if f17.exists():
-                    f17.unlink()
+            elif int(f3) <= 3 or f13 != 12:
+                f25 = f6.setdefault('0', {})
+                f26 = f25.setdefault('40', {})
+                f26[str(int(f7)+2)] = f12
+                if f19.exists():
+                    f19.unlink()
 
-            shutil.copy2(f11, f17)
-            f26 = {**self.app.stores}
-            f26.update({'_':  [0,1]})
-            f2.config = f26
+            shutil.copy2(f11, f19)
+            f27 = {**self.app.stores}
+            f27.update({'_':  [0,1]})
+            f2.config = f27
 
         elif int(f7) == 0:
-            f27 = f11.read_text()
-            f28 = json.loads(f27)
-            f28.update({'_': [2,1]})
-            self.app.stores = f28
-            f2.config = f28
+            f28 = f11.read_text()
+            f29 = json.loads(f28)
+            f29.update({'_': [2,1]})
+            self.app.stores = f29
+            f2.config = f29
