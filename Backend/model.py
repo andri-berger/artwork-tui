@@ -139,6 +139,8 @@ class MainTab(Widget):
 
 class FileTree(DirectoryTree):
     show_root = False
+    show_guides = True
+    guide_depth = 4
     BINDINGS = [
         Binding("space",
         "select_cursor",
