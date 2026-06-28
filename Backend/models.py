@@ -91,7 +91,7 @@ def on_shift_tab(self, event, prefix) -> None:
         f6.value = ""
 
     f19 = f10.setdefault("0", {})
-    f20 = f19.setdefault("40", {})
+    f20 = f19.setdefault("37", {})
     if f14 in (3, 4, 5, 6, 7, 8):
         f21 = self.query_one(f"#{f16}")
         f22 = f21.cursor_coordinate
@@ -204,8 +204,8 @@ def on_pressed(self, event) -> None:
     f9 = {"0": 2, "4": 1}
     f10 = f7.split("-")[-1]
     f11 = f6.setdefault("0", {})
-    f12 = f11.setdefault("38", {})
-    f13 = f11.setdefault("39", {})
+    f12 = f11.setdefault("35", {})
+    f13 = f11.setdefault("36", {})
     f14 = f5["4-0"].get(f7, "")
     self.app.textfield = f14
     f2.update(f14)
@@ -224,7 +224,7 @@ def on_pressed(self, event) -> None:
 
     elif int(f10) == 4:
         f18 = int(time.time())
-        f19 = f11.get("38", {})
+        f19 = f11.get("35", {})
         for h in ("0", "1", "2"):
             if f19.get(h, 0) == 0:
                 f13[h] = f18
@@ -241,8 +241,8 @@ def on_pressed(self, event) -> None:
         self.app.stores = {}
         f23 = self.app.stores
         f24 = f23.setdefault("0", {})
-        f25 = f24.setdefault("40", {})
-        f23.setdefault("39", {})
+        f25 = f24.setdefault("37", {})
+        f23.setdefault("36", {})
         f25["2"] = f4.column
         f25["1"] = f4.row
 

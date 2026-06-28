@@ -158,7 +158,13 @@ self.onmessage = async (l) => {
 				}
 				if (l36 === true) {
 					l5.moveTo(...l116)
-					l5.bezierCurveTo(l118, l119, l120, l121, ...l117)
+					l5.bezierCurveTo(
+						l118,
+						l119,
+						l120,
+						l121,
+						...l117,
+					)
 				}
 			}
 			if (l38 === false) {

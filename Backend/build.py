@@ -76,8 +76,8 @@ class CLIApp(App):
         f3 = self.store.get("000")
         f4 = self.stores.get("0", {})
 
-        f5 = f4.get("40")
-        f6 = f4.get("40", {})
+        f5 = f4.get("37")
+        f6 = f4.get("37", {})
         f7 = f6.get("0") or 4
         f8 = ("localhost", 9000)
         f9 = (3, 4, 5, 6, 7, 8)
@@ -116,12 +116,15 @@ class CLIApp(App):
             f2.config = f18
 
         elif f5 is None:
-            fxx17 = self.stores
-            fxx18 = int(time.time())
-            fxx19 = fxx17.setdefault("0", {})
-            fxx20 = fxx19.setdefault("39", {})
-            for k in ("0", "1", "2"):
-                fxx20[k] = fxx18
+            self.notify("No data")
+            f20 = self.stores
+            f21 = int(time.time())
+            f22 = f20.setdefault("0", {})
+            f23 = f22.setdefault("36", {})
+            for h in ("0", "1", "2"):
+                f23[h] = f21
+
+            PATH_3.write_text(json.dumps(f20))
 
     def compose(self) -> ComposeResult:
         yield MainApp()

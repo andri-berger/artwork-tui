@@ -137,13 +137,33 @@ const k0 = {
 		'0-1': ['start', 'ends', 'center'],
 		'1-3': ['both', 'axis x', 'axis y'],
 		'2-3': ['none', 'hidden', 'visible'],
-		'3-3': [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+		'3-3': [
+			0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
+		],
 		'0-2': ['border', 'content', 'padding'],
 		'5-3': ['circle', 'ellipse', 'conical'],
 		'1-1': ['start', 'ends', 'center', 'stretch'],
-		'1-2': ['inset', 'outset', 'dotted', 'dashed'],
-		'3-2': ['start', 'ends', 'evenly', 'around', 'between'],
-		'4-2': ['ends', 'center', 'stretch', 'evenly', 'around', 'between'],
+		'1-2': [
+			'inset',
+			'outset',
+			'dotted',
+			'dashed',
+		],
+		'3-2': [
+			'start',
+			'ends',
+			'evenly',
+			'around',
+			'between',
+		],
+		'4-2': [
+			'ends',
+			'center',
+			'stretch',
+			'evenly',
+			'around',
+			'between',
+		],
 		'2-2': [
 			'top',
 			'left',
@@ -201,12 +221,12 @@ const k1 = {
 	138: '0-7',
 	139: '0-8',
 
-	106: '0-21',
-	107: '0-22',
-	108: '0-23',
-	146: '0-0',
-	147: '0-1',
-	148: '0-2',
+	101: '0-21',
+	102: '0-22',
+	103: '0-23',
+	104: '0-0',
+	105: '0-1',
+	106: '0-2',
 }
 const k2 = document.body
 const k3 = document.documentElement
@@ -218,9 +238,11 @@ const k8 = (_) => _[0].getAttribute(_[1])
 const k9 = (_) => _[0].removeAttribute(_[1])
 const k10 = (_) => String(_).padStart(2, '0')
 const k11 = (_) => String(_).padStart(3, '0')
-const k12 = (_) => _[1] + (_[2] - _[1]) * (_[0] / 100)
+const k12 = (_) =>
+	_[1] + (_[2] - _[1]) * (_[0] / 100)
 const k13 = (_) => [1, 10, 100, 1000, 10000][_[0]]
-const k14 = (_) => Math.round(_[1] * k13(_)) / k13(_)
+const k14 = (_) =>
+	Math.round(_[1] * k13(_)) / k13(_)
 const k15 = document.createElement('canvas')
 const k16 = document.createElement('canvas')
 const k17 = k16.getContext('2d')
@@ -316,7 +338,10 @@ const h3 = (l) => {
 			let l11 = l[1] + l9
 			let l12 = l5(l10)
 			let l13 = l4(l11)
-			l0 = Array.from(l[3], l1.source(l3)(l12, l13))
+			l0 = Array.from(
+				l[3],
+				l1.source(l3)(l12, l13),
+			)
 		}
 		if (l[0] === 0) {
 			l0 = Array.from(l[3], l2.source(l3)(l[2]))
@@ -380,7 +405,10 @@ const h4 = (l) => {
 		}
 		if (l2 === '2') {
 			if (_[1] >= 1) {
-				let l21 = Array.from({ length: _[1] }, (_, _0) => `${l0[l1]}${k10(_0)}`)
+				let l21 = Array.from(
+					{ length: _[1] },
+					(_, _0) => `${l0[l1]}${k10(_0)}`,
+				)
 				l7.push(...(l21 || []))
 			}
 			let l22 = l7.length
@@ -428,7 +456,9 @@ const h5 = (l) => {
 	let l15 = h3([0, 0, l[3], l10, l4 + 1])
 	let l16 = h3([1, ...l6, l10, l4 + 2])
 	let l17 = h3([1, 0, 0, l10, l4 + 3])
-	let l18 = l.slice(10).map((_) => _.split('.').filter(Boolean))
+	let l18 = l
+		.slice(10)
+		.map((_) => _.split('.').filter(Boolean))
 	let l19 = (_) => Object.keys(_)
 	let l20 = (_) => _.join('-')
 	let l21 = l[0].split('-')
@@ -531,7 +561,7 @@ const h7 = (l) => {
 	let l2 = l[2]['77'] || 0
 	let l3 = l[2]['78'] || 0
 	let l4 = l[2]['79'] || 0
-	let l5 = l[2]['89'] || 10
+	let l5 = l[2]['92'] || 10
 	let l6 = l[0] + l5 * 2
 	let l7 = l[1] + l5 * 2
 	let l8 = filters
@@ -555,7 +585,12 @@ const h7 = (l) => {
 		})
 	} else if (l0 === 10) {
 		l9 = new l8.TwistFilter({
-			offset: [l7 / 2, 20 + k12([l1, 100, 900]) + l6 * k12([l1, 0, 1])],
+			offset: [
+				l7 / 2,
+				20 +
+					k12([l1, 100, 900]) +
+					l6 * k12([l1, 0, 1]),
+			],
 			radius: k12([l2, 100, 900]),
 			angle: k12([l3, 0, 100]),
 		})
@@ -686,66 +721,81 @@ const h9 = async (l) => {
 
 const h10 = async (l) => {
 	let l0 = l[1][3]
-	let l1 = l[0][0] + l[1][0] * 2
-	let l2 = l[0][1] + l[1][0] * 2
-	let l3 = k3.scrollWidth
-	let l4 = k3.scrollHeight
-	let l5 = l0 * l[1][1] * 2
-	let l11 = l0 * l[1][2] * 2
-	let l12 = l0 * l1
-	let l13 = l0 * l2
-	let l14 = l0 * l3
-	let l15 = l14 - l12
-	let l16 = l12 + l5
-	let l17 = l13 + l11
-	let l18 = l1 + l[1][1] * 2
-	let l19 = l2 + l[1][2] * 2
-	let l20 = await toCanvas(k2, {
-		width: l3,
-		height: l4,
-		canvasWidth: l3,
-		canvasHeight: l4,
+	let l1 = l[1][0]
+	let l2 = l[0][0] + l1 * 2
+	let l3 = l[0][1] + l1 * 2
+	let l4 = l2 + l[1][1] * 2
+	let l5 = l3 + l[1][2] * 2
+	let l6 = l0 * l[1][1] * 2
+	let l7 = l0 * l[1][2] * 2
+	let l8 = k3.scrollWidth
+	let l9 = k3.scrollHeight
+	let l10 = l0 * l2
+	let l11 = l0 * l3
+	let l12 = l0 * l8
+	let l13 = l12 - l10
+	let l14 = l10 + l6
+	let l15 = l11 + l7
+	let l16 = await toCanvas(k2, {
+		width: l8,
+		height: l9,
+		canvasWidth: l8,
+		canvasHeight: l9,
 		pixelRatio: l0,
 	})
-	k16.height = l17
-	k16.width = l16
-	k15.width = l16
-	k15.height = l17
-	k18.drawImage(l20, l15 / 2, 0, l12, l13, l5 / 2, l11 / 2, l12, l13)
-	h0(['f2', l18])
-	h0(['f3', l19])
+	k16.height = l15
+	k16.width = l14
+	k15.width = l14
+	k15.height = l15
+	k18.drawImage(
+		l16,
+		l13 / 2,
+		0,
+		l10,
+		l11,
+		l6 / 2,
+		l7 / 2,
+		l10,
+		l11,
+	)
+	h0(['f2', l4])
+	h0(['f3', l5])
 	k17.drawImage(k15, 0, 0)
 }
 
 window.h11 = async (l) => {
 	k2.innerHTML = ''
-	let l0 = l[1] || {}
-	let l1 = k0['02']
-	let l2 = l0['0'] || {}
+	let l0 = k0['02']
+	let l1 = l[1] || {}
+	let l2 = l1['0'] || {}
 	if (l[0] === 2) {
 		for (let i in l2) {
 			if (k1[i] != null) {
-				l1[k1[i]] = l2[i]
+				l0[k1[i]] = l2[i]
 			}
 		}
 	}
 	let l3 = l2['75'] || 0
-	let l4 = l2['89'] || 10
-	let l5 = l2['90'] || 0
-	let l6 = l2['91'] || 0
-	let l7 = l2['92'] || 2
-	let l8 = Object.keys(l2)
+	let l4 = l2['94'] || 0
+	let l5 = l2['93'] || 0
+	let l6 = l2['90'] || 4
+	let l7 = l2['91'] || 5
+	let l8 = l2['92'] || 10
+	let l9 = Math.min(l6, 10)
+	let l10 = Math.min(l7, 10)
+	let l11 = l[0] == 4? l10: l9
+	let l12 = Object.keys(l2)
 	if (l[0] === 2) {
-		l0 = { ...l0, ...h6(l1) }
+		l1 = { ...l1, ...h6(l0) }
 	}
 	if (l[0] >= 1) {
-		let l15 = [l4, l5, l6, l7]
-		let l16 = [l[0], l4, l0]
-		l0[1] = h12(l0[1] || {})
+		let l15 = [l8, l5, l4, l11]
+		let l16 = [l[0], l8, l1]
+		l1[1] = h12(l1[1] || {})
 		let l17 = await h1(l16)
 		await h10([l17, l15])
 	}
-	if (l8.some((_) => _ >= 51 && _ <= 74)) {
+	if (l12.some((_) => _ >= 51 && _ <= 74)) {
 		await h13([l3, l2])
 	}
 	if (l3 >= 1) {
@@ -753,7 +803,7 @@ window.h11 = async (l) => {
 	}
 	k2.innerHTML = ''
 	k2.appendChild(k15)
-	return [k15.toDataURL(), l0]
+	return [k15.toDataURL(), l1]
 }
 
 window.h12 = (l) => {

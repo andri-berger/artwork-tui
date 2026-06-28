@@ -61,7 +61,10 @@ class MainTab(Widget):
         f6 = self.app.store
 
         f7 = f5.get("0", {})
-        f8 = f7.get("40", {})
+        f15 = f7.get("30", {})
+        f08 = f7.get("34", {})
+        f8 = f7.get("37", {})
+
         f9, f10 = path.pop("_", [])
         f11 = script_f9(path, f6)
         if self.query_one(Image):
@@ -70,15 +73,15 @@ class MainTab(Widget):
         f12 = await f4.evaluate(PATH, [f10, f11])
         f13 = f12[0].split(",")[1]
         f14 = base64.b64decode(f13)
-        f15 = f11.get("0", {})
-        f16 = f15.get("80", 0)
+        f16 = f15.get("0", 0)
 
         if f16 in range(1, 5):
             f17 = {
                 "h": f16,
-                "h0": f15.get("81", 0),
-                "h1": f15.get("82", 0),
-                "h2": f15.get("83", 0),
+                "h0": f15.get("1", 0),
+                "h1": f15.get("2", 0),
+                "h2": f15.get("3", 0),
+                "h3": f15.get("4", 0),
             }
             f14 = scripts_f1(f17, f14)
 
@@ -93,6 +96,24 @@ class MainTab(Widget):
                 f.write(f14)
             await self.mount(Image(PATH_5))
             script_f7(self, PATH_5, Image)
+
+        self.notify(f"HERE {f08}")
+        f90 = f08.get("0", 0)
+        f91 = f08.get("1", 0)
+        f92 = f08.get("2", 0)
+        f93 = f08.get("3", 0)
+        f94 = f08.get("4", 0)
+
+        if f91 > 0:
+            f0 = self.query_one(Image)
+            f0.styles.width = f"{f91}%"
+            f0.styles.height = "auto"
+
+        if f92 > 0:
+            f0 = self.query_one(Image)
+            f0.styles.height = f"{f91}%"
+            f0.styles.width = "auto"
+
 
         if f10 == 2:
             f20 = script_f8(f12[1], f6)
@@ -222,7 +243,7 @@ class FileTree(DirectoryTree):
 
             elif int(f3) <= 3 or f13 != 12:
                 f25 = f6.setdefault("0", {})
-                f26 = f25.setdefault("40", {})
+                f26 = f25.setdefault("37", {})
                 f26[str(int(f7) + 2)] = f12
                 if f19.exists():
                     f19.unlink()

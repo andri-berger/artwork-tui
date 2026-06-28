@@ -195,10 +195,18 @@ body > div > div > div:first-of-type,
 }
 
 body > div > div > div:not(:first-of-type),
-.l00 > div:nth-of-type(3) > div:not(:first-of-type),
-.k00 > div:nth-of-type(3) > div:not(:first-of-type),
-.t00 > div:nth-of-type(3) > div:not(:first-of-type),
-.t000 > div:nth-of-type(3) > div:not(:first-of-type) {
+.l00
+	> div:nth-of-type(3)
+	> div:not(:first-of-type),
+.k00
+	> div:nth-of-type(3)
+	> div:not(:first-of-type),
+.t00
+	> div:nth-of-type(3)
+	> div:not(:first-of-type),
+.t000
+	> div:nth-of-type(3)
+	> div:not(:first-of-type) {
 	margin-left: -100%;
 }
 
