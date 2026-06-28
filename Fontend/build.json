@@ -16,6 +16,29 @@
 		"button-4",
 		"button-5"
 	],
+	"001": [
+    	"textual-dark",
+    	"rose-pine-moon",
+    	"rose-pine",
+    	"flexoki",
+    	"monokai",
+    	"gruvbox",
+    	"nord",
+    	"dracula",
+    	"tokyo-night",
+    	"atom-one-dark",
+    	"solarized-dark",
+
+    	"catppuccin-mocha",
+    	"catppuccin-macchiato",
+    	"catppuccin-frappe",
+    	"catppuccin-latte",
+    	"rose-pine-dawn",
+    	"solarized-light",
+    	"atom-one-light",
+    	"textual-light",
+    	"textual-ansi"],
+
 	"00-2": [
 		11, 12, 13, 14, 15, 0, 1, 2, 3, 4, 5, 6, 7, 8,
 		9, 16, 17, 18, 19, 20, 21, 23, 24, 25, 26, 27,
@@ -693,19 +716,19 @@
 		[[""]],
 		[
 			[""],
-			["00", "px", "1"],
-			["00", "px", "2"],
-			["00", "px", "16"],
 			["00", "px", "0"],
+			["00", "px", "0"],
+			["00", "px", "1"],
+			["00", "px", "16"],
 			["00", "boolean", "false"]
 		],
 		[
 			[""],
-			["00", "1 - 10", "4"],
-			["00", "1 - 10", "5"],
-			["00", "number", "10"],
 			["00", "number", "0"],
-			["00", "number", "0"]
+			["00", "number", "0"],
+			["00", "number", "10"],
+			["00", "1 - 10", "5"],
+			["00", "1 - 10", "4"]
 		],
 		[
 			[""],

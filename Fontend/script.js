@@ -776,11 +776,11 @@ window.h11 = async (l) => {
 		}
 	}
 	let l3 = l2['75'] || 0
-	let l4 = l2['94'] || 0
-	let l5 = l2['93'] || 0
-	let l6 = l2['90'] || 4
-	let l7 = l2['91'] || 5
-	let l8 = l2['92'] || 10
+	let l4 = l2['90'] || 0
+	let l5 = l2['91'] || 0
+	let l6 = l2['94'] || 4 // 94
+	let l7 = l2['93'] || 5
+	let l8 = l2['92'] || 10 // 92
 	let l9 = Math.min(l6, 10)
 	let l10 = Math.min(l7, 10)
 	let l11 = l[0] == 4? l10: l9
@@ -789,7 +789,7 @@ window.h11 = async (l) => {
 		l1 = { ...l1, ...h6(l0) }
 	}
 	if (l[0] >= 1) {
-		let l15 = [l8, l5, l4, l11]
+		let l15 = [l8, l4, l5, l11]
 		let l16 = [l[0], l8, l1]
 		l1[1] = h12(l1[1] || {})
 		let l17 = await h1(l16)

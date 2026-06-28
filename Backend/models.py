@@ -39,6 +39,9 @@ def on_submitted(self, event) -> None:
         (),
     )
 
+    if f8 == 0 and f10 == 34:
+        self.theme = "textual-dark"
+
     if f10 not in f12[f8] and f9 >= 1:
         f13 = f10 in range(24, 31)
         f14 = f10 in range(0, 10)

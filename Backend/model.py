@@ -97,23 +97,27 @@ class MainTab(Widget):
             await self.mount(Image(PATH_5))
             script_f7(self, PATH_5, Image)
 
-        self.notify(f"HERE {f08}")
-        f90 = f08.get("0", 0)
-        f91 = f08.get("1", 0)
-        f92 = f08.get("2", 0)
-        f93 = f08.get("3", 0)
-        f94 = f08.get("4", 0)
+        if f10 >= 0:
+            f70 = f6["001"]
+            f99 = f08.get("0")
+            f90 = f08.get("0", 0)
+            f91 = f08.get("1", 0)
+            f92 = f08.get("2", 0)
+            f93 = f08.get("3", 0)
+            f94 = f08.get("4", 0)
 
-        if f91 > 0:
-            f0 = self.query_one(Image)
-            f0.styles.width = f"{f91}%"
-            f0.styles.height = "auto"
+            if f90 and f90 < len(f70):
+                self.app.theme = f70[f90]
 
-        if f92 > 0:
-            f0 = self.query_one(Image)
-            f0.styles.height = f"{f91}%"
-            f0.styles.width = "auto"
+            if f91 > 0:
+                f0 = self.query_one(Image)
+                f0.styles.width = f"{f91}%"
+                f0.styles.height = "auto"
 
+            if f92 > 0:
+                f0 = self.query_one(Image)
+                f0.styles.height = f"{f91}%"
+                f0.styles.width = "auto"
 
         if f10 == 2:
             f20 = script_f8(f12[1], f6)

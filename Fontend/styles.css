@@ -56,7 +56,7 @@ body > canvas {
 body > div {
 	left: var(--f0, 0px);
 	top: var(--f1, 0px);
-	width: 400px;
+	width: 600px;
 	height: 300px;
 }
 
@@ -212,15 +212,8 @@ body > div > div > div:not(:first-of-type),
 
 .l00 > var:last-of-type,
 .k00 > var:last-of-type,
-.t00 > var:last-of-type {
-	margin: 2px;
-}
-
-.l00 > var:last-of-type,
-.k00 > var:last-of-type,
 .t00 > var:last-of-type,
 .t000 > var:last-of-type {
-	border: var(--_02);
 	text-align: center;
 	background-color: White;
 	visibility: visible;
@@ -229,10 +222,17 @@ body > div > div > div:not(:first-of-type),
 
 .l00 > var,
 .k00 > var,
+.t00 > var {
+	margin: 2px;
+}
+
+.l00 > var,
+.k00 > var,
 .t00 > var,
 .t000 > var {
 	padding: 2px;
 	font-size: 16px;
+	border: var(--_02);
 }
 
 body > div:has(+ div) {
