@@ -46,8 +46,8 @@ class MainTab(Widget):
 
     def on_mount(self) -> None:
         f0 = self.query_one(Image)
-        f0.styles.width = "100%"
-        f0.styles.height = "auto"
+        f0.styles.width = "auto"
+        f0.styles.height = "100%"
 
     async def watch_config(
         self, path: dict

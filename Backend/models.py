@@ -357,31 +357,34 @@ async def on_key(self, event) -> None:
             f4.focus()
 
     if isinstance(f17, DataTable):
-        if len(f21) == 1 or f21 in f1:
-            f24 = int(f13) in (4, 5)
-            f25 = f14.column == 12
-            f26 = int(f13) - 3
+        f24 = len(f21) == 1
+        f25 = f21 == 'minus'
+        f26 = f21 if f24 else "-"
+        if f25 or f24 or f21 in f1:
+            f27 = int(f13) in (4, 5)
+            f28 = f14.column == 12
+            f29 = int(f13) - 3
             event.stop()
 
-            if f24 and f25:
-                f27 = self.query_one(
-                    f"dir-tree-{f26}"
+            if f27 and f28:
+                f30 = self.query_one(
+                    f"dir-tree-{f29}"
                 )
-                f28 = f"dir-tree-{f26}"
-                f2.current = f28
-                f27.focus()
+                f31 = f"dir-tree-{f29}"
+                f2.current = f31
+                f30.focus()
 
-            elif not f24 or not f25:
+            elif not f27 or not f28:
                 f23.focus()
                 if f21 in f1:
                     f23.value = f18
 
-                elif len(f21) == 1:
-                    f23.value = f21
-                    f29 = "cursor_position"
+                elif f25 or f24:
+                    f23.value = f26
+                    f32 = "cursor_position"
                     self.call_after_refresh(
                         lambda: setattr(
-                            f23, f29, len(f21)
+                            f23, f32, len(f21)
                         )
                     )
 
@@ -392,15 +395,15 @@ async def on_key(self, event) -> None:
             )
 
         case "f1":
-            f30 = self.app
-            f30.clipboards = f18
+            f33 = self.app
+            f33.clipboards = f18
             self.post_message(
                 Input.Submitted(f23, "")
             )
 
         case "f2":
-            f31 = self.app
-            f31.clipboards = f18
+            f34 = self.app
+            f34.clipboards = f18
 
         case "f3":
             self.post_message(
