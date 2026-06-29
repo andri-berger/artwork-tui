@@ -134,6 +134,9 @@ class MainApp(Widget):
             yield Input(
                 disabled=False, id="input-1"
             )
+            yield Input(
+                disabled=False, id="input-2"
+            )
 
         with Horizontal(id="layer-3"):
             yield Label(id="label-0")

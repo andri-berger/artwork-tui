@@ -18,7 +18,7 @@ from textual_image.widget import Image
 from .script import (
     script_f6,
     script_f7,
-    script_f8,
+    script_f10,
     script_f9,
 )
 from .scripts import scripts_f1
@@ -46,131 +46,129 @@ class MainTab(Widget):
 
     def on_mount(self) -> None:
         f0 = self.query_one(Image)
-        f0.styles.width = "auto"
-        f0.styles.height = "100%"
+        f0.styles.width = "100%"
+        f0.styles.height = "auto"
 
     async def watch_config(
         self, path: dict
     ) -> None:
         f0 = self.app.query_one("#cont-switch-1")
+        f00 = self.app.query_one("#layer-1")
         f1 = int(f0.current.split("-")[-1])
         f2 = [6, 100, 301, 300, 12, 13]
         f3 = self.app.query(DataTable)
         f4 = self.app.playwright
         f5 = self.app.stores
         f6 = self.app.store
+        f7 = self.size
 
-        f7 = f5.get("0", {})
-        f15 = f7.get("30", {})
-        f08 = f7.get("34", {})
-        f8 = f7.get("37", {})
+        f8 = f5.get("0", {})
+        f9 = f8.get("30", {})
+        f10 = f8.get("34", {})
+        f11 = f8.get("37", {})
 
-        f9, f10 = path.pop("_", [])
-        f11 = script_f9(path, f6)
+        f12, f13 = path.pop("_", [])
+        f14 = script_f9(path, f6)
         if self.query_one(Image):
             self.query_one(Image).remove()
 
-        f12 = await f4.evaluate(PATH, [f10, f11])
-        f13 = f12[0].split(",")[1]
-        f14 = base64.b64decode(f13)
-        f16 = f15.get("0", 0)
+        f15 = await f4.evaluate(PATH, [f13, f14])
+        f16 = f15[0].split(",")[1]
+        f17 = base64.b64decode(f16)
+        f18 = int(f10.get("1", 0))
+        f19 = int(f10.get("0", 0))
+        f20 = int(f9.get("0", 0))
 
-        if f16 in range(1, 5):
-            f17 = {
-                "h": f16,
-                "h0": f15.get("1", 0),
-                "h1": f15.get("2", 0),
-                "h2": f15.get("3", 0),
-                "h3": f15.get("4", 0),
+        if f20 in range(1, 5):
+            f21 = {
+                "h": f20,
+                "h0": f9.get("1"),
+                "h1": f9.get("2"),
+                "h2": f9.get("3"),
+                "h3": f9.get("4"),
             }
-            f14 = scripts_f1(f17, f14)
+            f17 = scripts_f1(f21, f17)
 
-        if f10 == 4:
-            f18 = int(time.time())
-            f19 = PORT / f"{f18}.png"
-            with open(f19, "wb") as f:
-                f.write(f14)
+        if f13 == 4:
+            f22 = int(time.time())
+            f23 = PORT / f"{f22}.png"
+            with open(f23, "wb") as f:
+                f.write(f17)
 
-        if f10 <= 3:
+        if f13 <= 3:
             with open(PATH_5, "wb") as f:
-                f.write(f14)
-            await self.mount(Image(PATH_5))
-            script_f7(self, PATH_5, Image)
+                f.write(f17)
+            f24 = Image(PATH_5)
+            script_f7(f7, f10, f24, PATH_5)
+            await self.mount(f24 or Image)
+            f25 = self.query_one(Image)
 
-        if f10 >= 0:
-            f70 = f6["001"]
-            f99 = f08.get("0")
-            f90 = f08.get("0", 0)
-            f91 = f08.get("1", 0)
-            f92 = f08.get("2", 0)
-            f93 = f08.get("3", 0)
-            f94 = f08.get("4", 0)
+            if f10.get("3") == "true":
+                f26 = f25.styles
+                f26.width = "100%"
+                f26.height = "auto"
 
-            if f90 and f90 < len(f70):
-                self.app.theme = f70[f90]
+        if f13 == 2:
+            f27 = script_f10(f15[1], f6)
+            f5 = {**f5, **f27}
 
-            if f91 > 0:
-                f0 = self.query_one(Image)
-                f0.styles.width = f"{f91}%"
-                f0.styles.height = "auto"
-
-            if f92 > 0:
-                f0 = self.query_one(Image)
-                f0.styles.height = f"{f91}%"
-                f0.styles.width = "auto"
-
-        if f10 == 2:
-            f20 = script_f8(f12[1], f6)
-            f5 = {**f5, **f20}
-
-        if f9 >= 1:
-            f21 = f9 == 2
-            f22 = f1 == 3
-            f23 = 2 if f22 else f1
-            f24 = f6.get(f"1-{f23}")
-            f25 = (0, 6) if f21 else (1, 4)
+        if f12 >= 1:
+            f28 = f1 == 3
+            f29 = f12 == 2
+            f30 = 2 if f28 else f1
+            f31 = f6.get(f"1-{f30}")
+            f32 = (0, 6) if f29 else (1, 4)
             with self.app.batch_update():
-                f3[f23].clear(columns=False)
-                for h in range(len(f24)):
-                    f26 = [f24[h][0]] or []
-                    f26.extend([""] * f2[f23])
-                    f3[f23].add_row(*f26)
+                f3[f30].clear(columns=False)
+                for h in range(len(f31)):
+                    f33 = [f31[h][0]] or []
+                    f33.extend([""] * f2[f30])
+                    f3[f30].add_row(*f33)
 
-                for h0 in range(*f25):
-                    f27 = int(h0) == 3
-                    f28 = 2 if f27 else h0
-                    f29 = f6.get(f"1-{f28}")
-                    f30 = f5.get(str(h0), {})
-                    if f30 is not None:
+                for h0 in range(*f32):
+                    f34 = int(h0) == 3
+                    f35 = 2 if f34 else h0
+                    f36 = f6.get(f"1-{f35}")
+                    f37 = f5.get(str(h0), {})
+                    if f37 is not None:
                         f3[h0].clear(
                             columns=False
                         )
-                        f31 = [
+                        f38 = [
                             str(h1)
                             for h1 in range(
                                 f2[h0]
                             )
                         ]
-                        for h2 in range(len(f29)):
-                            f32 = f30.get(str(h2))
-                            f33 = [f29[h2][0]]
-                            if f32 is not None:
-                                for h3 in f31:
-                                    f33.append(
+                        for h2 in range(len(f36)):
+                            f39 = f37.get(str(h2))
+                            f40 = [f36[h2][0]]
+                            if f39 is not None:
+                                for h3 in f38:
+                                    f40.append(
                                         str(
-                                            f32.get(
+                                            f39.get(
                                                 h3,
                                                 "",
                                             )
                                         )
                                     )
-                            f3[h0].add_row(*f33)
+                            f3[h0].add_row(*f40)
 
-                f34 = f8.get("1", 0)
-                f35 = f8.get("2", 0)
-                f3[f23].move_cursor(
-                    row=f34, column=f35
+                f41 = f11.get("1", 0)
+                f42 = f11.get("2", 0)
+                f3[f30].move_cursor(
+                    row=f41, column=f42
                 )
+
+        if f18 in range(1, 9):
+            f43 = 12 - f18
+            f44 = f00.styles
+            f44.height = f43
+
+        if f19 in range(0, 19):
+            f45 = f6["001"][f19]
+            self.app.theme = f45
 
         PATH_6.write_text(json.dumps(f5))
 

@@ -124,6 +124,22 @@ class CLIApp(App):
             for h in ("0", "1", "2"):
                 f23[h] = f21
 
+        # f5 = self.app.stores
+        # f6 = self.app.store
+        # f7 = f5.get("0", {})
+        # f9 = f7.get("34", {})
+        # f00 = self.query_one("#layer-1")
+        # f016 = int(f9.get("0", 0))
+        # f017 = int(f9.get("1", 0))
+        # if f017 in range(1, 9):
+        #     f90 = f00.styles
+        #     f80 = 12 - f017
+        #     f90.height = f80
+        #
+        # if f016 in range(0, 19):
+        #     f59 = f6["001"][f016]
+        #     self.app.theme = f59
+
             PATH_3.write_text(json.dumps(f20))
 
     def compose(self) -> ComposeResult:

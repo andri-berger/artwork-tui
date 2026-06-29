@@ -31,6 +31,8 @@ Input {
 
 Digits {
     width: auto;
+    padding-top: 0;
+    padding-right: 1;
     layer: overlay;
     color: white;
     dock: left; }
@@ -61,6 +63,11 @@ Label {
 #cont-switch-1 {
     width: 1fr;
     max-width: 90; }
+
+#input-2 {
+    display: none;
+    width: 1fr;
+    max-width: 84; }
 
 #input-1 {
     width: 1fr;

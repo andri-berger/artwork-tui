@@ -11,7 +11,6 @@ def scripts_f0(h, h0, h1) -> float:
     f5 = f4 + h1
     return f5
 
-
 def scripts_f1(h, h0) -> bytes:
     f0 = max(h["h"], 1)
     f1 = h["h0"] or 0

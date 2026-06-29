@@ -59,7 +59,7 @@ def script_f3() -> list:
 
 
 def script_f4(h) -> list:
-    f0 = f" {['Text', 'Image'][h]}"
+    f0 = f" {['Image', 'Text'][h]}"
     f1 = (
         [[f"A{h0:02d}{f0}"] for h0 in range(100)]
         + [
@@ -107,46 +107,37 @@ def script_f6(self, h, h0) -> None:
     )
 
 
-def script_f7(self, h, h0) -> None:
-    f0 = cv2.imread(str(h))
-    f1 = self.query_one(h0)
-    f2 = self.size.width * 9
-    f3 = self.size.height * 18
-    f4, f5 = f0.shape[:2]
-    f6 = f1.styles
-    f7 = f5 / f4
-    if f7 > (f2 / f3):
-        f6.width = "100%"
-        f6.height = "auto"
-    elif f7 <= (f2 / f3):
-        f6.width = "auto"
-        f6.height = "100%"
+def script_f7(h, h0, h1, h2) -> None:
+    f0 = cv2.imread(str(h2))
+    f1, f2 = f0.shape[:2]
+    f4 = h0.get("2", 0)
+    f3 = h0.get("3")
+    f5 = h.height
+    f6 = h.width
+    f7 = h1.styles
+    f8 = f2 / f1 / 1
+    f9 = f6 / f8 / 2
+    f10 = f5 * f8 * 2
 
+    f11 = f9 - f5
+    f12 = f10 - f6
+    f13 = f11 * f4
+    f14 = f12 * f4
+    f15 = f13 / 100
+    f16 = f14 / 100
+    f17 = round(f15)
+    f18 = round(f16)
+    f19 = max(f17, 0)
+    f20 = max(f18, 0)
+    f21 = f3 == "true"
+    f7.height = "100%"
+    f7.width = "auto"
 
-def script_f8(h, h0) -> dict:
-    f0 = {}
-    f1 = h.items()
-    for h1, h2 in f1:
-        f2 = h1 == "1"
-        f3 = "1" if f2 else "2"
-        if f3 not in f0:
-            f0[f3] = {}
-        f4 = f0[f3]
-        f5 = h0.get(f"00-{h1}")
-        for h3, h4 in h2.items():
-            for h5, h6 in h4.items():
-                if h1 == "1":
-                    if h3 not in f4:
-                        f4[h3] = {}
-                    f4[h3][h5] = h6
-                if h1 == "2" or h1 == "3":
-                    f6 = int(h5)
-                    f7 = str(f5[f6])
-                    if f7 not in f4:
-                        f4[f7] = {}
-                    f4[f7][h3] = h6
-    return f0
-
+    if f4 != 0:
+        f22 = (-f20, 0)
+        f23 = (0, -f19)
+        f7.offset = f23 \
+            if f21 else f22
 
 def script_f9(h, h0) -> dict:
     f0 = {}
@@ -194,4 +185,28 @@ def script_f9(h, h0) -> dict:
                     f14 = int(h5)
                     f15 = str(f13[f14])
                     f7[f15] = h6
+    return f0
+
+def script_f10(h, h0) -> dict:
+    f0 = {}
+    f1 = h.items()
+    for h1, h2 in f1:
+        f2 = h1 == "1"
+        f3 = "1" if f2 else "2"
+        if f3 not in f0:
+            f0[f3] = {}
+        f4 = f0[f3]
+        f5 = h0.get(f"00-{h1}")
+        for h3, h4 in h2.items():
+            for h5, h6 in h4.items():
+                if h1 == "1":
+                    if h3 not in f4:
+                        f4[h3] = {}
+                    f4[h3][h5] = h6
+                if h1 == "2" or h1 == "3":
+                    f6 = int(h5)
+                    f7 = str(f5[f6])
+                    if f7 not in f4:
+                        f4[f7] = {}
+                    f4[f7][h3] = h6
     return f0

@@ -39,21 +39,21 @@ def on_submitted(self, event) -> None:
         (),
     )
 
-    if f8 == 0 and f10 == 34:
+    if f10 == 34 and f8 == 0:
         self.theme = "textual-dark"
 
     if f10 not in f12[f8] and f9 >= 1:
-        f13 = f10 in range(24, 31)
-        f14 = f10 in range(0, 10)
-        f15 = 0 if f13 else 1
-        f16 = 2 if f14 else f15
-        f17 = f16 if f8 == 0 else 1
+        f14 = f10 in range(24, 31)
+        f15 = f10 in range(0, 10)
+        f16 = 0 if f14 else 1
+        f17 = 2 if f15 else f16
+        f18 = f17 if f8 == 0 else 1
         f1.update_cell_at(f3, f6)
         f5[f11] = self.get_data(f1)
 
-        f18 = {**self.app.stores}
-        f18.update({"_": [0, f17]})
-        f2.config = f18
+        f19 = {**self.app.stores}
+        f19.update({"_": [0, f18]})
+        f2.config = f19
 
     if not event.value:
         on_highlighted(self, f3)
@@ -67,6 +67,7 @@ def on_shift_tab(self, event, prefix) -> None:
     f2 = self.query_one("#dir-tree-0")
     f3 = self.query_one("#digits-0")
     f4 = self.query_one("#button-5")
+    f05 = self.query_one("#input-2")
     f5 = self.query_one("#input-1")
     f6 = self.query_one("#input-0")
     f7 = self.query_one("#label-0")
@@ -81,14 +82,26 @@ def on_shift_tab(self, event, prefix) -> None:
     f16 = f9[f14] or ""
     f17 = f12 + f15
 
+    if f14 != 8:
+        for h in range(6):
+            f18 = f'#button-{h}'
+            f19 = self.query_one(f18)
+            f19.display = True
+
+        for h0 in range(2):
+            f20 = f'#input-{h0}'
+            f21 = self.query_one(f20)
+            f21.display = True
+        f05.display = False
+
     if event is not None and f17 in f00:
         event.prevent_default()
         event.stop()
 
     if f14 in f01:
-        f18 = f8.get(f9[f14], "")
-        self.app.textfield = f18
-        f7.update(f18)
+        f22 = f8.get(f9[f14], "")
+        self.app.textfield = f22
+        f7.update(f22)
         f3.update("")
         f5.value = ""
         f6.value = ""
@@ -96,12 +109,12 @@ def on_shift_tab(self, event, prefix) -> None:
     f19 = f10.setdefault("0", {})
     f20 = f19.setdefault("37", {})
     if f14 in (3, 4, 5, 6, 7, 8):
-        f21 = self.query_one(f"#{f16}")
-        f22 = f21.cursor_coordinate
-        f20["2"] = f22.column
-        f20["1"] = f22.row
+        f23 = self.query_one(f"#{f16}")
+        f24 = f23.cursor_coordinate
+        f20["2"] = f24.column
+        f20["1"] = f24.row
         f1.current = f16
-        on_highlighted(self, f22)
+        on_highlighted(self, f24)
 
     if f14 in (0, 1, 2):
         f0.current = f16
@@ -121,6 +134,7 @@ def on_highlighted(self, event) -> None:
     f3 = self.query_one("#label-0")
     f4 = self.query_one("#input-0")
     f5 = self.query_one("#input-1")
+    f05 = self.query_one("#input-2")
     f6 = f0.current.split("-")[-1]
     f7 = "2" if f6 == "3" else f6
     f8 = f1.cursor_coordinate
@@ -132,6 +146,7 @@ def on_highlighted(self, event) -> None:
     f14 = event.row
     f2.update("")
     f3.update("")
+    f05.value = ""
     f5.value = ""
     f4.value = ""
 
@@ -182,17 +197,33 @@ def on_highlighted(self, event) -> None:
         f23 = f12[f14] if len(f12) > f14 else []
         f24 = f23[f13] if len(f23) > f13 else ""
 
+        if int(f6) == 5:
+            f25 = False if f13 == 13 else True
+            f26 = False if f13 != 13 else True
+            f27 = self.query_one('#input-2')
+            f27.display = f26
+
+            for h in range(6):
+                f28 = f'#button-{h}'
+                f29 = self.query_one(f28)
+                f29.display = f25
+
+            for h0 in range(2):
+                f30 = f'#input-{h0}'
+                f31 = self.query_one(f30)
+                f31.display = f25
+
         if len(f24) > 0:
             if int(f6) == 0:
                 f3.update(f24)
         if int(f6) in (4, 5):
-            f25 = f12[f13]
-            f3.update(f25)
+            f33 = f12[f13]
+            f3.update(f33)
         if len(f22) > 2:
             f2.update(f22[0])
-            f4.value = f9 or f22[1]
+            f4.value = f22[1]
             f5.value = f9 or f22[2]
-
+            f05.value = f9 or f22[2]
 
 def on_pressed(self, event) -> None:
     f0 = self.query_one("#cont-switch-1")
@@ -289,84 +320,91 @@ async def on_key(self, event) -> None:
     f8 = self.query_one("#button-3")
     f9 = self.query_one("#button-4")
     f10 = self.query_one("#button-5")
-    f11 = self.query_one("#input-1")
-    f12 = f3.current.split("-")[-1]
-    f13 = f4.cursor_coordinate
-    f14 = f4.get_cell_at(f13)
-    f70 = self.app.clipboards
-    f15 = self.app.focused
-    f16 = str(f14 or "")
-    f17 = event.key
+    f11 = self.query_one("#input-2")
+    f12 = self.query_one("#input-1")
+    f13 = f3.current.split("-")[-1]
+    f14 = f4.cursor_coordinate
+    f15 = f4.get_cell_at(f14)
+    f16 = self.app.clipboards
+    f17 = self.app.focused
+    f18 = str(f15 or "")
+    f19 = int(f13) == 5
+    f20 = f14.column == 13
 
-    if f17 in f0:
-        script_f5(self, f17)
+    f21 = event.key
+    f22 = f20 and f19
+    f23 = f11 if f22 \
+        else f12
 
-    if not isinstance(f15, Input):
-        if f17 == "shift+tab":
+    if f21 in f0:
+        script_f5(self, f21)
+
+    if not isinstance(f17, Input):
+        if f21 == "shift+tab":
             on_shift_tab(self, event, -1)
-        elif f17 == "tab":
+        elif f21 == "tab":
             on_shift_tab(self, event, 1)
 
-    if isinstance(f15, Input):
-        if f17 == "tab":
+    if isinstance(f17, Input):
+        if f21 == "tab":
             event.stop()
             event.prevent_default()
             self.post_message(
-                Input.Submitted(f11, f11.value)
+                Input.Submitted(f23, f23.value)
             )
         if event.key == "escape":
-            on_highlighted(self, f13)
+            on_highlighted(self, f14)
             f4.focus()
 
-    if isinstance(f15, DataTable):
-        if len(f17) == 1 or f17 in f1:
-            f18 = int(f12) in (4, 5)
-            f19 = f13.column == 12
-            f20 = int(f12) - 3
+    if isinstance(f17, DataTable):
+        if len(f21) == 1 or f21 in f1:
+            f24 = int(f13) in (4, 5)
+            f25 = f14.column == 12
+            f26 = int(f13) - 3
             event.stop()
 
-            if f18 and f19:
-                f21 = self.query_one(
-                    f"dir-tree-{f20}"
+            if f24 and f25:
+                f27 = self.query_one(
+                    f"dir-tree-{f26}"
                 )
-                f22 = f"dir-tree-{f20}"
-                f2.current = f22
-                f21.focus()
+                f28 = f"dir-tree-{f26}"
+                f2.current = f28
+                f27.focus()
 
-            elif not f18 or not f19:
-                f11.focus()
-                if f17 in f1:
-                    f11.value = f16
+            elif not f24 or not f25:
+                f23.focus()
+                if f21 in f1:
+                    f23.value = f18
 
-                elif len(f17) == 1:
-                    f11.value = f17
-                    f23 = "cursor_position"
+                elif len(f21) == 1:
+                    f23.value = f21
+                    f29 = "cursor_position"
                     self.call_after_refresh(
                         lambda: setattr(
-                            f11, f23, len(f17)
+                            f23, f29, len(f21)
                         )
                     )
 
-    match f17:
+    match f21:
         case "delete":
             self.post_message(
-                Input.Submitted(f11, "")
+                Input.Submitted(f23, "")
             )
 
         case "f1":
-            f39 = self.app
-            f39.clipboards = f16
+            f30 = self.app
+            f30.clipboards = f18
             self.post_message(
-                Input.Submitted(f11, "")
+                Input.Submitted(f23, "")
             )
 
         case "f2":
-            f39 = self.app
-            f39.clipboards = f16
+            f31 = self.app
+            f31.clipboards = f18
 
         case "f3":
             self.post_message(
-                Input.Submitted(f11, f70)
+                Input.Submitted(f23, f16)
             )
 
         case "f4":
