@@ -136,8 +136,8 @@ def script_f7(h, h0, h1, h2) -> None:
     if f4 != 0:
         f22 = (-f20, 0)
         f23 = (0, -f19)
-        f7.offset = f23 \
-            if f21 else f22
+        f7.offset = f23 if f21 else f22
+
 
 def script_f9(h, h0) -> dict:
     f0 = {}
@@ -186,6 +186,7 @@ def script_f9(h, h0) -> dict:
                     f15 = str(f13[f14])
                     f7[f15] = h6
     return f0
+
 
 def script_f10(h, h0) -> dict:
     f0 = {}

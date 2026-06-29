@@ -77,8 +77,7 @@ class CLIApp(App):
         f4 = self.store.get("000")
         f5 = self.store.get("001")
         f6 = self.stores.get("1")
-        f7 = self.stores.get(
-            "0", {})
+        f7 = self.stores.get("0", {})
 
         f9 = f7.get("36")
         f10 = f7.get("37", {})

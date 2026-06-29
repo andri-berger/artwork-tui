@@ -783,7 +783,7 @@ window.h11 = async (l) => {
 	let l8 = l2['92'] || 10 // 92
 	let l9 = Math.min(l6, 10)
 	let l10 = Math.min(l7, 10)
-	let l11 = l[0] == 4? l10: l9
+	let l11 = l[0] === 4 ? l10 : l9
 	let l12 = Object.keys(l2)
 	if (l[0] === 2) {
 		l1 = { ...l1, ...h6(l0) }

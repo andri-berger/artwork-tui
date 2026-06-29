@@ -12,8 +12,10 @@
 	--_05: 0 0 0px 1px DarkGray inset;
 	--_06: linear-gradient(White, White);
 	--_07: radial-gradient(White, White);
-	--_08: calc(100% - 4px) calc(100% - 4px);
-	--_09: calc(100% - 0px) calc(100% - 0px);
+	--_08: calc(100% - 4px)
+		calc(100% - 4px);
+	--_09: calc(100% - 0px)
+		calc(100% - 0px);
 	--_10: rgb(255, 255, 255);
 }
 
@@ -187,14 +189,25 @@ body > div > div > div,
 }
 
 body > div > div > div:first-of-type,
-.l00 > div:nth-of-type(3) > div:first-of-type,
-.k00 > div:nth-of-type(3) > div:first-of-type,
-.t00 > div:nth-of-type(3) > div:first-of-type,
-.t000 > div:nth-of-type(3) > div:first-of-type {
+.l00
+	> div:nth-of-type(3)
+	> div:first-of-type,
+.k00
+	> div:nth-of-type(3)
+	> div:first-of-type,
+.t00
+	> div:nth-of-type(3)
+	> div:first-of-type,
+.t000
+	> div:nth-of-type(3)
+	> div:first-of-type {
 	margin-left: 0%;
 }
 
-body > div > div > div:not(:first-of-type),
+body
+	> div
+	> div
+	> div:not(:first-of-type),
 .l00
 	> div:nth-of-type(3)
 	> div:not(:first-of-type),

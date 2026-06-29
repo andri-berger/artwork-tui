@@ -18,8 +18,8 @@ from textual_image.widget import Image
 from .script import (
     script_f6,
     script_f7,
-    script_f10,
     script_f9,
+    script_f10,
 )
 from .scripts import scripts_f1
 

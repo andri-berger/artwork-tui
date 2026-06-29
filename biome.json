@@ -35,7 +35,7 @@
 	},
 	"javascript": {
 		"formatter": {
-            "enabled": true,
+			"enabled": true,
 			"lineWidth": 50,
 			"quoteStyle": "single",
 			"semicolons": "asNeeded"
@@ -44,13 +44,13 @@
 	"json": {
 		"formatter": {
 			"enabled": true,
-            "lineWidth": 50
+			"lineWidth": 50
 		}
 	},
 	"css": {
 		"formatter": {
 			"enabled": true,
-            "lineWidth": 40
+			"lineWidth": 40
 		}
 	}
 }

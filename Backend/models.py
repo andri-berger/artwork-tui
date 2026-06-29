@@ -84,12 +84,12 @@ def on_shift_tab(self, event, prefix) -> None:
 
     if f14 != 8:
         for h in range(6):
-            f18 = f'#button-{h}'
+            f18 = f"#button-{h}"
             f19 = self.query_one(f18)
             f19.display = True
 
         for h0 in range(2):
-            f20 = f'#input-{h0}'
+            f20 = f"#input-{h0}"
             f21 = self.query_one(f20)
             f21.display = True
         f05.display = False
@@ -200,16 +200,16 @@ def on_highlighted(self, event) -> None:
         if int(f6) == 5:
             f25 = False if f13 == 13 else True
             f26 = False if f13 != 13 else True
-            f27 = self.query_one('#input-2')
+            f27 = self.query_one("#input-2")
             f27.display = f26
 
             for h in range(6):
-                f28 = f'#button-{h}'
+                f28 = f"#button-{h}"
                 f29 = self.query_one(f28)
                 f29.display = f25
 
             for h0 in range(2):
-                f30 = f'#input-{h0}'
+                f30 = f"#input-{h0}"
                 f31 = self.query_one(f30)
                 f31.display = f25
 
@@ -224,6 +224,7 @@ def on_highlighted(self, event) -> None:
             f4.value = f22[1]
             f5.value = f9 or f22[2]
             f05.value = f9 or f22[2]
+
 
 def on_pressed(self, event) -> None:
     f0 = self.query_one("#cont-switch-1")
@@ -333,8 +334,7 @@ async def on_key(self, event) -> None:
 
     f21 = event.key
     f22 = f20 and f19
-    f23 = f11 if f22 \
-        else f12
+    f23 = f11 if f22 else f12
 
     if f21 in f0:
         script_f5(self, f21)
@@ -358,7 +358,7 @@ async def on_key(self, event) -> None:
 
     if isinstance(f17, DataTable):
         f24 = len(f21) == 1
-        f25 = f21 == 'minus'
+        f25 = f21 == "minus"
         f26 = f21 if f24 else "-"
         if f25 or f24 or f21 in f1:
             f27 = int(f13) in (4, 5)
