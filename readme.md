@@ -355,8 +355,7 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
     <tr>
         <th align="left">Layer</th>
         <th align="left">Name</th>
-        <th align="left">
-        Link <img width="560"></th>
+        <th align="left">Link></th>
     </tr>
     </tr>
     <tr>
@@ -446,9 +445,23 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
     <tr>
         <td><kbd>
         Processing</kbd></td>
-        <td>PixiJs</td><td>
+        <td>Pixi Filter</td><td>
         <a href="//github.com/pixijs/filters">
         https://github.com/pixijs/filters</a></td>
+    </tr>
+    <tr>
+        <td><kbd>
+        Inspiration</kbd></td>
+        <td>Pinterest</td><td>
+        <a href="//de.pinterest.com/andriberger/_saved">
+        https://de.pinterest.com/andri</a></td>
+    </tr>
+    <tr>
+        <td><kbd>
+        Inspiration</kbd></td>
+        <td>Artwork</td><td>
+        <a href="//print-artwork.com">
+        https://print-artwork.com</a></td>
     </tr>
 </table>
 
@@ -561,16 +574,6 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
   </tr>
 </table>
 
-
-
-## Rationale
-
-If you encounter any issues, please file an issue on GitHub.
-<br>If you find this module useful, please consider starring the repository on GitHub. 
-
-This project began by moving most of the functionality from a commercial WEB SaaS-project https://print-artwork.com (minus the physical print / POD, minus the vectorizer => vtracer), free of charge, now at the complete opposite in copyleft territory, with some additional code-tweaks to accommodate the different UI-requirements in archaic TUI-land as opposed to shiny WEB-land. The app has been split up into the generation part, the meat and bones with this repository, and the glaze/gloss with the sibling <a href="https://github.com/andri-berger/filterx-tui>filterx-TUI">filterx-TUI</a> listed under the same GitHub Profile. Thus, they complement each another really well. One for the substance, the matter, the other for the refinement. 
-
-We strongly believe that the TUI's very own nature, its limitations are its biggest strength! They might outlast every centralized UI-App (UI's are hostage to the cyclic Zeitgeist) due to their self-sufficient, decentralized nature, taking advantage of each user's own infrastructure. The less visual features there are, the less maintenance, the less choices, the less moving parts, the less friction, the more ease of mind, the more sparked creativity, the longer lasting a tool will be — this is our deepest conviction. Ultimately, what we strive for are timeless, stateless conditions, derived from first-order principles, from basic building blocks, be it in Art, Engineering or Elsewhere.
 
 <br>
 <br>
