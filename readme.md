@@ -356,7 +356,7 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
         <th align="left">Layer</th>
         <th align="left">Name</th>
         <th align="left">
-        Link <img width="560"></th>
+        Link <img width="500"></th>
     </tr>
     </tr>
     <tr>
