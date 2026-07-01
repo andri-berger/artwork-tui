@@ -1,4 +1,5 @@
 # Artwork-TUI (WIP)
+Generative design tool with a terminal UI — compose layouts, render to canvas, export to Hi-Res Png (any resolution your machine can handle). artwork-tui is a terminal-native artwork and layout generator, operating entirely within the constraints of the TUI. It combines a spreadsheet-driven interface for manual layout composition with a randomizer engine for generative artwork, supporting custom fonts and image assets. The tool emerged from a simple frustration: existing creative layout tools are either locked behind expensive subscriptions, tied to a specific OS, or bloated with features that obscure rather than enable the creative process. The terminal, by contrast, offers a direct and honest working surface – what you type is what happens, no hidden layers, no telemetry, no forced updates. artwork-tui occupies a genuinely vacant niche: somewhere between a generative art framework (too code-heavy, no interface) and a design tool (too GUI-dependent, too opinionated), it offers a middle ground that has no real equivalent in the current landscape. The spreadsheet metaphor is deliberate – familiar enough to require no learning curve, structured enough to impose a productive constraint on the creative process.
 
 [Installation](#installation) / 
 [Configuration](#configuration) / 
@@ -6,7 +7,6 @@
 [API Credit](#credit) / 
 [Gallery](#gallery)
 
-Generative design tool with a terminal UI — compose layouts, render to canvas, export to Hi-Res Png (any resolution your machine can handle). artwork-tui is a terminal-native artwork and layout generator, operating entirely within the constraints of the TUI. It combines a spreadsheet-driven interface for manual layout composition with a randomizer engine for generative artwork, supporting custom fonts and image assets. The tool emerged from a simple frustration: existing creative layout tools are either locked behind expensive subscriptions, tied to a specific OS, or bloated with features that obscure rather than enable the creative process. The terminal, by contrast, offers a direct and honest working surface – what you type is what happens, no hidden layers, no telemetry, no forced updates. artwork-tui occupies a genuinely vacant niche: somewhere between a generative art framework (too code-heavy, no interface) and a design tool (too GUI-dependent, too opinionated), it offers a middle ground that has no real equivalent in the current landscape. The spreadsheet metaphor is deliberate – familiar enough to require no learning curve, structured enough to impose a productive constraint on the creative process.
 
 
 <img src="Backend/modules/7100000000.png" width="100%">
@@ -54,47 +54,14 @@ playwright install chromium --with-deps
 # playwright install firefox --with-deps
 ```
 
-#### Start the App
-```bash
-artwork-tui #Launches the TUI
-```
-<table width="100%">
-    <tr>
-        <th align="left">KPG</th>
-        <th align="left">Terminal</th>
-        <th align="left">Plattform</th>
-        <th align="left">Notes</th>
-    </tr>
-    <tr>
-        <td>&#x2705;</td>
-        <td><kbd>Kitty</kbd></td>
-        <td>Linux, macOS</td>
-        <td>The originator — reference implementation</td>
-    </tr>
-    <tr>
-        <td>&#x2705;</td>
-        <td><kbd>Ghostty</kbd></td>
-        <td>Linux, macOS</td>
-        <td>The new kid on the block — native support</td>
-    </tr>
-    <tr>
-        <td>&#x2705;</td>
-        <td><kbd>WezTerm</kbd></td>
-        <td>Linux, macOS</td>
-        <td>Also supports Sixel + iTerm2 protocol — widest coverage</td>
-    </tr>
-    <tr>
-        <td>&#x1F7E1;</td>
-        <td><kbd>suckless</kbd></td>
-        <td>Linux</td>
-        <td>Patch available implementing a subset of KGP - not built-in</td>
-    </tr>
-</table>
-
 
 ## Configuration
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 
+```bash
+artwork-tui #Launches the TUI
+# kitty, ghostty, wezterm are supported as of now
+```
 <table>
     <tr>
         <th width="20">Docs</th>
