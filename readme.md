@@ -1,5 +1,3 @@
-
-![Readme](./readme.png)
 # Artwork-TUI (WIP)
 Generative design tool with a terminal UI — compose layouts, render to canvas, export to Hi-Res Png (any resolution your machine can handle). artwork-tui is a terminal-native artwork and layout generator, operating entirely within the constraints of the TUI. It combines a spreadsheet-driven interface for manual layout composition with a randomizer engine for generative artwork, supporting custom fonts and image assets. The tool emerged from a simple frustration: existing creative layout tools are either locked behind expensive subscriptions, tied to a specific OS, or bloated with features that obscure rather than enable the creative process. The terminal, by contrast, offers a direct and honest working surface – what you type is what happens, no hidden layers, no telemetry, no forced updates. artwork-tui occupies a genuinely vacant niche: somewhere between a generative art framework (too code-heavy, no interface) and a design tool (too GUI-dependent, too opinionated), it offers a middle ground that has no real equivalent in the current landscape. The spreadsheet metaphor is deliberate – familiar enough to require no learning curve, structured enough to impose a productive constraint on the creative process.
 
@@ -10,99 +8,22 @@ Generative design tool with a terminal UI — compose layouts, render to canvas,
 [Gallery](#gallery)
 
 
-<img src="Backend/modules/17100000000.png" width="100%">
+<img src="Backend/modules/7100000000.png" width="100%">
 <table>
-  <tr>
-    <td><a href="Backend/modules/17100000000.png">
-    <img src="Backend/modules/17100000000.png">
-    </a></td>
-    <td><a href="Backend/modules/17100000001.png">
-    <img src="Backend/modules/17100000001.png">
-    </a></td>
-    <td><a href="Backend/modules/17100000001.png">
-    <img src="Backend/modules/17100000001.png">
-    </a></td>
-    <td><a href="Backend/modules/17100000002.png">
-    <img src="Backend/modules/17100000002.png">
-    </a></td>
-    <td><a href="Backend/modules/17100000002.png">
-    <img src="Backend/modules/17100000002.png">
-    </a></td>
-  </tr>
-
-<!-- 
-<tr>
-    <td><a href="Backend/modules/1710000008.png">
-    <img src="Backend/modules/1710000008.png">
-    </a></td>
-    <td><a href="Backend/modules/1710000009.png">
-    <img src="Backend/modules/1710000009.png">
-    </a></td>
-    <td><a href="Backend/modules/1710000010.png">
-    <img src="Backend/modules/1710000010.png">
-    </a></td>
-    <td><a href="Backend/modules/1710000011.png">
-    <img src="Backend/modules/1710000011.png">
-    </a></td>
-    <td><a href="Backend/modules/1710000012.png">
-    <img src="Backend/modules/1710000012.png">
-    </a></td>
-  </tr>
-  <tr>
-    <td><a href="Backend/modules/1710000014.png">
-    <img src="Backend/modules/1710000014.png">
-    </a></td>
-    <td><a href="Backend/modules/1710000015.png">
-    <img src="Backend/modules/1710000015.png">
-    </a></td>
-    <td><a href="Backend/modules/1710000016.png">
-    <img src="Backend/modules/1710000016.png">
-    </a></td>
-    <td><a href="Backend/modules/1710000017.png">
-    <img src="Backend/modules/1710000017.png">
-    </a></td>
-    <td><a href="Backend/modules/1710000018.png">
-    <img src="Backend/modules/1710000018.png">
-    </a></td>
-  </tr>
-  <tr>
-    <td><a href="Backend/modules/1710000020.png">
-    <img src="Backend/modules/1710000020.png">
-    </a></td>
-    <td><a href="Backend/modules/1710000021.png">
-    <img src="Backend/modules/1710000021.png">
-    </a></td>
-    <td><a href="Backend/modules/1710000022.png">
-    <img src="Backend/modules/1710000022.png">
-    </a></td>
-    <td><a href="Backend/modules/1710000023.png">
-    <img src="Backend/modules/1710000023.png">
-    </a></td>
-    <td><a href="Backend/modules/1710000024.png">
-    <img src="Backend/modules/1710000024.png">
-    </a></td>
-  </tr>
-  <tr>
-    <td><a href="Backend/modules/1710000026.png">
-    <img src="Backend/modules/1710000026.png">
-    </a></td>
-    <td><a href="Backend/modules/1710000027.png">
-    <img src="Backend/modules/1710000027.png">
-    </a></td>
-    <td><a href="Backend/modules/1710000028.png">
-    <img src="Backend/modules/1710000028.png">
-    </a></td>
-    <td><a href="Backend/modules/1710000029.png">
-    <img src="Backend/modules/1710000029.png">
-    </a></td>
-    <td><a href="Backend/modules/1710000030.png">
-    <img src="Backend/modules/1710000030.png">
-    </a></td>
-  </tr> 
--->
+    <tr>
+        <td><a href="Backend/modules/7100000000.png">
+        <img src="Backend/modules/7100000000.png"></a></td>
+        <td><a href="Backend/modules/7100000001.png">
+        <img src="Backend/modules/7100000001.png"></a></td>
+        <td><a href="Backend/modules/7100000001.png">
+        <img src="Backend/modules/7100000001.png"></a></td>
+        <td><a href="Backend/modules/7100000002.png">
+        <img src="Backend/modules/7100000002.png"></a></td>
+        <td><a href="Backend/modules/7100000002.png">
+        <img src="Backend/modules/7100000002.png">
+        </a></td>
+    </tr>
 </table>
-<br>
-
 
 ## Installation
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
@@ -133,7 +54,7 @@ playwright install chromium --with-deps
 ```
 
 ## Configuration
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 
 ```bash
 artwork-tui #Launches the TUI
@@ -148,70 +69,172 @@ artwork-tui #Launches the TUI
     </tr>
     <tr>
         <td>&#x2705;</td>
-        <td>Kitty</td>
+        <td><kbd>Kitty</kbd></td>
         <td>Linux, macOS</td>
         <td>The originator — reference implementation</td>
     </tr>
     <tr>
         <td>&#x2705;</td>
-        <td>Ghostty</td>
+        <td><kbd>Ghostty</kbd></td>
         <td>Linux, macOS</td>
         <td>The new kid on the block — native support</td>
     </tr>
     <tr>
         <td>&#x2705;</td>
-        <td>WezTerm</td>
+        <td><kbd>WezTerm</kbd></td>
         <td>Linux, macOS</td>
         <td>Also supports Sixel + iTerm2 protocol — widest coverage</td>
     </tr>
     <tr>
         <td>&#x1F7E1;</td>
-        <td>suckless</td>
+        <td><kbd>suckless</kbd></td>
         <td>Linux</td>
         <td>Patch available implementing a subset of KGP - not built-in</td>
     </tr>
     <tr>
         <td>&#x274C;</td>
-        <td>foot</td>
+        <td><kbd>foot</kbd></td>
         <td>Linux (Wayland)</td>
         <td>Sixel only — notable omission given it's the go-to Wayland minimal terminal</td>
     </tr>
     <tr>
         <td>&#x274C;</td>
-        <td>Alacritty</td>
+        <td><kbd>Alacritty</kbd></td>
         <td>Linux, macOS</td>
         <td>Intentionally does not support font ligatures or modern image protocols</td>
     </tr>
     <tr>
         <td>&#x274C;</td>
-        <td>iTerm2</td>
+        <td><kbd>iTerm2</kbd></td>
         <td>macOS</td>
         <td>Has its own inline image protocol (iTerm2 protocol), not KGP</td>
     </tr>
      <tr>
         <td>&#x274C;</td>
-        <td>Konsole</td>
+        <td><kbd>Konsole</kbd></td>
         <td>Linux</td>
         <td>Sixely only</td>
     </tr>
     <tr>
         <td>&#x274C;</td>
-        <td>Hyper</td>
+        <td><kbd>Hyper</kbd></td>
         <td>Linux, macOS</td>
         <td>Electron-based, no image protocol</td>
     </tr>
     <tr>
         <td>&#x274C;</td>
-        <td>Tabby</td>
+        <td><kbd>Tabby</kbd></td>
         <td>Linux, macOS</td>
         <td>No image protocol</td>
     </tr>
 </table>
 
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 
+<table>
+    <tr>
+        <th width="20">Docs</th>
+        <th align="left">Element</th>
+        <th align="left">Description</th>
+    </tr>
+    <tr>
+        <td><a href="Backend/modules/7000000029.png">
+        <img src="Backend/modules/17000000029.png"></a></td>
+        <td><kbd>Filetree JSON
+        </kbd></td>
+        <td>Lorem ipsum dolor sit amet, consetetur sadipscing elitr. </td>
+    </tr>
+    <tr>
+        <td><a href="Backend/modules/7000000029.png">
+        <img src="Backend/modules/17000000029.png"></a></td>
+        <td><kbd>Filetree PNG
+        </kbd></td>
+        <td>Lorem ipsum dolor sit amet, consetetur sadipscing elitr. </td>
+    </tr>
+    <tr>
+        <td><a href="Backend/modules/7000000029.png">
+        <img src="Backend/modules/17000000029.png"></a></td>
+        <td><kbd>Filepicker OTF
+        </kbd></td>
+        <td>Lorem ipsum dolor sit amet, consetetur sadipscing elitr. </td>
+    </tr>
+    <tr>
+        <td><a href="Backend/modules/7000000029.png">
+        <img src="Backend/modules/17000000029.png"></a></td>
+        <td><kbd>Grid Tab I</kbd></td>
+        <td>Lorem ipsum dolor sit amet, consetetur sadipscing elitr. </td>
+    </tr>
+    <tr>
+        <td><a href="Backend/modules/7000000029.png">
+        <img src="Backend/modules/17000000029.png"></a></td>
+        <td><kbd>Grid Tab II</kbd></td>
+        <td>Lorem ipsum dolor sit amet, consetetur sadipscing elitr. </td>
+    </tr>
+    <tr>
+        <td><a href="Backend/modules/7000000029.png">
+        <img src="Backend/modules/17000000029.png"></a></td>
+        <td><kbd>Grid Tab III</kbd></td>
+        <td>Lorem ipsum dolor sit amet, consetetur sadipscing elitr. </td>
+    </tr>
+    <tr>
+        <td><a href="Backend/modules/7000000029.png">
+        <img src="Backend/modules/17000000029.png"></a></td>
+        <td><kbd>Grid Tab IV</kbd></td>
+        <td>Lorem ipsum dolor sit amet, consetetur sadipscing elitr. </td>
+    </tr>
+    <tr>
+        <td><a href="Backend/modules/7000000029.png">
+        <img src="Backend/modules/17000000029.png"></a></td>
+        <td><kbd>Grid Tab V</kbd></td>
+        <td>Lorem ipsum dolor sit amet, consetetur sadipscing elitr. </td>
+    </tr>
+    <tr>
+        <td><a href="Backend/modules/7000000029.png">
+        <img src="Backend/modules/17000000029.png"></a></td>
+        <td><kbd>Grid Tab VI</kbd></td>
+        <td>Lorem ipsum dolor sit amet, consetetur sadipscing elitr. </td>
+    </tr>
+    <tr>
+        <td><a href="Backend/modules/7000000029.png">
+        <img src="Backend/modules/17000000029.png"></a></td>
+        <td><kbd>Button X</kbd></td>
+        <td>Clear the Canvas. Lorem ipsum dolor sit amet.</td>
+    </tr>
+    <tr>
+        <td><a href="Backend/modules/7000000029.png">
+        <img src="Backend/modules/17000000029.png"></a></td>
+        <td><kbd>Button Afs</kbd></td>
+        <td>Set Seed for A00-A99 Elements. Lorem ipsum dolor sit amet.</td>
+    </tr>
+    <tr>
+        <td><a href="Backend/modules/7000000029.png">
+        <img src="Backend/modules/17000000029.png"></a></td>
+        <td><kbd>Button Bfs</kbd></td>
+        <td>Set Seed for B00-B99. Lorem ipsum dolor sit amet.</td>
+    </tr>
+    <tr>
+        <td><a href="Backend/modules/7000000029.png">
+        <img src="Backend/modules/17000000029.png"></a></td>
+        <td><kbd>Button Cfs</kbd></td>
+        <td>Set Seed for C00-C99. Lorem ipsum dolor sit amet.</td>
+    </tr>
+    <tr>
+        <td><a href="Backend/modules/7000000029.png">
+        <img src="Backend/modules/17000000029.png"></a></td>
+        <td><kbd>Button Create</kbd></td>
+        <td>Generate Artwork via Random Generator. Lorem ipsum dolor sit amet. </td>
+    </tr>
+    <tr>
+        <td><a href="Backend/modules/7000000029.png">
+        <img src="Backend/modules/17000000029.png"></a></td>
+        <td><kbd>Button Export</kbd></td>
+        <td>Export both generated (png) and project file (json) into the directory from where the app was executed / started.</td>
+    </tr>
+</table>
+<br>
 
 ## API Reference
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 
 <table>
     <tr>
@@ -274,24 +297,6 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
         <td>Export both generated (png) and project file (json) into the directory from where the app was executed / started.</td>
     </tr>
     <tr>
-        <td><kbd>
-        F10</kbd></td>
-        <td>Scrolling</td>
-        <td>Extra functionality (I) with regards to fullscreen toggle and scroll-emulation (=> see also shift-arrows)</td>
-    </tr>
-    <tr>
-        <td><kbd>
-        F11</kbd></td>
-        <td>Scrolling</td>
-        <td>Extra functionality (II) with regards to fullscreen toggle and scroll-emulation (=> see also shift-arrows)</td>
-    </tr>
-    <tr>
-        <td><kbd>
-        F12</kbd></td>
-        <td>Scrolling</td>
-        <td>Extra functionality (II) with regards to fullscreen toggle and scroll-emulation (=> see also shift-arrows)</td>
-    </tr>
-    <tr>
         <td><kbd>Del
         </kbd></td>
         <td>Delete</td>
@@ -302,18 +307,6 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
         Tab</kbd></td>
         <td>Navigate</td>
         <td>Cycle forward all navigational UI-Elements. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</td>
-    </tr>
-    <tr>
-        <td><kbd>
-        Shift-Tab</kbd></td>
-        <td>Navigate</td>
-        <td>Cycle backward all navigational UI-Elements. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</td>
-    </tr>
-    <tr>
-        <td><kbd>
-        Shift-Arrow</kbd></td>
-        <td>Navigation</td>
-        <td>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</td>
     </tr>
     <tr>
         <td><kbd>
@@ -346,17 +339,16 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
         <td>Exit the app. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</td>
     </tr>
 </table>
-
+<br>
 
 ## API Credit
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 
 <table width="100%">
     <tr>
         <th align="left">Layer</th>
         <th align="left">Name</th>
-        <th align="left">
-        Link <img width="500"></th>
+        <th align="left">Link</th>
     </tr>
     </tr>
     <tr>
@@ -462,11 +454,10 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
         Inspiration</kbd></td>
         <td>Artwork</td><td>
         <a href="//print-artwork.com">
-        https://print-artwork.com</a></td>
+        https://print-artwork.com</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td> 
     </tr>
 </table>
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 
 ## PI Gallery
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
@@ -569,13 +560,8 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
     <img src="Backend/module/17000000028.png">
     </a></td>
     <td><a href="Backend/module/17000000029.png">
-    <!-- replace with bandcamp album-link !!! -->
     <img src="Backend/module/17000000029.png">
     </a></td>
   </tr>
 </table>
-
-
-<br>
-<br>
 <br>
