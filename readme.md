@@ -10,7 +10,6 @@ The tool emerged from a simple frustration: existing creative layout tools are e
 [Gallery](#gallery)
 
 
-
 <img src="Backend/modules/7100000000.png" width="100%">
 <table>
     <tr>
@@ -22,7 +21,6 @@ The tool emerged from a simple frustration: existing creative layout tools are e
         <img src="Backend/modules/7100000001.png"></a></td>
         <td><a href="Backend/modules/7100000002.png">
         <img src="Backend/modules/7100000002.png"></a></td>
-        <td><a href="Backend/modules/7100000002.png">
     </tr>
 </table>
 <table>
