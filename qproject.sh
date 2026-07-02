@@ -20,22 +20,22 @@
 # GITHUB:: atelier – A terminal design atelier for generative and composed artwork
 # GITHUB:: gmic-gen – Terminal layout and artwork generator powered by G'MIC
 
-# PRINT-ARTWORK:: Design your abstract art and print it or download high-res files instantly.
-# PRINT-ARTWORK:: Create unique abstract artwork online — print on canvas or download HD art.
-# PRINT-ARTWORK:: Generate abstract art that’s 100% yours. Print or save high-resolution art.
-# PRINT-ARTWORK:: Your art, your rules. Create abstract pieces, download, or print on canvas.
-# PRINT-ARTWORK:: Make custom abstract art in minutes. Download or print your masterpiece!
-# PRINT-ARTWORK:: Your Vision, Your Art: Generate Stunning Abstracts, Download or Print
-# PRINT-ARTWORK:: Unleash Your Inner Artist: Create Custom Abstract Art for Print
-# PRINT-ARTWORK:: Design Your Own Abstract Art — No AI, Just Your Imagination
-# PRINT-ARTWORK:: DIY Abstract Art: Make It, Download It, Print It, Flex It
-# PRINT-ARTWORK:: Generate Abstract Art You Can Actually Download & Print
-# PRINT-ARTWORK:: Abstract Art Generator: From Screen to Wall in Minutes
-# PRINT-ARTWORK:: Create Custom Abstract Art — High-Res, Ready to Print
-# PRINT-ARTWORK:: Design Abstract Art, Download in HD, Print on Canvas
-# PRINT-ARTWORK:: Tired of AI Art? Make Your Own Abstract Masterpiece
-# PRINT-ARTWORK:: Make Abstract Art That’s 100% You — No AI Required
-# PRINT-ARTWORK:: Design Abstract Wall Art, Print It, Show It Off
+# ARTWORK:: Design your abstract art and print it or download high-res files instantly.
+# ARTWORK:: Create unique abstract artwork online — print on canvas or download HD art.
+# ARTWORK:: Generate abstract art that’s 100% yours. Print or save high-resolution art.
+# ARTWORK:: Your art, your rules. Create abstract pieces, download, or print on canvas.
+# ARTWORK:: Make custom abstract art in minutes. Download or print your masterpiece!
+# ARTWORK:: Your Vision, Your Art: Generate Stunning Abstracts, Download or Print
+# ARTWORK:: Unleash Your Inner Artist: Create Custom Abstract Art for Print
+# ARTWORK:: Design Your Own Abstract Art — No AI, Just Your Imagination
+# ARTWORK:: DIY Abstract Art: Make It, Download It, Print It, Flex It
+# ARTWORK:: Generate Abstract Art You Can Actually Download & Print
+# ARTWORK:: Abstract Art Generator: From Screen to Wall in Minutes
+# ARTWORK:: Create Custom Abstract Art — High-Res, Ready to Print
+# ARTWORK:: Design Abstract Art, Download in HD, Print on Canvas
+# ARTWORK:: Tired of AI Art? Make Your Own Abstract Masterpiece
+# ARTWORK:: Make Abstract Art That’s 100% You — No AI Required
+# ARTWORK:: Design Abstract Wall Art, Print It, Show It Off
 
 # apngasm output.apng frames/*.png -d 2000
 # apngasm output.apng frames/*.png -d 1600
