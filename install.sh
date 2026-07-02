@@ -8,19 +8,22 @@ else
     echo "uv already installed, skipping"
 fi
 
-uv tool install git+https://github.com/andri-berger/artwork-tui.git --quiet --group main
-# uv tool run playwright install chromium --with-deps
-# playwright install chromium --with-deps
+uv tool install git+https://github.com/andri-berger/artwork-tui.git --quiet
+PW="$(uv tool dir)/artwork-tui/bin/playwright"
+if [ ! -x "$PW" ]; then
+    echo "error: playwright not found in artwork-tui environment" >&2
+    exit 1
+fi
 
-# install chromium via playwright
 OS=$(uname -s)
 if [ "$OS" = "Linux" ]; then
-    playwright install chromium --with-deps
+    "$PW" install chromium --with-deps
 elif [ "$OS" = "Darwin" ]; then
-    playwright install chromium
+    "$PW" install chromium
 else
     echo "unsupported OS: $OS — install Chromium manually via: playwright install chromium"
 fi
 
 echo "done — run: artwork-tui"
 echo "if command not found, add to your shell config: export PATH=\"\$HOME/.local/bin:\$PATH\""
+
