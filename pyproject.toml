@@ -25,6 +25,7 @@ build-backend = "hatchling.build"
 include = [
     "Backend",
     "Fontend",
+    "Formula",
     "pyproject.py"]
 
 [project.scripts]
