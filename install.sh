@@ -17,7 +17,13 @@ fi
 
 OS=$(uname -s)
 if [ "$OS" = "Linux" ]; then
-    "$PW" install chromium --with-deps
+    if command -v apt-get >/dev/null 2>&1; then
+        "$PW" install chromium --with-deps
+    else
+        echo "note: non-apt distro detected — installing browser only."
+        echo "      system libraries must come from your distro's package manager."
+        "$PW" install chromium
+    fi
 elif [ "$OS" = "Darwin" ]; then
     "$PW" install chromium
 else
