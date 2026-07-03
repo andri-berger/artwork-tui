@@ -4,9 +4,13 @@
 # mkdir -p /opt/brew/tmp
 # export HOMEBREW_TEMP=/opt/brew/tmp    # persist in shell rc if it works
 # brew update-python-resources --exclude-packages numpy,opencv-python artwork-tui
-# sudo rm -rf /opt/brew
-# NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-# eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"   # replace the /opt/brew line in your rc
+# sudo chown -R admin /opt/brew
+#sudo rm -rf /opt/brew
+#NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+#eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"   # replace the /opt/brew line in your rc
+#echo >> /home/admin/.zshrc
+#echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"' >> /home/admin/.zshrc
+#eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
 set -e
 
 APP="artwork-tui"
