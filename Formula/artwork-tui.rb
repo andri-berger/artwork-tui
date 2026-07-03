@@ -61,10 +61,18 @@ class ArtworkTui < Formula
     sha256 "c53691e495c8db60e16ffc4861a35469b0ba0821fe409a8a7a0a71864d33a811"
     end
 
+#     def install
+#       venv = virtualenv_create(libexec, "python3.14")
+#       venv.pip_install resources
+#       venv.pip_install "playwright==1.58.0"
+#       venv.pip_install_and_link buildpath
+#     end
+
     def install
       venv = virtualenv_create(libexec, "python3.14")
       venv.pip_install resources
-      venv.pip_install "playwright==1.58.0"
+      system libexec/"bin/python", "-m", "pip", "install",
+             "--disable-pip-version-check", "playwright==1.58.0"
       venv.pip_install_and_link buildpath
     end
 

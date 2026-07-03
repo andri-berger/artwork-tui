@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-# release-formula.sh — run from the artwork-tui repo root after tag+push
+# artwork-tui.sh — run from the artwork-tui repo root after tag+push
 set -e
 
 FORMULA="Formula/artwork-tui.rb"
@@ -8,7 +8,7 @@ DEV_TAP_DIR="$(brew --repository)/Library/Taps/andri-berger/homebrew-dev"
 
 # 0. url + sha derived from the newest tag
 TAG=$(git describe --tags --abbrev=0)
-SHA=$(curl -sL "https://github.com/andri-berger/artwork-tui/archive/refs/tags/${TAG}.tar.gz" \
+SHA=$(curl -sL "https://github.com/andri-berger/artwork-tui/archive/${TAG}.tar.gz" \
       | sha256sum | cut -d' ' -f1)
 sed -i "s|archive/v[0-9.]*\.tar\.gz|archive/${TAG}.tar.gz|" "$FORMULA"
 sed -i "s/^\(\s*sha256 \)\"[a-f0-9]*\"/\1\"${SHA}\"/" "$FORMULA"
