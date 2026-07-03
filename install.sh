@@ -8,7 +8,7 @@ else
     echo "uv already installed, skipping"
 fi
 
-uv tool install git+https://github.com/andri-berger/artwork-tui.git --quiet
+uv tool install --force git+https://github.com/andri-berger/artwork-tui.git@v0.1.0 --quiet
 PW="$(uv tool dir)/artwork-tui/bin/playwright"
 if [ ! -x "$PW" ]; then
     echo "error: playwright not found in artwork-tui environment" >&2

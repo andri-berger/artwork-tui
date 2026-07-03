@@ -1,21 +1,24 @@
 pkgrel=1
-pkgver=0.0.1
-arch=('x86_64')
+pkgver=0.1.0
+arch=('any')
 pkgname=artwork-tui
 license=('GPL-3.0-only')
-provides=('artwork-tui')
-conflicts=('artwork-tui')
-pkgdesc="Flexible Artwork Generator in TUI format"
-url="https://github.com/andri-berger/artwork-tui"  source=("https://github.com/andri-berger/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('10790e80a965d21087a53c40286817f7f7835356d917c2bce1c152dc004edcab')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+pkgdesc='Flexible Artwork Generator in TUI format'
+url='https://github.com/andri-berger/artwork-tui'
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/andri-berger/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('3bac49928120cc6df2528723fa4220b8c6e6cc93f36e7f67b8b55fe4252ecea7')
+makedepends=(
+    'python-hatchling'
+    'python-installer'
+    'python-build'
+    'python-wheel')
 depends=(
-    'python-numpy'
-    'python-playwright'
     'python-textual-image'
+    'python-platformdirs'
+    'python-playwright'
     'python-textual'
-    'opencv-python'
-    'opencv'
+    'python-opencv'
+    'python-numpy'
 )
 
 build() {
