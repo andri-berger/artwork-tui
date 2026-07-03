@@ -10,7 +10,8 @@ class ArtworkTui < Formula
     depends_on "pillow"
     depends_on "opencv"
     depends_on "numpy"
-  
+
+
     resource "linkify-it-py" do
     url "https://files.pythonhosted.org/packages/2e/c9/06ea13676ef354f0af6169587ae292d3e2406e212876a413bf9eece4eb23/linkify_it_py-2.1.0.tar.gz"
     sha256 "43360231720999c10e9328dc3691160e27a718e280673d444c38d7d3aaa3b98b"
