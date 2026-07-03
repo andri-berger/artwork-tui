@@ -64,10 +64,9 @@ fetches the Chromium build Playwright renders with. Dependencies are bundled
 in that download, so no further setup is needed.
 
 ```bash
-brew tap andri-berger/filterx-tui \
-https://github.com/andri-berger/filterx-tui
-brew install filterx-tui #install from tap
-playwright install chromium #deps are included
+brew tap andri-berger/artwork-tui \
+https://github.com/andri-berger/artwork-tui
+brew install artworktui #install from tap
 ```
 
 #### Linux Arch (AUR)
