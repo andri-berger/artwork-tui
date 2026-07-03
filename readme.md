@@ -66,7 +66,7 @@ in that download, so no further setup is needed.
 ```bash
 brew tap andri-berger/artwork-tui \
 https://github.com/andri-berger/artwork-tui
-brew install artworktui #install from tap
+brew install artwork-tui #install from tap
 ```
 
 #### Linux Arch (AUR)

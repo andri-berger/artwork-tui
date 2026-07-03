@@ -4,7 +4,7 @@ class ArtworkTui < Formula
     license "GPL-3.0-only"
     desc "Flexible Artwork Generator in TUI format"
     homepage "https://github.com/andri-berger/artwork-tui"
-    url "https://github.com/andri-berger/artwork-tui/archive/v0.0.2.tar.gz"
+    url "https://github.com/andri-berger/artwork-tui/archive/v0.1.0.tar.gz"
     sha256 "6578df84e52bae8f0d7edbdc505389ca3751de5c292b664894f42d6b84ec5117"
     depends_on "python@3.14"
     depends_on "pillow"
@@ -60,13 +60,6 @@ class ArtworkTui < Formula
     url "https://files.pythonhosted.org/packages/78/67/9a363818028526e2d4579334460df777115bdec1bb77c08f9db88f6389f2/uc_micro_py-2.0.0.tar.gz"
     sha256 "c53691e495c8db60e16ffc4861a35469b0ba0821fe409a8a7a0a71864d33a811"
     end
-
-#     def install
-#       venv = virtualenv_create(libexec, "python3.14")
-#       venv.pip_install resources
-#       venv.pip_install "playwright==1.58.0"
-#       venv.pip_install_and_link buildpath
-#     end
 
     def install
       venv = virtualenv_create(libexec, "python3.14")
