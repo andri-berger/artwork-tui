@@ -30,6 +30,5 @@ else
     echo "unsupported OS: $OS — install Chromium manually via: playwright install chromium"
 fi
 
-echo "done — run: artwork-tui"
 echo "if command not found, add to your shell config: export PATH=\"\$HOME/.local/bin:\$PATH\""
-
+echo "done — run: artwork-tui"

@@ -1,10 +1,10 @@
-class Tap < Formula
+class ArtworkTui < Formula
   include Language::Python::Virtualenv
 
   license "GPL-3.0-only"
   desc "Flexible Artwork Generator in TUI format"
   homepage "https://github.com/andri-berger/artwork-tui"
-  url "https://github.com/andri-berger/artwork-tui/archive/v0.0.1.tar.gz"
+  url "https://github.com/andri-berger/artwork-tui/archive/v0.0.2.tar.gz"
   sha256 "10790e80a965d21087a53c40286817f7f7835356d917c2bce1c152dc004edcab"
   depends_on "python@3.14"
 
