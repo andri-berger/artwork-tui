@@ -33,8 +33,9 @@ PATH = ("http://localhost:"
         "9000/build.html")
 
 shutil.copytree(
-    PORT_3, PORT_0, ignore=shutil.
-    ignore_patterns(".idea"),
+    PORT_3, PORT_0,
+    ignore=shutil.
+    ignore_patterns(".*"),
     dirs_exist_ok=True)
 
 
