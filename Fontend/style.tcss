@@ -6,7 +6,7 @@ Screen {
 
 MainApp {
     width: 90%;
-    height: 80%;
+    height: 92%;
     background: $surface;
     align: center middle; }
 
