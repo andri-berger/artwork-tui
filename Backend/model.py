@@ -16,6 +16,8 @@ from textual.widgets import (
 from textual_image.widget import Image
 
 from .script import (
+    script_f01,
+    script_f00,
     script_f6,
     script_f7,
     script_f9,
@@ -23,16 +25,14 @@ from .script import (
 )
 from .scripts import scripts_f1
 
-PORT = Path.cwd()
-PORT_0 = Path(__file__)
-PORT_1 = Path(__file__).parent
-PORT_2 = PORT_1.parent / "Fontend"
-PORT_3 = PORT_1.parent / "Formula"
-PORT_4 = PORT_2 / "modules"
-PORT_5 = PORT_2 / "module"
-PATH_5 = PORT_3 / "var.png"
-PATH_6 = PORT_3 / "var.json"
-PATH_7 = PORT_2 / "model.png"
+
+PORT_0 = script_f01()
+PORT_1 = script_f00()
+PORT_2 = PORT_0 / "module"
+PORT_3 = PORT_0 / "modules"
+PATH_3 = PORT_0 / "model.png"
+PATH_4 = PORT_1 / "1700000000.png"
+PATH_5 = PORT_1 / "700000000.json"
 PATH = "async (store) => window.h11(store)"
 
 
@@ -42,7 +42,7 @@ class MainTab(Widget):
     )
 
     def compose(self) -> ComposeResult:
-        yield Image(PATH_7)
+        yield Image(PATH_3)
 
     def on_mount(self) -> None:
         f0 = self.query_one(Image)
@@ -91,15 +91,15 @@ class MainTab(Widget):
 
         if f13 == 4:
             f22 = int(time.time())
-            f23 = PORT / f"{f22}.png"
+            f23 = PORT_1 / f"{f22}.png"
             with open(f23, "wb") as f:
                 f.write(f17)
 
         if f13 <= 3:
-            with open(PATH_5, "wb") as f:
+            with open(PATH_4, "wb") as f:
                 f.write(f17)
-            f24 = Image(PATH_5)
-            script_f7(f7, f10, f24, PATH_5)
+            f24 = Image(PATH_4)
+            script_f7(f7, f10, f24, PATH_4)
             await self.mount(f24 or Image)
             f25 = self.query_one(Image)
 
@@ -170,7 +170,7 @@ class MainTab(Widget):
             f45 = f6["001"][f19]
             self.app.theme = f45
 
-        PATH_6.write_text(json.dumps(f5))
+        PATH_5.write_text(json.dumps(f5))
 
     def render(self):
         return ""
@@ -229,7 +229,7 @@ class FileTree(DirectoryTree):
             f15 = f9[int(f7) - 1]
             f16 = f10[int(f7) - 1]
             f17 = f12.split(".")
-            f18 = PORT_2 / f15
+            f18 = PORT_0 / f15
             f19 = f18 / f12
 
             if int(f3) >= 4 and f13 == 12:

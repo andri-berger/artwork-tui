@@ -3,6 +3,7 @@ import http.server
 import json
 import threading
 import time
+import shutil
 from pathlib import Path
 
 from playwright.async_api import async_playwright
@@ -11,6 +12,8 @@ from textual.app import App, ComposeResult
 from .builds import MainApp
 from .model import MainTab
 from .script import (
+    script_f00,
+    script_f01,
     script_f0,
     script_f1,
     script_f2,
@@ -18,13 +21,21 @@ from .script import (
     script_f4,
 )
 
-PORT = Path(__file__).parent
-PORT_0 = PORT.parent / "Fontend"
-PORT_1 = PORT.parent / "Formula"
-PATH_1 = PORT_0 / "style.tcss"
-PATH_2 = PORT_0 / "build.json"
-PATH_3 = PORT_1 / "var.json"
-PATH = "http://localhost:9000/build.html"
+
+PORT_0 = script_f01()
+PORT_1 = script_f00()
+PORT_2 = Path(__file__).parent
+PORT_3 = PORT_2.parent / "Fontend"
+PATH_3 = PORT_1 / "700000000.json"
+PATH_4 = PORT_0 / "build.json"
+PATH_5 = PORT_0 / "style.tcss"
+PATH = ("http://localhost:"
+        "9000/build.html")
+
+shutil.copytree(
+    PORT_3, PORT_0, ignore=shutil.
+    ignore_patterns(".idea"),
+    dirs_exist_ok=True)
 
 
 class CLIApp(App):
@@ -32,7 +43,7 @@ class CLIApp(App):
     COMMAND_PALETTE_DISPLAY = None
     ENABLE_COMMAND_PALETTE = False
     NOTIFICATION_TIMEOUT = 10
-    CSS_PATH = PATH_1
+    CSS_PATH = PATH_5
 
     def __init__(self) -> None:
         super().__init__()
@@ -42,8 +53,9 @@ class CLIApp(App):
         self.textfield = ""
         self.textfields = None
         self.playwright = None
+
         self.store = json.loads(
-            PATH_2.read_text()
+            PATH_4.read_text()
         )
         self.stores = (
             json.loads(PATH_3.read_text())
@@ -68,6 +80,8 @@ class CLIApp(App):
             script_f1("1"),
             script_f1("2"),
         ]
+
+
 
     async def on_mount(self) -> None:
         f0 = self.query_one("#cont-switch-0")

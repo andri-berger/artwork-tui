@@ -6,6 +6,7 @@ license = { file = "LICENSE" }
 authors = [{ name = "Andri Berger" }]
 requires-python = ">=3.14"
 dependencies = [
+    "platformdirs",
     "numpy",
     "opencv-python",
     "playwright",

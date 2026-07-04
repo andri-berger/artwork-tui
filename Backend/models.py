@@ -6,13 +6,15 @@ from pathlib import Path
 from textual.widgets import DataTable, Input
 
 from .model import MainTab
-from .script import script_f5, script_f6
+from .script import (script_f00,
+                     script_f5,
+                     script_f6)
 
-PORT = Path.cwd()
-PORT_0 = Path(__file__).parent
-PORT_1 = PORT_0.parent / "Formula"
-PATH_1 = PORT_1 / "var.json"
 
+PORT_0 = script_f00()
+PORT_1 = Path(__file__).parent
+PORT_2 = PORT_1.parent / "Formula"
+PATH_2 = PORT_0 / "700000000.json"
 
 def on_submitted(self, event) -> None:
     f0 = self.query_one("#cont-switch-1")
@@ -124,7 +126,7 @@ def on_shift_tab(self, event, prefix) -> None:
         f4.focus()
 
     f20["0"] = f14 + 1
-    PATH_1.write_text(json.dumps(f10))
+    PATH_2.write_text(json.dumps(f10))
 
 
 def on_highlighted(self, event) -> None:
@@ -266,8 +268,8 @@ def on_pressed(self, event) -> None:
 
     elif int(f10) == 5:
         f20 = int(time.time())
-        f21 = PORT / f"{f20}.json"
-        shutil.copy2(PATH_1, f21)
+        f21 = PORT_0 / f"{f20}.json"
+        shutil.copy2(PATH_2, f21)
         f22 = {**self.app.stores}
         f22.update({"_": [0, 4]})
         f3.config = f22

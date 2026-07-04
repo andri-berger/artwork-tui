@@ -94,6 +94,7 @@ source = { editable = "." }
 dependencies = [
     { name = "numpy" },
     { name = "opencv-python" },
+    { name = "platformdirs" },
     { name = "playwright" },
     { name = "textual" },
     { name = "textual-image" },
@@ -109,6 +110,7 @@ dev = [
 requires-dist = [
     { name = "numpy" },
     { name = "opencv-python" },
+    { name = "platformdirs" },
     { name = "playwright" },
     { name = "textual" },
     { name = "textual-image" },

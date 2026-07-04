@@ -61,7 +61,7 @@ andri-berger/artwork-tui/main/install.sh | sh
 #### macOS (Homebrew)
 Tap the formula and let Homebrew resolve the Python side; the second command
 fetches the Chromium build Playwright renders with. Dependencies are bundled
-in that download, so no further setup is needed.
+in that download, so no further setup is needed. Additional, user-generated files are stored in the following directory => ~/Library/Application Support/artwork-tui
 
 ```bash
 brew tap andri-berger/artwork-tui \
@@ -73,7 +73,7 @@ brew install artwork-tui #install from tap
 Use your AUR helper of choice. The `--with-deps` flag lets Playwright pull the
 system libraries Chromium needs — on a minimal Arch install this saves you a
 round of hunting missing shared objects. Firefox works as an alternative
-engine if you prefer it; webkit is not supported.
+engine if you prefer it; webkit is not supported. Additional, user-generated files are stored in the following directories => ~/.local/share/artwork-tui and ~/.local/state/artwork-tui
 
 ```bash
 yay -S artwork-tui #Or use paru instead
@@ -425,6 +425,13 @@ links say more than any parameter documentation could.
     <tr>
         <td><kbd>
         Framework</kbd></td>
+        <td>Platform</td><td>
+        <a href="//github.com/tox-dev/platformdirs">
+        https://github.com/tox-dev/platformdirs</a></td>
+    </tr>
+    <tr>
+        <td><kbd>
+        Framework</kbd></td>
         <td>Textual</td><td>
         <a href="//github.com/Textualize/textual">
         https://github.com/Textualize/textual</a></td>
@@ -476,7 +483,7 @@ links say more than any parameter documentation could.
         Inspiration</kbd></td>
         <td>Artwork</td><td>
         <a href="//print-artwork.com">
-        https://print-artwork.com</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td> 
+        https://print-artwork.com</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </td> 
     </tr>
 </table>
 
