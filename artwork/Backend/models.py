@@ -6,15 +6,17 @@ from pathlib import Path
 from textual.widgets import DataTable, Input
 
 from .model import MainTab
-from .script import (script_f00,
-                     script_f5,
-                     script_f6)
-
+from .script import (
+    script_f00,
+    script_f5,
+    script_f6,
+)
 
 PORT_0 = script_f00()
 PORT_1 = Path(__file__).parent
 PORT_2 = PORT_1.parent / "Formula"
 PATH_2 = PORT_0 / "700000000.json"
+
 
 def on_submitted(self, event) -> None:
     f0 = self.query_one("#cont-switch-1")
