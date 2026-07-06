@@ -2,7 +2,6 @@ import base64
 import json
 import shutil
 import time
-from pathlib import Path
 
 from textual import on
 from textual.app import ComposeResult
@@ -16,15 +15,14 @@ from textual.widgets import (
 from textual_image.widget import Image
 
 from .script import (
-    script_f01,
     script_f00,
+    script_f01,
     script_f6,
     script_f7,
     script_f9,
     script_f10,
 )
 from .scripts import scripts_f1
-
 
 PORT_0 = script_f01()
 PORT_1 = script_f00()
