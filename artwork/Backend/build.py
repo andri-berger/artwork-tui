@@ -1,9 +1,9 @@
 import functools
 import http.server
 import json
+import shutil
 import threading
 import time
-import shutil
 from pathlib import Path
 
 from playwright.async_api import async_playwright
@@ -12,15 +12,14 @@ from textual.app import App, ComposeResult
 from .builds import MainApp
 from .model import MainTab
 from .script import (
+    script_f0,
     script_f00,
     script_f01,
-    script_f0,
     script_f1,
     script_f2,
     script_f3,
     script_f4,
 )
-
 
 PORT_0 = script_f01()
 PORT_1 = script_f00()
@@ -29,14 +28,14 @@ PORT_3 = PORT_2.parent / "Frontend"
 PATH_3 = PORT_1 / "700000000.json"
 PATH_4 = PORT_0 / "build.json"
 PATH_5 = PORT_0 / "style.tcss"
-PATH = ("http://localhost:"
-        "9000/build.html")
+PATH = "http://localhost:9000/build.html"
 
 shutil.copytree(
-    PORT_3, PORT_0,
-    ignore=shutil.
-    ignore_patterns(".*"),
-    dirs_exist_ok=True)
+    PORT_3,
+    PORT_0,
+    ignore=shutil.ignore_patterns(".*"),
+    dirs_exist_ok=True,
+)
 
 
 class CLIApp(App):
@@ -81,8 +80,6 @@ class CLIApp(App):
             script_f1("1"),
             script_f1("2"),
         ]
-
-
 
     async def on_mount(self) -> None:
         f0 = self.query_one("#cont-switch-0")
