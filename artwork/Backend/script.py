@@ -1,24 +1,23 @@
-import cv2
-from platformdirs import user_data_dir, user_state_dir
 from pathlib import Path
+
+import cv2
+from platformdirs import (
+    user_data_dir,
+    user_state_dir,
+)
 
 
 def script_f01() -> Path:
-    f0  = user_state_dir(
-        "artwork-tui")
-    Path(f0).mkdir(
-        parents=True,
-        exist_ok=True)
+    f0 = user_state_dir("artwork-tui")
+    Path(f0).mkdir(parents=True, exist_ok=True)
     return Path(f0)
 
 
 def script_f00() -> Path:
-    f0  = user_data_dir(
-        "artwork-tui")
-    Path(f0).mkdir(
-        parents=True,
-        exist_ok=True)
+    f0 = user_data_dir("artwork-tui")
+    Path(f0).mkdir(parents=True, exist_ok=True)
     return Path(f0)
+
 
 def script_f0(h) -> list:
     return ["auto", "auto"] + [str(h)] * 300
