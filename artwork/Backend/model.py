@@ -33,7 +33,7 @@ PORT_1 = script_f00()
 PORT_2 = PORT_0 / "module"
 PORT_3 = PORT_0 / "modules"
 PATH_3 = PORT_0 / "model.png"
-PATH_4 = PORT_1 / "1700000000.png"
+PATH_4 = PORT_1 / "170000.png"
 PATH_5 = PORT_1 / "700000000.json"
 PATH = "async (store) => window.h11(store)"
 
@@ -44,12 +44,15 @@ class MainTab(Widget):
     )
 
     def compose(self) -> ComposeResult:
-        yield Image(PATH_3)
+        # A saved layout renders on startup:
+        # no fallback image before it
+        if self.app.stores.get("1") is None:
+            yield Image(PATH_3)
 
     def on_mount(self) -> None:
-        f0 = self.query_one(Image)
-        f0.styles.width = "auto"
-        f0.styles.height = "100%"
+        for f0 in self.query(Image):
+            f0.styles.width = "auto"
+            f0.styles.height = "100%"
         self.rows = {}
 
     async def watch_config(
@@ -84,6 +87,12 @@ class MainTab(Widget):
             )
             if f12 == 1:
                 self.show_rows()
+            # Startup render failed: fallback
+            if f12 == 2 and not self.query(Image):
+                f47 = Image(PATH_3)
+                f47.styles.width = "auto"
+                f47.styles.height = "100%"
+                await self.mount(f47)
             return
         f16 = f15[0].split(",")[1]
         f17 = base64.b64decode(f16)
