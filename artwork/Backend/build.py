@@ -56,6 +56,7 @@ class CLIApp(App):
         self.vertical = 1
         self.horizontal = 0
         self.clipboards = ""
+        self.toasts = {}
         self.playwright = None
 
         self.store = json.loads(
@@ -85,11 +86,26 @@ class CLIApp(App):
             script_f1("2"),
         ]
 
-    def notify(self, *args, **kwargs) -> None:
+    def notify(self, h, **kwargs) -> None:
+        # Info toasts: each text only the
+        # first 3 times per app start;
+        # warnings and errors always show
+        f0 = kwargs.get("severity", "information")
+        f1 = self.toasts.get(h, 0)
+        if f0 == "information" and f1 >= 3:
+            return
+        self.toasts[h] = f1 + 1
         # One toast at a time: a new one
-        # replaces the current one
+        # replaces the current one (queued,
+        # as notify itself is a message)
+        self.call_later(self.clear_toasts)
+        super().notify(h, **kwargs)
+
+    def clear_toasts(self) -> None:
+        # Holders stay behind cleared toasts
+        # and would push the next one down
         self.clear_notifications()
-        super().notify(*args, **kwargs)
+        self.screen.query("ToastHolder").remove()
 
     async def on_mount(self) -> None:
         f0 = self.query_one("#cont-switch-0")

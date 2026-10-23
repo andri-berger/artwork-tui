@@ -89,7 +89,7 @@ def script_f4(h) -> list:
 
 def script_f8(self, h, h0="") -> None:
     # Feedback toast; label-0 keeps its text
-    self.notify(h, title=h0, timeout=3)
+    self.notify(h, title=h0, timeout=2)
 
 
 def script_f5(self, h) -> None:

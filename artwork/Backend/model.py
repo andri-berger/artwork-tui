@@ -209,6 +209,14 @@ class MainTab(Widget):
 
         PATH_5.write_text(json.dumps(f5))
 
+        # CREATE/EXPORT done: confirm now, so
+        # the toast doesn't sit out the render
+        if f13 in (2, 4):
+            f52 = f"button-{f13 // 2 + 3}"
+            f53 = self.app.query_one(f"#{f52}")
+            f54 = str(f53.label)
+            script_f6(self.app, f52, "", f54)
+
     def hide_rows(self) -> None:
         # Blank tables 1-3 until CREATE
         # returns; keep rows for show_rows

@@ -321,7 +321,9 @@ def on_pressed(self, event) -> None:
         f31 = f30[f29]
         script_f6(self, f7, f31, f32)
 
-    if int(f10) in (0, 4, 5):
+    # CREATE/EXPORT confirm once rendered
+    # (model.py watch_config)
+    if int(f10) == 0:
         script_f6(self, f7, "", f32)
 
 

@@ -1,4 +1,13 @@
 
+ToastRack {
+    align: left bottom; }
+
+Toast {
+    width: 36; }
+
+ToastHolder {
+    align-horizontal: left; }
+
 Screen {
     layers: base overlay;
     align: center middle;
