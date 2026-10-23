@@ -99,7 +99,7 @@ artwork-tui #Launches the TUI
     <tr>
         <th width="20">Docs</th>
         <th align="left">Element</th>
-        <th align="left">Description</th>
+        <th align="left"><img src="artwork/Frontend/model.png" width="9999" height="0" align="right" alt="">Description</th>
     </tr>
     <tr>
         <td><a href="artwork/Backend/modules/7000000029.png">
@@ -229,7 +229,7 @@ your hands already know this table.
     <tr>
         <th align="left">Key</th>
         <th align="left">Binding</th>
-        <th align="left">Description</th>
+        <th align="left"><img src="artwork/Frontend/model.png" width="9999" height="0" align="right" alt="">Description</th>
     </tr>
     <tr>
         <td><kbd>Del
@@ -359,7 +359,7 @@ links say more than any parameter documentation could.
     <tr>
         <th align="left">Layer</th>
         <th align="left">Name</th>
-        <th align="left">Link</th>
+        <th align="left"><img src="artwork/Frontend/model.png" width="9999" height="0" align="right" alt="">Link</th>
     </tr>
     </tr>
     <tr>
