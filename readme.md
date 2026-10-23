@@ -435,7 +435,7 @@ links say more than any parameter documentation could.
     <tr>
         <td><kbd>
         Conversion</kbd></td>
-        <td>HTML-in-Canvas</td><td>
+        <td>Canvas Img</td><td>
         <a href="https://github.com/WICG/html-in-canvas">
         https://github.com/WICG/html-in-canvas</a></td>
     </tr>
