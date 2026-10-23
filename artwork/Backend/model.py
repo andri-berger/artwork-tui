@@ -1,7 +1,6 @@
 import asyncio
 import base64
 import json
-import shutil
 import time
 
 from textual import on
@@ -22,6 +21,9 @@ from .script import (
     script_f7,
     script_f9,
     script_f10,
+    script_f12,
+    script_f13,
+    script_f15,
 )
 from .scripts import scripts_f1
 
@@ -47,6 +49,7 @@ class MainTab(Widget):
         f0 = self.query_one(Image)
         f0.styles.width = "auto"
         f0.styles.height = "100%"
+        self.rows = {}
 
     async def watch_config(
         self, path: dict
@@ -66,7 +69,7 @@ class MainTab(Widget):
         f10 = f8.get("34", {})
         f11 = f8.get("37", {})
 
-        f12, f13 = path.pop("_", [])
+        f12, f13, *f47 = path.pop("_", [])
         f14 = script_f9(path, f6)
         try:
             f15 = await f4.evaluate(
@@ -78,20 +81,26 @@ class MainTab(Widget):
                 title="Render failed",
                 severity="error",
             )
+            if f12 == 1:
+                self.show_rows()
             return
         f16 = f15[0].split(",")[1]
         f17 = base64.b64decode(f16)
-        f18 = int(f10.get("1", 0))
-        f19 = int(f10.get("0", 0))
-        f20 = int(f9.get("0", 0))
+        f18 = script_f15(f10.get("1"))
+        f19 = script_f15(f10.get("0"))
+        f20 = script_f15(f9.get("0"))
 
         if f20 in range(1, 5):
+            f48 = [
+                script_f15(f9.get(h), float)
+                for h in "1234"
+            ]
             f21 = {
                 "h": f20,
-                "h0": f9.get("1"),
-                "h1": f9.get("2"),
-                "h2": f9.get("3"),
-                "h3": f9.get("4"),
+                "h0": f48[0],
+                "h1": f48[1],
+                "h2": f48[2],
+                "h3": f48[3],
             }
             f17 = await asyncio.to_thread(
                 scripts_f1, f21, f17
@@ -99,6 +108,7 @@ class MainTab(Widget):
 
         if f13 == 4:
             f22 = int(time.time())
+            f22 = f47[0] if f47 else f22
             f23 = PORT_1 / f"{f22}.png"
             with open(f23, "wb") as f:
                 f.write(f17)
@@ -120,24 +130,14 @@ class MainTab(Widget):
         if f13 == 2:
             f27 = script_f10(f15[1], f6)
             f5 = {**f5, **f27}
+            self.app.stores = f5
 
         if f12 >= 1:
             f28 = f1 == 3
             f29 = f12 == 2
             f30 = 2 if f28 else f1
-            f31 = f6.get(f"1-{f30}")
             f32 = (0, 6) if f29 else (1, 4)
-            f46 = f30 in range(*f32) and (
-                f5.get(str(f30), {}) is not None
-            )
             with self.app.batch_update():
-                if not f46:
-                    f3[f30].clear(columns=False)
-                    for h in range(len(f31)):
-                        f33 = [f31[h][0]]
-                        f33.extend([""] * f2[f30])
-                        f3[f30].add_row(*f33)
-
                 for h0 in range(*f32):
                     f34 = int(h0) == 3
                     f35 = 2 if f34 else h0
@@ -168,22 +168,44 @@ class MainTab(Widget):
                                     )
                             f3[h0].add_row(*f40)
 
-                f41 = f11.get("1", 0)
-                f42 = f11.get("2", 0)
+                f41 = script_f15(f11.get("1"))
+                f42 = script_f15(f11.get("2"))
                 f3[f30].move_cursor(
                     row=f41, column=f42
                 )
 
-        if f18 in range(1, 10):
-            f43 = 12 - f18
-            f44 = f00.styles
-            f44.height = f43
-
-        if f19 in range(0, 20):
-            f45 = f6["001"][f19]
-            self.app.theme = f45
+        # Unset or out of range: defaults
+        f43 = f18 in range(1, 10)
+        f44 = f6["001"]
+        f45 = f19 in range(len(f44))
+        f00.styles.height = (
+            12 - f18 if f43 else None
+        )
+        self.app.theme = f44[f19 if f45 else 0]
 
         PATH_5.write_text(json.dumps(f5))
+
+    def hide_rows(self) -> None:
+        # Blank tables 1-3 until CREATE
+        # returns; keep rows for show_rows
+        f0 = self.app.query(DataTable)
+        self.rows = {}
+        for h in range(1, 4):
+            f1 = f0[h]
+            f2 = [
+                f1.get_row_at(h0)
+                for h0 in range(f1.row_count)
+            ]
+            self.rows[h] = f2
+            f1.clear(columns=False)
+            for h1 in f2:
+                f1.add_row(h1[0])
+
+    def show_rows(self) -> None:
+        f0 = self.app.query(DataTable)
+        for h, h0 in self.rows.items():
+            f0[h].clear(columns=False)
+            f0[h].add_rows(h0)
 
     def render(self):
         return ""
@@ -212,7 +234,7 @@ class FileTree(DirectoryTree):
             for h in path
             if (
                 h.is_dir()
-                or f0 == h.suffix.lower()
+                or h.suffix.lower() in f0
             )
             and not h.name.startswith(".")
         ]
@@ -230,8 +252,6 @@ class FileTree(DirectoryTree):
         f6 = self.app.stores
         f7 = f5.split("-")[-1]
         f8 = ["4", "5"][int(f7) - 1]
-        f9 = ["module", "modules"]
-        f10 = ["png", "otf"]
         f11 = event.path
         f12 = f11.name
         script_f6(self.app, f5, f12)
@@ -239,40 +259,40 @@ class FileTree(DirectoryTree):
         if int(f7) >= 1:
             f13 = f4.column
             f14 = str(f4.row)
-            f15 = f9[int(f7) - 1]
-            f16 = f10[int(f7) - 1]
-            f17 = f12.split(".")
-            f18 = PORT_0 / f15
-            f19 = f18 / f12
-            f190 = f11.resolve() == f19.resolve()
+            f15 = int(f7) - 1
+            f16 = script_f13(f11, f15)
 
             if int(f3) >= 4 and f13 == 12:
                 f20 = f6.setdefault(f8, {})
                 f21 = f20.setdefault(f14, {})
-                f21[str(f13 - 1)] = f17[0]
-                f22 = f1.get_cell_at(f4)
-                f23 = f"{str(f22)}.{f16}"
-                f24 = f18 / f23 / ""
-                if f24.exists() and not f190:
-                    f24.unlink()
-                f1.update_cell_at(f4, f17[0])
+                f22 = f21.get("11")
+                f21["11"] = f16
+                f1.update_cell_at(f4, f16)
 
-            elif int(f3) <= 3 or f13 != 12:
+            else:
                 f25 = f6.setdefault("0", {})
                 f26 = f25.setdefault("37", {})
-                f26[str(int(f7) + 2)] = f12
-                if f19.exists() and not f190:
-                    f19.unlink()
+                f22 = f26.get(str(f15 + 3))
+                f26[str(f15 + 3)] = f16
 
-            if not f190:
-                shutil.copy2(f11, f19)
+            script_f12(f11, f15, f6, f22)
             f27 = {**self.app.stores}
             f27.update({"_": [0, 1]})
             f2.config = f27
 
         elif int(f7) == 0:
-            f28 = f11.read_text()
-            f29 = json.loads(f28)
+            # script_f9 checks the layout of
+            # every value against build.json
+            try:
+                f29 = json.loads(f11.read_text())
+                script_f9(f29, self.app.store)
+            except Exception as e:
+                self.notify(
+                    f"{f12}: {e!r}",
+                    title="Invalid project file",
+                    severity="error",
+                )
+                return
             f29.update({"_": [2, 1]})
             self.app.stores = f29
             f2.config = f29

@@ -1,3 +1,4 @@
+import shutil
 from pathlib import Path
 
 from platformdirs import (
@@ -47,7 +48,7 @@ def script_f2() -> list:
             [f"{h}{h0:02d}", "%,%", ""],
             [f"{h}{h0:02d}", "px,px", ""],
             [f"{h}{h0:02d}", "%,%", ""],
-            [f"{h}{h0:02d}", "png", ""],
+            [f"{h}{h0:02d}", "image", ""],
         ]
         for h in "ABCDEF"
         for h0 in range(100)
@@ -145,27 +146,36 @@ def script_f7(h, h0, h1, h2) -> None:
         f7.offset = f23 if f21 else f22
 
 
+def script_f15(h, h0=int) -> int | float:
+    # Cell value -> number; 0 for text or
+    # an empty cell (hand-edited saves)
+    try:
+        return h0(h)
+    except TypeError, ValueError:
+        return 0
+
+
 def script_f9(h, h0) -> dict:
     f0 = {}
     f1 = h.items()
     for h1, h2 in f1:
-        if h1 == "2":
+        if h1 in ("2", "3"):
             if any(
                 str(k) in h2.keys()
                 for k in range(45)
             ):
-                f0["2"] = {}
+                f0.setdefault("2", {})
             if any(
                 str(k) in h2.keys()
                 for k in range(45, 75)
             ):
-                f0["3"] = {}
+                f0.setdefault("3", {})
         elif int(h1) in [0, 1, 4, 5]:
             f0[h1] = {}
         f2 = h0.get(f"0-{h1}", {})
         for h3, h4 in h2.items():
             f3 = int(h3)
-            if h1 == "2":
+            if h1 in ("2", "3"):
                 f4 = f3 <= 44
                 f5 = "2" if f4 else "3"
                 f6 = f0[f5]
@@ -219,3 +229,42 @@ def script_f10(h, h0) -> dict:
                         f4[f7] = {}
                     f4[f7][h3] = h6
     return f0
+
+
+def script_f13(h, h0) -> str:
+    # Picked file h -> stored name: images
+    # keep their suffix, fonts store the stem
+    f0 = h.suffix.lower()
+    return h.stem if h0 else h.stem + f0
+
+
+def script_f14(h, h0) -> str:
+    # Stored name -> file name; a bare stem
+    # means .png (older saves) or .otf
+    f0 = str(h)
+    if h0:
+        return f"{f0}.otf"
+    return f0 if Path(f0).suffix else f"{f0}.png"
+
+
+def script_f12(h, h0, h1, h2) -> None:
+    # Copy picked asset h (h0: 0 image, 1 otf)
+    # into the state dir; drop the replaced
+    # name h2 unless a store h1 still uses it.
+    # Uses: "0"/"37"/"3"|"4" = base image/otf
+    # (JS key 144/145 via build.json
+    # "0-0"[37]) and "4"|"5"/row/"11" =
+    # column 12 of tables 4/5.
+    f1 = ["module", "modules"][h0]
+    f2 = script_f01() / f1
+    f3 = f2 / script_f14(script_f13(h, h0), h0)
+    f4 = f2 / script_f14(h2, h0)
+    f5 = h1.get("0", {}).get("37", {})
+    f6 = h1.get(str(h0 + 4), {}).values()
+    f7 = [f5.get(str(h0 + 3))]
+    f7 += [h3.get("11") for h3 in f6]
+    f8 = {script_f14(h3, h0) for h3 in f7 if h3}
+    if h2 and f4.name not in f8 and f4 != f3:
+        f4.unlink(missing_ok=True)
+    if h.resolve() != f3.resolve():
+        shutil.copy2(h, f3)

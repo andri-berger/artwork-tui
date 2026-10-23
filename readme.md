@@ -129,9 +129,9 @@ select any json here to reopen it with all parameters intact.</td>
     <tr>
         <td><a href="artwork/Backend/modules/7000000029.png">
         <img src="artwork/Backend/modules/17000000029.png"></a></td>
-        <td><kbd>Filetree PNG
+        <td><kbd>Filetree Image
         </kbd></td>
-        <td>Choose your background image for the elements. Any png works; the layout
+        <td>Choose your background image for the elements. Any png, jpg, svg, webp, gif, avif or bmp works; the layout
 engine composes all elements on top of it.</td>
     </tr>
     <tr>

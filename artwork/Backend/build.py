@@ -19,6 +19,7 @@ from .script import (
     script_f2,
     script_f3,
     script_f4,
+    script_f15,
 )
 
 PORT_0 = script_f01()
@@ -96,7 +97,7 @@ class CLIApp(App):
         f11 = f7.get("34", {})
         f12 = f11.get("1", 0)
         f13 = f11.get("0", 0)
-        f14 = f10.get("0") or 4
+        f14 = script_f15(f10.get("0")) or 4
         f15 = ("localhost", 9000)
         f16 = (3, 4, 5, 6, 7, 8)
         f17 = (0, 1, 2)
@@ -163,8 +164,8 @@ class CLIApp(App):
             f3.config = f27
 
         else:
-            f28 = int(f13)
-            f29 = int(f12)
+            f28 = script_f15(f13)
+            f29 = script_f15(f12)
             if f29 in range(1, 10):
                 f30 = f2.styles
                 f31 = 12 - f29

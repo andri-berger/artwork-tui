@@ -1381,7 +1381,7 @@
 		"CSS BACKGROUND-POSITION. Numeric vertical offset.",
 		"CSS BACKGROUND-SIZE. Numeric horizontal scaling — overrides the fitting mode above for precise control.",
 		"CSS BACKGROUND-SIZE. Numeric vertical scaling; unequal values stretch the image deliberately.",
-		"CSS BACKGROUND-IMAGE. Selects which image this element renders — the file chosen via the PNG filetree."
+		"CSS BACKGROUND-IMAGE. Selects which image this element renders — the file chosen via the image filetree."
 	],
 	"3-5": [
 		"VARIOUS PROPERTIES. Typography settings of the element's text field — every element from A00 to F99 carries one.",
@@ -1400,7 +1400,7 @@
 		"HTML SPAN ENTITY. The text content itself — whatever this cell holds is what the element renders."],
 	"4-0": {
 		"dir-tree-0": "JSON FILE PICKER. Choose your base project file.",
-		"dir-tree-1": "PNG FILE PICKER. Choose your base image file for canvas",
+		"dir-tree-1": "IMAGE FILE PICKER. Choose your base image (png, jpg, svg, webp, gif, avif, bmp)",
 		"dir-tree-2": "FONT OTF FILE PICKER. Chose your base font file for canvas",
 		"button-0": "CLEAR ALL DATA IN PROJECT JSON. Create a fresh clean state and start from scratch.",
 		"button-1": "SET THE SEED FOR ALL 100 A-ELEMENTS. Reproduce the result on canvas faithfully on subsequent Regenerations.",

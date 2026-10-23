@@ -815,12 +815,18 @@ const h16 = async () => {
 	await document.fonts.ready
 }
 
+const k21 = { ...k0['02'] }
+
 window.h11 = async (l) => {
 	k2.innerHTML = ''
 	let l0 = k0['02']
 	let l1 = l[1] || {}
 	let l2 = l1['0'] || {}
 	if (l[0] === 2) {
+		// Defaults first: cleared cells and
+		// loaded projects drop old values
+		for (let i in l0) delete l0[i]
+		Object.assign(l0, k21)
 		for (let i in l2) {
 			if (k1[i] != null) {
 				l0[k1[i]] = l2[i]

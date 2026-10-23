@@ -22,6 +22,18 @@ from .models import (
 )
 from .script import script_f11
 
+# Formats Chromium draws as background-image
+IMAGES = (
+    ".png",
+    ".jpg",
+    ".jpeg",
+    ".gif",
+    ".webp",
+    ".avif",
+    ".svg",
+    ".bmp",
+)
+
 
 class MainApp(Widget):
     def on_mount(self) -> None:
@@ -61,7 +73,11 @@ class MainApp(Widget):
                 initial="dir-tree-0",
             ):
                 for h, h0 in enumerate(
-                    (".json", ".png", ".otf")
+                    (
+                        (".json",),
+                        IMAGES,
+                        (".otf",),
+                    )
                 ):
                     yield FileTree(
                         "/",

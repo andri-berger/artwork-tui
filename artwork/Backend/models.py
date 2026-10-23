@@ -1,5 +1,4 @@
 import json
-import shutil
 import time
 from pathlib import Path
 
@@ -76,7 +75,18 @@ def on_submitted(self, event) -> None:
         f17 = 2 if f15 else f16
         f18 = f17 if f8 == 0 else 1
         f1.update_cell_at(f3, f6)
-        f5[f11] = self.get_data(f1)
+        # Keep keys past the table rows
+        # (table 0: 35 locks, 36 seeds,
+        # 37 cursor and picked assets)
+        f13 = f5.get(f11) or {}
+        f5[f11] = {
+            **{
+                h: h0
+                for h, h0 in f13.items()
+                if int(h) >= f1.row_count
+            },
+            **self.get_data(f1),
+        }
 
         f19 = {**self.app.stores}
         f19.update({"_": [0, f18]})
@@ -244,18 +254,20 @@ def on_pressed(self, event) -> None:
 
     elif int(f10) == 4:
         f3.query(Image).remove()
+        f3.hide_rows()
         f18 = int(time.time())
         f19 = f11.get("35", {})
         for h in ("0", "1", "2"):
-            if f19.get(h, 0) == 0:
+            if f19.get(h, 0) == 0 or h not in f13:
                 f13[h] = f18
 
     elif int(f10) == 5:
         f20 = int(time.time())
         f21 = PORT_0 / f"{f20}.json"
-        shutil.copy2(PATH_2, f21)
         f22 = {**self.app.stores}
-        f22.update({"_": [0, 4]})
+        f22.pop("_", None)
+        f21.write_text(json.dumps(f22))
+        f22.update({"_": [0, 4, f20]})
         f3.config = f22
 
     elif int(f10) == 0:
