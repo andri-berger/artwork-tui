@@ -241,6 +241,18 @@ const k12 = (_) =>
 const k13 = (_) => [1, 10, 100, 1000, 10000][_[0]]
 const k14 = (_) =>
 	Math.round(_[1] * k13(_)) / k13(_)
+// Seed hash (FNV-1a + murmur3 mix): near seeds
+// (timestamps, element index) would otherwise
+// start the d3 LCG at almost the same value
+const k22 = (_) => {
+	let l0 = 0x811c9dc5
+	for (let i of String(_)) {
+		l0 = Math.imul(l0 ^ i.charCodeAt(0), 0x1000193)
+	}
+	l0 = Math.imul(l0 ^ (l0 >>> 16), 0x85ebca6b)
+	l0 = Math.imul(l0 ^ (l0 >>> 13), 0xc2b2ae35)
+	return (l0 ^ (l0 >>> 16)) >>> 0
+}
 const k15 = document.createElement('canvas')
 const k16 = document.createElement('canvas')
 const k17 = k16.getContext('2d')
@@ -450,7 +462,8 @@ const h5 = (l) => {
 	let l1 = k0['00']
 	let l2 = k0['01']
 	let l3 = { ...l1, ...l2 }
-	let l4 = Number(l[1])
+	// Stream per element set, seed and use
+	let l4 = (_) => k22([l[0], l[1], _])
 	let l5 = l3[l[0] || '']
 	let l6 = [l[4], l[5]]
 	let l8 = k14([0, l[2]])
@@ -459,10 +472,10 @@ const h5 = (l) => {
 	let l11 = { length: l8 + 0 }
 	let l12 = 0.1 + 0.9 * l[9]
 	let l13 = 0.1 + 0.9 * l[8]
-	let l14 = h3([0, 0, l12, l10, l4])
-	let l15 = h3([0, 0, l[3], l10, l4 + 1])
-	let l16 = h3([1, ...l6, l10, l4 + 2])
-	let l17 = h3([1, 0, 0, l10, l4 + 3])
+	let l14 = h3([0, 0, l12, l10, l4('a')])
+	let l15 = h3([0, 0, l[3], l10, l4('b')])
+	let l16 = h3([1, ...l6, l10, l4('c')])
+	let l17 = h3([1, 0, 0, l10, l4('d')])
 	let l18 = l
 		.slice(10)
 		.map((_) => _.split('.').filter(Boolean))
@@ -474,7 +487,7 @@ const h5 = (l) => {
 		let l23 = [l21[0], i]
 		let l24 = Number(i)
 		let l25 = l20(l23)
-		let l26 = l24 + l4
+		let l26 = l4(l24)
 		let l27 = l3[l25]
 		if (l27 != null) {
 			let l28 = l27[0]

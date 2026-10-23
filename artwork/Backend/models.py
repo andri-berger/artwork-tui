@@ -273,7 +273,14 @@ def on_pressed(self, event) -> None:
         f3.config = f22
 
     elif int(f10) == 0:
-        self.app.stores = {}
+        # Keep the seed locks and their seeds
+        self.app.stores = {
+            "0": {
+                h: f11[h]
+                for h in ("35", "36")
+                if h in f11
+            }
+        }
         f23 = self.app.stores
         f24 = f23.setdefault("0", {})
         f25 = f24.setdefault("37", {})
