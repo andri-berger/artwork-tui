@@ -139,7 +139,7 @@ class CLIApp(App):
             + (
                 "HTML-in-Canvas"
                 if f40
-                else "html-to-image fallback"
+                else "HTML-in-Canvas unavailable"
             ),
             title="Renderer",
             timeout=30,

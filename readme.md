@@ -360,9 +360,10 @@ produces the README assets, **Utility** the Python and JavaScript toolchain —
 including d3-random, whose seedable generators are what makes reproducible
 artwork possible in the first place. **Framework** is the TUI foundation,
 while **Conversion** and **Processing** form the rendering heart: Playwright
-drives the browser, html-to-image rasterizes the composed layout, and the
-PixiJS filter collection provides the WebGL effects layered on top. The layout
-engine itself is homegrown, but it would have nothing to run on without these.
+drives the browser, Chromium's HTML-in-Canvas API rasterizes the composed
+layout, and the PixiJS filter collection provides the WebGL effects layered on
+top. The layout engine itself is homegrown, but it would have nothing to run on
+without these.
 
 The **Inspiration** entries are of a different kind than in filterx-tui: no
 code, not even patterns — purely visual debts. The linked Pinterest board is
@@ -451,9 +452,9 @@ links say more than any parameter documentation could.
     <tr>
         <td><kbd>
         Conversion</kbd></td>
-        <td>Html Image</td><td>
-        <a href="//github.com/bubkoo/html-to-image">
-        https://github.com/bubkoo/html-to-image</a></td>
+        <td>HTML-in-Canvas</td><td>
+        <a href="https://github.com/WICG/html-in-canvas">
+        https://github.com/WICG/html-in-canvas</a></td>
     </tr>
     <tr>
         <td><kbd>
