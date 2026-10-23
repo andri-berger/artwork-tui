@@ -24,6 +24,7 @@ from .script import (
     script_f12,
     script_f13,
     script_f15,
+    script_f17,
 )
 from .scripts import scripts_f1
 
@@ -133,9 +134,7 @@ class MainTab(Widget):
             self.app.stores = f5
 
         if f12 >= 1:
-            f28 = f1 == 3
             f29 = f12 == 2
-            f30 = 2 if f28 else f1
             f32 = (0, 6) if f29 else (1, 4)
             with self.app.batch_update():
                 for h0 in range(*f32):
@@ -168,11 +167,22 @@ class MainTab(Widget):
                                     )
                             f3[h0].add_row(*f40)
 
+                # Load: back to the saved table
+                # ("37"/"0" = 4 + table), else
+                # the cursor stays where it is
                 f41 = script_f15(f11.get("1"))
                 f42 = script_f15(f11.get("2"))
-                f3[f30].move_cursor(
-                    row=f41, column=f42
-                )
+                f49 = script_f15(f11.get("0")) - 4
+                f50 = f49 in range(6)
+                if f12 == 2 and f50:
+                    f0.current = (
+                        f"data-table-{f49}"
+                    )
+                    f1 = f49
+                if f12 != 2 or f50:
+                    f3[f1].move_cursor(
+                        row=f41, column=f42
+                    )
 
         # Unset or out of range: defaults
         f43 = f18 in range(1, 10)
@@ -293,6 +303,13 @@ class FileTree(DirectoryTree):
                     severity="error",
                 )
                 return
+            f30 = script_f17(f29)
+            if f30:
+                self.notify(
+                    ", ".join(f30),
+                    title="Missing assets",
+                    severity="warning",
+                )
             f29.update({"_": [2, 1]})
             self.app.stores = f29
             f2.config = f29

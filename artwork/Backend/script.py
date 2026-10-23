@@ -240,30 +240,51 @@ def script_f13(h, h0) -> str:
 
 def script_f14(h, h0) -> str:
     # Stored name -> file name; a bare stem
-    # means .png (older saves) or .otf
+    # means .png (older saves) or .otf;
+    # v0.1.0 stored base fonts as x.otf
     f0 = str(h)
     if h0:
-        return f"{f0}.otf"
+        f1 = f0.lower().endswith(".otf")
+        return f0 if f1 else f"{f0}.otf"
     return f0 if Path(f0).suffix else f"{f0}.png"
+
+
+def script_f16(h, h0) -> set:
+    # File names store h uses (h0: 0 image,
+    # 1 otf): "0"/"37"/"3"|"4" = base
+    # image/otf (JS key 144/145 via
+    # build.json "0-0"[37]) and
+    # "4"|"5"/row/"11" = column 12 of
+    # tables 4/5
+    f0 = h.get("0", {}).get("37", {})
+    f1 = h.get(str(h0 + 4), {}).values()
+    f2 = [f0.get(str(h0 + 3))]
+    f2 += [h1.get("11") for h1 in f1]
+    return {script_f14(h1, h0) for h1 in f2 if h1}
+
+
+def script_f17(h) -> list:
+    # Assets store h uses that are not
+    # in the state dir
+    return sorted(
+        f"{f0}/{h1}"
+        for h0, f0 in enumerate(
+            ("module", "modules")
+        )
+        for h1 in script_f16(h, h0)
+        if not (script_f01() / f0 / h1).exists()
+    )
 
 
 def script_f12(h, h0, h1, h2) -> None:
     # Copy picked asset h (h0: 0 image, 1 otf)
     # into the state dir; drop the replaced
-    # name h2 unless a store h1 still uses it.
-    # Uses: "0"/"37"/"3"|"4" = base image/otf
-    # (JS key 144/145 via build.json
-    # "0-0"[37]) and "4"|"5"/row/"11" =
-    # column 12 of tables 4/5.
+    # name h2 unless a store h1 still uses it
     f1 = ["module", "modules"][h0]
     f2 = script_f01() / f1
     f3 = f2 / script_f14(script_f13(h, h0), h0)
     f4 = f2 / script_f14(h2, h0)
-    f5 = h1.get("0", {}).get("37", {})
-    f6 = h1.get(str(h0 + 4), {}).values()
-    f7 = [f5.get(str(h0 + 3))]
-    f7 += [h3.get("11") for h3 in f6]
-    f8 = {script_f14(h3, h0) for h3 in f7 if h3}
+    f8 = script_f16(h1, h0)
     if h2 and f4.name not in f8 and f4 != f3:
         f4.unlink(missing_ok=True)
     if h.resolve() != f3.resolve():

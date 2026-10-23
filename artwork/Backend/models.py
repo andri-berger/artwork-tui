@@ -264,6 +264,11 @@ def on_pressed(self, event) -> None:
     elif int(f10) == 5:
         f20 = int(time.time())
         f21 = PORT_0 / f"{f20}.json"
+        # Save the open table and its cursor
+        f23 = f11.setdefault("37", {})
+        f23["0"] = int(f0.current[-1]) + 4
+        f23["1"] = f4.row
+        f23["2"] = f4.column
         f22 = {**self.app.stores}
         f22.pop("_", None)
         f21.write_text(json.dumps(f22))
