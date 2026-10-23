@@ -4,6 +4,7 @@ import time
 from pathlib import Path
 
 from textual.widgets import DataTable, Input
+from textual_image.widget import Image
 
 from .model import MainTab
 from .script import (
@@ -242,6 +243,7 @@ def on_pressed(self, event) -> None:
         f12[f15] = 1 - f12.get(f15, 0)
 
     elif int(f10) == 4:
+        f3.query(Image).remove()
         f18 = int(time.time())
         f19 = f11.get("35", {})
         for h in ("0", "1", "2"):
