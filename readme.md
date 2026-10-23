@@ -58,33 +58,16 @@ curl -fsSL https://raw.githubusercontent.com/\
 andri-berger/artwork-tui/main/install.sh | sh
 ```
 
-#### macOS (Homebrew)
-Tap the formula and let Homebrew resolve the Python side; the second command
-fetches the Chromium build Playwright renders with. Dependencies are bundled
-in that download, so no further setup is needed. Additional, user-generated files are stored in the following directory => ~/Library/Application Support/artwork-tui
+#### Data directories
+Additional, user-generated files are stored in the following directories:
+- macOS => ~/Library/Application Support/artwork-tui
+- Linux => ~/.local/share/artwork-tui and ~/.local/state/artwork-tui
 
-```bash
-brew tap andri-berger/artwork-tui \
-https://github.com/andri-berger/artwork-tui
-brew trust andri-berger/artwork-tui #third-party taps must be trusted
-brew install artwork-tui #install from tap
-"$(brew --prefix)/opt/artwork-tui/libexec/bin/playwright" install chromium
-```
-
-#### Linux (any distro, incl. Arch)
-Use the generic curl install above; it works on every distro. On apt-based
-systems (Debian, Ubuntu) it also installs the system libraries Chromium needs.
-On other distros it downloads the browser only, so the libraries come from
-your package manager. Most desktop installs already have them; on a minimal
-Arch install add them with pacman. Additional, user-generated files are stored in the following directories => ~/.local/share/artwork-tui and ~/.local/state/artwork-tui
-
-```bash
-sudo pacman -S --needed nss at-spi2-core libcups libdrm libxkbcommon \
-libxcomposite libxdamage libxrandr mesa pango cairo alsa-lib
-```
-
-Prefer a native package? The repo ships an unofficial `PKGBUILD`; build and
-install it yourself with `makepkg -si` from a checkout.
+#### Linux system libraries
+On apt-based systems (Debian, Ubuntu) the install script also installs the
+system libraries Chromium needs. On other distros it downloads the browser
+only, so the libraries come from your package manager. Most desktop installs
+already have them.
 
 
 ## Configuration

@@ -1,6 +1,5 @@
 __pycache__/
 .ruff_cache/
-.SRCINFO
 .idea/
 .venv/
 .cache
@@ -13,9 +12,5 @@ temp/
 *.log
 *.tmp
 
-# makepkg / build leftovers
-/artwork-tui-*.tar.gz
-/src/
-/pkg/
+# build leftovers
 /dist/
-*.pkg.tar.zst
