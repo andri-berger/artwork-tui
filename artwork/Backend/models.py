@@ -307,18 +307,7 @@ def on_pressed(self, event) -> None:
 
 
 async def on_key(self, event) -> None:
-    f0 = (
-        "delete",
-        "f1",
-        "f2",
-        "f3",
-        "f4",
-        "f5",
-        "f6",
-        "f7",
-        "f8",
-        "f9",
-    )
+    f0 = ("delete", "f1", "f2", "f3")
     f1 = ("backspace", "space", "enter")
     f2 = self.query_one("#cont-switch-0")
     f3 = self.query_one("#cont-switch-1")
