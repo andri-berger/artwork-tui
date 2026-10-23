@@ -1,0 +1,42 @@
+name: install-check
+
+# Installs artwork-tui the way users do and runs a headless smoke test.
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - install.sh
+      - Formula/**
+      - pyproject.toml
+      - ci/smoke.py
+      - .github/workflows/install-check.yml
+
+jobs:
+  curl-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: install.sh
+        run: sh install.sh
+      - name: smoke test
+        run: |
+          PY="$(uv tool dir)/artwork-tui/bin/python"
+          "$PY" ci/smoke.py
+
+  brew-macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: brew tap + install
+        env:
+          HOMEBREW_NO_AUTO_UPDATE: "1"
+        run: |
+          brew tap andri-berger/artwork-tui "$GITHUB_WORKSPACE"
+          brew install artwork-tui
+          "$(brew --prefix)/opt/artwork-tui/libexec/bin/playwright" install chromium
+      - name: smoke test
+        run: |
+          "$(brew --prefix)/opt/artwork-tui/libexec/bin/python" ci/smoke.py

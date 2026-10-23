@@ -1,22 +1,23 @@
 from pathlib import Path
 
-import cv2
 from platformdirs import (
     user_data_dir,
     user_state_dir,
 )
 
 
+def script_f02(h) -> Path:
+    f0 = Path(h("artwork-tui"))
+    f0.mkdir(parents=True, exist_ok=True)
+    return f0
+
+
 def script_f01() -> Path:
-    f0 = user_state_dir("artwork-tui")
-    Path(f0).mkdir(parents=True, exist_ok=True)
-    return Path(f0)
+    return script_f02(user_state_dir)
 
 
 def script_f00() -> Path:
-    f0 = user_data_dir("artwork-tui")
-    Path(f0).mkdir(parents=True, exist_ok=True)
-    return Path(f0)
+    return script_f02(user_data_dir)
 
 
 def script_f0(h) -> list:
@@ -78,60 +79,43 @@ def script_f3() -> list:
 
 def script_f4(h) -> list:
     f0 = f" {['Image', 'Text'][h]}"
-    f1 = (
-        [[f"A{h0:02d}{f0}"] for h0 in range(100)]
-        + [
-            [f"B{h0:02d}{f0}"]
-            for h0 in range(100)
-        ]
-        + [
-            [f"C{h0:02d}{f0}"]
-            for h0 in range(100)
-        ]
-        + [
-            [f"D{h0:02d}{f0}"]
-            for h0 in range(100)
-        ]
-        + [
-            [f"E{h0:02d}{f0}"]
-            for h0 in range(100)
-        ]
-        + [
-            [f"F{h0:02d}{f0}"]
-            for h0 in range(100)
-        ]
+    return [
+        [f"{h1}{h0:02d}{f0}"]
+        for h1 in "ABCDEF"
+        for h0 in range(100)
+    ]
+
+
+def script_f11(h) -> None:
+    if h.textfields is not None:
+        h.textfields.stop()
+        h.textfields = None
+
+
+def script_f8(self, h) -> None:
+    f0 = self.query_one("#label-0")
+    f1 = self.app.textfield
+    f0.update(h)
+    script_f11(self.app)
+    self.app.textfields = self.set_timer(
+        3, lambda: f0.update(f1)
     )
-    return f1
 
 
 def script_f5(self, h) -> None:
-    f0 = self.query_one("#label-0")
-    f1 = self.app.store["4-1"]
-    f2 = self.app.textfield
-    f0.update(f1.get(h, ""))
-    if self.app.textfields is not None:
-        self.app.textfields.stop()
-    self.app.textfields = self.set_timer(
-        3, lambda: f0.update(f2)
-    )
+    f0 = self.app.store["4-1"]
+    script_f8(self, f0.get(h, ""))
 
 
 def script_f6(self, h, h0) -> None:
-    f0 = self.query_one("#label-0")
-    f1 = self.app.store["4-2"]
-    f2 = self.app.textfield
-    f3 = f1.get(h, "")
-    f0.update(f3.format(f3=h0.upper()))
-    if self.app.textfields is not None:
-        self.app.textfields.stop()
-    self.app.textfields = self.set_timer(
-        3, lambda: f0.update(f2)
-    )
+    f0 = self.app.store["4-2"].get(h, "")
+    script_f8(self, f0.format(f3=h0.upper()))
 
 
 def script_f7(h, h0, h1, h2) -> None:
-    f0 = cv2.imread(str(h2))
-    f1, f2 = f0.shape[:2]
+    # PNG IHDR: width @16, height @20
+    f1 = int.from_bytes(h2[20:24])
+    f2 = int.from_bytes(h2[16:20])
     f4 = h0.get("2", 0)
     f3 = h0.get("3")
     f5 = h.height

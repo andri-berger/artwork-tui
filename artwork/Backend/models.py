@@ -10,12 +10,34 @@ from .script import (
     script_f00,
     script_f5,
     script_f6,
+    script_f11,
 )
 
 PORT_0 = script_f00()
 PORT_1 = Path(__file__).parent
 PORT_2 = PORT_1.parent / "Formula"
 PATH_2 = PORT_0 / "700000000.json"
+PATH_3 = ["", "00"] + [
+    f"{h}{h0:02d}"
+    for h in "ABC"
+    for h0 in range(100)
+]
+PATH_4 = [""] + [
+    f"{h}{h0:02d}"
+    for h in "DEF"
+    for h0 in range(100)
+]
+
+
+def on_display(self, h) -> None:
+    for h0 in range(6):
+        f0 = self.query_one(f"#button-{h0}")
+        f0.display = h
+    for h1 in range(2):
+        f1 = self.query_one(f"#input-{h1}")
+        f1.display = h
+    f2 = self.query_one("#input-2")
+    f2.display = not h
 
 
 def on_submitted(self, event) -> None:
@@ -71,7 +93,6 @@ def on_shift_tab(self, event, prefix) -> None:
     f2 = self.query_one("#dir-tree-0")
     f3 = self.query_one("#digits-0")
     f4 = self.query_one("#button-5")
-    f05 = self.query_one("#input-2")
     f5 = self.query_one("#input-1")
     f6 = self.query_one("#input-0")
     f7 = self.query_one("#label-0")
@@ -87,25 +108,14 @@ def on_shift_tab(self, event, prefix) -> None:
     f17 = f12 + f15
 
     if f14 != 8:
-        for h in range(6):
-            f18 = f"#button-{h}"
-            f19 = self.query_one(f18)
-            f19.display = True
-
-        for h0 in range(2):
-            f20 = f"#input-{h0}"
-            f21 = self.query_one(f20)
-            f21.display = True
-        f05.display = False
+        on_display(self, True)
 
     if event is not None and f17 in f00:
         event.prevent_default()
         event.stop()
 
     if f14 in f01:
-        if self.app.textfields is not None:
-            self.app.textfields.stop()
-            self.app.textfields = None
+        script_f11(self.app)
         f22 = f8.get(f9[f14], "")
         self.app.textfield = f22
         f7.update(f22)
@@ -175,28 +185,16 @@ def on_highlighted(self, event) -> None:
                 else f10["00"][f18[2]][f13]
             )
 
-            f2.update(
-                (
-                    "",
-                    [""]
-                    + [
-                        f"{f18[0][0]}{h:02d}"
-                        for h in range(100)
-                    ],
-                    ["", "00"]
-                    + [
-                        f"{h0}{h1:02d}"
-                        for h0 in "ABC"
-                        for h1 in range(100)
-                    ],
-                    [""]
-                    + [
-                        f"{h2}{h3:02d}"
-                        for h2 in "DEF"
-                        for h3 in range(100)
-                    ],
-                )[int(f6)][f13]
-            )
+            if int(f6) == 1:
+                f34 = [""] + [
+                    f"{f18[0][0]}{h:02d}"
+                    for h in range(100)
+                ]
+            else:
+                f34 = (PATH_3, PATH_4)[
+                    int(f6) - 2
+                ]
+            f2.update(f34[f13])
 
     elif int(f6) in (0, 4, 5):
         f21 = f11[f14] if len(f11) > f14 else []
@@ -205,20 +203,7 @@ def on_highlighted(self, event) -> None:
         f24 = f23[f13] if len(f23) > f13 else ""
 
         if int(f6) == 5:
-            f25 = False if f13 == 13 else True
-            f26 = False if f13 != 13 else True
-            f27 = self.query_one("#input-2")
-            f27.display = f26
-
-            for h in range(6):
-                f28 = f"#button-{h}"
-                f29 = self.query_one(f28)
-                f29.display = f25
-
-            for h0 in range(2):
-                f30 = f"#input-{h0}"
-                f31 = self.query_one(f30)
-                f31.display = f25
+            on_display(self, f13 != 13)
 
         if len(f24) > 0:
             if int(f6) == 0:
@@ -252,17 +237,9 @@ def on_pressed(self, event) -> None:
     self.app.textfield = f14
     f2.update(f14)
 
-    if int(f10) == 1:
-        f15 = f12.get("0", 0)
-        f12["0"] = 1 - f15
-
-    elif int(f10) == 2:
-        f16 = f12.get("1", 0)
-        f12["1"] = 1 - f16
-
-    elif int(f10) == 3:
-        f17 = f12.get("2", 0)
-        f12["2"] = 1 - f17
+    if int(f10) in (1, 2, 3):
+        f15 = str(int(f10) - 1)
+        f12[f15] = 1 - f12.get(f15, 0)
 
     elif int(f10) == 4:
         f18 = int(time.time())

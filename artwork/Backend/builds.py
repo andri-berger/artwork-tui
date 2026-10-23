@@ -20,28 +20,12 @@ from .models import (
     on_shift_tab,
     on_submitted,
 )
+from .script import script_f11
 
 
 class MainApp(Widget):
-    def __init__(self) -> None:
-        super().__init__()
-
     def on_mount(self) -> None:
-        f0 = (
-            8,
-            8,
-            8,
-            8,
-            8,
-            8,
-            8,
-            8,
-            8,
-            8,
-            8,
-            30,
-            60,
-        )
+        f0 = (8,) * 11 + (30, 60)
         f1 = (6, 100, 301, 300, 12, 13)
         f2 = (22, 22, 18, 18, 14, 14)
         f3 = (8, 8, 8, 7, 7, 7)
@@ -76,67 +60,42 @@ class MainApp(Widget):
                 id="cont-switch-0",
                 initial="dir-tree-0",
             ):
-                yield FileTree(
-                    "/",
-                    file_type=".json",
-                    id="dir-tree-0",
-                )
-                yield FileTree(
-                    "/",
-                    file_type=".png",
-                    id="dir-tree-1",
-                )
-                yield FileTree(
-                    "/",
-                    file_type=".otf",
-                    id="dir-tree-2",
-                )
+                for h, h0 in enumerate(
+                    (".json", ".png", ".otf")
+                ):
+                    yield FileTree(
+                        "/",
+                        file_type=h0,
+                        id=f"dir-tree-{h}",
+                    )
 
             with ContentSwitcher(
                 id="cont-switch-1",
                 initial="data-table-0",
             ):
-                yield DataTable(
-                    show_header=False,
-                    id="data-table-0",
-                )
-                yield DataTable(
-                    show_header=False,
-                    id="data-table-1",
-                )
-                yield DataTable(
-                    show_header=False,
-                    id="data-table-2",
-                )
-                yield DataTable(
-                    show_header=False,
-                    id="data-table-3",
-                )
-                yield DataTable(
-                    show_header=False,
-                    id="data-table-4",
-                )
-                yield DataTable(
-                    show_header=False,
-                    id="data-table-5",
-                )
+                for h in range(6):
+                    yield DataTable(
+                        show_header=False,
+                        id=f"data-table-{h}",
+                    )
 
         with Horizontal(id="layer-2"):
-            yield Button("X", id="button-0")
-            yield Button("AS", id="button-1")
-            yield Button("BSS", id="button-2")
-            yield Button("CSS", id="button-3")
-            yield Button("CREATE", id="button-4")
-            yield Button("EXPORT", id="button-5")
-            yield Input(
-                disabled=False, id="input-0"
-            )
-            yield Input(
-                disabled=False, id="input-1"
-            )
-            yield Input(
-                disabled=False, id="input-2"
-            )
+            for h, h0 in enumerate(
+                (
+                    "X",
+                    "AS",
+                    "BSS",
+                    "CSS",
+                    "CREATE",
+                    "EXPORT",
+                )
+            ):
+                yield Button(h0, id=f"button-{h}")
+            for h1 in range(3):
+                yield Input(
+                    disabled=False,
+                    id=f"input-{h1}",
+                )
 
         with Horizontal(id="layer-3"):
             yield Label(id="label-0")
@@ -208,13 +167,8 @@ class MainApp(Widget):
     def clicked(self):
         f0 = self.app
         f1 = f0.focused
-        f2 = f0.textfields
-        f3 = DirectoryTree
-        f4 = DataTable
-        if f2 is not None:
-            f0.textfields.stop()
-            f0.textfields = None
-        f5 = isinstance(f1, f3)
-        f6 = isinstance(f1, f4)
+        script_f11(f0)
+        f5 = isinstance(f1, DirectoryTree)
+        f6 = isinstance(f1, DataTable)
         if f5 or f6:
             on_shift_tab(self, None, 0)

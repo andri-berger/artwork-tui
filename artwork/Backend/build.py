@@ -142,7 +142,7 @@ class CLIApp(App):
             f27["_"] = [2, 1]
             f3.config = f27
 
-        if f6 is None:
+        else:
             f28 = int(f13)
             f29 = int(f12)
             if f29 in range(1, 10):

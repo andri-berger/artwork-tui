@@ -69,17 +69,20 @@ https://github.com/andri-berger/artwork-tui
 brew install artwork-tui #install from tap
 ```
 
-#### Linux Arch (AUR)
-Use your AUR helper of choice. The `--with-deps` flag lets Playwright pull the
-system libraries Chromium needs — on a minimal Arch install this saves you a
-round of hunting missing shared objects. Firefox works as an alternative
-engine if you prefer it; webkit is not supported. Additional, user-generated files are stored in the following directories => ~/.local/share/artwork-tui and ~/.local/state/artwork-tui
+#### Linux (any distro, incl. Arch)
+Use the generic curl install above; it works on every distro. On apt-based
+systems (Debian, Ubuntu) it also installs the system libraries Chromium needs.
+On other distros it downloads the browser only, so the libraries come from
+your package manager. Most desktop installs already have them; on a minimal
+Arch install add them with pacman. Additional, user-generated files are stored in the following directories => ~/.local/share/artwork-tui and ~/.local/state/artwork-tui
 
 ```bash
-yay -S artwork-tui #Or use paru instead
-playwright install chromium --with-deps
-# playwright install firefox --with-deps
+sudo pacman -S --needed nss at-spi2-core libcups libdrm libxkbcommon \
+libxcomposite libxdamage libxrandr mesa pango cairo alsa-lib
 ```
+
+Prefer a native package? The repo ships an unofficial `PKGBUILD`; build and
+install it yourself with `makepkg -si` from a checkout.
 
 
 ## Configuration

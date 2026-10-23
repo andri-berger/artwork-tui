@@ -1,3 +1,4 @@
+import asyncio
 import base64
 import json
 import shutil
@@ -92,7 +93,9 @@ class MainTab(Widget):
                 "h2": f9.get("3"),
                 "h3": f9.get("4"),
             }
-            f17 = scripts_f1(f21, f17)
+            f17 = await asyncio.to_thread(
+                scripts_f1, f21, f17
+            )
 
         if f13 == 4:
             f22 = int(time.time())
@@ -105,7 +108,7 @@ class MainTab(Widget):
             with open(PATH_4, "wb") as f:
                 f.write(f17)
             f24 = Image(PATH_4)
-            script_f7(f7, f10, f24, PATH_4)
+            script_f7(f7, f10, f24, f17)
             await self.mount(f24 or Image)
             f25 = self.query_one(Image)
 
@@ -124,12 +127,16 @@ class MainTab(Widget):
             f30 = 2 if f28 else f1
             f31 = f6.get(f"1-{f30}")
             f32 = (0, 6) if f29 else (1, 4)
+            f46 = f30 in range(*f32) and (
+                f5.get(str(f30), {}) is not None
+            )
             with self.app.batch_update():
-                f3[f30].clear(columns=False)
-                for h in range(len(f31)):
-                    f33 = [f31[h][0]] or []
-                    f33.extend([""] * f2[f30])
-                    f3[f30].add_row(*f33)
+                if not f46:
+                    f3[f30].clear(columns=False)
+                    for h in range(len(f31)):
+                        f33 = [f31[h][0]]
+                        f33.extend([""] * f2[f30])
+                        f3[f30].add_row(*f33)
 
                 for h0 in range(*f32):
                     f34 = int(h0) == 3
