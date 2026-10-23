@@ -12,3 +12,10 @@ temp/
 *.key
 *.log
 *.tmp
+
+# makepkg / build leftovers
+/artwork-tui-*.tar.gz
+/src/
+/pkg/
+/dist/
+*.pkg.tar.zst

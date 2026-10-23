@@ -4,8 +4,8 @@ class ArtworkTui < Formula
     license "GPL-3.0-only"
     desc "Flexible Artwork Generator in TUI format"
     homepage "https://github.com/andri-berger/artwork-tui"
-    url "https://github.com/andri-berger/artwork-tui/archive/v0.1.0.tar.gz"
-    sha256 "3bac49928120cc6df2528723fa4220b8c6e6cc93f36e7f67b8b55fe4252ecea7"
+    url "https://github.com/andri-berger/artwork-tui/archive/v1.0.0.tar.gz"
+    sha256 "e36ede2cefea1fa889311b82d64f35b96e1b39a01a733529d8cd40f98ae6f163"
     depends_on "python@3.14"
     depends_on "pillow"
     depends_on "opencv"
@@ -13,8 +13,8 @@ class ArtworkTui < Formula
 
 
   resource "linkify-it-py" do
-    url "https://files.pythonhosted.org/packages/2e/c9/06ea13676ef354f0af6169587ae292d3e2406e212876a413bf9eece4eb23/linkify_it_py-2.1.0.tar.gz"
-    sha256 "43360231720999c10e9328dc3691160e27a718e280673d444c38d7d3aaa3b98b"
+    url "https://files.pythonhosted.org/packages/45/98/7a1a5f31fd5c7ba93e963b168e244b8e3dd705b3d2a718e3c3307583bf57/linkify_it_py-2.2.0.tar.gz"
+    sha256 "907acd2d17ac1fbb9ddb62c8957ccbd6158cac602231a15c3b0cd1e215f03cee"
   end
 
   resource "markdown-it-py" do
@@ -33,13 +33,13 @@ class ArtworkTui < Formula
   end
 
   resource "platformdirs" do
-    url "https://files.pythonhosted.org/packages/d7/47/e4501f49c178ae1d9f4a75073fda4204f52647993f075a9db4d14930e0c5/platformdirs-4.10.0.tar.gz"
-    sha256 "31e761a6a0ca04faf7353ea759bdba55652be214725111e5aac52dfa29d4bef7"
+    url "https://files.pythonhosted.org/packages/58/e6/d0abbb256b44e6a05748c6942511ff67db8dbb068de0c35b24bf1b395b09/platformdirs-4.13.5.tar.gz"
+    sha256 "05831adf87d392760f4b5c3a0a95579ab5a10b18b9b9bd43680dcb47544788a0"
   end
 
   resource "pygments" do
-    url "https://files.pythonhosted.org/packages/c3/b2/bc9c9196916376152d655522fdcebac55e66de6603a76a02bca1b6414f6c/pygments-2.20.0.tar.gz"
-    sha256 "6757cd03768053ff99f3039c1a36d6c0aa0b263438fcab17520b30a303a82b5f"
+    url "https://files.pythonhosted.org/packages/49/2e/ced460408999b33da6b31b0021b0f37d329e202d4169aeb164493778f25b/pygments-2.21.0.tar.gz"
+    sha256 "610ca751c9bc2492b38eb9a38a7fbc93edbbb2d7182edaf34e66ae493dee5c8c"
   end
 
   resource "rich" do
@@ -53,13 +53,8 @@ class ArtworkTui < Formula
   end
 
   resource "textual-image" do
-    url "https://files.pythonhosted.org/packages/10/77/b2128ced69556bfbb8e1c19d8f013e621cf12531eaba4e9b09e1cfa81e37/textual_image-0.13.2.tar.gz"
-    sha256 "8ca0cee2bfcd7734de5b16a1936da226b77b745e28830d9cf2bc202cb70e43ee"
-  end
-
-  resource "uc-micro-py" do
-    url "https://files.pythonhosted.org/packages/78/67/9a363818028526e2d4579334460df777115bdec1bb77c08f9db88f6389f2/uc_micro_py-2.0.0.tar.gz"
-    sha256 "c53691e495c8db60e16ffc4861a35469b0ba0821fe409a8a7a0a71864d33a811"
+    url "https://files.pythonhosted.org/packages/e8/32/7844d7c06cfc540caeb3ad8e7f96e66a12daac8934f4d45a86cab879e7e1/textual_image-0.14.2.tar.gz"
+    sha256 "0ec2ac1e2a9b30bfc478708ea011eb31e7844c377322ed2094976c1a84c131ba"
   end
 
     def install

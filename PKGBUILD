@@ -1,12 +1,12 @@
 pkgrel=1
-pkgver=0.1.0
+pkgver=1.0.0
 arch=('any')
 pkgname=artwork-tui
 license=('GPL-3.0-only')
 pkgdesc='Flexible Artwork Generator in TUI format'
 url='https://github.com/andri-berger/artwork-tui'
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/andri-berger/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('3bac49928120cc6df2528723fa4220b8c6e6cc93f36e7f67b8b55fe4252ecea7')
+sha256sums=('e36ede2cefea1fa889311b82d64f35b96e1b39a01a733529d8cd40f98ae6f163')
 makedepends=(
     'python-hatchling'
     'python-installer'
