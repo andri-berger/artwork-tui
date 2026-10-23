@@ -859,8 +859,10 @@ window.h11 = async (l) => {
 	}
 	if (l[0] >= 1) {
 		let l15 = [l8, l4, l5, l11]
-		let l16 = [l[0], l8, l1]
-		l1[1] = h12(l1[1] || {})
+		// Translated copy: table 1 keeps a00-f99
+		let l13 = structuredClone(l1[1] || {})
+		let l14 = { ...l1, 1: h12(l13) }
+		let l16 = [l[0], l8, l14]
 		let l17 = await h1(l16)
 		await h10([l17, l15])
 	}
@@ -876,7 +878,7 @@ window.h11 = async (l) => {
 }
 
 window.h12 = (l) => {
-	let l0 = [17, 35, 53]
+	let l0 = [17, 35, 53, 72, 91, 110]
 	let l1 = { '00': 'k' }
 	let l2 = 'abc'.split('')
 	let l3 = 'def'.split('')

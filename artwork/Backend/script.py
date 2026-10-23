@@ -156,18 +156,22 @@ def script_f15(h, h0=int) -> int | float:
 
 
 def script_f9(h, h0) -> dict:
+    # Tables -> JS store. Tables 2/3 flip
+    # to element -> property: rows 0-45 go
+    # to "2", rows 46-74 to "3" (build.json
+    # "0-2"/"0-3" = row -> property)
     f0 = {}
     f1 = h.items()
     for h1, h2 in f1:
         if h1 in ("2", "3"):
             if any(
                 str(k) in h2.keys()
-                for k in range(45)
+                for k in range(46)
             ):
                 f0.setdefault("2", {})
             if any(
                 str(k) in h2.keys()
-                for k in range(45, 75)
+                for k in range(46, 75)
             ):
                 f0.setdefault("3", {})
         elif int(h1) in [0, 1, 4, 5]:
@@ -176,7 +180,7 @@ def script_f9(h, h0) -> dict:
         for h3, h4 in h2.items():
             f3 = int(h3)
             if h1 in ("2", "3"):
-                f4 = f3 <= 44
+                f4 = f3 <= 45
                 f5 = "2" if f4 else "3"
                 f6 = f0[f5]
             elif int(h1) in [0, 1, 4, 5]:
@@ -196,15 +200,21 @@ def script_f9(h, h0) -> dict:
                         if f12 not in f6:
                             f6[f12] = {}
                         f6[f12][f9] = h6
+                # Table 0: cells without a key
+                # (past a row's columns) stay out
                 if h1 == "0":
                     f13 = f2[f3]
                     f14 = int(h5)
-                    f15 = str(f13[f14])
-                    f7[f15] = h6
+                    if f14 < len(f13):
+                        f15 = str(f13[f14])
+                        f7[f15] = h6
     return f0
 
 
 def script_f10(h, h0) -> dict:
+    # CREATE result -> tables: JS "2"/"3"
+    # (element -> property) flip back into
+    # table 2 rows via build.json "00-2"/"00-3"
     f0 = {}
     f1 = h.items()
     for h1, h2 in f1:
