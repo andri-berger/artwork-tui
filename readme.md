@@ -59,9 +59,19 @@ andri-berger/artwork-tui/main/install.sh | sh
 ```
 
 #### Data directories
-Additional, user-generated files are stored in the following directories:
-- macOS => ~/Library/Application Support/artwork-tui
-- Linux => ~/.local/share/artwork-tui and ~/.local/state/artwork-tui
+Additional, user-generated files are stored in two directories, a share
+(data) one and a state one:
+- macOS => both are ~/Library/Application Support/artwork-tui
+- Linux => share is ~/.local/share/artwork-tui, state is ~/.local/state/artwork-tui
+  (or $XDG_DATA_HOME/artwork-tui and $XDG_STATE_HOME/artwork-tui when those are set)
+
+Exports end up in the share directory: every <kbd>Button Export</kbd> writes a
+`<timestamp>.json` project file and then renders the matching `<timestamp>.png`
+next to it. The share directory also holds the autosave
+(`1700000000.json`) and the current preview (`1700000000.png`).
+
+The state directory holds the app's working copy: the frontend files the
+renderer serves, plus the picked images (`module/`) and fonts (`modules/`).
 
 #### Linux system libraries
 On apt-based systems (Debian, Ubuntu) the install script also installs the
@@ -175,7 +185,7 @@ using the seeds where given — a discovery tool as much as a shortcut.</td>
     </tr>
     <tr>
         <td><kbd>Button Export</kbd></td>
-        <td>Export both generated (png) and project file (json) into the directory from where the app was executed / started. Clean Unix-timestamp format.</td>
+        <td>Export both generated (png) and project file (json) into the share directory (see Data directories). Clean Unix-timestamp format.</td>
     </tr>
 </table>
 
