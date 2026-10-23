@@ -272,6 +272,19 @@ your hands already know this table.
     </tr>
     <tr>
         <td><kbd>
+        F10</kbd></td>
+        <td>Theme</td>
+        <td>Previous Textual theme. Writes the theme number (0-19) into the
+global layout theme cell of Tab I, so it is autosaved and kept on restart.</td>
+    </tr>
+    <tr>
+        <td><kbd>
+        F11</kbd></td>
+        <td>Theme</td>
+        <td>Next Textual theme. Same as F10, in the other direction.</td>
+    </tr>
+    <tr>
+        <td><kbd>
         Tab</kbd></td>
         <td>Navigate</td>
         <td>Cycle forward through all navigational UI elements — file trees, the six

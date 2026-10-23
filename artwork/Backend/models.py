@@ -2,6 +2,7 @@ import json
 import time
 from pathlib import Path
 
+from textual.coordinate import Coordinate
 from textual.widgets import DataTable, Input
 from textual_image.widget import Image
 
@@ -150,6 +151,24 @@ def on_shift_tab(self, event, prefix) -> None:
 
     f20["0"] = f14 + 1
     PATH_2.write_text(json.dumps(f10))
+
+
+def on_theme(self, prefix) -> None:
+    # F10/F11: previous/next theme, kept in
+    # the table 0 theme cell ("34"/"0") and
+    # autosaved, like an edit plus CREATE
+    f0 = self.app.store["001"]
+    f1 = self.query(DataTable)[0]
+    f2 = self.app.stores
+    f3 = self.app.theme
+    f4 = f0.index(f3) if f3 in f0 else 0
+    f5 = (f4 + prefix) % len(f0)
+    self.app.theme = f0[f5]
+    f1.update_cell_at(Coordinate(34, 1), str(f5))
+    f6 = f2.setdefault("0", {})
+    f6.setdefault("34", {})["0"] = f5
+    PATH_2.write_text(json.dumps(f2))
+    self.notify(f0[f5], title=f"Theme {f5}")
 
 
 def on_highlighted(self, event) -> None:
@@ -421,3 +440,7 @@ async def on_key(self, event) -> None:
             f9.press()
         case "f9":
             f10.press()
+        case "f10":
+            on_theme(self, -1)
+        case "f11":
+            on_theme(self, 1)
