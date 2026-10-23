@@ -65,16 +65,21 @@ class MainTab(Widget):
         f2 = [6, 100, 301, 300, 12, 13]
         f3 = self.app.query(DataTable)
         f4 = self.app.playwright
-        f5 = self.app.stores
         f6 = self.app.store
         f7 = self.size
+
+        f12, f13, *f47 = path.pop("_", [])
+        # Load/clear: path is the new state, so
+        # a render queued before it can't undo it
+        if f12 == 2:
+            self.app.stores = path
+        f5 = self.app.stores
 
         f8 = f5.get("0", {})
         f9 = f8.get("30", {})
         f10 = f8.get("34", {})
         f11 = f8.get("37", {})
 
-        f12, f13, *f47 = path.pop("_", [])
         f14 = script_f9(path, f6)
         try:
             f15 = await f4.evaluate(
@@ -95,6 +100,8 @@ class MainTab(Widget):
                 f47.styles.height = "100%"
                 await self.mount(f47)
             return
+        # Rendered: drop the CREATE row snapshot
+        self.rows = {}
         f16 = f15[0].split(",")[1]
         f17 = base64.b64decode(f16)
         f18 = script_f15(f10.get("1"))

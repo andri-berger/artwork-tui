@@ -280,7 +280,8 @@ def on_pressed(self, event) -> None:
         f23 = self.app.stores
         f24 = f23.setdefault("0", {})
         f25 = f24.setdefault("37", {})
-        f23.setdefault("36", {})
+        # Keep the open table and its cursor
+        f25["0"] = int(f0.current[-1]) + 4
         f25["2"] = f4.column
         f25["1"] = f4.row
 

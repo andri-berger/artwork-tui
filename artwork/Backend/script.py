@@ -104,12 +104,12 @@ def script_f8(self, h) -> None:
 
 
 def script_f5(self, h) -> None:
-    f0 = self.app.store["4-1"]
+    f0 = self.app.store["4-2"]
     script_f8(self, f0.get(h, ""))
 
 
 def script_f6(self, h, h0) -> None:
-    f0 = self.app.store["4-2"].get(h, "")
+    f0 = self.app.store["4-1"].get(h, "")
     script_f8(self, f0.format(f3=h0.upper()))
 
 
