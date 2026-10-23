@@ -23,9 +23,14 @@ def scripts_f1(h, h0) -> bytes:
         cv2.IMREAD_UNCHANGED,
     )
 
+    if f4.ndim != 3 or f4.shape[2] != 4:
+        return h0
+
     f5 = f4[:, :, 3]
     f6 = f4[:, :, :3]
     f7, f8 = np.where(f5 > 0)
+    if f7.size == 0:
+        return h0
     f9, f10 = f7.min(), f7.max()
     f11, f12 = f8.min(), f8.max()
     f13 = f6[f9 : f10 + 1, f11 : f12 + 1]
@@ -35,7 +40,10 @@ def scripts_f1(h, h0) -> bytes:
         f14 = cv2.bitwise_not(f13)
 
     if f0 == 2:
-        f14 = cv2.Canny(f4, 10, 20)
+        f14 = cv2.cvtColor(
+            cv2.Canny(f13, 10, 20),
+            cv2.COLOR_GRAY2BGR,
+        )
 
     if f0 == 3:
         f14 = cv2.stylization(

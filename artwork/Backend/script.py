@@ -109,6 +109,8 @@ def script_f5(self, h) -> None:
     f1 = self.app.store["4-1"]
     f2 = self.app.textfield
     f0.update(f1.get(h, ""))
+    if self.app.textfields is not None:
+        self.app.textfields.stop()
     self.app.textfields = self.set_timer(
         3, lambda: f0.update(f2)
     )
@@ -120,6 +122,8 @@ def script_f6(self, h, h0) -> None:
     f2 = self.app.textfield
     f3 = f1.get(h, "")
     f0.update(f3.format(f3=h0.upper()))
+    if self.app.textfields is not None:
+        self.app.textfields.stop()
     self.app.textfields = self.set_timer(
         3, lambda: f0.update(f2)
     )

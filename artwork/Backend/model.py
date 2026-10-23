@@ -67,7 +67,17 @@ class MainTab(Widget):
 
         f12, f13 = path.pop("_", [])
         f14 = script_f9(path, f6)
-        f15 = await f4.evaluate(PATH, [f13, f14])
+        try:
+            f15 = await f4.evaluate(
+                PATH, [f13, f14]
+            )
+        except Exception as e:
+            self.notify(
+                str(e).splitlines()[0],
+                title="Render failed",
+                severity="error",
+            )
+            return
         f16 = f15[0].split(",")[1]
         f17 = base64.b64decode(f16)
         f18 = int(f10.get("1", 0))
@@ -157,12 +167,12 @@ class MainTab(Widget):
                     row=f41, column=f42
                 )
 
-        if f18 in range(1, 9):
+        if f18 in range(1, 10):
             f43 = 12 - f18
             f44 = f00.styles
             f44.height = f43
 
-        if f19 in range(0, 19):
+        if f19 in range(0, 20):
             f45 = f6["001"][f19]
             self.app.theme = f45
 
@@ -217,7 +227,7 @@ class FileTree(DirectoryTree):
         f10 = ["png", "otf"]
         f11 = event.path
         f12 = f11.name
-        script_f6(self, f5, f12)
+        script_f6(self.app, f5, f12)
 
         if int(f7) >= 1:
             f13 = f4.column
@@ -227,6 +237,7 @@ class FileTree(DirectoryTree):
             f17 = f12.split(".")
             f18 = PORT_0 / f15
             f19 = f18 / f12
+            f190 = f11.resolve() == f19.resolve()
 
             if int(f3) >= 4 and f13 == 12:
                 f20 = f6.setdefault(f8, {})
@@ -235,7 +246,7 @@ class FileTree(DirectoryTree):
                 f22 = f1.get_cell_at(f4)
                 f23 = f"{str(f22)}.{f16}"
                 f24 = f18 / f23 / ""
-                if f24.exists():
+                if f24.exists() and not f190:
                     f24.unlink()
                 f1.update_cell_at(f4, f17[0])
 
@@ -243,10 +254,11 @@ class FileTree(DirectoryTree):
                 f25 = f6.setdefault("0", {})
                 f26 = f25.setdefault("37", {})
                 f26[str(int(f7) + 2)] = f12
-                if f19.exists():
+                if f19.exists() and not f190:
                     f19.unlink()
 
-            shutil.copy2(f11, f19)
+            if not f190:
+                shutil.copy2(f11, f19)
             f27 = {**self.app.stores}
             f27.update({"_": [0, 1]})
             f2.config = f27

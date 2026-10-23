@@ -27,10 +27,10 @@
 	},
 	"files": {
 		"includes": [
-			"Fontend/*.js",
-			"Fontend/*.css",
-			"Fontend/*.json",
-			"!Fontend/model.js"
+			"artwork/Frontend/*.js",
+			"artwork/Frontend/*.css",
+			"artwork/Frontend/*.json",
+			"!artwork/Frontend/model.js"
 		]
 	},
 	"javascript": {

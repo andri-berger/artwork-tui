@@ -105,10 +105,18 @@ class CLIApp(App):
             http.server.SimpleHTTPRequestHandler,
             directory=str(PORT_0),
         )
-        f19 = http.server.HTTPServer(f15, f18)
-        threading.Thread(
-            target=f19.serve_forever, daemon=True
-        ).start()
+        try:
+            f19 = http.server.HTTPServer(f15, f18)
+            threading.Thread(
+                target=f19.serve_forever,
+                daemon=True,
+            ).start()
+        except OSError as e:
+            self.notify(
+                str(e),
+                title="Port 9000 unavailable",
+                severity="error",
+            )
 
         f20 = await async_playwright().start()
         f21 = await f20.chromium.launch(
@@ -137,12 +145,12 @@ class CLIApp(App):
         if f6 is None:
             f28 = int(f13)
             f29 = int(f12)
-            if f29 in range(1, 9):
+            if f29 in range(1, 10):
                 f30 = f2.styles
                 f31 = 12 - f29
                 f30.height = f31
 
-            if f28 in range(0, 19):
+            if f28 in range(0, 20):
                 self.app.theme = f5[f28]
 
         if f9 is None:

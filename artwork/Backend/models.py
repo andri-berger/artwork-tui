@@ -44,7 +44,7 @@ def on_submitted(self, event) -> None:
     )
 
     if f10 == 34 and f8 == 0:
-        self.theme = "textual-dark"
+        self.app.theme = "textual-dark"
 
     if f10 not in f12[f8] and f9 >= 1:
         f14 = f10 in range(24, 31)
@@ -103,6 +103,9 @@ def on_shift_tab(self, event, prefix) -> None:
         event.stop()
 
     if f14 in f01:
+        if self.app.textfields is not None:
+            self.app.textfields.stop()
+            self.app.textfields = None
         f22 = f8.get(f9[f14], "")
         self.app.textfield = f22
         f7.update(f22)
@@ -251,15 +254,15 @@ def on_pressed(self, event) -> None:
 
     if int(f10) == 1:
         f15 = f12.get("0", 0)
-        f12[0] = 1 - f15
+        f12["0"] = 1 - f15
 
     elif int(f10) == 2:
         f16 = f12.get("1", 0)
-        f12[1] = 1 - f16
+        f12["1"] = 1 - f16
 
     elif int(f10) == 3:
         f17 = f12.get("2", 0)
-        f12[2] = 1 - f17
+        f12["2"] = 1 - f17
 
     elif int(f10) == 4:
         f18 = int(time.time())
@@ -372,7 +375,7 @@ async def on_key(self, event) -> None:
 
             if f27 and f28:
                 f30 = self.query_one(
-                    f"dir-tree-{f29}"
+                    f"#dir-tree-{f29}"
                 )
                 f31 = f"dir-tree-{f29}"
                 f2.current = f31
@@ -393,7 +396,9 @@ async def on_key(self, event) -> None:
                     )
 
     match f21:
-        case "delete":
+        case "delete" if not isinstance(
+            f17, Input
+        ):
             self.post_message(
                 Input.Submitted(f23, "")
             )
