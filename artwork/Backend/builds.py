@@ -20,7 +20,6 @@ from .models import (
     on_shift_tab,
     on_submitted,
 )
-from .script import script_f11
 
 # Formats Chromium draws as background-image
 IMAGES = (
@@ -183,7 +182,6 @@ class MainApp(Widget):
     def clicked(self):
         f0 = self.app
         f1 = f0.focused
-        script_f11(f0)
         f5 = isinstance(f1, DirectoryTree)
         f6 = isinstance(f1, DataTable)
         if f5 or f6:

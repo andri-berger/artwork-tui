@@ -10,7 +10,6 @@ from .script import (
     script_f00,
     script_f5,
     script_f6,
-    script_f11,
 )
 
 PORT_0 = script_f00()
@@ -126,9 +125,7 @@ def on_shift_tab(self, event, prefix) -> None:
         event.stop()
 
     if f14 in f01:
-        script_f11(self.app)
         f22 = f8.get(f9[f14], "")
-        self.app.textfield = f22
         f7.update(f22)
         f3.update("")
         f5.value = ""
@@ -245,8 +242,8 @@ def on_pressed(self, event) -> None:
     f12 = f11.setdefault("35", {})
     f13 = f11.setdefault("36", {})
     f14 = f5["4-0"].get(f7, "")
-    self.app.textfield = f14
     f2.update(f14)
+    f32 = str(event.button.label)
 
     if int(f10) in (1, 2, 3):
         f15 = str(int(f10) - 1)
@@ -296,10 +293,10 @@ def on_pressed(self, event) -> None:
         f29 = f12.get(str(f28), 0)
         f30 = ["", "de"]
         f31 = f30[f29]
-        script_f6(self, f7, f31)
+        script_f6(self, f7, f31, f32)
 
     if int(f10) in (0, 4, 5):
-        script_f6(self, f7, "")
+        script_f6(self, f7, "", f32)
 
 
 async def on_key(self, event) -> None:

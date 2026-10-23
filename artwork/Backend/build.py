@@ -56,8 +56,6 @@ class CLIApp(App):
         self.vertical = 1
         self.horizontal = 0
         self.clipboards = ""
-        self.textfield = ""
-        self.textfields = None
         self.playwright = None
 
         self.store = json.loads(
@@ -86,6 +84,12 @@ class CLIApp(App):
             script_f1("1"),
             script_f1("2"),
         ]
+
+    def notify(self, *args, **kwargs) -> None:
+        # One toast at a time: a new one
+        # replaces the current one
+        self.clear_notifications()
+        super().notify(*args, **kwargs)
 
     async def on_mount(self) -> None:
         f0 = self.query_one("#cont-switch-0")
@@ -135,21 +139,6 @@ class CLIApp(App):
         )
         self.playwright = await f21.new_page()
         await self.playwright.goto(PATH)
-        # TEMP: show which renderer is active
-        f40 = await self.playwright.evaluate(
-            "'drawElementImage' in "
-            "CanvasRenderingContext2D.prototype"
-        )
-        self.notify(
-            f"Chromium {f21.version}: "
-            + (
-                "HTML-in-Canvas"
-                if f40
-                else "HTML-in-Canvas unavailable"
-            ),
-            title="Renderer",
-            timeout=30,
-        )
         f22 = self.stores
 
         if len(f4) > f14:
