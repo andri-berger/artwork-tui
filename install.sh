@@ -8,7 +8,7 @@ else
     echo "uv already installed, skipping"
 fi
 
-uv tool install --force git+https://github.com/andri-berger/artwork-tui.git@v1.0.0 --quiet || {
+uv tool install --force --refresh-package artwork-tui https://github.com/andri-berger/artwork-tui/archive/refs/heads/main.tar.gz --quiet || {
     echo "error: uv tool install failed" >&2
     exit 1
 }
