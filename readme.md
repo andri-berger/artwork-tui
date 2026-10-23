@@ -74,7 +74,7 @@ already have them.
 The interface follows the same anatomy as filterx-tui: file trees on the left
 feed the pipeline, a tabbed spreadsheet in the center holds every parameter,
 and a button row drives generation and export. Buttons and function keys are
-twins here as well — F4 simply presses AS programmatically — so the API
+twins here as well — F5 simply presses AS programmatically — so the API
 Reference below and this table describe one surface from two angles.
 
 The central idea is that an artwork is nothing but a spreadsheet. Six tabs
@@ -189,7 +189,7 @@ key, and the two tables stay in sync by construction rather than by
 discipline.
 
 The remaining bindings are spreadsheet vocabulary. F1/F2/F3 give you
-copy/cut/paste on cells — the grid is meant to be worked like a spreadsheet,
+cut/copy/paste on cells — the grid is meant to be worked like a spreadsheet,
 including moving values between rows, tabs, and element groups. Navigation
 follows terminal conventions throughout: if you have used any TUI before,
 your hands already know this table.
@@ -209,14 +209,14 @@ your hands already know this table.
     <tr>
         <td><kbd>F1
         </kbd></td>
-        <td>Copy</td>
-        <td>Copy table cell. Think of it as Ctrl-C in a spreadsheet. </td>
+        <td>Cut</td>
+        <td>Cut table cell. Think of it as Ctrl-X in a spreadsheet. </td>
     </tr>
     <tr>
         <td><kbd>F2
         </kbd></td>
-        <td>Cut</td>
-        <td>Cut table cell. Think of it as Ctrl-X in a spreadsheet. </td>
+        <td>Copy</td>
+        <td>Copy table cell. Think of it as Ctrl-C in a spreadsheet. </td>
     </tr>
     <tr>
         <td><kbd>
@@ -227,26 +227,26 @@ your hands already know this table.
     <tr>
         <td><kbd>
         F4</kbd></td>
+        <td>Clear</td>
+        <td>Triggers <kbd>Button X</kbd> programmatically (see Table above).</td>
+    </tr>
+    <tr>
+        <td><kbd>
+        F5</kbd></td>
         <td>AS</td>
         <td>Triggers <kbd>Button AS</kbd> programmatically (see Table above).</td>
     </tr>
     <tr>
         <td><kbd>
-        F5</kbd></td>
+        F6</kbd></td>
         <td>BSS</td>
         <td>Triggers <kbd>Button BSS</kbd> programmatically (see Table above).</td>
     </tr>
     <tr>
         <td><kbd>
-        F6</kbd></td>
+        F7</kbd></td>
         <td>CSS</td>
         <td>Triggers <kbd>Button CSS</kbd> programmatically (see Table above).</td>
-    </tr>
-    <tr>
-        <td><kbd>
-        F7</kbd></td>
-        <td>Clear</td>
-        <td>Triggers <kbd>Button X</kbd> programmatically (see Table above).</td>
     </tr>
     <tr>
         <td><kbd>

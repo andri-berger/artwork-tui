@@ -405,15 +405,15 @@ async def on_key(self, event) -> None:
             )
 
         case "f1":
-            f33 = self.app
-            f33.clipboards = f18
-
-        case "f2":
             f34 = self.app
             f34.clipboards = f18
             self.post_message(
                 Input.Submitted(f23, "")
             )
+
+        case "f2":
+            f33 = self.app
+            f33.clipboards = f18
 
         case "f3":
             self.post_message(
@@ -421,13 +421,13 @@ async def on_key(self, event) -> None:
             )
 
         case "f4":
-            f6.press()
-        case "f5":
-            f7.press()
-        case "f6":
-            f8.press()
-        case "f7":
             f5.press()
+        case "f5":
+            f6.press()
+        case "f6":
+            f7.press()
+        case "f7":
+            f8.press()
         case "f8":
             f9.press()
         case "f9":

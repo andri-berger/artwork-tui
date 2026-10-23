@@ -1422,13 +1422,13 @@
 	},
 	"4-2": {
 		"delete": "DELETE cell contents or files in local file picker.",
-		"f1": "COPY TABLE cell contents.",
-		"f2": "CUT TABLE cell contents.",
+		"f1": "CUT TABLE cell contents.",
+		"f2": "COPY TABLE cell contents.",
 		"f3": "PASTE TABLE cell contents.",
-		"f4": "PRESS AS button programmatically.",
-		"f5": "PRESS BSS button programmatically.",
-		"f6": "PRESS CSS button programmatically.",
-		"f7": "PRESS X button programmatically.",
+		"f4": "PRESS X button programmatically.",
+		"f5": "PRESS AS button programmatically.",
+		"f6": "PRESS BSS button programmatically.",
+		"f7": "PRESS CSS button programmatically.",
 		"f8": "PRESS CREATE button programmatically.",
 		"f9": "PRESS EXPORT button programmatically."
 	}
