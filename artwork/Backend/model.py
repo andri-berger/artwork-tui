@@ -6,6 +6,7 @@ import time
 from textual import on
 from textual.app import ComposeResult
 from textual.binding import Binding
+from textual.coordinate import Coordinate
 from textual.reactive import reactive
 from textual.widget import Widget
 from textual.widgets import (
@@ -130,7 +131,9 @@ class MainTab(Widget):
             f24 = Image(PATH_4)
             script_f7(f7, f10, f24, f17)
             await self.mount(f24 or Image)
-            f25 = self.query_one(Image)
+            # Not query_one: its cache keeps each
+            # removed preview and its pixels alive
+            f25 = f24
 
             if f10.get("3") == "true":
                 f26 = f25.styles
@@ -152,9 +155,7 @@ class MainTab(Widget):
                     f36 = f6.get(f"1-{f35}")
                     f37 = f5.get(str(h0), {})
                     if f37 is not None:
-                        f3[h0].clear(
-                            columns=False
-                        )
+                        f51 = []
                         f38 = [
                             str(h1)
                             for h1 in range(
@@ -174,7 +175,8 @@ class MainTab(Widget):
                                             )
                                         )
                                     )
-                            f3[h0].add_row(*f40)
+                            f51.append(f40)
+                        self.set_rows(f3[h0], f51)
 
                 # Load: back to the saved table
                 # ("37"/"0" = 4 + table), else
@@ -216,15 +218,35 @@ class MainTab(Widget):
                 for h0 in range(f1.row_count)
             ]
             self.rows[h] = f2
-            f1.clear(columns=False)
-            for h1 in f2:
-                f1.add_row(h1[0])
+            self.set_rows(
+                f1, [[h1[0]] for h1 in f2]
+            )
 
     def show_rows(self) -> None:
         f0 = self.app.query(DataTable)
         for h, h0 in self.rows.items():
-            f0[h].clear(columns=False)
-            f0[h].add_rows(h0)
+            self.set_rows(f0[h], h0)
+
+    def set_rows(self, h, h0) -> None:
+        # Write only the changed cells: a new row
+        # makes DataTable measure every cell (300
+        # columns), though the widths are fixed
+        f0 = len(h.columns)
+        if h.row_count != len(h0):
+            h.clear(columns=False)
+            h.add_rows(h0)
+            return
+        for h1, h2 in enumerate(h0):
+            f1 = h.get_row_at(h1)
+            f2 = [*h2, *[None] * (f0 - len(h2))]
+            for h3, h4 in enumerate(f2):
+                if f1[h3] != h4:
+                    h.update_cell_at(
+                        Coordinate(h1, h3), h4
+                    )
+        # Cursor and scroll as after clear()
+        h.cursor_coordinate = Coordinate(0, 0)
+        h.scroll_to(0, 0, animate=False)
 
     def render(self):
         return ""

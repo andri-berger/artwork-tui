@@ -99,9 +99,9 @@ class MainApp(Widget):
             for h, h0 in enumerate(
                 (
                     "X",
-                    "AS",
-                    "BSS",
-                    "CSS",
+                    "A0",
+                    "B00",
+                    "C00",
                     "CREATE",
                     "EXPORT",
                 )

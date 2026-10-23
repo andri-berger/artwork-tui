@@ -97,114 +97,83 @@ artwork-tui #Launches the TUI
 ```
 <table>
     <tr>
-        <th width="20">Docs</th>
-        <th align="left">Element</th>
-        <th align="left"><img src="artwork/Frontend/model.png" width="9999" height="0" align="right" alt="">Description</th>
+        <th align="left">Binding</th>
+        <th align="left"><img src="artwork/Frontend/model.png" height="0" align="right" alt="">Description</th>
     </tr>
     <tr>
-        <td><a href="artwork/Backend/modules/7000000029.png">
-        <img src="artwork/Backend/modules/17000000029.png"></a></td>
         <td><kbd>Filetree JSON
         </kbd></td>
         <td>Choose your project. Every exported artwork doubles as a project file —
 select any json here to reopen it with all parameters intact.</td>
     </tr>
     <tr>
-        <td><a href="artwork/Backend/modules/7000000029.png">
-        <img src="artwork/Backend/modules/17000000029.png"></a></td>
         <td><kbd>Filetree Image
         </kbd></td>
         <td>Choose your background image for the elements. Any png, jpg, svg, webp, gif, avif or bmp works; the layout
 engine composes all elements on top of it.</td>
     </tr>
     <tr>
-        <td><a href="artwork/Backend/modules/7000000029.png">
-        <img src="artwork/Backend/modules/17000000029.png"></a></td>
         <td><kbd>Filepicker OTF
         </kbd></td>
         <td>Choose your fonts for the elements on the canvas. Fonts are loaded per
 project, so each artwork carries its own typography.</td>
     </tr>
     <tr>
-        <td><a href="artwork/Backend/modules/7000000029.png">
-        <img src="artwork/Backend/modules/17000000029.png"></a></td>
         <td><kbd>Table Tab I</kbd></td>
         <td>Global Setup / Settings — canvas dimensions, output options, and
 everything that applies to the artwork as a whole rather than to a single
 element.</td>
     </tr>
     <tr>
-        <td><a href="artwork/Backend/modules/7000000029.png">
-        <img src="artwork/Backend/modules/17000000029.png"></a></td>
         <td><kbd>Table Tab II</kbd></td>
         <td>Main Layout — position and arrangement of the elements on the canvas.
 This is where the composition itself is defined.</td>
     </tr>
     <tr>
-        <td><a href="artwork/Backend/modules/7000000029.png">
-        <img src="artwork/Backend/modules/17000000029.png"></a></td>
         <td><kbd>Table Tab III</kbd></td>
         <td>Styling A00-C99 Elements. Visual parameters for the first three element
 groups, one row per element.</td>
     </tr>
     <tr>
-        <td><a href="artwork/Backend/modules/7000000029.png">
-        <img src="artwork/Backend/modules/17000000029.png"></a></td>
         <td><kbd>Table Tab IV</kbd></td>
         <td>Styling D00-F99 Elements. Same structure as Tab III, covering the
 remaining three groups.</td>
     </tr>
     <tr>
-        <td><a href="artwork/Backend/modules/7000000029.png">
-        <img src="artwork/Backend/modules/17000000029.png"></a></td>
         <td><kbd>Table Tab V</kbd></td>
         <td>Image Settings all Elements (A00 - F99) — filter and rendering parameters
 applied to image-based elements across all groups.</td>
     </tr>
     <tr>
-        <td><a href="artwork/Backend/modules/7000000029.png">
-        <img src="artwork/Backend/modules/17000000029.png"></a></td>
         <td><kbd>Table Tab VI</kbd></td>
         <td>Text/Font Settings all Elements (A00 - F99) — typography parameters such
 as font assignment, size, and spacing across all groups.</td>
     </tr>
     <tr>
-        <td><a href="artwork/Backend/modules/7000000029.png">
-        <img src="artwork/Backend/modules/17000000029.png"></a></td>
         <td><kbd>Button X</kbd></td>
         <td>Clear the Canvas and all associated Table Params (in all 6 Tabs). Basically start from scratch. Please export before.</td>
     </tr>
     <tr>
-        <td><a href="artwork/Backend/modules/7000000029.png">
-        <img src="artwork/Backend/modules/17000000029.png"></a></td>
         <td><kbd>Button AS</kbd></td>
         <td>Set Seed for A00-A99 Elements. Pins the random generator for this group,
 making generated results reproducible across runs.</td>
     </tr>
     <tr>
-        <td><a href="artwork/Backend/modules/7000000029.png">
-        <img src="artwork/Backend/modules/17000000029.png"></a></td>
         <td><kbd>Button BSS</kbd></td>
         <td>Set Seed for B00-B99. Same principle, scoped to the B group — the three
 seedable groups are independent of each other.</td>
     </tr>
     <tr>
-        <td><a href="artwork/Backend/modules/7000000029.png">
-        <img src="artwork/Backend/modules/17000000029.png"></a></td>
         <td><kbd>Button CSS</kbd></td>
         <td>Set Seed for C00-C99. With all three seeds set, a generated layout is
 fully deterministic.</td>
     </tr>
     <tr>
-        <td><a href="artwork/Backend/modules/7000000029.png">
-        <img src="artwork/Backend/modules/17000000029.png"></a></td>
         <td><kbd>Button Create</kbd></td>
         <td>Generate Artwork via Random Generator. Draws random values into the grid
 using the seeds where given — a discovery tool as much as a shortcut.</td>
     </tr>
     <tr>
-        <td><a href="artwork/Backend/modules/7000000029.png">
-        <img src="artwork/Backend/modules/17000000029.png"></a></td>
         <td><kbd>Button Export</kbd></td>
         <td>Export both generated (png) and project file (json) into the directory from where the app was executed / started. Clean Unix-timestamp format.</td>
     </tr>

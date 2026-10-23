@@ -579,7 +579,7 @@ const h7 = (l) => {
 			bloomScale: k12([l2, 0, 2]),
 			quality: k12([l3, 0, 10]),
 			pixelSizeX: k12([l4, 0, 10]),
-			pixelSizeY: k10([l4, 0, 10]),
+			pixelSizeY: k12([l4, 0, 10]),
 		})
 	}
 	if (l0 === 9) {
@@ -620,7 +620,7 @@ const h7 = (l) => {
 			amplitudeEnd: k12([l3, 2, 200]),
 			amplitudeStart: k12([l2, 2, 200]),
 			wavelengthStart: k12([l4, 2, 200]),
-			wavelengthEnd: k10([l4, 2, 200]),
+			wavelengthEnd: k12([l4, 2, 200]),
 		})
 	}
 	return l9
@@ -655,8 +655,8 @@ const h8 = (l) => {
 		l6 = new l5.SimplexNoiseFilter({
 			strength: k12([l1, 0.3, 0.9]),
 			noiseScale: k12([l2, 1, 90]),
-			offsetZ: k10([l3, 0, 100]),
-			step: k10([l4, -1, 1]),
+			offsetZ: k12([l3, 0, 100]),
+			step: k12([l4, -1, 1]),
 		})
 	} else if (l0 === 6) {
 		l6 = new l5.GlowFilter({
@@ -690,40 +690,36 @@ const h9 = async (l) => {
 			seed: k12([l9, 0.01, 100]),
 		})
 	}
-	let l1 = PIXI.Texture.from(k16)
+	// Uncached: destroyed with the app below
+	let l1 = PIXI.Texture.from(k16, true)
 	let l2 = k16.height
 	let l3 = k16.width
-	let l4 = [l[0], l3, l2]
+	// h7/h8 read [height, width, store]
+	let l4 = [l2, l3, l]
 	let l5 = l[75] === 2
-	let l6 = k0['00']
-	let l7 = l6['00']
 	let l8 = l[76] || 0
 	let l9 = l[77] || 0
-	if (!l7[0]) {
-		l7[0] = new PIXI.Application()
-		await l7[0].init({
-			preference: 'webgl',
-			backgroundAlpha: 0,
-			antialias: true,
-		})
-	}
-	if (!l7[1]) {
-		l7[1] = new PIXI.Sprite(l1)
-		l7[0].stage.addChild(l7[1])
-	} else if (l7[1]) {
-		l7[1].texture = l1
-		l7[1].texture.update()
-	}
+	// A new app per render: a reused one made
+	// every later readback take seconds
+	let l7 = new PIXI.Application()
+	await l7.init({
+		preference: 'webgl',
+		backgroundAlpha: 0,
+		antialias: true,
+		width: l3,
+		height: l2,
+	})
+	let l6 = new PIXI.Sprite(l1)
+	l7.stage.addChild(l6)
 	let l10 = l5 ? l0() : h8(l4)
-	let l11 = l7[0].renderer
-	l11.resize(l3, l2)
-	l7[1].width = l3
-	l7[1].height = l2
-	l7[1].filters = [l10]
-	l7[0].render() || null
-	let l12 = l7[0].view || null
+	l6.width = l3
+	l6.height = l2
+	l6.filters = [l10]
+	l7.render()
 	k18.clearRect(0, 0, l3, l2)
-	k18.drawImage(l12, 0, 0)
+	k18.drawImage(l7.canvas, 0, 0)
+	l7.destroy(true, true)
+	l10.destroy?.()
 }
 
 const h10 = async (l) => {
@@ -743,22 +739,20 @@ const h10 = async (l) => {
 	let l13 = l12 - l10
 	let l14 = l10 + l6
 	let l15 = l11 + l7
-	let l16 = await h14([l8, l9, l0])
+	// Paint only the artwork area, not the page
+	let l16 = await h14([
+		l8,
+		l9,
+		l0,
+		l13 / 2,
+		l10,
+		l11,
+	])
 	k16.height = l15
 	k16.width = l14
 	k15.width = l14
 	k15.height = l15
-	k18.drawImage(
-		l16,
-		l13 / 2,
-		0,
-		l10,
-		l11,
-		l6 / 2,
-		l7 / 2,
-		l10,
-		l11,
-	)
+	k18.drawImage(l16, l6 / 2, l7 / 2)
 	h0(['f2', l4])
 	h0(['f3', l5])
 	k17.drawImage(k15, 0, 0)
@@ -768,8 +762,8 @@ const h14 = async (l) => {
 	let l0 = k20.getContext('2d')
 	let l1 = l[0] * l[2]
 	let l2 = l[1] * l[2]
-	k20.width = l1
-	k20.height = l2
+	k20.width = l[4]
+	k20.height = l[5]
 	await h16()
 	// A failed or missing paint rejects, so the
 	// TUI shows "Render failed" instead of hanging
@@ -783,8 +777,8 @@ const h14 = async (l) => {
 			clearTimeout(l3)
 			try {
 				l0.setTransform(1, 0, 0, 1, 0, 0)
-				l0.clearRect(0, 0, l1, l2)
-				l0.drawElementImage(k2, 0, 0, l1, l2)
+				l0.clearRect(0, 0, l[4], l[5])
+				l0.drawElementImage(k2, -l[3], 0, l1, l2)
 				resolve()
 			} catch (e) {
 				reject(e)
@@ -925,6 +919,7 @@ window.h13 = (l) => {
 			l0.clearRect(0, 0, ...l1)
 			l0.drawImage(_.data, 0, 0)
 			_.data.close()
+			l3.terminate()
 			resolve()
 		}
 	})
