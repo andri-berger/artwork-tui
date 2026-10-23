@@ -61,7 +61,6 @@ class MainTab(Widget):
     ) -> None:
         f0 = self.app.query_one("#cont-switch-1")
         f00 = self.app.query_one("#layer-1")
-        f1 = int(f0.current.split("-")[-1])
         f2 = [6, 100, 301, 300, 12, 13]
         f3 = self.app.query(DataTable)
         f4 = self.app.playwright
@@ -185,20 +184,17 @@ class MainTab(Widget):
                             f51.append(f40)
                         self.set_rows(f3[h0], f51)
 
-                # Load: back to the saved table
-                # ("37"/"0" = 4 + table), else
-                # the cursor stays where it is
+                # Load/X: back to the saved table
+                # ("37"/"0" = 4 + table) and cell;
+                # CREATE: set_rows keeps cursors
                 f41 = script_f15(f11.get("1"))
                 f42 = script_f15(f11.get("2"))
                 f49 = script_f15(f11.get("0")) - 4
-                f50 = f49 in range(6)
-                if f12 == 2 and f50:
+                if f12 == 2 and f49 in range(6):
                     f0.current = (
                         f"data-table-{f49}"
                     )
-                    f1 = f49
-                if f12 != 2 or f50:
-                    f3[f1].move_cursor(
+                    f3[f49].move_cursor(
                         row=f41, column=f42
                     )
 
@@ -237,11 +233,16 @@ class MainTab(Widget):
     def set_rows(self, h, h0) -> None:
         # Write only the changed cells: a new row
         # makes DataTable measure every cell (300
-        # columns), though the widths are fixed
+        # columns), though the widths are fixed.
+        # Cursor and scroll stay where they are
         f0 = len(h.columns)
         if h.row_count != len(h0):
+            f3 = h.cursor_coordinate
             h.clear(columns=False)
             h.add_rows(h0)
+            h.move_cursor(
+                row=f3.row, column=f3.column
+            )
             return
         for h1, h2 in enumerate(h0):
             f1 = h.get_row_at(h1)
@@ -251,9 +252,6 @@ class MainTab(Widget):
                     h.update_cell_at(
                         Coordinate(h1, h3), h4
                     )
-        # Cursor and scroll as after clear()
-        h.cursor_coordinate = Coordinate(0, 0)
-        h.scroll_to(0, 0, animate=False)
 
     def render(self):
         return ""
