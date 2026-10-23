@@ -66,7 +66,9 @@ in that download, so no further setup is needed. Additional, user-generated file
 ```bash
 brew tap andri-berger/artwork-tui \
 https://github.com/andri-berger/artwork-tui
+brew trust andri-berger/artwork-tui #third-party taps must be trusted
 brew install artwork-tui #install from tap
+"$(brew --prefix)/opt/artwork-tui/libexec/bin/playwright" install chromium
 ```
 
 #### Linux (any distro, incl. Arch)
