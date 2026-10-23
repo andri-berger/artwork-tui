@@ -52,16 +52,13 @@ class ArtworkTui < Formula
     sha256 "3f106a9fbc73e39dd266c9712432087de78a6d644084c7c241d6a25c3169115b"
   end
 
-  resource "textual-image" do
-    url "https://files.pythonhosted.org/packages/e8/32/7844d7c06cfc540caeb3ad8e7f96e66a12daac8934f4d45a86cab879e7e1/textual_image-0.14.2.tar.gz"
-    sha256 "0ec2ac1e2a9b30bfc478708ea011eb31e7844c377322ed2094976c1a84c131ba"
-  end
-
     def install
       venv = virtualenv_create(libexec, "python3.14")
       venv.pip_install resources
       system libexec/"bin/python", "-m", "pip", "install",
-             "--disable-pip-version-check", "playwright==1.58.0"
+             "--disable-pip-version-check", "playwright==1.58.0",
+             # wheel: its sdist needs uv_build, which needs Rust
+             "textual-image==0.14.2"
       venv.pip_install_and_link buildpath
     end
 
