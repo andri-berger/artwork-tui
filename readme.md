@@ -49,7 +49,7 @@ pixel-perfect output; everything else stays lean.
 
 #### Generic Install (Native)
 Pulls the install script directly from the repo and wires everything up,
-including the Playwright browser download. Requires Python 3.11+. As always
+including the Playwright browser download. Requires Python 3.14+. As always
 with curl-into-sh: the script is short and readable — take a look before you
 run it.
 
@@ -86,7 +86,7 @@ playwright install chromium --with-deps
 The interface follows the same anatomy as filterx-tui: file trees on the left
 feed the pipeline, a tabbed spreadsheet in the center holds every parameter,
 and a button row drives generation and export. Buttons and function keys are
-twins here as well — F5 simply presses Afs programmatically — so the API
+twins here as well — F4 simply presses AS programmatically — so the API
 Reference below and this table describe one surface from two angles.
 
 The central idea is that an artwork is nothing but a spreadsheet. Six tabs
@@ -189,21 +189,21 @@ as font assignment, size, and spacing across all groups.</td>
     <tr>
         <td><a href="artwork/Backend/modules/7000000029.png">
         <img src="artwork/Backend/modules/17000000029.png"></a></td>
-        <td><kbd>Button Afs</kbd></td>
+        <td><kbd>Button AS</kbd></td>
         <td>Set Seed for A00-A99 Elements. Pins the random generator for this group,
 making generated results reproducible across runs.</td>
     </tr>
     <tr>
         <td><a href="artwork/Backend/modules/7000000029.png">
         <img src="artwork/Backend/modules/17000000029.png"></a></td>
-        <td><kbd>Button Bfs</kbd></td>
+        <td><kbd>Button BSS</kbd></td>
         <td>Set Seed for B00-B99. Same principle, scoped to the B group — the three
 seedable groups are independent of each other.</td>
     </tr>
     <tr>
         <td><a href="artwork/Backend/modules/7000000029.png">
         <img src="artwork/Backend/modules/17000000029.png"></a></td>
-        <td><kbd>Button Cfs</kbd></td>
+        <td><kbd>Button CSS</kbd></td>
         <td>Set Seed for C00-C99. With all three seeds set, a generated layout is
 fully deterministic.</td>
     </tr>
@@ -259,7 +259,7 @@ your hands already know this table.
         <td><kbd>F2
         </kbd></td>
         <td>Cut</td>
-        <td>Cut table cell. Think of it as Ctrl-C in a spreadsheet. </td>
+        <td>Cut table cell. Think of it as Ctrl-X in a spreadsheet. </td>
     </tr>
     <tr>
         <td><kbd>
@@ -270,26 +270,26 @@ your hands already know this table.
     <tr>
         <td><kbd>
         F4</kbd></td>
-        <td>Clear</td>
-        <td>Triggers <kbd>Button X</kbd> programmatically (see Table above).</td>
+        <td>AS</td>
+        <td>Triggers <kbd>Button AS</kbd> programmatically (see Table above).</td>
     </tr>
     <tr>
         <td><kbd>
         F5</kbd></td>
-        <td>Afs</td>
-        <td>Triggers <kbd>Button Afs</kbd> programmatically (see Table above).</td>
+        <td>BSS</td>
+        <td>Triggers <kbd>Button BSS</kbd> programmatically (see Table above).</td>
     </tr>
     <tr>
         <td><kbd>
         F6</kbd></td>
-        <td>Bfs</td>
-        <td>Triggers <kbd>Button Bfs</kbd> programmatically (see Table above).</td>
+        <td>CSS</td>
+        <td>Triggers <kbd>Button CSS</kbd> programmatically (see Table above).</td>
     </tr>
     <tr>
         <td><kbd>
         F7</kbd></td>
-        <td>Cfs</td>
-        <td>Triggers <kbd>Button Cfs</kbd> programmatically (see Table above).</td>
+        <td>Clear</td>
+        <td>Triggers <kbd>Button X</kbd> programmatically (see Table above).</td>
     </tr>
     <tr>
         <td><kbd>

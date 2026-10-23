@@ -67,9 +67,6 @@ class MainTab(Widget):
 
         f12, f13 = path.pop("_", [])
         f14 = script_f9(path, f6)
-        if self.query_one(Image):
-            self.query_one(Image).remove()
-
         f15 = await f4.evaluate(PATH, [f13, f14])
         f16 = f15[0].split(",")[1]
         f17 = base64.b64decode(f16)
@@ -94,6 +91,7 @@ class MainTab(Widget):
                 f.write(f17)
 
         if f13 <= 3:
+            self.query(Image).remove()
             with open(PATH_4, "wb") as f:
                 f.write(f17)
             f24 = Image(PATH_4)

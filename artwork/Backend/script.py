@@ -210,6 +210,8 @@ def script_f10(h, h0) -> dict:
     f0 = {}
     f1 = h.items()
     for h1, h2 in f1:
+        if h1 not in ("1", "2", "3"):
+            continue
         f2 = h1 == "1"
         f3 = "1" if f2 else "2"
         if f3 not in f0:

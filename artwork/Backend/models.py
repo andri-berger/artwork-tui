@@ -401,13 +401,13 @@ async def on_key(self, event) -> None:
         case "f1":
             f33 = self.app
             f33.clipboards = f18
-            self.post_message(
-                Input.Submitted(f23, "")
-            )
 
         case "f2":
             f34 = self.app
             f34.clipboards = f18
+            self.post_message(
+                Input.Submitted(f23, "")
+            )
 
         case "f3":
             self.post_message(
