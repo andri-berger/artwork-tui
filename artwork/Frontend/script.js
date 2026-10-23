@@ -771,13 +771,24 @@ const h14 = async (l) => {
 	k20.width = l1
 	k20.height = l2
 	await h16()
-	await new Promise((resolve) => {
+	// A failed or missing paint rejects, so the
+	// TUI shows "Render failed" instead of hanging
+	await new Promise((resolve, reject) => {
+		let l3 = setTimeout(() => {
+			k20.onpaint = null
+			reject(new Error('Canvas paint timed out'))
+		}, 30000)
 		k20.onpaint = () => {
 			k20.onpaint = null
-			l0.setTransform(1, 0, 0, 1, 0, 0)
-			l0.clearRect(0, 0, l1, l2)
-			l0.drawElementImage(k2, 0, 0, l1, l2)
-			resolve()
+			clearTimeout(l3)
+			try {
+				l0.setTransform(1, 0, 0, 1, 0, 0)
+				l0.clearRect(0, 0, l1, l2)
+				l0.drawElementImage(k2, 0, 0, l1, l2)
+				resolve()
+			} catch (e) {
+				reject(e)
+			}
 		}
 		k20.requestPaint()
 	})
