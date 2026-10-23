@@ -1,4 +1,3 @@
-import { toCanvas } from 'html-to-image'
 import * as filters from 'pixi-filters'
 import * as PIXI from 'pixi.js'
 import * as d3 from 'random'
@@ -228,7 +227,6 @@ const k1 = {
 	105: '0-1',
 	106: '0-2',
 }
-const k2 = document.body
 const k3 = document.documentElement
 const k4 = (_) => document.createElement(_)
 const k5 = (_) => document.querySelector(_)
@@ -247,6 +245,23 @@ const k15 = document.createElement('canvas')
 const k16 = document.createElement('canvas')
 const k17 = k16.getContext('2d')
 const k18 = k15.getContext('2d')
+// HTML-in-Canvas: Chromium paints the DOM straight
+// into a canvas; html-to-image is the fallback
+const k19 =
+	'drawElementImage' in
+	CanvasRenderingContext2D.prototype
+const k20 = k4('canvas')
+const k2 = k4('div')
+k2.id = 'root'
+if (k19) {
+	k20.setAttribute('layoutsubtree', '')
+	k20.setAttribute('content', 'drawable')
+	k2.setAttribute('drawable', '')
+	k20.appendChild(k2)
+	document.body.appendChild(k20)
+} else {
+	document.body.appendChild(k2)
+}
 
 const h0 = (l) => {
 	let l0 = k3.style
@@ -274,9 +289,9 @@ const h1 = (l) => {
 	k2.appendChild(l1)
 	k2.appendChild(l2)
 	k2.appendChild(l3)
-	let l7 = k5('body>svg')
-	let l8 = k5('body>div')
-	let l9 = k6('body>style')
+	let l7 = k5('#root>svg')
+	let l8 = k5('#root>div')
+	let l9 = k6('#root>style')
 	let l10 = k([l[0], l[2]])
 	l7.innerHTML = l10[0] || ''
 	l8.innerHTML = l10[1] || ''
@@ -286,7 +301,7 @@ const h1 = (l) => {
 }
 
 const h2 = (l) => {
-	let l0 = 'body>div'
+	let l0 = '#root>div'
 	let l1 = '.t00,.t000'
 	let l2 = `.k00,${l1}`
 	let l3 = `.l00,${l2}`
@@ -736,13 +751,7 @@ const h10 = async (l) => {
 	let l13 = l12 - l10
 	let l14 = l10 + l6
 	let l15 = l11 + l7
-	let l16 = await toCanvas(k2, {
-		width: l8,
-		height: l9,
-		canvasWidth: l8,
-		canvasHeight: l9,
-		pixelRatio: l0,
-	})
+	let l16 = await (k19 ? h14 : h15)([l8, l9, l0])
 	k16.height = l15
 	k16.width = l14
 	k15.width = l14
@@ -761,6 +770,80 @@ const h10 = async (l) => {
 	h0(['f2', l4])
 	h0(['f3', l5])
 	k17.drawImage(k15, 0, 0)
+}
+
+const h14 = async (l) => {
+	let l0 = k20.getContext('2d')
+	let l1 = l[0] * l[2]
+	let l2 = l[1] * l[2]
+	k20.width = l1
+	k20.height = l2
+	await h16()
+	let l3 = () => {
+		l0.setTransform(1, 0, 0, 1, 0, 0)
+		l0.clearRect(0, 0, l1, l2)
+		l0.drawElementImage(k2, 0, 0, l1, l2)
+	}
+	await new Promise((resolve) => {
+		if ('requestPaint' in k20) {
+			k20.onpaint = () => {
+				k20.onpaint = null
+				l3()
+				resolve()
+			}
+			k20.requestPaint()
+		} else {
+			requestAnimationFrame(() =>
+				requestAnimationFrame(() => {
+					l3()
+					resolve()
+				}),
+			)
+		}
+	})
+	return k20
+}
+
+const h15 = async (l) => {
+	let { toCanvas } = await import('html-to-image')
+	return toCanvas(k2, {
+		width: l[0],
+		height: l[1],
+		canvasWidth: l[0],
+		canvasHeight: l[1],
+		pixelRatio: l[2],
+	})
+}
+
+const h16 = async () => {
+	let l0 = new Set()
+	let l1 = [...k2.querySelectorAll('img')]
+	for (let i of k2.querySelectorAll('*')) {
+		for (let i0 of [
+			null,
+			'::before',
+			'::after',
+		]) {
+			let l2 = getComputedStyle(
+				i,
+				i0,
+			).backgroundImage
+			for (let i1 of l2.matchAll(
+				/url\("(.+?)"\)/g,
+			)) {
+				l0.add(i1[1])
+			}
+		}
+	}
+	for (let i of l0) {
+		let l3 = new Image()
+		l3.src = i
+		l1.push(l3)
+	}
+	await Promise.all(
+		l1.map((_) => _.decode().catch(() => null)),
+	)
+	await document.fonts.ready
 }
 
 window.h11 = async (l) => {

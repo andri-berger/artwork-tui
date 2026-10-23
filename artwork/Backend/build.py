@@ -120,10 +120,30 @@ class CLIApp(App):
 
         f20 = await async_playwright().start()
         f21 = await f20.chromium.launch(
-            headless=True
+            headless=True,
+            # HTML-in-Canvas (drawElementImage)
+            args=[
+                "--enable-features="
+                "CanvasDrawElement"
+            ],
         )
         self.playwright = await f21.new_page()
         await self.playwright.goto(PATH)
+        # TEMP: show which renderer is active
+        f40 = await self.playwright.evaluate(
+            "'drawElementImage' in "
+            "CanvasRenderingContext2D.prototype"
+        )
+        self.notify(
+            f"Chromium {f21.version}: "
+            + (
+                "HTML-in-Canvas"
+                if f40
+                else "html-to-image fallback"
+            ),
+            title="Renderer",
+            timeout=30,
+        )
         f22 = self.stores
 
         if len(f4) > f14:

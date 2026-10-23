@@ -56,7 +56,7 @@ class ArtworkTui < Formula
       venv = virtualenv_create(libexec, "python3.14")
       venv.pip_install resources
       system libexec/"bin/python", "-m", "pip", "install",
-             "--disable-pip-version-check", "playwright==1.58.0",
+             "--disable-pip-version-check", "playwright==1.64.1",
              # wheel: its sdist needs uv_build, which needs Rust
              "textual-image==0.14.2"
       venv.pip_install_and_link buildpath
