@@ -33,8 +33,8 @@ PORT_1 = script_f00()
 PORT_2 = PORT_0 / "module"
 PORT_3 = PORT_0 / "modules"
 PATH_3 = PORT_0 / "model.png"
-PATH_4 = PORT_1 / "170000.png"
-PATH_5 = PORT_1 / "700000000.json"
+PATH_4 = PORT_1 / "1700000000.png"
+PATH_5 = PORT_1 / "1700000000.json"
 PATH = "async (store) => window.h11(store)"
 
 
@@ -281,7 +281,9 @@ class FileTree(DirectoryTree):
             f15 = int(f7) - 1
             f16 = script_f13(f11, f15)
 
-            if int(f3) >= 4 and f13 == 12:
+            # Column 12 of the tree's own table
+            # (images: 4, fonts: 5), else base
+            if f3 == f8 and f13 == 12:
                 f20 = f6.setdefault(f8, {})
                 f21 = f20.setdefault(f14, {})
                 f22 = f21.get("11")

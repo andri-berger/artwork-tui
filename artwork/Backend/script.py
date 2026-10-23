@@ -282,6 +282,7 @@ def script_f12(h, h0, h1, h2) -> None:
     # name h2 unless a store h1 still uses it
     f1 = ["module", "modules"][h0]
     f2 = script_f01() / f1
+    f2.mkdir(exist_ok=True)
     f3 = f2 / script_f14(script_f13(h, h0), h0)
     f4 = f2 / script_f14(h2, h0)
     f8 = script_f16(h1, h0)

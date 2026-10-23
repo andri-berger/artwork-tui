@@ -26,7 +26,8 @@ PORT_0 = script_f01()
 PORT_1 = script_f00()
 PORT_2 = Path(__file__).parent
 PORT_3 = PORT_2.parent / "Frontend"
-PATH_3 = PORT_1 / "700000000.json"
+PATH_3 = PORT_1 / "1700000000.json"
+PATH_6 = PORT_1 / "700000000.json"
 PATH_4 = PORT_0 / "build.json"
 PATH_5 = PORT_0 / "style.tcss"
 PATH = "http://localhost:9000/build.html"
@@ -37,6 +38,10 @@ shutil.copytree(
     ignore=shutil.ignore_patterns(".*"),
     dirs_exist_ok=True,
 )
+
+# Older versions saved 700000000.json
+if PATH_6.exists() and not PATH_3.exists():
+    PATH_6.rename(PATH_3)
 
 
 class CLIApp(App):
