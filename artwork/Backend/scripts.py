@@ -16,7 +16,6 @@ def scripts_f1(h, h0) -> bytes:
     f0 = max(h["h"], 1)
     f1 = h["h0"] or 0
     f2 = h["h1"] or 0
-    f3 = h["h2"] or 0
 
     f4 = cv2.imdecode(
         np.frombuffer(h0, dtype=np.uint8),
@@ -62,40 +61,6 @@ def scripts_f1(h, h0) -> bytes:
                 scripts_f0(f2, 0.1, 0.5)
             ),
         )
-
-    elif f0 == 5:
-        _, f14 = cv2.pencilSketch(
-            f13,
-            sigma_s=float(
-                scripts_f0(f1, 30, 100)
-            ),
-            sigma_r=float(
-                scripts_f0(f2, 0.05, 0.3)
-            ),
-            shade_factor=float(
-                scripts_f0(f3, 0.02, 0.05)
-            ),
-        )
-
-    elif f0 == 6:
-        f15 = int(scripts_f0(f2, 0, 20))
-        f16 = int(scripts_f0(f1, 3, 51)) | 1
-        f17 = int(scripts_f0(f3, 3, 15)) | 1
-
-        f18 = cv2.cvtColor(
-            f13, cv2.COLOR_RGB2GRAY
-        )
-        f19 = cv2.medianBlur(f18, f17)
-        f20 = cv2.adaptiveThreshold(
-            f19,
-            255,
-            cv2.ADAPTIVE_THRESH_MEAN_C,
-            cv2.THRESH_BINARY,
-            f16,
-            f15,
-        )
-        f21 = cv2.bilateralFilter(f13, 24, 75, 75)
-        f14 = cv2.bitwise_and(f21, f21, mask=f20)
 
     f6[f9 : f10 + 1, f11 : f12 + 1] = f14
     f22, f23, f24 = cv2.split(f6)

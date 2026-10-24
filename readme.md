@@ -84,7 +84,7 @@ already have them.
 The interface follows the same anatomy as filterx-tui: file trees on the left
 feed the pipeline, a tabbed spreadsheet in the center holds every parameter,
 and a button row drives generation and export. Buttons and function keys are
-twins here as well — F5 simply presses AS programmatically — so the API
+twins here as well — F5 simply presses A0 programmatically — so the API
 Reference below and this table describe one surface from two angles.
 
 The central idea is that an artwork is nothing but a spreadsheet. Six tabs
@@ -164,17 +164,17 @@ as font assignment, size, and spacing across all groups.</td>
         <td>Clear the Canvas and all associated Table Params (in all 6 Tabs). Basically start from scratch. Please export before.</td>
     </tr>
     <tr>
-        <td><kbd>Button AS</kbd></td>
+        <td><kbd>Button A0</kbd></td>
         <td>Set Seed for A00-A99 Elements. Pins the random generator for this group,
 making generated results reproducible across runs.</td>
     </tr>
     <tr>
-        <td><kbd>Button BSS</kbd></td>
+        <td><kbd>Button B00</kbd></td>
         <td>Set Seed for B00-B99. Same principle, scoped to the B group — the three
 seedable groups are independent of each other.</td>
     </tr>
     <tr>
-        <td><kbd>Button CSS</kbd></td>
+        <td><kbd>Button C00</kbd></td>
         <td>Set Seed for C00-C99. With all three seeds set, a generated layout is
 fully deterministic.</td>
     </tr>
@@ -243,20 +243,20 @@ your hands already know this table.
     <tr>
         <td><kbd>
         F5</kbd></td>
-        <td>AS</td>
-        <td>Triggers <kbd>Button AS</kbd> programmatically (see Table above).</td>
+        <td>A0</td>
+        <td>Triggers <kbd>Button A0</kbd> programmatically (see Table above).</td>
     </tr>
     <tr>
         <td><kbd>
         F6</kbd></td>
-        <td>BSS</td>
-        <td>Triggers <kbd>Button BSS</kbd> programmatically (see Table above).</td>
+        <td>B00</td>
+        <td>Triggers <kbd>Button B00</kbd> programmatically (see Table above).</td>
     </tr>
     <tr>
         <td><kbd>
         F7</kbd></td>
-        <td>CSS</td>
-        <td>Triggers <kbd>Button CSS</kbd> programmatically (see Table above).</td>
+        <td>C00</td>
+        <td>Triggers <kbd>Button C00</kbd> programmatically (see Table above).</td>
     </tr>
     <tr>
         <td><kbd>
@@ -301,22 +301,25 @@ Within the file trees, up/down move through entries.</td>
         <td><kbd>
         BackSpace</kbd></td>
         <td>Navigation</td>
-        <td>Step back one level — leaves cell editing without applying the change,
-or collapses the current node in a file tree.</td>
+        <td>Edit the table cell under the cursor — opens the cell editor with its
+current value, same as Enter. Inside the editor it deletes characters as
+usual; Esc leaves the editor without applying the change.</td>
     </tr>
     <tr>
         <td><kbd>
         Space</kbd></td>
         <td>Navigation</td>
-        <td>Toggle the element under the cursor — expands or collapses a tree node
-without moving focus.</td>
+        <td>Same as Enter: opens the cell editor on a table cell, and opens the
+folder or picks the file under the cursor in a file tree.</td>
     </tr>
     <tr>
         <td><kbd>
         Enter</kbd></td>
         <td>Navigation</td>
-        <td>Confirm — commits the edited cell value, or opens the highlighted file
-into the project.</td>
+        <td>Opens the cell editor on a table cell and commits the edited value (Tab
+commits too). On the image/font column of Tab V and VI it jumps to the
+matching file tree. In a file tree it opens the folder or picks the
+highlighted file into the project.</td>
     </tr>
     <tr>
         <td><kbd>
@@ -352,7 +355,6 @@ links say more than any parameter documentation could.
         <th align="left">Layer</th>
         <th align="left">Name</th>
         <th align="left"><img src="artwork/Frontend/model.png" width="9999" height="0" align="right" alt="">Link</th>
-    </tr>
     </tr>
     <tr>
         <td><kbd>

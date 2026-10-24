@@ -108,16 +108,14 @@ class MainTab(Widget):
         f20 = script_f15(f9.get("0"))
 
         if f20 in range(1, 5):
-            f48 = [
-                script_f15(f9.get(h), float)
-                for h in "1234"
-            ]
             f21 = {
                 "h": f20,
-                "h0": f48[0],
-                "h1": f48[1],
-                "h2": f48[2],
-                "h3": f48[3],
+                "h0": script_f15(
+                    f9.get("1"), float
+                ),
+                "h1": script_f15(
+                    f9.get("2"), float
+                ),
             }
             f17 = await asyncio.to_thread(
                 scripts_f1, f21, f17
@@ -136,13 +134,12 @@ class MainTab(Widget):
                 f.write(f17)
             f24 = Image(PATH_4)
             script_f7(f7, f10, f24, f17)
-            await self.mount(f24 or Image)
             # Not query_one: its cache keeps each
             # removed preview and its pixels alive
-            f25 = f24
+            await self.mount(f24)
 
             if f10.get("3") == "true":
-                f26 = f25.styles
+                f26 = f24.styles
                 f26.width = "100%"
                 f26.height = "auto"
 
@@ -156,8 +153,7 @@ class MainTab(Widget):
             f32 = (0, 6) if f29 else (1, 4)
             with self.app.batch_update():
                 for h0 in range(*f32):
-                    f34 = int(h0) == 3
-                    f35 = 2 if f34 else h0
+                    f35 = 2 if h0 == 3 else h0
                     f36 = f6.get(f"1-{f35}")
                     f37 = f5.get(str(h0), {})
                     if f37 is not None:
