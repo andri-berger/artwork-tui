@@ -122,6 +122,16 @@ class MainApp(Widget):
         def data(h) -> int | float | str:
             if not isinstance(h, str):
                 return h
+            # Hex colours: the JS adds the "#",
+            # and 6 hex digits stay text, so
+            # 000000 is not read as the number 0
+            f2 = h.removeprefix("#")
+            f3 = "0123456789abcdefABCDEF"
+            f4 = all(h0 in f3 for h0 in f2)
+            if f4 and len(f2) == 6:
+                return f2
+            if f4 and f2 != h:
+                h = f2
             for cast in (int, float):
                 try:
                     return cast(h)
