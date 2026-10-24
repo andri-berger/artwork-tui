@@ -1124,9 +1124,9 @@
 		],
 		[
 			"FX OPENCV PARAMETERS. Image effect applied to every render (preview and export), on the visible area of the artwork.",
-			"FX OPENCV PARAMETERS. Selects the effect; 0 bypasses this layer entirely. => 0=None, 1=Invert, 2=Edges, 3=Stylization, 4=Detail Enhance",
-			"FX OPENCV PARAMETERS. Smoothing range for 3=Stylization and 4=Detail Enhance; higher values smooth less. Not used by 1 and 2. => OpenCV Params 1",
-			"FX OPENCV PARAMETERS. Edge preservation for 3=Stylization and 4=Detail Enhance; higher values keep edges sharper. Not used by 1 and 2. => OpenCV Params 2",
+			"FX OPENCV PARAMETERS. Selects the effect; 0 bypasses this layer entirely. => 0=None, 1=Invert, 2=Edges, 3=Stylization (slow on large renders), 4=Detail Enhance",
+			"FX OPENCV PARAMETERS. Smoothing range (sigma_s) for 3=Stylization and 4=Detail Enhance; higher values smooth more. Not used by 1 and 2. => OpenCV Params 1",
+			"FX OPENCV PARAMETERS. Color range (sigma_r) for 3=Stylization and 4=Detail Enhance; higher values also average across stronger color differences, so edges are kept less. Not used by 1 and 2. => OpenCV Params 2",
 			"FX OPENCV PARAMETERS. Currently unused by the available effects. => OpenCV Params 3",
 			"FX OPENCV PARAMETERS. Currently unused by the available effects. => OpenCV Params 4"
 		],

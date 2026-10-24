@@ -62,9 +62,9 @@ def scripts_f1(h, h0) -> bytes:
             ),
         )
 
+    # f6 is a view: this writes into f4, alpha
+    # untouched, so no split/merge copies
     f6[f9 : f10 + 1, f11 : f12 + 1] = f14
-    f22, f23, f24 = cv2.split(f6)
-    f25 = cv2.merge([f22, f23, f24, f5])
-    _, f26 = cv2.imencode(".png", f25)
+    _, f26 = cv2.imencode(".png", f4)
     f27 = f26.tobytes()
     return f27
