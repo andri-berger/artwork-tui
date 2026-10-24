@@ -1,4 +1,6 @@
-self.onmessage = async (l) => {
+// Sync on purpose: a throw reaches the page as an
+// error event (h13 rejects) instead of hanging
+self.onmessage = (l) => {
 	const l0 = l.data[2]
 	const l1 = l.data[3]
 	const l2 = [l.data[0], l.data[1]]
@@ -43,16 +45,18 @@ self.onmessage = async (l) => {
 	const l39 = !l11 ? l33 : l34
 	const l40 = !l13 ? l33 : l35
 
+	// Style only changes with the pixel color, line
+	// cap once: per-pixel style strings were the cost
+	const l41 = l38 ? 'strokeStyle' : 'fillStyle'
+	let l42 = ''
+	l5.lineCap = 'square'
+
 	for (let x = 0; x < l.data[0]; x += l7) {
 		for (let y = 0; y < l.data[1]; y += l8) {
-			const l41 = (x + y * l.data[0]) * 4
-			const l42 = l4[l41 + 0]
-			const l43 = l4[l41 + 1]
-			const l44 = l4[l41 + 2]
-			const l45 = l4[l41 + 3] / 255
-			const l46 = l45.toFixed(0 || 2)
-			const l47 = [0 || l42, l43, l44, l46]
-			if (l4[l41 + 3] === 0) continue
+			const l43 = (x + y * l.data[0]) * 4
+			if (l4[l43 + 3] === 0) continue
+			const l44 = (l4[l43 + 3] / 255).toFixed(2)
+			const l45 = `rgba(${l4[l43]},${l4[l43 + 1]},${l4[l43 + 2]},${l44})`
 			const l48 = Math.random()
 			const l49 = Math.random()
 			const l50 = Math.random()
@@ -69,102 +73,122 @@ self.onmessage = async (l) => {
 			const l61 = Math.random()
 
 			const l62 = l48 * l18 + l17
-			const l63 = l49 * l31 + l27
-			const l64 = l50 * l32 + l28
-			const l65 = l51 * l31 + l29
-			const l66 = l52 * l32 + l30
-			const l71 = l53 * l26 + l25
-			const l74 = l54 * l22 + l21
-			const l75 = l55 * l20 + l19
-			const l76 = l56 * l24 + l23
-			const l67 = Math.min(3, l63)
-			const l68 = Math.min(3, l64)
-			const l69 = Math.min(3, l65)
-			const l70 = Math.min(3, l66)
-			const l72 = Math.min(7, l71)
-			const l73 = Math.round(l72)
-			const l77 = 2 - Math.min(2, l75)
-			const l78 = Math.min(2, l74)
-			const l83 = l57 - 0.5
-			const l84 = l58 - 0.5
 			const l85 = l59 * l10
-			const l86 = l60 * l12
-			const l87 = l61 * l14
-			const l88 = l83 * l15 * l7
-			const l89 = l84 * l16 * l8
-			const l90 = !l12 ? l85 : l86
-			const l91 = !l14 ? l85 : l87
-			const l92 = (l90 + l39) * l7
-			const l93 = (l91 + l40) * l8
-			const l96 = Math.max(0, l92 - l62)
-			const l97 = Math.max(0, l93 - l62)
-			const l82 = (l77 + l78) * Math.PI
-			const l80 = l78 * Math.PI
-			const l81 = l76 * Math.PI
-			const l98 = (l96 - l7) / 2
-			const l99 = (l97 - l8) / 2
-			const l100 = x - l98 + l88
-			const l101 = y - l99 + l89
-			const l102 = l100 - l7 / 2
-			const l103 = l101 - l8 / 2
-			const l104 = [l81, l80, l82]
-			const l105 = [l96 / 2, l97 / 2]
-			const l106 = [x + l88, y + l89]
-			const l107 = [...l105, ...l104]
-			const l108 = [...l106, ...l107]
-			const l109 = [l102, l103, l96, l97]
-			const l110 = l103 + l97 / 2
-			const l111 = l102 + l96 / 2
-			const l112 = l103 + l97
-			const l113 = l102 + l96
-			const l114 = [
-				[l102, l103, l113, l112],
-				[l102, l110, l113, l110],
-				[l102, l112, l113, l103],
-				[l111, l112, l111, l103],
-				[l113, l112, l102, l103],
-				[l113, l110, l102, l110],
-				[l113, l103, l102, l112],
-				[l111, l103, l111, l112],
-			]
-
-			const l115 = l114[l73]
-			const l116 = l115.slice(0, 2)
-			const l117 = l115.slice(2, 4)
-			const l118 = l102 - l96 + l96 * l67
-			const l119 = l103 - l97 + l97 * l68
-			const l120 = l102 - l96 + l96 * l69
-			const l121 = l103 - l97 + l97 * l70
-			l5.strokeStyle = `rgba(${l47})`
-			l5.fillStyle = `rgba(${l47})`
-			l5.lineCap = `square`
-			l5.lineWidth = l62
+			const l90 = !l12 ? l85 : l60 * l12
+			const l91 = !l14 ? l85 : l61 * l14
+			const l88 = (l57 - 0.5) * l15 * l7
+			const l89 = (l58 - 0.5) * l16 * l8
+			const l96 = Math.max(
+				0,
+				(l90 + l39) * l7 - l62,
+			)
+			const l97 = Math.max(
+				0,
+				(l91 + l40) * l8 - l62,
+			)
+			const l102 =
+				x - (l96 - l7) / 2 + l88 - l7 / 2
+			const l103 =
+				y - (l97 - l8) / 2 + l89 - l8 / 2
+			if (l45 !== l42) {
+				l42 = l45
+				l5[l41] = l45
+			}
+			if (l38) {
+				l5.lineWidth = l62
+			}
 			l5.beginPath()
 
 			if (l6 === 0) {
-				l5.rect(...l109)
+				l5.rect(l102, l103, l96, l97)
 			}
 			if (l6 === 1) {
-				l5.ellipse(...l108)
+				const l77 =
+					2 - Math.min(2, l55 * l20 + l19)
+				const l78 = Math.min(2, l54 * l22 + l21)
+				l5.ellipse(
+					x + l88,
+					y + l89,
+					l96 / 2,
+					l97 / 2,
+					(l56 * l24 + l23) * Math.PI,
+					l78 * Math.PI,
+					(l77 + l78) * Math.PI,
+				)
 			}
-			if (l6 === 2) {
-				l5.moveTo(...l116)
-				l5.lineTo(...l117)
-			}
-			if (l6 === 3) {
-				if (l36 === false) {
-					l5.moveTo(...l116)
-					l5.quadraticCurveTo(l118, l119, ...l117)
+			if (l6 === 2 || l6 === 3) {
+				// Direction 0-7, clamped (negative
+				// values threw): start on the cell edge,
+				// end on the opposite side
+				const l73 = Math.round(
+					Math.max(
+						0,
+						Math.min(7, l53 * l26 + l25),
+					),
+				)
+				const l110 = l103 + l97 / 2
+				const l111 = l102 + l96 / 2
+				const l112 = l103 + l97
+				const l113 = l102 + l96
+				const l114 = [
+					l102,
+					l102,
+					l102,
+					l111,
+					l113,
+					l113,
+					l113,
+					l111,
+				]
+				const l115 = [
+					l103,
+					l110,
+					l112,
+					l112,
+					l112,
+					l110,
+					l103,
+					l103,
+				]
+				const l116 = l114[(l73 + 4) % 8]
+				const l117 = l115[(l73 + 4) % 8]
+				l5.moveTo(l114[l73], l115[l73])
+				if (l6 === 2) {
+					l5.lineTo(l116, l117)
 				}
-				if (l36 === true) {
-					l5.moveTo(...l116)
-					l5.bezierCurveTo(
-						l118,
-						l119,
-						l120,
-						l121,
-						...l117,
-					)
+				if (l6 === 3) {
+					const l118 =
+						l102 -
+						l96 +
+						l96 * Math.min(3, l49 * l31 + l27)
+					const l119 =
+						l103 -
+						l97 +
+						l97 * Math.min(3, l50 * l32 + l28)
+					if (l36 === false) {
+						l5.quadraticCurveTo(
+							l118,
+							l119,
+							l116,
+							l117,
+						)
+					}
+					if (l36 === true) {
+						l5.bezierCurveTo(
+							l118,
+							l119,
+							l102 -
+								l96 +
+								l96 *
+									Math.min(3, l51 * l31 + l29),
+							l103 -
+								l97 +
+								l97 *
+									Math.min(3, l52 * l32 + l30),
+							l116,
+							l117,
+						)
+					}
 				}
 			}
 			if (l38 === false) {
@@ -175,6 +199,6 @@ self.onmessage = async (l) => {
 			}
 		}
 	}
-	const l41 = await createImageBitmap(l3)
-	self.postMessage(l41, [l41])
+	const l120 = l3.transferToImageBitmap()
+	self.postMessage(l120, [l120])
 }

@@ -878,7 +878,7 @@ window.h11 = async (l) => {
 		let l17 = await h1(l16)
 		await h10([l17, l15])
 	}
-	if (l12.some((_) => _ >= 51 && _ <= 74)) {
+	if (l12.some((_) => _ >= 50 && _ <= 74)) {
 		await h13([l3, l2])
 	}
 	if (l3 >= 1) {
@@ -926,7 +926,7 @@ window.h12 = (l) => {
 }
 
 window.h13 = (l) => {
-	return new Promise((resolve) => {
+	return new Promise((resolve, reject) => {
 		let l0 = l[0] ? k17 : k18
 		let l1 = [k16.width, k16.height]
 		let l2 = k17.getImageData(0, 0, ...l1)
@@ -939,6 +939,12 @@ window.h13 = (l) => {
 			_.data.close()
 			l3.terminate()
 			resolve()
+		}
+		// A worker error rejects, so the TUI shows
+		// "Render failed" instead of hanging
+		l3.onerror = (_) => {
+			l3.terminate()
+			reject(new Error(_.message))
 		}
 	})
 }
