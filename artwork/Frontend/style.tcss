@@ -1,6 +1,8 @@
 
 ToastRack {
-    align: left bottom; }
+    align: left bottom;
+    /* 1 row = 2 columns on screen */
+    margin: 0 0 1 2; }
 
 Toast {
     width: 36; }

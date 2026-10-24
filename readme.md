@@ -454,20 +454,6 @@ links say more than any parameter documentation could.
         <a href="//github.com/pixijs/filters">
         https://github.com/pixijs/filters</a></td>
     </tr>
-    <tr>
-        <td><kbd>
-        Inspiration</kbd></td>
-        <td>Pinterest</td><td>
-        <a href="//de.pinterest.com/andriberger/_saved">
-        https://de.pinterest.com/andri</a></td>
-    </tr>
-    <tr>
-        <td><kbd>
-        Inspiration</kbd></td>
-        <td>Artwork</td><td>
-        <a href="//print-artwork.com">
-        https://print-artwork.com</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </td> 
-    </tr>
 </table>
 
 
