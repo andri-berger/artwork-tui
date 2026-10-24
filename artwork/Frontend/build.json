@@ -933,224 +933,227 @@
 
 	"3-0": [
 		[
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet."
+			"RANDOM LIMIT. How many elements CREATE fills with random values, per set (A0, B0, C0). Empty = 20.",
+			"RANDOM LIMIT. Number of set A elements CREATE randomizes, counted from the first. Empty = 20.",
+			"RANDOM LIMIT. Number of set B elements CREATE randomizes, counted from the first. Empty = 20.",
+			"RANDOM LIMIT. Number of set C elements CREATE randomizes, counted from the first. Empty = 20."
 		],
 		[
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet."
+			"RANDOM LEVEL. Chance that CREATE touches a property at all. Low = calm, few changes; high = wild.",
+			"RANDOM LEVEL. Chance (0-100 %) that a set A property gets new random values on CREATE. Empty = 30.",
+			"RANDOM LEVEL. Chance (0-100 %) that a set B property gets new random values on CREATE. Empty = 30.",
+			"RANDOM LEVEL. Chance (0-100 %) that a set C property gets new random values on CREATE. Empty = 30."
 		],
 		[
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet."
+			"GATE A, CENTER. How many elements a touched property reaches. Pairs with gate A II.",
+			"GATE A, CENTER. Average chance (0-100 %) that a touched property changes each set A element. Empty = random.",
+			"GATE A, CENTER. Average chance (0-100 %) that a touched property changes each set B element. Empty = random.",
+			"GATE A, CENTER. Average chance (0-100 %) that a touched property changes each set C element. Empty = random."
 		],
 		[
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet."
+			"GATE A, SPREAD. How much gate A varies between properties. 100 = every property alike.",
+			"GATE A, SPREAD. Higher = all set A properties reach about the same share of elements. 0 = anything goes.",
+			"GATE A, SPREAD. Higher = all set B properties reach about the same share of elements. 0 = anything goes.",
+			"GATE A, SPREAD. Higher = all set C properties reach about the same share of elements. 0 = anything goes."
 		],
 		[
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet."
+			"GATE B, SPREAD. How similar the new values of one property are across elements.",
+			"GATE B, SPREAD. Higher = set A elements get close values for the same property. 0 = fully scattered.",
+			"GATE B, SPREAD. Higher = set B elements get close values for the same property. 0 = fully scattered.",
+			"GATE B, SPREAD. Higher = set C elements get close values for the same property. 0 = fully scattered."
 		],
 		[
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet."
+			"GATE B, LINKS. How far link properties (references to other elements) may reach.",
+			"GATE B, LINKS. For set A link properties: 0 = may point to any earlier element, 100 = no links.",
+			"GATE B, LINKS. For set B link properties: 0 = may point to any earlier element, 100 = no links.",
+			"GATE B, LINKS. For set C link properties: 0 = may point to any earlier element, 100 = no links."
 		],
 		[
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet."
+			"COLOR CHANCE. Chance each element takes a color from the palette (color III/IV).",
+			"COLOR CHANCE. Chance (0-100 %) that a set A element gets a palette color on CREATE. Empty = 100.",
+			"COLOR CHANCE. Chance (0-100 %) that a set B element gets a palette color on CREATE. Empty = 100.",
+			"COLOR CHANCE. Chance (0-100 %) that a set C element gets a palette color on CREATE. Empty = 100."
 		],
 		[
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet."
+			"COLOR PROPERTIES. Chance each color property (fill, text, border ...) uses the palette.",
+			"COLOR PROPERTIES. Chance (0-100 %) that a set A color property is painted from the palette. Empty = 10.",
+			"COLOR PROPERTIES. Chance (0-100 %) that a set B color property is painted from the palette. Empty = 10.",
+			"COLOR PROPERTIES. Chance (0-100 %) that a set C color property is painted from the palette. Empty = 10."
 		],
 		[
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet."
+			"PALETTE I. Colors CREATE may pick from: hex values without #, joined by dots.",
+			"PALETTE I. Colors for set A, e.g. ff8800.222222.f4f1ea (hex without #, dot separated).",
+			"PALETTE I. Colors for set B, e.g. ff8800.222222.f4f1ea (hex without #, dot separated).",
+			"PALETTE I. Colors for set C, e.g. ff8800.222222.f4f1ea (hex without #, dot separated)."
 		],
 		[
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet."
+			"PALETTE II. More colors for the same pool as palette I, same format.",
+			"PALETTE II. More colors for set A, e.g. 0055ff.ffffff (hex without #, dot separated).",
+			"PALETTE II. More colors for set B, e.g. 0055ff.ffffff (hex without #, dot separated).",
+			"PALETTE II. More colors for set C, e.g. 0055ff.ffffff (hex without #, dot separated)."
 		],
 		[
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet."
-		],
-		[""],
-		[
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet."
-		],
-		[
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet."
-		],
-		[
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet."
-		],
-		[
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet."
-		],
-		[
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet."
-		],
-		[
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet."
-		],
-		[
-			"FX SVG FILTER API. Vector filter layer of the element renderer — applied before rasterization.",
-			"FX SVG FILTER API. Numeric input for this filter row; safe to explore, values only affect display, never your project data.",
-			"FX SVG FILTER API. Numeric input for this filter row; combine with the neighbouring cells for compound effects.",
-			"FX SVG FILTER API. Numeric input for this filter row; 0 leaves the stage neutral.",
-			"FX SVG FILTER API. Numeric input for this filter row; extreme values are clamped by the renderer."
-		],
-		[
-			"FX SVG FILTER API. Second vector filter row — same principle as above, independent values.",
-			"FX SVG FILTER API. Numeric input for this filter row.",
-			"FX SVG FILTER API. Numeric input for this filter row.",
-			"FX SVG FILTER API. Numeric input for this filter row.",
-			"FX SVG FILTER API. Numeric input for this filter row."
-		],
-		[
-			"FX SVG FILTER API. Third vector filter row — same principle, independent values.",
-			"FX SVG FILTER API. Numeric input for this filter row.",
-			"FX SVG FILTER API. Numeric input for this filter row.",
-			"FX SVG FILTER API. Numeric input for this filter row.",
-			"FX SVG FILTER API. Numeric input for this filter row."
-		],
-		[
-			"FX SVG FILTER API. Fourth vector filter row — same principle, independent values.",
-			"FX SVG FILTER API. Numeric input for this filter row.",
-			"FX SVG FILTER API. Numeric input for this filter row.",
-			"FX SVG FILTER API. Numeric input for this filter row.",
-			"FX SVG FILTER API. Numeric input for this filter row."
-		],
-		[
-			"FX SVG FILTER API. Fifth vector filter row — same principle, independent values.",
-			"FX SVG FILTER API. Numeric input for this filter row.",
-			"FX SVG FILTER API. Numeric input for this filter row.",
-			"FX SVG FILTER API. Numeric input for this filter row.",
-			"FX SVG FILTER API. Numeric input for this filter row."
+			"COLOR MAP. Recolors the whole artwork: its tones are mapped onto these colors.",
+			"COLOR MAP. Color for the dark tones, hex without # (e.g. 1a1a2e). Fill one to three stops.",
+			"COLOR MAP. Color for the middle tones, hex without #. Works with any mix of the three stops.",
+			"COLOR MAP. Color for the light tones, hex without # (e.g. f4f1ea)."
 		],
 		[""],
 		[
-			"FX HTML CANVAS API. Fifth canvas parameter group — highest indices of the drawing layer.",
-			"FX HTML CANVAS API. Numeric parameter of the canvas renderer. => Canvas Params 20",
-			"FX HTML CANVAS API. Numeric parameter of the canvas renderer. => Canvas Params 21",
-			"FX HTML CANVAS API. Numeric parameter of the canvas renderer. => Canvas Params 22",
-			"FX HTML CANVAS API. Numeric parameter of the canvas renderer. => Canvas Params 23",
-			"FX HTML CANVAS API. Numeric parameter of the canvas renderer. => Canvas Params 24"
+			"BACKGROUND IMAGE. How many elements show the background image (picked in the image tree).",
+			"BACKGROUND IMAGE. Last N elements of set A show the image. Empty = 100 (all), 0 = none.",
+			"BACKGROUND IMAGE. Last N elements of set B show the image. Empty or 0 = none.",
+			"BACKGROUND IMAGE. Last N elements of set C show the image. Empty or 0 = none."
 		],
 		[
-			"FX HTML CANVAS API. Fourth canvas parameter group.",
-			"FX HTML CANVAS API. Numeric parameter of the canvas renderer. => Canvas Params 15",
-			"FX HTML CANVAS API. Numeric parameter of the canvas renderer. => Canvas Params 16",
-			"FX HTML CANVAS API. Numeric parameter of the canvas renderer. => Canvas Params 17",
-			"FX HTML CANVAS API. Numeric parameter of the canvas renderer. => Canvas Params 18",
-			"FX HTML CANVAS API. Numeric parameter of the canvas renderer. => Canvas Params 19"
+			"BACKGROUND FIT. Size and anchor of the background image, as one preset number 0-89.",
+			"BACKGROUND FIT. set A: size x 9 + anchor. Size 0 cover, 1 contain, 2-9 zoom; anchor 0 top ... 4 center left ... 8 bottom right.",
+			"BACKGROUND FIT. set B: size x 9 + anchor. Size 0 cover, 1 contain, 2-9 zoom; anchor 0 top ... 4 center left ... 8 bottom right.",
+			"BACKGROUND FIT. set C: size x 9 + anchor. Size 0 cover, 1 contain, 2-9 zoom; anchor 0 top ... 4 center left ... 8 bottom right."
 		],
 		[
-			"FX HTML CANVAS API. Third canvas parameter group.",
-			"FX HTML CANVAS API. Numeric parameter of the canvas renderer. => Canvas Params 10",
-			"FX HTML CANVAS API. Numeric parameter of the canvas renderer. => Canvas Params 11",
-			"FX HTML CANVAS API. Numeric parameter of the canvas renderer. => Canvas Params 12",
-			"FX HTML CANVAS API. Numeric parameter of the canvas renderer. => Canvas Params 13",
-			"FX HTML CANVAS API. Numeric parameter of the canvas renderer. => Canvas Params 14"
+			"ROTATE / DIRECTION. 00 turns the three sets; A0-C0 set the direction they shift in.",
+			"ROTATE. Turns sets A, B, C by 0/90/180/270 degrees: value = 16 x A + 4 x B + C (each 0-3).",
+			"DIRECTION. Direction set A moves in: 0 = left, 25 = up, 50 = right, 75 = down. Distance is the row below.",
+			"DIRECTION. Direction set B moves in: 0 = left, 25 = up, 50 = right, 75 = down. Distance is the row below.",
+			"DIRECTION. Direction set C moves in: 0 = left, 25 = up, 50 = right, 75 = down. Distance is the row below."
 		],
 		[
-			"FX HTML CANVAS API. Second canvas parameter group.",
-			"FX HTML CANVAS API. Numeric parameter of the canvas renderer. => Canvas Params 5",
-			"FX HTML CANVAS API. Numeric parameter of the canvas renderer. => Canvas Params 6",
-			"FX HTML CANVAS API. Numeric parameter of the canvas renderer. => Canvas Params 7",
-			"FX HTML CANVAS API. Numeric parameter of the canvas renderer. => Canvas Params 8",
-			"FX HTML CANVAS API. Numeric parameter of the canvas renderer. => Canvas Params 9"
+			"STACK / DISTANCE. 00 sets which set lies on top; A0-C0 how far each set moves.",
+			"STACK ORDER. Which of A, B, C lies on top: 1-5 pick the other stacking orders, empty = default.",
+			"DISTANCE. How far set A moves in the direction above: 1 = 4 px sideways or 3 px up/down.",
+			"DISTANCE. How far set B moves in the direction above: 1 = 4 px sideways or 3 px up/down.",
+			"DISTANCE. How far set C moves in the direction above: 1 = 4 px sideways or 3 px up/down."
 		],
 		[
-			"FX HTML CANVAS API. Core drawing setup — the raster layer every element starts from.",
-			"FX HTML CANVAS API. Sets the base draw style of the element. => 0=Square, 1=Round, 2=Stroke, 3=Strokes",
-			"FX HTML CANVAS API. Numeric parameter of the canvas renderer; effect depends on the draw style chosen above. => Canvas Params 1",
-			"FX HTML CANVAS API. Numeric parameter of the canvas renderer; effect depends on the draw style chosen above. => Canvas Params 2",
-			"FX HTML CANVAS API. Numeric parameter of the canvas renderer; effect depends on the draw style chosen above. => Canvas Params 3",
-			"FX HTML CANVAS API. Numeric parameter of the canvas renderer; effect depends on the draw style chosen above. => Canvas Params 4"
+			"WIDTH / FRAME X. 00 is the artwork width; A0-C0 add a left/right frame to each set.",
+			"ARTWORK WIDTH. Width of the whole artwork in px. Empty = 600.",
+			"FRAME X. Left and right border of set A: 1 = 4 px.",
+			"FRAME X. Left and right padding of set B: 1 = 4 px.",
+			"FRAME X. Left and right padding of set C: 1 = 4 px."
 		],
 		[
-			"FX PIXIJS PARAMETERS. WebGL post-processing applied on top of the rendered element.",
-			"FX PIXIJS PARAMETERS. Selects the filter; 0 bypasses this layer entirely. => 0=None, 1=Ascii, 2=Noise, 3=Dot, 4=CRT, 5=Simplex, 6=Glow, 7=Kawase, 8=Advanced, 9=ZoomBlur, 10=Twist, 11=BulgePinch, 12=Glitch, 13=Reflection",
-			"FX PIXIJS PARAMETERS. Param 1 of the selected filter, 0-100 (clamped). => 1=Ascii size, 2=Noise amount, 3=Dot scale, 4=CRT line width, 5=Simplex strength, 6=Glow distance (slow when high), 7=Kawase strength, 8=Bloom threshold, 9=ZoomBlur strength, 10=Twist vertical position, 11=BulgePinch vertical position, 12=Glitch slices, 13=Reflection boundary",
-			"FX PIXIJS PARAMETERS. Param 2 of the selected filter, 0-100 (clamped). => 2=Noise seed, 3=Dot angle, 4=CRT line contrast, 5=Simplex noise scale, 6=Glow inner strength, 7=Kawase pixel size x, 8=Bloom scale, 9=ZoomBlur inner radius, 10=Twist radius, 11=BulgePinch radius, 12=Glitch offset (50=none), 13=Reflection amplitude start",
-			"FX PIXIJS PARAMETERS. Param 3 of the selected filter, 0-100 (clamped). => 4=CRT curvature, 5=Simplex offset z, 6=Glow outer strength, 7=Kawase pixel size y, 8=Bloom quality, 9=ZoomBlur ring width, 10=Twist angle, 11=BulgePinch strength (50=none, below pinch, above bulge), 12=Glitch direction, 13=Reflection amplitude end",
-			"FX PIXIJS PARAMETERS. Param 4 of the selected filter, 0-100 (clamped). => 4=CRT vertical lines (above 50), 5=Simplex step (above 50, near 100 blanks), 6=Glow alpha, 7=Kawase quality, 8=Bloom pixel size, 9=ZoomBlur vertical center, 12=Glitch sample size, 13=Reflection wavelength"
+			"HEIGHT / FRAME Y. 00 is the artwork height; A0-C0 add a top/bottom frame to each set.",
+			"ARTWORK HEIGHT. Height of the whole artwork in px. Empty = 300.",
+			"FRAME Y. Top and bottom border of set A: 1 = 3 px.",
+			"FRAME Y. Top and bottom padding of set B: 1 = 3 px.",
+			"FRAME Y. Top and bottom padding of set C: 1 = 3 px."
 		],
 		[
-			"FX OPENCV PARAMETERS. Image effect applied to every render (preview and export), on the visible area of the artwork.",
-			"FX OPENCV PARAMETERS. Selects the effect; 0 bypasses this layer entirely. => 0=None, 1=Invert, 2=Edges, 3=Stylization (slow on large renders), 4=Detail Enhance",
-			"FX OPENCV PARAMETERS. 2=Edges: lower threshold, higher values find fewer edges. 3=Stylization and 4=Detail Enhance: smoothing range, higher values smooth less. Not used by 1. => OpenCV Params 1",
-			"FX OPENCV PARAMETERS. 2=Edges: upper threshold, higher values keep fewer edge lines. 3=Stylization and 4=Detail Enhance: edge preservation, higher values keep edges sharper. Not used by 1. => OpenCV Params 2",
-			"FX OPENCV PARAMETERS. Fade back to the original, for every effect: 0 = full effect, 100 = original. => OpenCV Params 3",
-			"FX OPENCV PARAMETERS. 2=Edges: line thickness, 1 px at 0 up to 9 px at 100. Not used by 1, 3 and 4. => OpenCV Params 4"
+			"MORPH X. Thins or thickens shapes horizontally (SVG filter, applied before painting).",
+			"MORPH X. For the whole artwork: 1-49 thin by that many px, 50-99 thicken (99 = 1 px, 50 = 50 px).",
+			"MORPH X. For set A: 1-49 thin by that many px, 50-99 thicken (99 = 1 px, 50 = 50 px).",
+			"MORPH X. For set B: 1-49 thin by that many px, 50-99 thicken (99 = 1 px, 50 = 50 px).",
+			"MORPH X. For set C: 1-49 thin by that many px, 50-99 thicken (99 = 1 px, 50 = 50 px)."
+		],
+		[
+			"MORPH Y. Thins or thickens shapes vertically, same scale as morph x.",
+			"MORPH Y. For the whole artwork: 1-49 thin by that many px, 50-99 thicken (99 = 1 px, 50 = 50 px).",
+			"MORPH Y. For set A: 1-49 thin by that many px, 50-99 thicken (99 = 1 px, 50 = 50 px).",
+			"MORPH Y. For set B: 1-49 thin by that many px, 50-99 thicken (99 = 1 px, 50 = 50 px).",
+			"MORPH Y. For set C: 1-49 thin by that many px, 50-99 thicken (99 = 1 px, 50 = 50 px)."
+		],
+		[
+			"WAVE X. Ripples shapes with noise; this sets the horizontal ripple frequency.",
+			"WAVE X. For the whole artwork: horizontal ripple frequency, 1-100 (higher = finer ripples). Pairs with wave y.",
+			"WAVE X. For set A: horizontal ripple frequency, 1-100 (higher = finer ripples). Pairs with wave y.",
+			"WAVE X. For set B: horizontal ripple frequency, 1-100 (higher = finer ripples). Pairs with wave y.",
+			"WAVE X. For set C: horizontal ripple frequency, 1-100 (higher = finer ripples). Pairs with wave y."
+		],
+		[
+			"WAVE Y. Vertical ripple frequency, same scale as wave x.",
+			"WAVE Y. For the whole artwork: vertical ripple frequency, 1-100 (higher = finer ripples).",
+			"WAVE Y. For set A: vertical ripple frequency, 1-100 (higher = finer ripples).",
+			"WAVE Y. For set B: vertical ripple frequency, 1-100 (higher = finer ripples).",
+			"WAVE Y. For set C: vertical ripple frequency, 1-100 (higher = finer ripples)."
+		],
+		[
+			"WAVE Z. Strength and kind of the ripple set by wave x/y.",
+			"WAVE Z. For the whole artwork: 0-49 soft noise, stronger upward; 50-100 hard turbulence, stronger downward. Empty = 20.",
+			"WAVE Z. For set A: 0-49 soft noise, stronger upward; 50-100 hard turbulence, stronger downward. Empty = 20.",
+			"WAVE Z. For set B: 0-49 soft noise, stronger upward; 50-100 hard turbulence, stronger downward. Empty = 20.",
+			"WAVE Z. For set C: 0-49 soft noise, stronger upward; 50-100 hard turbulence, stronger downward. Empty = 20."
 		],
 		[""],
 		[
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet."
+			"CANVAS V. Curve handles for style 3 (curved strokes).",
+			"CANVAS. CURVE 1 Y. Style 3: vertical pull of the first curve handle, 30 = cell edge.",
+			"CANVAS. CURVE 2 X. Style 3: second handle; with curve 2 x and y set the stroke bends twice.",
+			"CANVAS. CURVE 2 Y. Style 3: vertical pull of the second curve handle.",
+			"CANVAS. CURVE RANDOM X. Style 3: random extra horizontal pull for both handles.",
+			"CANVAS. CURVE RANDOM Y. Style 3: random extra vertical pull for both handles."
 		],
 		[
-			"RESOLUTION. Frame and pixel size of the render; the multipliers scale the artwork’s CSS size.",
-			"RESOLUTION. Transparent margin left and right of the artwork, in CSS px (scaled with the multiplier).",
-			"RESOLUTION. Transparent margin above and below the artwork, in CSS px (scaled with the multiplier).",
-			"RESOLUTION. Padding captured around the artwork, in CSS px. Empty = 10.",
-			"RESOLUTION. Export multiplier, 1-10, empty = 5. Pixels grow with the square (10 renders 100x the pixels of 1); capped at 32 megapixels and 16384 px a side.",
-			"RESOLUTION. Preview multiplier, 1-10. Empty = auto: a whole factor giving at least twice the preview pane’s pixel height and never below 4, so the preview stays sharp on any monitor. Same pixel cap as export."
+			"CANVAS IV. Arc start, rotation/direction and the first curve handle.",
+			"CANVAS. ARC START. Style 1: where the arc begins, 50 = 180 degrees.",
+			"CANVAS. ARC START RANDOM. Style 1: random extra start angle.",
+			"CANVAS. TURN. Style 1: rotation, 50 = 180 degrees. Styles 2/3: stroke direction, 0-100 = 8 directions.",
+			"CANVAS. TURN RANDOM. Random extra rotation (style 1) or direction (styles 2/3).",
+			"CANVAS. CURVE 1 X. Style 3: horizontal pull of the first curve handle, 30 = cell edge."
 		],
 		[
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet."
+			"CANVAS III. Vertical jitter, stroke width and arc cut.",
+			"CANVAS. JITTER Y. Random vertical offset of each mark: 30 = up to half a cell.",
+			"CANVAS. LINE WIDTH. Stroke width, 1 = 0.5 px. Above 0 it also turns squares and dots into outlines.",
+			"CANVAS. LINE RANDOM. Adds up to value/2 px of random stroke width.",
+			"CANVAS. ARC CUT. Style 1: how much of each circle is left out, 50 = half, 100 = all.",
+			"CANVAS. ARC CUT RANDOM. Style 1: random extra cut on top of arc cut."
+		],
+		[
+			"CANVAS II. Mark width, height and horizontal jitter.",
+			"CANVAS. WIDTH. Overrides mark size for the width only (same scale as mark size).",
+			"CANVAS. WIDTH RANDOM. Overrides size random for the width only.",
+			"CANVAS. HEIGHT. Overrides mark size for the height only (same scale as mark size).",
+			"CANVAS. HEIGHT RANDOM. Overrides size random for the height only.",
+			"CANVAS. JITTER X. Random horizontal offset of each mark: 30 = up to half a cell."
+		],
+		[
+			"CANVAS I. Redraws the artwork as a grid of marks (squares, dots, strokes). Core setup.",
+			"STYLE. 0 squares, 1 dots/arcs, 2 straight strokes, 3 curved strokes. Any canvas value turns the effect on.",
+			"CANVAS. GRID X. Horizontal spacing of the drawn marks: 3 px + 2 px per step. Empty = 3 px.",
+			"CANVAS. GRID Y. Vertical spacing of the drawn marks: 3 px + 2 px per step. Empty = 3 px.",
+			"CANVAS. MARK SIZE. 0 = one grid cell, 30 = smallest, 60 = two cells, 90 = three.",
+			"CANVAS. SIZE RANDOM. Adds up to value/30 cells of random size to every mark."
+		],
+		[
+			"PIXI FX. WebGL filter laid over the finished render. 0 or empty = off.",
+			"PIXI FX. 0 off, 1 ascii, 2 noise, 3 dots, 4 crt, 5 simplex, 6 glow, 7 blur, 8 bloom, 9 zoom blur, 10 twist, 11 bulge, 12 glitch, 13 reflection.",
+			"PIXI P1. 1 size, 2 amount, 3 scale, 4 line width, 5 strength, 6 distance (slow), 7 strength, 8 threshold, 9 strength, 10-11 height pos, 12 slices, 13 edge.",
+			"PIXI P2. 2 seed, 3 angle, 4 contrast, 5 scale, 6 inner glow, 7 pixel x, 8 bloom, 9 inner radius, 10-11 radius, 12 offset (50 none), 13 wave start.",
+			"PIXI P3. 4 curve, 5 offset, 6 outer glow, 7 pixel y, 8 quality, 9 ring width, 10 angle, 11 strength (50 none), 12 direction, 13 wave end.",
+			"PIXI P4. 4 vertical lines (>50), 5 step (>50, ~100 blanks), 6 alpha, 7 quality, 8 pixel size, 9 height, 12 sample size, 13 wavelength."
+		],
+		[
+			"OPENCV FX. Photo effect on the finished render (preview and export). 0 or empty = off.",
+			"OPENCV FX. 0 off, 1 invert, 2 edges, 3 stylization (slow on large renders), 4 detail enhance.",
+			"OPENCV P1. Edges: lower threshold, higher = fewer edges. Stylization/detail: higher = less smoothing.",
+			"OPENCV P2. Edges: upper threshold, higher = fewer lines. Stylization/detail: higher = sharper edges.",
+			"OPENCV P3. Fade back to the original, every effect: 0 = full effect, 100 = untouched.",
+			"OPENCV P4. Edges only: line thickness, 1 px at 0 up to 9 px at 100."
+		],
+		[""],
+		[
+			"LABELS. Style of the text labels (F0) placed on sets A, B and C.",
+			"LABEL MARGIN. Space around each label in px.",
+			"LABEL PADDING. Space inside each label: value + 2 px.",
+			"LABEL BORDER. Border width in px; 0 is a valid value (no border).",
+			"LABEL SIZE. Font size = 16 px + value (negative values shrink). Empty = unchanged.",
+			"LABEL BOTTOM. true = labels sit at the bottom of their element. Empty = false."
+		],
+		[
+			"RESOLUTION. Frame and pixel size of the render; the multipliers scale the artwork size.",
+			"MARGIN X. Transparent space left and right of the artwork, in px (scaled with it).",
+			"MARGIN Y. Transparent space above and below the artwork, in px (scaled with it).",
+			"PADDING. Space captured around the artwork, in px. Empty = 10.",
+			"EXPORT SIZE. Multiplier 1-10, empty = 5. Cost grows with the square; capped at 32 MP and 16384 px a side.",
+			"PREVIEW SIZE. Multiplier 1-10. Empty = auto: sharp on any monitor, never below 4. Same cap as export."
+		],
+		[
+			"LAYOUT. Look of the TUI itself: theme, table height and preview position.",
+			"THEME. TUI color theme 0-19 (also F10/F11). Applied on CREATE.",
+			"TABLE HEIGHT. 1-9 shrinks the table area (12 - value rows) for a bigger preview. Empty = 12 rows.",
+			"PREVIEW PAN. If the preview is wider than its pane: 0-100 % shifts which part is shown.",
+			"PAN AXIS. true = the pan above moves vertically instead of sideways. Empty = false."
 		]
 	],
 	"3-1": [
