@@ -236,8 +236,12 @@ const k8 = (_) => _[0].getAttribute(_[1])
 const k9 = (_) => _[0].removeAttribute(_[1])
 const k10 = (_) => String(_).padStart(2, '0')
 const k11 = (_) => String(_).padStart(3, '0')
+// Cell 0-100 -> filter range (clamped, as
+// documented for the FX select I cells)
 const k12 = (_) =>
-	_[1] + (_[2] - _[1]) * (_[0] / 100)
+	_[1] +
+	(_[2] - _[1]) *
+		(Math.min(100, Math.max(0, _[0])) / 100)
 const k13 = (_) => [1, 10, 100, 1000, 10000][_[0]]
 const k14 = (_) =>
 	Math.round(_[1] * k13(_)) / k13(_)
@@ -586,36 +590,37 @@ const h7 = (l) => {
 	let l2 = l[2]['77'] || 0
 	let l3 = l[2]['78'] || 0
 	let l4 = l[2]['79'] || 0
-	let l5 = l[2]['92'] || 10
-	let l6 = l[0] + l5 * 2
-	let l7 = l[1] + l5 * 2
+	// The canvas already includes the padding
+	let l6 = l[0]
+	let l7 = l[1]
 	let l8 = filters
 	let l9 = {}
 	if (l0 === 8) {
 		l9 = new l8.AdvancedBloomFilter({
 			threshold: k12([l1, 0.1, 1]),
 			bloomScale: k12([l2, 0, 2]),
-			quality: k12([l3, 0, 10]),
-			pixelSizeX: k12([l4, 0, 10]),
-			pixelSizeY: k12([l4, 0, 10]),
+			quality: k12([l3, 1, 10]),
+			pixelSizeX: k12([l4, 1, 10]),
+			pixelSizeY: k12([l4, 1, 10]),
 		})
 	}
 	if (l0 === 9) {
 		l9 = new l8.ZoomBlurFilter({
 			strength: k12([l1, 0.2, 2]),
+			// Param 3 is the ring width: an outer
+			// radius below the inner one blurred nothing
 			innerRadius: k12([l2, 100, 1000]),
-			radius: k12([l3, 100, 1000]),
+			radius:
+				k12([l2, 100, 1000]) +
+				k12([l3, 100, 1000]),
 			centerY: l6 * k12([l4, 0, 1]),
 			centerX: l7 * 0.5,
 		})
 	} else if (l0 === 10) {
 		l9 = new l8.TwistFilter({
-			offset: [
-				l7 / 2,
-				20 +
-					k12([l1, 100, 900]) +
-					l6 * k12([l1, 0, 1]),
-			],
+			// Param 1 = vertical position, like
+			// ZoomBlur and BulgePinch
+			offset: [l7 / 2, l6 * k12([l1, 0, 1])],
 			radius: k12([l2, 100, 900]),
 			angle: k12([l3, 0, 100]),
 		})
