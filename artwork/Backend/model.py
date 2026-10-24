@@ -116,6 +116,12 @@ class MainTab(Widget):
                 "h1": script_f15(
                     f9.get("2"), float
                 ),
+                "h2": script_f15(
+                    f9.get("3"), float
+                ),
+                "h3": script_f15(
+                    f9.get("4"), float
+                ),
             }
             f17 = await asyncio.to_thread(
                 scripts_f1, f21, f17
