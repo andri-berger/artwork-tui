@@ -1117,10 +1117,10 @@
 		[
 			"FX PIXIJS PARAMETERS. WebGL post-processing applied on top of the rendered element.",
 			"FX PIXIJS PARAMETERS. Selects the filter; 0 bypasses this layer entirely. => 0=None, 1=Ascii, 2=Noise, 3=Dot, 4=CRT, 5=Simplex, 6=Glow, 7=Kawase, 8=Advanced, 9=ZoomBlur, 10=Twist, 11=BulgePinch, 12=Glitch, 13=Reflection",
-			"FX PIXIJS PARAMETERS. Fine-tunes the selected filter — its meaning shifts with the choice above (size, strength, radius, or offset). => Pixijs Params 1",
-			"FX PIXIJS PARAMETERS. Fine-tunes the selected filter — its meaning shifts with the choice above. => Pixijs Params 2",
-			"FX PIXIJS PARAMETERS. Fine-tunes the selected filter — its meaning shifts with the choice above. => Pixijs Params 3",
-			"FX PIXIJS PARAMETERS. Fine-tunes the selected filter — its meaning shifts with the choice above. => Pixijs Params 4"
+			"FX PIXIJS PARAMETERS. Param 1 of the selected filter, 0-100 (clamped). => 1=Ascii size, 2=Noise amount, 3=Dot scale, 4=CRT line width, 5=Simplex strength, 6=Glow distance (slow when high), 7=Kawase strength, 8=Bloom threshold, 9=ZoomBlur strength, 10=Twist vertical position, 11=BulgePinch vertical position, 12=Glitch slices, 13=Reflection boundary",
+			"FX PIXIJS PARAMETERS. Param 2 of the selected filter, 0-100 (clamped). => 2=Noise seed, 3=Dot angle, 4=CRT line contrast, 5=Simplex noise scale, 6=Glow inner strength, 7=Kawase pixel size x, 8=Bloom scale, 9=ZoomBlur inner radius, 10=Twist radius, 11=BulgePinch radius, 12=Glitch offset (50=none), 13=Reflection amplitude start",
+			"FX PIXIJS PARAMETERS. Param 3 of the selected filter, 0-100 (clamped). => 4=CRT curvature, 5=Simplex offset z, 6=Glow outer strength, 7=Kawase pixel size y, 8=Bloom quality, 9=ZoomBlur ring width, 10=Twist angle, 11=BulgePinch strength (50=none, below pinch, above bulge), 12=Glitch direction, 13=Reflection amplitude end",
+			"FX PIXIJS PARAMETERS. Param 4 of the selected filter, 0-100 (clamped). => 4=CRT vertical lines (above 50), 5=Simplex step (above 50, near 100 blanks), 6=Glow alpha, 7=Kawase quality, 8=Bloom pixel size, 9=ZoomBlur vertical center, 12=Glitch sample size, 13=Reflection wavelength"
 		],
 		[
 			"FX OPENCV PARAMETERS. Image effect applied to every render (preview and export), on the visible area of the artwork.",
