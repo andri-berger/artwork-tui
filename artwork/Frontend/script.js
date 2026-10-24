@@ -285,7 +285,12 @@ const h0 = (l) => {
 }
 
 const h1 = (l) => {
-	let l0 = k4('svg')
+	// SVG namespace, or the filters below stay
+	// unknown HTML tags and filter:url() is ignored
+	let l0 = document.createElementNS(
+		'http://www.w3.org/2000/svg',
+		'svg',
+	)
 	let l1 = k4('div')
 	let l2 = k4('style')
 	let l3 = k4('style')
