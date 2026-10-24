@@ -729,7 +729,7 @@
 			["00", "number", "0"],
 			["00", "number", "10"],
 			["00", "1 - 10", "5"],
-			["00", "1 - 10", "4"]
+			["00", "1 - 10", "auto"]
 		],
 		[
 			[""],
@@ -1139,11 +1139,12 @@
 			"DO THIS AND THAT. Lorem ipsum dolor sit amet."
 		],
 		[
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",
-			"DO THIS AND THAT. Lorem ipsum dolor sit amet."
+			"RESOLUTION. Frame and pixel size of the render; the multipliers scale the artwork’s CSS size.",
+			"RESOLUTION. Transparent margin left and right of the artwork, in CSS px (scaled with the multiplier).",
+			"RESOLUTION. Transparent margin above and below the artwork, in CSS px (scaled with the multiplier).",
+			"RESOLUTION. Padding captured around the artwork, in CSS px. Empty = 10.",
+			"RESOLUTION. Export multiplier, 1-10, empty = 5. Pixels grow with the square (10 renders 100x the pixels of 1); capped at 32 megapixels and 16384 px a side.",
+			"RESOLUTION. Preview multiplier, 1-10. Empty = auto: a whole factor giving at least twice the preview pane’s pixel height and never below 4, so the preview stays sharp on any monitor. Same pixel cap as export."
 		],
 		[
 			"DO THIS AND THAT. Lorem ipsum dolor sit amet.",

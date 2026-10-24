@@ -746,12 +746,32 @@ const h9 = async (l) => {
 }
 
 const h10 = async (l) => {
-	let l0 = l[1][3]
 	let l1 = l[1][0]
 	let l2 = l[0][0] + l1 * 2
 	let l3 = l[0][1] + l1 * 2
 	let l4 = l2 + l[1][1] * 2
 	let l5 = l3 + l[1][2] * 2
+	// Empty preview cell: whole factor giving at
+	// least 2x the pane's pixel height, never
+	// below 4 (the TUI resizes to the pane; less
+	// supersampling softens, fractions moire)
+	let l0 =
+		l[1][3] ||
+		Math.max(
+			4,
+			Math.ceil((2 * l[1][4]) / l5) || 0,
+		)
+	// Budget: 32 MP and 16384 px a side
+	let l17 = Math.min(
+		Math.sqrt(32e6 / (l4 * l5)),
+		16384 / l4,
+		16384 / l5,
+	)
+	l0 = Math.min(
+		l0,
+		10,
+		Math.max(1, Math.floor(l17)),
+	)
 	let l6 = l0 * l[1][1] * 2
 	let l7 = l0 * l[1][2] * 2
 	let l8 = k3.scrollWidth
@@ -864,7 +884,7 @@ window.h11 = async (l) => {
 	let l3 = l2['75'] || 0
 	let l4 = l2['90'] || 0
 	let l5 = l2['91'] || 0
-	let l6 = l2['94'] || 4 // 94
+	let l6 = l2['94'] || 0 // 94, 0 = auto
 	let l7 = l2['93'] || 5
 	let l8 = l2['92'] || 10 // 92
 	let l9 = Math.min(l6, 10)
@@ -875,7 +895,7 @@ window.h11 = async (l) => {
 		l1 = { ...l1, ...h6(l0) }
 	}
 	if (l[0] >= 1) {
-		let l15 = [l8, l4, l5, l11]
+		let l15 = [l8, l4, l5, l11, l[2] || 0]
 		// Translated copy: table 1 keeps a00-f99
 		let l13 = structuredClone(l1[1] || {})
 		let l14 = { ...l1, 1: h12(l13) }

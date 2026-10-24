@@ -13,6 +13,7 @@ from textual.widgets import (
     DataTable,
     DirectoryTree,
 )
+from textual_image._terminal import get_cell_size
 from textual_image.widget import Image
 
 from .script import (
@@ -80,9 +81,17 @@ class MainTab(Widget):
         f11 = f8.get("37", {})
 
         f14 = script_f9(path, f6)
+        # Pane height in pixels: an empty preview
+        # resolution cell is fitted to it in JS
+        try:
+            f48 = (
+                f7.height * get_cell_size().height
+            )
+        except Exception:
+            f48 = 0
         try:
             f15 = await f4.evaluate(
-                PATH, [f13, f14]
+                PATH, [f13, f14, f48]
             )
         except Exception as e:
             self.notify(
