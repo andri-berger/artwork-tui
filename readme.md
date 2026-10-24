@@ -3,6 +3,7 @@ Generative design tool with a terminal UI — compose layouts, render to canvas,
 
 The tool emerged from a simple frustration: existing creative layout tools are either locked behind expensive subscriptions, tied to a specific OS, or bloated with features that obscure rather than enable the creative process. The terminal, by contrast, offers a direct and honest working surface – what you type is what happens, no hidden layers, no telemetry, no forced updates. artwork-tui occupies a genuinely vacant niche: somewhere between a generative art framework (too code-heavy, no interface) and a design tool (too GUI-dependent, too opinionated), it offers a middle ground that has no real equivalent in the current landscape. The spreadsheet metaphor is deliberate – familiar enough to require no learning curve, structured enough to impose a productive constraint on the creative process.
 
+
 [Installation](#installation) / 
 [Configuration](#configuration) / 
 [API Reference](#reference) / 
@@ -10,32 +11,54 @@ The tool emerged from a simple frustration: existing creative layout tools are e
 [Gallery](#gallery)
 
 
-<img src="artwork/Backend/modules/7100000000.png" width="100%">
 <table>
     <tr>
-        <td><a href="artwork/Backend/modules/7100000000.png">
-        <img src="artwork/Backend/modules/7100000000.png"></a></td>
-        <td><a href="artwork/Backend/modules/7100000001.png">
-        <img src="artwork/Backend/modules/7100000001.png"></a></td>
-        <td><a href="artwork/Backend/modules/7100000001.png">
-        <img src="artwork/Backend/modules/7100000001.png"></a></td>
-        <td><a href="artwork/Backend/modules/7100000002.png">
-        <img src="artwork/Backend/modules/7100000002.png"></a></td>
+        <td width="50%" valign="top"><a href="demo/create.png">
+        <img src="demo/create.png" alt="Create demo"></a>
+        <br><b>Create</b> — One click on CREATE (or F8) and the random generator draws a new artwork into the grid.</td>
+        <td width="50%" valign="top"><a href="demo/seed.png">
+        <img src="demo/seed.png" alt="Seed lock demo"></a>
+        <br><b>Seed lock</b> — A0 locks the seed of the A elements: they stay put while B and C keep changing.</td>
     </tr>
-</table>
-<table>
     <tr>
-        <td><a href="artwork/Backend/modules/7100000000.png">
-        <img src="artwork/Backend/modules/7100000000.png"></a></td>
-        <td><a href="artwork/Backend/modules/7100000001.png">
-        <img src="artwork/Backend/modules/7100000001.png"></a></td>
-        <td><a href="artwork/Backend/modules/7100000001.png">
-        <img src="artwork/Backend/modules/7100000001.png"></a></td>
-        <td><a href="artwork/Backend/modules/7100000002.png">
-        <img src="artwork/Backend/modules/7100000002.png"></a></td>
-        <td><a href="artwork/Backend/modules/7100000002.png">
-        <img src="artwork/Backend/modules/7100000002.png">
-        </a></td>
+        <td width="50%" valign="top"><a href="demo/clear.png">
+        <img src="demo/clear.png" alt="Clear demo"></a>
+        <br><b>Clear</b> — X (or F4) wipes the canvas and all six tabs for a fresh start.</td>
+        <td width="50%" valign="top"><a href="demo/export.png">
+        <img src="demo/export.png" alt="Export demo"></a>
+        <br><b>Export</b> — EXPORT (or F9) writes png and json into the share directory.</td>
+    </tr>
+    <tr>
+        <td width="50%" valign="top"><a href="demo/reopen.png">
+        <img src="demo/reopen.png" alt="Reopen a project demo"></a>
+        <br><b>Reopen a project</b> — Any exported json reopens with every parameter intact.</td>
+        <td width="50%" valign="top"><a href="demo/image.png">
+        <img src="demo/image.png" alt="Background image demo"></a>
+        <br><b>Background image</b> — The image tree sets the picture the elements are filled with.</td>
+    </tr>
+    <tr>
+        <td width="50%" valign="top"><a href="demo/font.png">
+        <img src="demo/font.png" alt="Fonts demo"></a>
+        <br><b>Fonts</b> — The font tree swaps the typeface of the element labels.</td>
+        <td width="50%" valign="top"><a href="demo/tabs.png">
+        <img src="demo/tabs.png" alt="Six tabs demo"></a>
+        <br><b>Six tabs</b> — Tab walks the six tables; the bottom line explains every cell.</td>
+    </tr>
+    <tr>
+        <td width="50%" valign="top"><a href="demo/edit.png">
+        <img src="demo/edit.png" alt="Edit a cell demo"></a>
+        <br><b>Edit a cell</b> — Type a value, press Enter, and the preview follows.</td>
+        <td width="50%" valign="top"><a href="demo/clipboard.png">
+        <img src="demo/clipboard.png" alt="Cut, copy, paste demo"></a>
+        <br><b>Cut, copy, paste</b> — F1, F2 and F3 move values between cells like a spreadsheet.</td>
+    </tr>
+    <tr>
+        <td width="50%" valign="top"><a href="demo/themes.png">
+        <img src="demo/themes.png" alt="Themes demo"></a>
+        <br><b>Themes</b> — F10 and F11 step through the Textual themes, kept after restart.</td>
+        <td width="50%" valign="top"><a href="demo/fx.png">
+        <img src="demo/fx.png" alt="Effects demo"></a>
+        <br><b>Effects</b> — Tab I adds OpenCV and PIXI (WebGL) effects on top of the render.</td>
     </tr>
 </table>
 
