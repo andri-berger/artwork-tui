@@ -6,9 +6,9 @@ The tool emerged from a simple frustration: existing creative layout tools are e
 
 [Installation](#installation) / 
 [Configuration](#configuration) / 
-[API Reference](#reference) / 
-[API Credit](#credit) / 
-[Gallery](#gallery)
+[API Reference](#api-reference) / 
+[API Credit](#api-credit) / 
+[Gallery](#pi-gallery)
 
 
 <table>
@@ -67,16 +67,44 @@ compose and rasterize the layouts, so the install includes a one-time browser
 download (~150 MB). That is the price for GPU-accelerated WebGL filters and
 pixel-perfect output; everything else stays lean.
 
+#### Requirements
+- Linux or macOS, with `curl`
+- A terminal with a graphics protocol for the inline preview: kitty, ghostty,
+  or wezterm
+- Internet access, at install and at runtime: the renderer loads PixiJS,
+  pixi-filters and d3-random from jsDelivr/esm.sh
+- Local port 9000 free: the app serves its renderer page there
+
+Python is not a prerequisite: the script installs [uv](https://github.com/astral-sh/uv)
+if it is missing, and uv fetches Python 3.14 on its own when your system has
+an older one.
+
 #### Generic Install (Native)
-Pulls the install script directly from the repo and wires everything up,
-including the Playwright browser download. Requires Python 3.14+. As always
-with curl-into-sh: the script is short and readable — take a look before you
-run it.
+Pulls the install script directly from the repo and wires everything up:
+uv, the app from the current `main` branch into its own environment, and the
+Playwright Chromium download. As always with curl-into-sh: the script is
+short and readable — take a look before you run it.
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/\
 andri-berger/artwork-tui/main/install.sh | sh
 ```
+
+If `artwork-tui` is not found afterwards, add `~/.local/bin` to your `PATH`.
+
+#### Update and uninstall
+To update, run the same curl line again: it reinstalls from the latest `main`.
+
+To uninstall:
+```bash
+uv tool uninstall artwork-tui
+# optional: your projects, exports and the app's working copy
+rm -rf ~/.local/share/artwork-tui ~/.local/state/artwork-tui
+```
+On macOS the data lives in `~/Library/Application Support/artwork-tui`
+instead (see below). The Chromium download sits in Playwright's shared cache
+(`~/.cache/ms-playwright`, on macOS `~/Library/Caches/ms-playwright`); remove
+it only if no other Playwright tool uses it.
 
 #### Data directories
 Additional, user-generated files are stored in two directories, a share
@@ -121,14 +149,12 @@ project file, same seeds, same artwork. As with the sibling project, image
 previews render inline, so a terminal with a graphics protocol is required —
 kitty, ghostty, or wezterm.
 ```bash
-artwork-tui #Launches the TUI
-# kitty, ghostty, wezterm 
-# are supported as of now
+artwork-tui   # launches the TUI (kitty, ghostty or wezterm)
 ```
 <table>
     <tr>
         <th align="left">Binding</th>
-        <th align="left"><img src="artwork/Frontend/model.png" height="0" align="right" alt="">Description</th>
+        <th align="left"><img src="artwork/Frontend/model.png" width="9999" height="0" align="right" alt="">Description</th>
     </tr>
     <tr>
         <td><kbd>Filetree JSON
@@ -143,9 +169,9 @@ select any json here to reopen it with all parameters intact.</td>
 engine composes all elements on top of it.</td>
     </tr>
     <tr>
-        <td><kbd>Filepicker OTF
+        <td><kbd>Filetree OTF
         </kbd></td>
-        <td>Choose your fonts for the elements on the canvas. Fonts are loaded per
+        <td>Choose your fonts for the elements on the canvas (.otf files only). Fonts are loaded per
 project, so each artwork carries its own typography.</td>
     </tr>
     <tr>
@@ -345,8 +371,9 @@ highlighted file into the project.</td>
         <td><kbd>
         Ctrl-Q</kbd></td>
         <td>System</td>
-        <td>Exit the app. There is no exit prompt — F9 is the explicit save, so
-export first if the current grid state matters to you.</td>
+        <td>Exit the app. There is no exit prompt, and none is needed: the grid is
+autosaved after every change and restored on the next launch. F9 (Export) is
+for keeping a named snapshot plus its png.</td>
     </tr>
 </table>
 
@@ -381,10 +408,10 @@ links say more than any parameter documentation could.
         Build</kbd></td>
         <td>Apng</td><td>
         <a href="//github.com/apngasm/apngasm">
-        https://github.com/apngasm/apng</a></td>
+        https://github.com/apngasm/apngasm</a></td>
     </tr>
-    </tr>
-        <tr><td><kbd>
+    <tr>
+        <td><kbd>
         Build</kbd></td>
         <td>Grim</td><td>
         <a href="//github.com/emersion/grim">
@@ -413,14 +440,14 @@ links say more than any parameter documentation could.
     </tr>
     <tr>
         <td><kbd>
-        Utilities</kbd></td>
+        Utility</kbd></td>
         <td>Numpy</td><td>
         <a href="//github.com/numpy/numpy">
         https://github.com/numpy/numpy</a></td>
     </tr>
     <tr>
         <td><kbd>
-        Utilities</kbd></td>
+        Utility</kbd></td>
         <td>Random</td><td>
         <a href="https://github.com/d3/d3-random">
         https://github.com/d3/d3-random</a></td>
@@ -430,7 +457,7 @@ links say more than any parameter documentation could.
         Framework</kbd></td>
         <td>Platform</td><td>
         <a href="//github.com/tox-dev/platformdirs">
-        https://github.com/tox-dev/platform</a></td>
+        https://github.com/tox-dev/platformdirs</a></td>
     </tr>
     <tr>
         <td><kbd>
