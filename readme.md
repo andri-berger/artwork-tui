@@ -14,62 +14,47 @@ The tool emerged from a simple frustration: existing creative layout tools are e
 <table>
     <tr>
         <td width="50%" style="font-size:11px;" valign="top"><a href="demos/layout.png">
-        <img src="demos/layout.png" alt="Layout demo"></a>
-        <br><b>Layout</b> — Tab II builds a layout from scratch: one cell per parameter, here width and margin of A00 to A02.</td>
+        <img src="demos/layout.png" alt="Layout demo"></a></td>
         <td width="50%" style="font-size:11px;" valign="top"><a href="demos/style.png">
-        <img src="demos/style.png" alt="Styling demo"></a>
-        <br><b>Styling</b> — Tab III styles each element on its own: corner radius, rotation, opacity, grayscale.</td>
+        <img src="demos/style.png" alt="Styling demo"></a></td>
     </tr>
     <tr>
         <td width="50%" style="font-size:11px;" valign="top"><a href="demos/text.png">
-        <img src="demos/text.png" alt="Text demo"></a>
-        <br><b>Text</b> — Tab VI gives every element its own text, size, padding, colour and fill.</td>
+        <img src="demos/text.png" alt="Text demo"></a></td>
         <td width="50%" style="font-size:11px;" valign="top"><a href="demos/picture.png">
-        <img src="demos/picture.png" alt="Image demo"></a>
-        <br><b>Image</b> — Tab V frames the image per element: pick it from the image tree, then zoom and inset it.</td>
+        <img src="demos/picture.png" alt="Image demo"></a></td>
     </tr>
 </table>
 <table>
     <tr>
         <td width="33%" style="font-size:11px;" valign="top"><a href="demos/create.png">
-        <img src="demos/create.png" alt="Create demo"></a>
-        <br><b>Create</b> — One click on CREATE (or F8) draws a new random artwork.</td>
+        <img src="demos/create.png" alt="Create demo"></a></td>
         <td width="33%" style="font-size:11px;" valign="top"><a href="demos/seed.png">
-        <img src="demos/seed.png" alt="Seed lock demo"></a>
-        <br><b>Seed lock</b> — A0 locks the A elements while B and C keep changing.</td>
+        <img src="demos/seed.png" alt="Seed lock demo"></a></td>
         <td width="33%" style="font-size:11px;" valign="top"><a href="demos/clear.png">
-        <img src="demos/clear.png" alt="Clear demo"></a>
-        <br><b>Clear</b> — X (or F4) wipes the canvas and all six tabs.</td>
+        <img src="demos/clear.png" alt="Clear demo"></a></td>
     </tr>
     <tr>
         <td width="33%" style="font-size:11px;" valign="top"><a href="demos/export.png">
-        <img src="demos/export.png" alt="Export demo"></a>
-        <br><b>Export</b> — EXPORT (or F9) writes png and json into the share directory.</td>
+        <img src="demos/export.png" alt="Export demo"></a></td>
         <td width="33%" style="font-size:11px;" valign="top"><a href="demos/reopen.png">
-        <img src="demos/reopen.png" alt="Reopen a project demo"></a>
-        <br><b>Reopen a project</b> — Any exported json reopens with every parameter intact.</td>
+        <img src="demos/reopen.png" alt="Reopen a project demo"></a></td>
         <td width="33%" style="font-size:11px;" valign="top"><a href="demos/font.png">
-        <img src="demos/font.png" alt="Fonts demo"></a>
-        <br><b>Fonts</b> — The font tree swaps the typeface of the element labels.</td>
+        <img src="demos/font.png" alt="Fonts demo"></a></td>
     </tr>
     <tr>
         <td width="33%" style="font-size:11px;" valign="top"><a href="demos/tabs.png">
-        <img src="demos/tabs.png" alt="Six tabs demo"></a>
-        <br><b>Six tabs</b> — Tab walks the six tables; the bottom line explains every cell.</td>
+        <img src="demos/tabs.png" alt="Six tabs demo"></a></td>
         <td width="33%" style="font-size:11px;" valign="top"><a href="demos/edit.png">
-        <img src="demos/edit.png" alt="Edit a cell demo"></a>
-        <br><b>Edit a cell</b> — Type a value, press Enter, and the preview follows.</td>
+        <img src="demos/edit.png" alt="Edit a cell demo"></a></td>
         <td width="33%" style="font-size:11px;" valign="top"><a href="demos/clipboard.png">
-        <img src="demos/clipboard.png" alt="Cut, copy, paste demo"></a>
-        <br><b>Cut, copy, paste</b> — F1, F2 and F3 move values between cells.</td>
+        <img src="demos/clipboard.png" alt="Cut, copy, paste demo"></a></td>
     </tr>
     <tr>
         <td width="33%" style="font-size:11px;" valign="top"><a href="demos/themes.png">
-        <img src="demos/themes.png" alt="Themes demo"></a>
-        <br><b>Themes</b> — F10 and F11 step through the Textual themes.</td>
+        <img src="demos/themes.png" alt="Themes demo"></a></td>
         <td width="33%" style="font-size:11px;" valign="top"><a href="demos/fx.png">
-        <img src="demos/fx.png" alt="Effects demo"></a>
-        <br><b>Effects</b> — Tab I adds OpenCV and PIXI (WebGL) effects to the render.</td>
+        <img src="demos/fx.png" alt="Effects demo"></a></td>
         <td width="33%"></td>
     </tr>
 </table>
